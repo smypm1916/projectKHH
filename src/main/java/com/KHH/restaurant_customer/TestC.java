@@ -11,6 +11,11 @@ import java.io.IOException;
 public class TestC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        System.out.println("asdasd");
+        req.getRequestDispatcher("jsp/index.jsp").forward(req, resp);
     }
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
+
 }
