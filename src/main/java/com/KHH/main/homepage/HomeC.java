@@ -14,7 +14,7 @@ public class HomeC extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
-//        request.setAttribute("content", content);
+        request.setAttribute("content", "/jsp/main/main_contents.jsp");
         request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
 
     }

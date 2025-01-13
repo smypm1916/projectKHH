@@ -1,5 +1,54 @@
+@charset "UTF-8";
+
 body {
     margin: 0;
     padding: 0;
     font-family: "Noto Sans JP", sans-serif;
+    box-sizing: border-box;
+    color: #333;
+    overflow-y: auto;
+    overflow-x: hidden;
+    line-height: 1.5;
+    width: 100%;
+    text-align: left;
+    min-width: unset;
+}
+
+div, p {
+    color: #333;
+}
+
+img {
+    border: none
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+    z-index: 100;
+    background-color: #F6F5F0;
+}
+
+a, a:link, a:visited {
+    color: #333;
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgb(224, 143, 144) !important;
+}
+
+.global-nav {
+    display: block;
+    position: sticky;
+    border: black 1px solid;
+    background-color: rgba(244, 243, 236, 0.8);
+    width: 100%;
 }

@@ -1,51 +1,57 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>急に腹が減ってきた〜</title>
-    <link rel="stylesheet" href="css/index.css">
-
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1.0">
+    <%--    <link rel="stylesheet" type="text/css" href="<c:url value='/css/index.css' />">--%>
 </head>
+
 <body>
 
-<%--메인페이지 바디--%>
+<%--메인페이지--%>
 <div class="main-body">
 
     <%--    헤더--%>
-    <%--    <div class="header" style="border: darksalmon 1px solid; border-radius: 10px">--%>
-    <%--        <h1>急に腹が減ってきた〜</h1>--%>
-    <%--    </div>--%>
-    <header class="header"
-            style="display:flex; flex-direction:column; border: darksalmon 1px solid;">
-        <h1 style="display: flex; justify-content: center"><a href="HomeC">急に腹が減ってきた〜KHH~</a></h1>
+    <header class="header">
+        <h1><a href="/HomeC">急に腹が減ってきた~~KHH~~</a></h1>
+
+        <%--        내비게이션바--%>
+        <div class="global-nav">
+            <ul class="nav-content"
+                style="display: flex; flex-wrap: wrap; z-index: 100; flex-direction: row; align-items: center; text-align: center; justify-content: space-around;">
+                <li style="display: block"><a href="">| icon |</a></li>
+                <li style="display: block"><a href="">| 가게정보 |</a></li>
+                <li style="display: block"><a href="">| 커뮤니티 |</a></li>
+                <li style="display: block"><a href="">| 마이페이지 |</a></li>
+                <li style="display: block">
+                    <button onclick="location.href=''"> 로그인</button>
+                </li>
+
+                <li style="display: block">
+                    <button onclick="location.href='/jsp/register/user_signUp.jsp'">회원가입</button>
+                </li>
+            </ul>
+        </div>
     </header>
 
 
-    <%--    메뉴바--%>
-    <div class="menu-bar"
-         style="border: darksalmon 1px solid; border-radius: 10px; background-color: rgba(244,243,236,0.8); margin:0; padding:0; flex-direction: column">
-        <ul class="menu-content"
-            style="display: flex; flex-wrap: wrap; position:absolute; z-index: 100">
-            <li style="display: block">icon</li>
-            <li style="display: block">가게정보</li>
-            <li style="display: block">커뮤니티</li>
-            <form action="SignInC" method="POST">
-                <li style="display: block">
-                    <input type="text" name="id" placeholder="id">
-                    &nbsp;
-                    <input type="password" placeholder="pw">
-                    <button onclick="">로그인</button>
-                </li>
-            </form>
-            <li><a href="UserRegisterC">회원가입</a></li>
-        </ul>
-    </div>
-
     <%--    메인 콘텐츠--%>
-    <div class="content" style="border: darksalmon 1px solid; border-radius: 10px">
-        <div>
-            <%--            <jsp:include page="${content}"/>--%>
-            <h3>contents</h3>
+    <section class="content" style="border: darksalmon 1px solid; border-radius: 10px;">
+
+        <%--        지도 & 가게 페이지--%>
+        <div style="position: relative">
+            <br>
+            <jsp:include page="${content}"/>
+        </div>
+
+        <%--공지사항--%>
+        <div class="announcement">
+            <h2>공지사항</h2>
+            <ul>
+                공지 리스트...
+            </ul>
         </div>
 
         <%--        슬라이드1--%>
@@ -63,7 +69,7 @@
                 <p>slide2</p>
             </div>
         </div>
-    </div>
+    </section>
 
     <%--        푸터--%>
     <div class="footer" style="border: darksalmon 1px solid; border-radius: 10px">
