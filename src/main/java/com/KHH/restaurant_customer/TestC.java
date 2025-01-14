@@ -10,9 +10,9 @@ import java.io.IOException;
 @WebServlet("/test")
 public class TestC extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("asdasd");
-        req.getRequestDispatcher("jsp/index.jsp").forward(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("그라라라라ㅏㄱ");
+        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
