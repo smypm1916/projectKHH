@@ -9,7 +9,12 @@
 <html>
 <head>
     <title>회원가입</title>
+
     <link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+
+    <!-- Daum Postalcode API -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </head>
 
 <body>
@@ -43,6 +48,13 @@
                 <br>
                 <label for="nickname"><b>닉네임</b></label>
                 <input type="text" id="nickname" name="nickname" placeholder="닉네임" required>
+            </div>
+
+            <div>
+                <br>
+                <label for="tel">전화번호</label>
+                <input type="text" id="tel" name="tel" placeholder="휴대폰 번호" required>
+
             </div>
 
             <div>
@@ -100,30 +112,34 @@
                         </script>
                     </select>
                     <label for="birth-day">일</label>&nbsp;
-                    <p>*** 한번 입력하면 수정할 수 없습니다.</p>
+                    <p>*** 한번 입력하면 수정할 수 없습니다. ***</p>
                 </div>
+            </div>
+
+            <div>
+                <br>
+                <label for="address"><b>주소</b></label>
+                <input type="text" id="address" name="address" required>
+                <button onclick="openPostalCode()">
+                    우편번호 찾기
+                </button>
+                </input>
             </div>
 
             <div>
                 <br>
                 <label for="password"><b>비밀번호</b></label>
                 <input type="text" id="password" name="password" placeholder="영문+숫자 8~16자 이내" required>
-                <br>
+                <br><br>
                 <label for="passwordCheck"><b>비밀번호 확인</b></label>
                 <input type="text" id="passwordCheck" name="passwordCheck" placeholder="한번 더 입력해주세요" required>
-            </div>
-
-            <div>
-                <br>
-                주소
-                ***
             </div>
 
             <div style="display: flex; justify-content: center;" class="btn-wrapper"
                  style="text-align: center; display: flex; flex-direction: row; justify-content: space-between; width: 100%; max-width: 520px; margin: 50px auto 0;">
                 <br>
                 <button type="submit"
-                        style="border-radius: 20%; width:50px; height: 20px; display: inline-block; flex-wrap: wrap"
+                        style="border-radius: 20%; width:50px; height: 20px; display: flex; flex-wrap: wrap; flex-direction: row"
                         class="util-btn"
                         name="submit" onclick="">회원가입
                     <br>
@@ -133,5 +149,6 @@
         </form>
     </div>
 </div>
+<script src="../../js/signup.js"></script>
 </body>
 </html>

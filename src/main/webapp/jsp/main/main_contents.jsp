@@ -1,45 +1,45 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: svyet
-  Date: 2025/01/09
-  Time: 19:14
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<%--with gpt--%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../../css/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map and Shop Lists</title>
+    <link rel="stylesheet" href="../../css/index.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
         .reduced {
-            flex: 0.5; /* 지도의 크기를 줄임 */
+            flex: 0.4;
         }
 
         .visible {
-            width: 300px; /* 가게 리스트 영역을 보이게 설정 */
+            flex: 0.6 !important;
+            transition: width 0.8s ease;
+        }
+
+        .shop-list {
+            border: 1px solid black;
+            overflow: hidden;
+            width: 0;
+            transition: width 0.5s ease;
         }
     </style>
 </head>
-
 <body>
-
-<h1>map and shop lists!(main page)</h1>
+<h1>Map and Shop Lists</h1>
 <div class="main-body">
-    <p>body</p>
-    <div class="content-wrapper" style="display: flex; flex-direction: row; transition: transform 0.5s ease;">
-        <span>wrapper</span>
+    <div class="content-wrapper" style="display: flex; flex-direction: row;">
         <div class="hokkaido-map" id="hokkaido-map" style="flex: 1; border: 1px solid black;">
-            <img src="../../imgs/map_area_airport2_jp.jpg" alt="">
-            <p>map</p>
+            <img src="../../imgs/map_area_airport2_jp.jpg" alt="Hokkaido Map">
         </div>
-        <div class="shop-list" id="shop-list"
-             style="border: 1px solid black; overflow: hidden; width: 0; transition: transform 0.5s ease;">
-            <p>restaurant lists</p>
-            <ul class="shop-items" id="shop-items">
-                <div class="shop-infos">
-                    <p>infos</p>
-                </div>
-            </ul>
+        <div class="shop-list" id="shop-list">
+            <p>Restaurant Lists</p>
+            <ul class="shop-items" id="shop-items"></ul>
         </div>
     </div>
 </div>
@@ -56,26 +56,40 @@
             {name: "가게 3", address: "서울특별시 서초구"},
         ];
 
+        // 현재 상태를 저장할 변수
+        let isListVisible = false;
+
         // 지도 클릭 이벤트
         map.addEventListener('click', () => {
-            // 레이아웃 변경
-            map.classList.add('reduced');
-            shopList.classList.add('visible');
+            isListVisible = !isListVisible; // 상태를 토글
 
-            // 가게 리스트 표시
-            updateStoreList(shop, shopItems);
+            if (isListVisible) {
+                // 리스트 보이기
+                map.classList.add('reduced');
+                shopList.classList.add('visible');
+                updateStoreList(shop, shopItems);
+            } else {
+                // 리스트 숨기기
+                map.classList.remove('reduced');
+                shopList.classList.remove('visible');
+                shopItems.innerHTML = ""; // 리스트 초기화
+            }
         });
 
         // 가게 리스트 업데이트 함수
         function updateStoreList(shop, shopItems) {
             shopItems.innerHTML = ""; // 기존 리스트 초기화
             shop.forEach(store => {
+                console.log('updateStoreList called with data:', shop); // 데이터 확인
                 const listItem = document.createElement('li');
-                listItem.textContent = `${store.name} - ${store.address}`;
+                listItem.textContent = `${shop.name} - ${shop.address}`;
                 shopItems.appendChild(listItem);
             });
         }
     });
+
 </script>
 </body>
 </html>
+
+
