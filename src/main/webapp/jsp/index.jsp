@@ -15,27 +15,25 @@
 
     <%--    헤더--%>
     <header class="header">
-        <h1><a href="/HomeC">急に腹が減ってきた~~KHH~~</a></h1>
-
-        <%--        내비게이션바--%>
-        <div class="global-nav">
-            <ul class="nav-content"
-                style="display: flex; flex-wrap: wrap; z-index: 100; flex-direction: row; align-items: center; text-align: center; justify-content: space-around;">
-                <li style="display: block"><a href="">| icon |</a></li>
-                <li style="display: block"><a href="">| 가게정보 |</a></li>
-                <li style="display: block"><a href="">| 커뮤니티 |</a></li>
-                <li style="display: block"><a href="">| 마이페이지 |</a></li>
-                <li style="display: block">
-                    <button onclick="location.href=''"> 로그인</button>
-                </li>
-
-                <li style="display: block">
-                    <button onclick="location.href='/jsp/register/user_signUp.jsp'">회원가입</button>
-                </li>
-            </ul>
+        <div class="title">
+            <h1><a href="/HomeC">急に腹が減ってきた~~KHH~~</a></h1>
         </div>
     </header>
-
+    <%--        내비게이션바--%>
+    <div class="global-nav">
+        <ul class="nav-content">
+            <li><a href="">| icon |</a></li>
+            <li><a href="">| 가게정보 |</a></li>
+            <li><a href="">| 커뮤니티 |</a></li>
+            <li><a href="">| 마이페이지 |</a></li>
+            <li>
+                <button onclick="location.href=''"> 로그인</button>
+            </li>
+            <li>
+                <button onclick="location.href='/jsp/register/user_signUp.jsp'">회원가입</button>
+            </li>
+        </ul>
+    </div>
 
     <%--    메인 콘텐츠--%>
     <section class="content" style="border: darksalmon 1px solid; border-radius: 10px;">
@@ -58,7 +56,7 @@
         <div class="slide1 container" style="border: darksalmon 1px solid; border-radius: 10px">
             <div class="slide1 content">
                 <%--                店のランキング（仮）--%>
-                <p>slide1</p>
+                <p>추천 가게</p>
             </div>
         </div>
 
@@ -66,13 +64,19 @@
         <div class="slide2 container" style="border: darksalmon 1px solid; border-radius: 10px">
             <div class="slide2 content">
                 <%--                広告のランキング（仮）--%>
-                <p>slide2</p>
+                <p>좋아요 랭킹</p>
             </div>
+        </div>
+
+        <div class="fixed-nav" style="display: block; flex-direction: row-reverse">
+            <div class="btn-page-top" style="display: block"></div>
+            <span style="width: 50px; height: 50px; background-size: 50px; cursor:pointer;"
+                  onclick="window.scrollTo(0,0);">위로 돌아가기</span>
         </div>
     </section>
 
     <%--        푸터--%>
-    <div class="footer" style="border: darksalmon 1px solid; border-radius: 10px">
+    <div class="footer">
         <h2>footer</h2>
     </div>
 </div>
