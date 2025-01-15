@@ -1,5 +1,7 @@
 package com.KHH.main.signUp;
 
+import com.KHH.main.DBManager;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
@@ -8,16 +10,78 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class SignUpDAO {
+    public static final SignUpDAO SDAO = new SignUpDAO();
     Connection con = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
 
     public static ArrayList<UserDTO> users = null;
 
+    private SignUpDAO() {
+        try {
+            con = DBManager.connect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static SignUpDAO getSDAO() {
+        return SDAO;
+    }
+
     public void UserSignUp(HttpServletRequest request, HttpServletResponse response) {
-//        String username=request.getParameter("");
 
+        String userName = request.getParameter("name");
+        String emailDomain = request.getParameter("email-domain");
+        String emailService = request.getParameter("email-service");
+        String userEmail = emailDomain + "@" + emailService;
+        String userNickname = request.getParameter("nickname");
+        String userTel = request.getParameter("tel");
+        String userGender = request.getParameter("gender");
+        String userBirth;
+        String userBirthYear = request.getParameter("birth-year");
+        String userBirthMonth = request.getParameter("birth-month");
+        String userBirthDay = request.getParameter("birth-day");
+        userBirth = userBirthYear + "-" + userBirthMonth + "-" + userBirthDay;
+        String userAddress = request.getParameter("address");
+        String addressDetail = request.getParameter("address-detail");
+        userAddress += "\n" + addressDetail;
+        String userPassword = request.getParameter("password");
 
+        String sql = "INSERT INTO USER_ACCOUNT values (?,?,?,?,?,?,?,?,'level1',null)";
+
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setString(1, userEmail);
+            pst.setString(2, userPassword);
+            pst.setString(3, userName);
+            pst.setString(4, userBirth);
+            pst.setString(5, userAddress);
+            pst.setString(6, userTel);
+            pst.setString(7, userGender);
+            pst.setString(8, userNickname);
+
+            if (pst.executeUpdate() == 1) {
+                System.out.println("User Sign Up Success!!!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                DBManager.close(con, pst, rs);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void OwnerSignUp(HttpServletRequest request, HttpServletResponse response) {
+        String shopName = request.getParameter("shop-name");
+        String shopAddress = request.getParameter("shop-address");
+        String shopTel = request.getParameter("shop-tel");
+        
         try {
 
 
@@ -25,12 +89,11 @@ public class SignUpDAO {
             e.printStackTrace();
         } finally {
             try {
-
+                DBManager.close(con, pst, rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
     }
 
 }
