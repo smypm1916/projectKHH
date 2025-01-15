@@ -143,7 +143,7 @@ div {
 				<div class="profile-field" style="border: none;">
 					<div class="profile-circle" style="border: none;">
 						<img
-							src="https://c4.wallpaperflare.com/wallpaper/375/927/608/bleach-zangetsu-bleach-wallpaper-preview.jpg"
+							src="profilePhoto/zangetsu.jpg"
 							alt="profile-img">
 					</div>
 					<div
