@@ -12,15 +12,24 @@
 </head>
 <body>
 
-<label><b>회원 유형</b></label>
-<div>
-    <input type="radio" id="user-type-customer" name="user-type" value="customer" checked>
-    <label for="user-type-customer">일반 회원</label>
-    <input type="radio" id="user-type-owner" name="user-type" value="owner">
-    <label for="user-type-owner">레스토랑 점주</label>
-</div>
+<h1><b>회원 유형</b></h1>
 
-<jsp:include page=""/>
+<form action="SignUpC">
+    <div>
+        <button type="button" onclick="ToSignUp('customer')">일반 회원</button>
+        <button type="button" onclick="ToSignUp('owner')">점주 회원</button>
+    </div>
+</form>
+
+<script>
+    function ToSignUp(userType) {
+        if (userType === 'customer') {
+            location.href = '/jsp/register/user_signUp.jsp';
+        } else if (userType === 'owner') {
+            location.href = '/jsp/register/owner_signUp.jsp';
+        }
+    }
+</script>
 
 </body>
 </html>

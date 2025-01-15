@@ -237,12 +237,12 @@
 
             <div>
                 <br>
-                <input type="radio" id="gender1" name="gender" value="male" checked="checked" required="required"/>
+                <input type="radio" id="gender1" name="gender" value="m" checked="checked" required="required"/>
                 <label for="gender1"><b>남성</b></label>
-                <input type="radio" id="gender2" name=gender value="female" required>
+                <input type="radio" id="gender2" name=gender value="f" required>
                 <label for="gender2"><b>여성</b></label>
-                <input type="radio" id="gender3" name="gender" value="other" required>
-                <label for="gender3"><b>무응답</b></label>
+<%--                <input type="radio" id="gender3" name="gender" value="other" required>--%>
+<%--                <label for="gender3"><b>무응답</b></label>--%>
             </div>
 
             <div>
@@ -288,28 +288,6 @@
             </div>
 
             <br>
-
-            <!-- 점주 추가 입력 필드 -->
-            <div id="owner-fields" style="display: none;">
-            <h1> ************************ </h1>
-                <br>
-                <h2>점주 정보 입력</h2>
-                <div class="form-group">
-                    <br>
-                    <label for="shop-name"><b>가게 이름</b></label>
-                    <input type="text" id="shop-name" name="shop-name" placeholder="가게 이름">
-                </div>
-                <div class="form-group">
-                    <br>
-                    <label for="shop-address"><b>가게 주소</b></label>
-                    <input type="text" id="shop-address" name="shop-address" placeholder="가게 주소">
-                </div>
-                <div class="form-group">
-                    <br>
-                    <label for="shop-tel"><b>가게 전화번호</b></label>
-                    <input type="text" id="shop-tel" name="shop-tel" placeholder="가게 전화번호">
-                </div>
-            </div>
 
             <div style="display: flex; justify-content: center;" class="btn-wrapper"
                  style="text-align: center; display: flex; flex-direction: row; justify-content: space-between; width: 100%; max-width: 520px; margin: 50px auto 0;">
