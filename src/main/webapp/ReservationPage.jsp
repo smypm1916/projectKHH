@@ -64,29 +64,49 @@ div {
 	overflow: hidden;
 }
 
-.bottom-list-num {
+.calendar-container {
+	margin: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	background-color: #f9f9f9;
+}
+
+.calendar {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 5px;
+	width: 100%;
+	max-width: 400px;
 	text-align: center;
-	item-align: center;
 }
 
-.text-box{
-margin-top: 20px;
-margin-left: 20px;
-margin-bottom: 40px;
+.calendar div {
+	padding: 10px 0;
+	border-radius: 5px;
 }
 
-
-.bottom-list-num {
-		text-align: center;
-		item-align: center;
-
+.calendar .day-header {
+	font-weight: bold;
+	background-color: #007bff;
+	color: white;
 }
 
-.bottom-return-btn {
-		text-align: center;
-		item-align: center;
-
+.calendar .day {
+	border: 1px solid #ddd;
+	background-color: #f1f1f1;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
+
+.calendar .day:hover {
+	background-color: #e0e0e0;
+}
+
 </style>
 </head>
 <body>
@@ -105,6 +125,56 @@ margin-bottom: 40px;
 				<h2 style="margin-inline-end: auto;">예약한 가게</h2>
 			</div>
 			<br>
+			<div class="reservation-list" style="border: none; display: flex; justify-content: center">
+				<input type="button" value="새로운 예약 추가">
+			</div>
+
+			<!-- Calendar Section -->
+			<div class="calendar-container">
+				<h3>달력</h3>
+				<div class="calendar">
+					<div class="day-header">일</div>
+					<div class="day-header">월</div>
+					<div class="day-header">화</div>
+					<div class="day-header">수</div>
+					<div class="day-header">목</div>
+					<div class="day-header">금</div>
+					<div class="day-header">토</div>
+					<!-- Example for February -->
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div class="day">1</div>
+					<div class="day">2</div>
+					<div class="day">3</div>
+					<div class="day">4</div>
+					<div class="day">5</div>
+					<div class="day">6</div>
+					<div class="day">7</div>
+					<div class="day">8</div>
+					<div class="day">9</div>
+					<div class="day">10</div>
+					<div class="day">11</div>
+					<div class="day">12</div>
+					<div class="day">13</div>
+					<div class="day">14</div>
+					<div class="day">15</div>
+					<div class="day">16</div>
+					<div class="day">17</div>
+					<div class="day">18</div>
+					<div class="day">19</div>
+					<div class="day">20</div>
+					<div class="day">21</div>
+					<div class="day">22</div>
+					<div class="day">23</div>
+					<div class="day">24</div>
+					<div class="day">25</div>
+					<div class="day">26</div>
+					<div class="day">27</div>
+					<div class="day">28</div>
+				</div>
+			</div>
 
 
 
@@ -117,50 +187,8 @@ margin-bottom: 40px;
 						<h2>예약한 가게명</h2>
 						<h2>예약일시/예약인원</h2>
 				<div  style="border: none;">
-					<h3>가게 상세주소 </h3> 
-						<h3>예약자 이름 : 000</h3>  
-						<h3>예약자 전화번호 : 000  </h3> 
-
-					</div>
-					</div>
-				</div>
-						<div  style="border: none; align-content: center;">
-					<input type="button" value="예약 변경">
-					</div>
-			</div>
-
-			<div class="reserv-place-list-field" style="border: solid 1px;">
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
-						alt="place-name">
-				<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>무라카미 하코다테 본점</h2>
-						<h2>2025.01.27 / 3명</h2>
-				<div  style="border: none;">
-					<h3>홋카이도 000 0000 </h3> 
-						<h3>예약자 이름 : 마루마루상 </h3>  
-						<h3>예약자 전화번호 : 010 3385 6138  </h3> 
-
-					</div>
-					</div>
-				</div>
-						<div  style="border: none; align-content: center;">
-					<input type="button" value="예약 변경">
-					</div>
-			</div>
-
-
-			<div class="reserv-place-list-field" style="border: solid 1px;">
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>라멘 삿포로 이치류안</h2>
-						<h2>2025.01.11 / 2명</h2>
-				<div  style="border: none;">
-					<h3>홋카이도 000 0000 </h3> 
-						<h3>예약자 이름 : 마루마루상 </h3>  
-						<h3>예약자 전화번호 : 010 3385 6138  </h3> 
+						<h3>예약자 이름 : 000</h3>
+						<h3>예약자 전화번호 : 000  </h3>
 
 					</div>
 					</div>
@@ -172,36 +200,6 @@ margin-bottom: 40px;
 
 
 
-			<div class="reserv-place-list-field" style="border: solid 1px;">
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
-						alt="place-name">
-				<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>해산물 로바타야키</h2>
-						<h2>2025.02.11 / 4명</h2>
-				<div  style="border: none;">
-					<h3>홋카이도 000 0000 </h3> 
-						<h3>예약자 이름 : 마루마루상 </h3>  
-						<h3>예약자 전화번호 : 010 3385 6138  </h3> 
-
-					</div>
-					</div>
-				</div>
-						<div  style="border: none; align-content: center;">
-					<input type="button" value="예약 변경">
-					</div>
-			</div>
-
-
-
-		<br> <br>
-
-		<div class="bottom-list-num" style="border: none;">  <h2> 1 2 3 4 (나중에 구현) > </h2>   </div>
-
-						<div class="bottom-return-btn"  style="border: none; align-content: center;">
-					<input type="button" value="마이페이지로 돌아가기">
-					</div>
-	
 
 
 

@@ -68,19 +68,46 @@ div {
 
 .change_profile {
 	height: 50px;
-	padding: 10px 20px; /* 버튼 내부 여백 */
-	font-size: 16px; /* 텍스트 크기 */
-	font-weight: bold; /* 텍스트 두께 */
-	color: #ffffff; /* 텍스트 색상 */
-	background-color: #007bff; /* 버튼 배경색 */
-	border: none; /* 테두리 제거 */
-	border-radius: 8px; /* 모서리 둥글게 */
-	cursor: pointer; /* 마우스 오버 시 포인터 표시 */
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
-	transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ffffff;
+	background-color: #007bff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s, transform 0.2s;
 }
 
 .change_profile:hover {
+	background-color: #0056b3; /* 호버 시 배경색 변경 */
+	transform: scale(1.05); /* 약간 확대 */
+}
+
+.myProfile_button_box {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	border: none;
+	margin-top: 10px;
+}
+
+.myProfile_button_box button {
+	height: 50px;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ffffff;
+	background-color: #007bff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s, transform 0.2s;
+}
+
+.myProfile_button_box:hover button {
 	background-color: #0056b3; /* 호버 시 배경색 변경 */
 	transform: scale(1.05); /* 약간 확대 */
 }
@@ -122,12 +149,14 @@ div {
 							<p>
 								물러서면 퇴락이요. 겁먹으면 죽음이다.
 							</p>
+							<input> <br> <br>
 					</div>
-					<div
-						style="border: none; margin-left: auto; align-content: center;">
-						<input class="change_profile" onclick="" type="button" value="수정완료">
-					</div>
+
 				</div>
+			</div>
+			<div class="myProfile_button_box" style="border: none;">
+				<button id="cancel_info">취소</button>
+				<button id="complete_info">수정완료</button>
 			</div>
 
 			

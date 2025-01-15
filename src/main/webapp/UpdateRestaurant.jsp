@@ -67,6 +67,19 @@ div {
 	transform: scale(1.05); /* 호버 시 확대 효과 */
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
 }
+#previewImage2 img {
+	width: 100%;
+	height: 320px;
+	border-radius: 12px; /* 모서리 둥글게 */
+	border: 2px solid #ddd; /* 얇은 테두리 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+	transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
+}
+
+#previewImage2:hover img {
+	transform: scale(1.05); /* 호버 시 확대 효과 */
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
+}
 
 .add_image_button {
 	height: 50px;
