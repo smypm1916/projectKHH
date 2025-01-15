@@ -1,4 +1,4 @@
-package com.KHH.main.user;
+package com.KHH.main.signUp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

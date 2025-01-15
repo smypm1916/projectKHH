@@ -1,4 +1,4 @@
-package com.KHH.main.user;
+package com.KHH.main.signUp;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

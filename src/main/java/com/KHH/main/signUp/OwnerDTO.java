@@ -1,4 +1,4 @@
-package com.KHH.main.user;
+package com.KHH.main.signUp;
 
 public class OwnerDTO {
     private String owner_email;

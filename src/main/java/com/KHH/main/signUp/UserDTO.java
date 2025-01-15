@@ -1,4 +1,4 @@
-package com.KHH.main.user;
+package com.KHH.main.signUp;
 
 public class UserDTO {
     private String user_email;
