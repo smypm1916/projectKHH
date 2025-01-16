@@ -86,18 +86,18 @@ div {
 .myShop_information_list {
 	display: inline-block;
 	text-align: center;
-	width: 320px;
+	width: 283px;
 }
 
 .myShop_information_list img {
-	width: 300px;
-	height: 300px;
+	width: 280px;
+	height: 280px;
 	border-radius: 12px; /* 모서리 둥글게 */
 	border: 2px solid #ddd; /* 얇은 테두리 */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
 	transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
 }
-.myShop_information_list:hover img {
+.myShop_information_list_img:hover {
 	transform: scale(1.05); /* 호버 시 확대 효과 */
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
 }
@@ -174,7 +174,7 @@ div {
 			<div class="myShop_information_list_field">
 
 				<div class="myShop_information_list">
-					<img
+					<img class="myShop_information_list_img"
 						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
 						alt="place-name">
 					<div style="border: none;">
@@ -187,7 +187,8 @@ div {
 				</div>
 
 				<div class="myShop_information_list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
+					<img  class="myShop_information_list_img"
+							src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
 						alt="place-name">
 					<div style="border: none;">
 						<h2>무라카미 하코다테 본점</h2>
@@ -199,7 +200,8 @@ div {
 				</div>
 
 				<div class="myShop_information_list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
+					<img class="myShop_information_list_img"
+							src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
 						alt="place-name">
 					<div style="border: none;">
 						<h2>라멘 삿포로 이치류안</h2>
@@ -211,7 +213,8 @@ div {
 				</div>
 
 				<div class="myShop_information_list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
+					<img class="myShop_information_list_img"
+							src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
 						alt="place-name">
 					<div style="border: none;">
 						<h2>해산물 로바타야키</h2>
@@ -250,29 +253,7 @@ div {
 
 			<br> <br>
 
-			<hr>
 
-			<div class="review-list" style="border: none;">
-				<h2 style="margin-inline-end: auto;">리뷰리스트</h2>
-				<div style="border: none;">
-					<h3>
-						<a href="http://localhost/18_KHH_Test/ReviewsPage.jsp"> 더보기 ></a>
-					</h3>
-				</div>
-			</div>
-			<hr>
-
-			<div class="review-comment" style="border: none;">
-				<span>🦀🍴</span> [ 리뷰정보 예시 ] 가게명 / 제목 / 게시일
-			</div>
-			<div class="review-comment" style="border: none;">
-				<span>🦀🍴</span> [ 리뷰정보 예시 ] 가게명 / 제목 / 게시일
-			</div>
-			<div class="review-comment" style="border: none;">
-				<span>🦀🍴</span> [ 리뷰정보 예시 ] 가게명 / 제목 / 게시일
-			</div>
-
-			<br> <br>
 
 
 		</div>
