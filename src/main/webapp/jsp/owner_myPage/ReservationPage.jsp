@@ -301,7 +301,7 @@
         <div class="reserv-place-list-field" style="border: solid 1px;">
             <div class="reserv-place-list">
                 <img
-                        src="../profilePhoto/bleach_kv.png"
+                        src="../../profilePhoto/bleach_kv.png"
                         alt="place-name">
                 <div style="border: none; text-align: left; margin-left: 30px">
                     <h2>예약한 가게명</h2>
