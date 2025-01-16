@@ -15,6 +15,7 @@ public class SignUpC extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        SignUpDAO.getSDAO().UserSignUp(request, response);
+//        SignUpDAO.getSDAO().OwnerSignUp(request, response);
     }
 }

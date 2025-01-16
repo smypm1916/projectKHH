@@ -78,12 +78,32 @@ public class SignUpDAO {
     }
 
     public void OwnerSignUp(HttpServletRequest request, HttpServletResponse response) {
-        String shopName = request.getParameter("shop-name");
-        String shopAddress = request.getParameter("shop-address");
-        String shopTel = request.getParameter("shop-tel");
-        
-        try {
+        String ownerName = request.getParameter("name");
+        String emailDomain = request.getParameter("email-domain");
+        String emailService = request.getParameter("email-service");
+        String ownerEmail = emailDomain + "@" + emailService;
+        String userNickname = request.getParameter("nickname");
+        String ownerTel = request.getParameter("tel");
+        String ownerBirth;
+        String ownerBirthYear = request.getParameter("birth-year");
+        String ownerBirthMonth = request.getParameter("birth-month");
+        String ownerBirthDay = request.getParameter("birth-day");
+        ownerBirth = ownerBirthYear + "-" + ownerBirthMonth + "-" + ownerBirthDay;
+        String ownerPassword = request.getParameter("password");
 
+        String sql = "INSERT INTO OWNER_ACCOUNT values (?,?,?,?,?)";
+
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setString(1, ownerEmail);
+            pst.setString(2, ownerPassword);
+            pst.setString(3, ownerName);
+            pst.setString(4, ownerBirth);
+            pst.setString(5, ownerTel);
+
+            if (pst.executeUpdate() == 1) {
+                System.out.println("Owner Sign Up Success!!!");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
