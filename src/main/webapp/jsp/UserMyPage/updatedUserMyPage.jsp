@@ -9,10 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="ProfileUpdateControllerController" method="post" enctype="multipart/form-data">
+<form action="ProfileUpdateController" method="post" enctype="multipart/form-data">
 			<div class="mypage" style="border: none;">
 				<h1>MyPage</h1>
-				<h2>내 프로필</h2>
+				<h2>내 프로필 수정(완료버전)</h2>
 			</div>
 			<hr>
 
@@ -21,20 +21,24 @@
 
 				<div class="profile-field" style="border: none;">
 					<div class="profile-circle" style="border: none;">
-						<img
-							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpgDevrlkGRc_wQ5fcoY3WZPh42yBUJhVPNA&s"
+						<img id="profileImg"
+							src="/jsp/UserProfile/img/${user_picture}"
 							alt="profile-img">
+						<input name="newImg" hidden type="file">
+						<input type="hidden" name="user_picture" value="${sessionScope.user.user_picture}">
 					</div>
 					<div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
 					<span>
-						<h2> 대식가 ${sessionScope.user.user_nickname}(${sessionScope.user.user_email}) 님 (🖐🏻'-' )</h2>
-						맛집러버 ${sessionScope.user.user_nickname}님, 오늘은 어떤 맛집을 찾아볼까요? 🍫͜
+						<h2> 대식가 <input style="width: 100px" name="user_nickname" value = "${sessionScope.user.user_nickname}">
+							(${sessionScope.user.user_email}) 님 (🖐🏻'-' )</h2>
+						 맛집러버 <input  style="width: 100px" name="user_nickname" value ="${sessionScope.user.user_nickname}">님, 오늘은 어떤 맛집을 찾아볼까요? 🍫͜
 						(ᵔ ̮ ᵔ)›
 					</span>
+
 					</div>
-					<div style="border: none; margin-left: -185px;
+					<div style="border: none; margin-left: 225px;
     margin-top: -30px; align-content: center;" >
-							<input type="button" value="프로필 수정" onclick="location.href='ProfileUpdateController?no='${user_email}">
+							<input type="button" value="수정 완료하기" onclick="location.href='HomeController?no='${user_email}">
 					</div>
 				</div>
 			</div>
@@ -178,7 +182,19 @@
 
 			</div>
 </form>
+	<script>
+		// 요소 참조
+		const profileContainer = document.getElementById('profileImg');
+		const fileInput = document.querySelector("input[name='newImg']");
+		console.log(profileContainer)
+		console.log(fileInput)
+		const profileImg = document.getElementById('profile-img');
 
+		// 프로필 클릭 이벤트
+		profileContainer.addEventListener('click', () => {
+		fileInput.click(); // 파일 선택 창 열기
+	});
+</script>
 
 </body>
 </html>
