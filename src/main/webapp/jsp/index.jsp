@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>急に腹が減ってきた〜</title>
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/index_ver0.2.css?v=1.0">
     <%--    <link rel="stylesheet" type="text/css" href="<c:url value='/css/index.css' />">--%>
 </head>
 
@@ -30,10 +30,11 @@
                 <button onclick="location.href=''"> 로그인</button>
             </li>
             <li>
-                <button onclick="location.href='/jsp/register/user_signUp.jsp'">회원가입</button>
+                <button onclick="location.href='/jsp/register/choose_userType.jsp'">회원가입</button>
             </li>
         </ul>
     </div>
+
 
     <%--    메인 콘텐츠--%>
     <section class="content" style="border: darksalmon 1px solid; border-radius: 10px;">

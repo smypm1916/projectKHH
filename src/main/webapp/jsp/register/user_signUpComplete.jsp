@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>회원가입 완료</title>
+    <link rel="stylesheet" href="../../css/signup/signUp.css">
+    
 </head>
 <body>
 <h1>회원가입 완료</h1>
