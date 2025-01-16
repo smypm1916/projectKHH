@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../css/community_list.css">
+    <link rel="stylesheet" href="../../css/community/community_list.css">
 </head>
 <body>
 <h1>커뮤니티</h1>

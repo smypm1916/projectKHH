@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Title</title>
-  <link rel="stylesheet" href="../../css/community_detail.css">
+  <link rel="stylesheet" href="../../css/community/community_detail.css">
 </head>
 <body>
 <h1>커뮤니티</h1>
@@ -28,8 +28,11 @@
 <hr>
 
 <div class="community_content_div">
+  <img src="../image/hokkaido.jpg">
   <div class="community_content">${com.content }</div>
 </div>
+
+<hr>
 
 <div class="community_comment_div">
   <div class="comment_upload_div">
@@ -57,9 +60,18 @@
       <div class="comment_uploadBtn"><button>등록</button></div>
     </div>
     <div class="comment_child_div">
-      <div class="comment_nickname">작성자 닉네임</div>
-      <div class="comment_date">작성일</div>
-      <div class="comment_content">댓글내용</div>
+      <div class="comment_content_div">
+        <div class="comment_nickname">작성자 닉네임</div>
+        <div class="comment_date">작성일</div>
+        <div class="comment_content">댓글내용</div>
+      </div>
+      <div class="comment_btn_div_other">
+        <button>답글달기</button>
+      </div>
+      <div class="comment_btn_div_writer">
+        <button>수정하기</button>
+        <button>삭제하기</button>
+      </div>
     </div>
   </div>
   <div class="community_mainBtn_div"></div>
