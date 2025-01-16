@@ -12,7 +12,7 @@ public class CommunityDetailController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CommunityDAO.updateCommunityReadCnt(req);
         CommunityDAO.getCommunityDetail(req);
-        req.setAttribute("content", "/jsp/community_detail.jsp");
+        req.setAttribute("content", "/jsp/community/community_detail.jsp");
         req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
     }
 

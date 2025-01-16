@@ -1,5 +1,7 @@
 package com.KHH.community;
 
+import com.KHH.main.DBManager;
+
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
