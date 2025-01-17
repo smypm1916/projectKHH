@@ -74,7 +74,9 @@
       </div>
     </div>
   </div>
-  <div class="community_mainBtn_div"></div>
+  <div class="community_mainBtn_div">
+    <button onclick="location.href='CommunityListController'">목록으로</button>
+  </div>
 </div>
 </body>
 </html>
