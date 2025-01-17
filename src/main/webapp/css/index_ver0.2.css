@@ -46,8 +46,14 @@ h1 {
     background-color: #fff; /* 변경: 메인 콘텐츠 배경색 */
     border-radius: 10px; /* 변경: 둥근 모서리 추가 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 변경: 메인 콘텐츠 그림자 추가 */
-    max-width: 800px;
+    max-width: 100%;
     margin: 20px auto;
+}
+
+.content{
+    padding: 20px;
+    background-color: white;
+    width: 90%;
 }
 
 .form-group {

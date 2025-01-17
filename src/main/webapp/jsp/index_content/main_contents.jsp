@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map and Shop Lists</title>
-    <link rel="stylesheet" type="text/css" href="../css/index_ver0.2.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../../css/index_ver0.2.css?v=1.0">
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
 <div class="main-body">
     <div class="content-wrapper" style="display: flex; flex-direction: row;">
         <div class="hokkaido-map" id="hokkaido-map" style="flex: 1; border: 1px solid black;">
-            <img src="../../imgs/map_area_airport2_jp.jpg" alt="Hokkaido Map">
+            <img src="../../image/map_area_airport2_jp.jpg" alt="Hokkaido Map">
         </div>
         <div class="shop-list" id="shop-list">
             <p>Restaurant Lists</p>

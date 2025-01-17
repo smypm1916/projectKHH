@@ -116,4 +116,9 @@ public class SignUpDAO {
         }
     }
 
+    public void ReadTest(HttpServletRequest request, HttpServletResponse response) {
+        ArrayList<UserDTO> testUsers = new ArrayList<>();
+
+    }
+
 }
