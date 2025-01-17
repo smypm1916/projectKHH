@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+h1{
+    text-align: center;
+    margin-bottom: 100px;
+    font-weight: 450;
+    font-style: normal;
+    font-family: 'BMJUA',serif;
+    color: rgb(70, 44, 32);
+}
+body {
+    margin: 0;
+}
+
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header {
+    margin-top: 0px;
+    background-color: rgb(205, 187, 173);
+    color: white;
+    height: 80px;
+    cursor: pointer;
+    line-height: 70px; /* 텍스트를 수직 가운데 정렬하려면 추가 */
+    text-align: center; /* 텍스트를 가운데 정렬하려면 추가 */
+}
+
+header img {
+    width: 120px;
+    height: 80px;
+}
+
+.header-container:hover nav {
+    max-height: 100px; /* Adjust based on content */
+}
+
+nav {
+    background-color: rgb(160, 134, 122);
+    font-weight: bold; color : white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    padding: 10px 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 450;
+    font-style: normal;
+    font-family: 'BMJUA',serif;
+}
+
+nav ul li a:hover {
+    color: rgb(70, 44, 32);
+}
+.content {
+    padding-top: 190px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: auto;
+}
+.footer {
+    background-color: rgb(160, 134, 122);
+    height: 170px;
+}
