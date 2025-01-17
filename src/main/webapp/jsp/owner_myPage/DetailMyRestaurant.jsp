@@ -1,267 +1,339 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-div {
-	border: 1px solid;
-}
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        div {
+            border: 1px solid;
+        }
 
-.header {
-	height: 100px;
-}
+        .header {
+            height: 100px;
+        }
 
-.nav {
-	height: 70px;
-}
+        .nav {
+            height: 70px;
+        }
 
-.content {
-	margin-top: 100px;
-	margin-left: 100px;
-	margin-right: 100px;
-	height: 3500px;
-	border: none;
-}
+        .content {
+            margin-top: 100px;
+            margin-left: 100px;
+            margin-right: 100px;
+            height: 3500px;
+            border: none;
+        }
 
-.footer {
-	height: 200px;
-}
+        .footer {
+            height: 200px;
+        }
 
-.profile-field {
-	display: flex;
-}
+        .profile-field {
+            display: flex;
+        }
 
-.profile-circle img {
-	border-radius: 50%;
-	width: 170px;
-	height: 170px;
-}
+        .profile-circle img {
+            border-radius: 50%;
+            width: 170px;
+            height: 170px;
+        }
 
-.myShop {
-	display: flex;
-	justify-content: flex-end;
-}
+        .myShop-list {
+            display: flex;
+            justify-content: center;
+        }
 
-.myShop_place_box {
-	display: flex;
-	text-align: center;
-	border: none;
-	margin: 20px;
-}
-.myShop_photo {
-  border-radius: 12px; /* 모서리 둥글게 */
-  border: 2px solid #ddd; /* 얇은 테두리 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-  transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
-}
+        .myShop_information {
+            display: flex;
+            text-align: center;
+            border: none;
+            margin: 20px;
+            width: 850px;
+        }
 
-.myShop_photo:hover {
-  transform: scale(1.05); /* 호버 시 확대 효과 */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
-}
+        #previewImage1 img {
+            width: 100%;
+            height: 320px;
+            border-radius: 12px; /* 모서리 둥글게 */
+            border: 2px solid #ddd; /* 얇은 테두리 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+            transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
+        }
 
-.myShop_place_box img {
-	width: 300px;
-	height: 300px;
-}
+        #previewImage1:hover img {
+            transform: scale(1.05); /* 호버 시 확대 효과 */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
+        }
 
-.myShop_container {
-	display: flex;
-	overflow: hidden;
-	background-color: rgb(198, 232, 242);
-}
+        #previewImage2 img {
+            width: 100%;
+            height: 320px;
+            border-radius: 12px; /* 모서리 둥글게 */
+            border: 2px solid #ddd; /* 얇은 테두리 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+            transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
+        }
 
-.myShop_button_field {
-	margin-left: auto;
-}
+        #previewImage2:hover img {
+            transform: scale(1.05); /* 호버 시 확대 효과 */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
+        }
 
-.myShop-button {
-  height: 50px;
-  padding: 10px 20px; /* 버튼 내부 여백 */
-  font-size: 16px; /* 텍스트 크기 */
-  font-weight: bold; /* 텍스트 두께 */
-  color: #ffffff; /* 텍스트 색상 */
-  background-color: #007bff; /* 버튼 배경색 */
-  border: none; /* 테두리 제거 */
-  border-radius: 8px; /* 모서리 둥글게 */
-  cursor: pointer; /* 마우스 오버 시 포인터 표시 */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
-  transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
-}
+        .add_image_button {
+            height: 50px;
+            padding: 10px 20px; /* 버튼 내부 여백 */
+            font-size: 16px; /* 텍스트 크기 */
+            font-weight: bold; /* 텍스트 두께 */
+            color: #ffffff; /* 텍스트 색상 */
+            background-color: #007bff; /* 버튼 배경색 */
+            border: none; /* 테두리 제거 */
+            border-radius: 8px; /* 모서리 둥글게 */
+            cursor: pointer; /* 마우스 오버 시 포인터 표시 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+            transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
+        }
 
-.myShop-button:hover {
-  background-color: #0056b3; /* 호버 시 배경색 변경 */
-  transform: scale(1.05); /* 약간 확대 */
-}
+        .add_image_button:hover {
+            background-color: #0056b3; /* 호버 시 배경색 변경 */
+            transform: scale(1.05); /* 약간 확대 */
+        }
 
-.myShop-button:active {
-  background-color: #003d80; /* 클릭 시 배경색 변경 */
-  transform: scale(0.95); /* 약간 축소 */
-}
+        .myShop_info_input_field {
+            margin-bottom: 6px;
+        }
 
-.bottom-list-num {
-	text-align: center;
-	item-align: center;
-}
+        .myShop_button_box {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* 버튼 간격 설정 (선택사항) */
+            border: none; /* 필요 시 테두리 제거 */
+            margin-top: 10px;
+        }
 
-.text-box {
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-bottom: 40px;
-}
+        #cancel_info {
+            height: 50px;
+            padding: 10px 20px; /* 버튼 내부 여백 */
+            font-size: 16px; /* 텍스트 크기 */
+            font-weight: bold; /* 텍스트 두께 */
+            color: #ffffff; /* 텍스트 색상 */
+            background-color: #007bff; /* 버튼 배경색 */
+            border: none; /* 테두리 제거 */
+            border-radius: 8px; /* 모서리 둥글게 */
+            cursor: pointer; /* 마우스 오버 시 포인터 표시 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+            transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
+        }
 
-.bottom-list-num {
-	text-align: center;
-	item-align: center;
-}
+        #cancel_info:hover {
+            background-color: #0056b3; /* 호버 시 배경색 변경 */
+            transform: scale(1.05); /* 약간 확대 */
+        }
 
-.bottom-return-btn {
-	text-align: center;
-	item-align: center;
-}
-</style>
+        #complete_info {
+            height: 50px;
+            padding: 10px 20px; /* 버튼 내부 여백 */
+            font-size: 16px; /* 텍스트 크기 */
+            font-weight: bold; /* 텍스트 두께 */
+            color: #ffffff; /* 텍스트 색상 */
+            background-color: #007bff; /* 버튼 배경색 */
+            border: none; /* 테두리 제거 */
+            border-radius: 8px; /* 모서리 둥글게 */
+            cursor: pointer; /* 마우스 오버 시 포인터 표시 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+            transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
+        }
+
+        #complete_info:hover {
+            background-color: #0056b3; /* 호버 시 배경색 변경 */
+            transform: scale(1.05); /* 약간 확대 */
+        }
+
+        .myShop_information_list_field {
+            display: flex;
+            overflow: hidden;
+            height: 730px;
+            background-color: rgb(198, 232, 242);
+        }
+
+        .bottom-list-num {
+            text-align: center;
+            item-align: center;
+        }
+
+        .text-box {
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        .bottom-list-num {
+            text-align: center;
+            item-align: center;
+        }
+
+        .bottom-return-btn {
+            text-align: center;
+            item-align: center;
+        }
+    </style>
 </head>
 <body>
-	<div class="container">
-		<div class="header">header</div>
-		<div class="nav">nav</div>
-		<div class="content">
+<div class="container">
+    <div class="header">header</div>
+    <div class="nav">nav</div>
+    <div class="content">
 
-			<div class="mypage" style="border: none;">
-				<h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
-			</div>
-			<br>
-			<hr>
+        <div class="mypage" style="border: none;">
+            <h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
+        </div>
+        <br>
+        <hr>
 
-			<div class="myShop" style="border: none;">
-				<h1 style="margin-inline-end: auto;">내 가게</h1>
-			</div>
-			<br>
-			
-			
-			<div class="myShop_container" style="border: solid 1px;">
-				<div class="myShop_place_box">
-					<img class="myShop_photo"
-						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>
-							<span>😋</span>후루룩짭짭밥
-						</h2>
-						<div style="border: none;">
-							<p>가게 상세주소</p>
-							<p>영업시간</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
-
-						</div>
-					</div>
-				</div>
-				<div class="myShop_button_field" style="border: none; align-content: center;">
-					<input class="myShop-button" type="button" value="가게 정보 보기">
-					<input class="myShop-button" type="button" value="수정">
-					<input class="myShop-button" type="button" value="삭제">
-				</div>
-			</div>
-
-			<div class="myShop_container" style="border: solid 1px;">
-				<div class="myShop_place_box">
-					<img class="myShop_photo" 
-						src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>
-							<span>😋</span>무라카미 하코다테 본점 うに むらかみ 函館本店
-						</h2>
-						<div style="border: none;">
-							<p>22-1 Otemachi, Hakodate, Hokkaido 040-0064</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
-
-						</div>
-					</div>
-				</div>
-				<div class="myShop_button_field" style="border: none; align-content: center;">
-					<input class="myShop-button" type="button" value="가게 정보 보기">
-				</div>
-			</div>
+        <div class="myShop-list" style="border: none;">
+            <h1>수정하실 가게의 정보</h1>
+        </div>
+        <br>
 
 
-			<div class="myShop_container" style="border: solid 1px;">
-				<div class="myShop_place_box">
-					<img class="myShop_photo"
-						src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>
-							<span>😋</span>라멘 삿포로 이치류안 ラーメン札幌一粒庵
-						</h2>
-						<div style="border: none;">
-							<p>〒060-0004 Hokkaido, Sapporo, Chuo Ward, Kita 4 Jonishi, 1
-								Chome−１番 ホクレンビル 地下１階</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
+        <div class="myShop_information_list_field" style="border: solid 1px;">
+            <div class="myShop_information">
+                <div style="width: 480px; border: none;">
 
-						</div>
-					</div>
-				</div>
-				<div class="myShop_button_field" style="border: none; align-content: center;">
-					<input class="myShop-button" type="button" value="가게 정보 보기">
-				</div>
-			</div>
+                    <img id="previewImage1"
+                         src="https://d12zq4w4guyljn.cloudfront.net/750_750_20230827024509017_photo_408d3d3f6fc0.jpg"
+                         alt="place-name" width="480" height="320"> <input
+                        type="file" id="fileInput1" style="display: none;"
+                        onchange="changeImage(event, 'previewImage1')">
+                    <img
+                            id="previewImage2"
+                            src="https://d12zq4w4guyljn.cloudfront.net/750_750_20230827024509661_photo_408d3d3f6fc0.jpg"
+                            alt="place-name" width="480" height="320"> <input
+                        type="file" id="fileInput2" style="display: none;"
+                        onchange="changeImage(event, 'previewImage2')">
+                    <br>
+                    <button class="add_image_button"
+                            onclick="document.getElementById('fileInput1').click();">
+                        메인이미지 선택
+                    </button>
+                    <button class="add_image_button"
+                            onclick="document.getElementById('fileInput2').click();">
+                        서브이미지 선택
+                    </button>
+                </div>
 
+                <div
+                        style="border: none; text-align: left; margin-left: 30px; width: 300px">
+                    <div style="border: none;">
+                        <p class="myShop_info_input_field">가게이름</p>
+                        <input name="resName" style="width: 100%; height: 30px;">
+                        <p class="myShop_info_input_field">주소</p>
+                        <select name="resRegion" id="" style="width: 120px; height: 36px">
+                            <option value="도오">도오</option>
+                            <option value="도난">도난</option>
+                            <option value="도토">도토</option>
+                            <option value="도호쿠">도호쿠</option>
+                        </select>
+                        <p class="myShop_info_input_field">상세주소</p>
+                        <input name="resAddr" style="width: 100%; height: 30px;">
+                        <p class="myShop_info_input_field">영업시간</p>
+                        <select name="openHour" id="start-hour-select"></select>
+                        <select name="openMinute" id="start-minute-select"></select>
+                        ~
+                        <select name="closeHour" id="end-hour-select"></select>
+                        <select name="closeMinute" id="end-minute-select"></select>
 
+                        <script>
+                            const startHourSelect = document.getElementById("start-hour-select");
+                            for (let i = 1; i <= 24; i++) {
+                                const option = document.createElement("option");
+                                option.value = i;
+                                option.textContent = i + "시";
+                                startHourSelect.appendChild(option);
+                            }
 
+                            const startMinuteSelect = document.getElementById("start-minute-select");
+                            for (let i = 5; i < 60; i += 5) {
+                                const option = document.createElement("option");
+                                option.value = i;
+                                option.textContent = i + "분";
+                                startMinuteSelect.appendChild(option);
+                            }
+                            const endHourSelect = document.getElementById("end-hour-select");
+                            for (let i = 1; i <= 24; i++) {
+                                const option = document.createElement("option");
+                                option.value = i;
+                                option.textContent = i + "시";
+                                endHourSelect.appendChild(option);
+                            }
 
-			<div class="myShop_container" style="border: solid 1px;">
-				<div class="myShop_place_box">
-					<img class="myShop_photo"
-						src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>
-							<span>😋</span>해산물 로바타야끼 海鮮炉ばた焼 大漁旗
-						</h2>
-						<div style="border: none;">
-							<p>〒060-0004 Hokkaido, Sapporo, Chuo Ward, Kita 4 Jonishi, 1
-								Chome−１番 ホクレンビル 地下１階</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
+                            const endMinuteSelect = document.getElementById("end-minute-select");
+                            for (let i = 5; i < 60; i += 5) {
+                                const option = document.createElement("option");
+                                option.value = i;
+                                option.textContent = i + "분";
+                                endMinuteSelect.appendChild(option);
+                            }
+                        </script>
+                        <p class="myShop_info_input_field">전화번호</p>
+                        <input name="resPhoneNum1" style="width: 17%; height: 30px; text-align: center">
+                        -
+                        <input name="resPhoneNum2" style="width: 20%; height: 30px; text-align: center">
+                        -
+                        <input name="resPhoneNum3" style="width: 20%; height: 30px; text-align: center">
+                        <p class="myShop_info_input_field">가게에 대한 설명</p>
+                        <textarea name="resExplain" style="resize: none; width: 100%; height: 200px;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="myShop_button_box" style="border: none;">
+            <button id="cancel_info">취소</button>
+            <button id="complete_info">수정완료</button>
+        </div>
 
-						</div>
-					</div>
-				</div>
-				<div class="myShop_button_field" style="border: none; align-content: center;">
-					<input class="myShop-button" type="button" value="가게 정보 보기">
-				</div>
-			</div>
+    </div>
 
+    <script>
+        function changeButtonTextAndClickInput() {
+            const fileButton = document.getElementById('fileButton');
 
+            // 버튼 텍스트를 "파일 선택 중..."으로 바꿈
+            fileButton.innerText = '파일 선택 중...';
 
-			<br> <br>
+            // 파일 input을 클릭하여 파일 탐색기 열기
+            document.getElementById('fileInput').click();
+        }
 
-			<div class="bottom-list-num" style="border: none;">
-				<h2>1 2 3 4 (나중에 구현) ></h2>
-			</div>
+        function changeButtonText() {
+            const fileInput = document.getElementById('fileInput');
+            const fileButton = document.getElementById('fileButton');
 
-			<div class="bottom-return-btn"
-				style="border: none; align-content: center;">
-				<input type="button" value="마이페이지로 돌아가기">
-			</div>
+            // 파일이 선택되면 버튼 텍스트 변경
+            if (fileInput.files.length > 0) {
+                fileButton.innerText = '파일 선택됨: ' + fileInput.files[0].name; // 파일 이름을 버튼 텍스트에 추가
+            }
+        }
 
+        // 이미지 미리보기 변경 함수
+        function changeImage(event, previewImageId) {
+            const input = event.target;
+            const previewImage = document.getElementById(previewImageId);
 
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
 
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result; // 이미지 소스를 선택한 파일로 변경
+                };
 
-		</div>
-
-		<div class="footer">footer</div>
-	</div>
+                reader.readAsDataURL(input.files[0]); // 파일 읽기
+            }
+        }
+    </script>
+    <div class="footer">footer</div>
+</div>
 </body>
 </html>

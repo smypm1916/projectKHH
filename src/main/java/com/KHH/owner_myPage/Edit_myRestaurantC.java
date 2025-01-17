@@ -12,6 +12,7 @@ public class Edit_myRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Owner_DAO.EditRestaurant(request);
+        request.getRequestDispatcher("jsp/owner_myPage/ListMyRestaurant.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

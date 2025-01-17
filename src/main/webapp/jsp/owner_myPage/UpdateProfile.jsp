@@ -182,7 +182,7 @@
         </div>
         <div class="myProfile_button_box" style="border: none;">
             <button id="cancel_info">취소</button>
-            <button id="complete_info">수정완료</button>
+            <button onclick="location.href='Edit_profileC'" id="complete_info">수정완료</button>
         </div>
 
 
