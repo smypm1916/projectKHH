@@ -17,17 +17,22 @@
 			<hr>
 
 
-			<div class="profile">
+	<div class="profile">
+		<div class="profile-field" style="border: none;">
+			<div class="profile-circle" style="border:none;">
+				<!-- 기존 프로필 이미지 -->
+				<img id="profileImg" src="/jsp/UserProfile/img/${user_picture}" alt="profile-img">
 
-				<div class="profile-field" style="border: none;">
-					<div class="profile-circle" style="border: none;">
-						<img id="profileImg"
-							src="/jsp/UserProfile/img/${user_picture}"
-							alt="profile-img">
-						<input name="newImg" hidden type="file">
-						<input type="hidden" name="user_picture" value="${sessionScope.user.user_picture}">
-					</div>
-					<div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
+				<!-- 카메라 아이콘 -->
+				<label for="newImg" class="camera-icon">
+					<i class="fa fa-camera" aria-hidden="true"></i>
+				</label>
+
+				<!-- 파일 업로드 -->
+				<input id="newImg" name="newImg" type="file" hidden>
+			</div>
+
+	<div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
 					<span>
 						<h2> 대식가 <input style="width: 100px" name="user_nickname" value = "${sessionScope.user.user_nickname}">
 							(${sessionScope.user.user_email}) 님 (🖐🏻'-' )</h2>
@@ -36,152 +41,89 @@
 					</span>
 
 					</div>
-					<div style="border: none; margin-left: 225px;
-    margin-top: -30px; align-content: center;" >
-							<input type="button" value="수정 완료하기" onclick="location.href='HomeController?no='${user_email}">
+					<div style="border: none; margin-left: 225px; margin-top: -30px; align-content: center;" >
+<%--							<input type="button" value="수정 완료하기">--%>
+						<button>수정 완료하기</button>
 					</div>
-				</div>
-			</div>
-
-			<br> <br>
-
-			<div class="review-list" style="border: none;">
-				<h2 style="margin-inline-end: auto;">작성한 맛리뷰</h2>
-				<div style="border: none;">
-					<h3> <a href="UserReviewC" > 더보기 > </a></h3>
-				</div>
-			</div>
-			<hr>
-
-			<div class="review-comment" style="border: none;">
-				<span>🦀🍴</span> [ 맛리뷰 예시 ] 가게명 / 제목 or 텍스트 일부 / 게시일
-			</div>
-			<div class="review-comment" style="border: none;">
-				<span>🦀🍴</span> ${review_shop}| ${review_content} | ${review_date}
-			</div>
-			<div class="review-comment" style="border: none;">
-				<span>🦀🍴</span> ${review_shop}| ${review_content} | ${review_date}
-			</div>
-
-			<br> <br>
-
-			<div class="reservation-list" style="border: none;">
-				<h2 style="margin-inline-end: auto;">예약한 가게</h2>
-				<div style="border: none;">
-					<h3> <a href="UserReservationC"> 더보기 > </a></h3>
-				</div>
-			</div>
-			<hr>
-			<br>
-
-
-
-			<div class="reserv-place-list-field">
-
-				<div class="reserv-place-list">
-					<img
-						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						alt="place-name">
-					<div style="border: none;">
-						<h2>예약한 가게명</h2>
-					</div>
-					<div style="border: none;">
-						<h3>예약일시 / 예약 인원</h3>
-					</div>
-				</div>
-
-
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
-						alt="place-name">
-					<div style="border: none;">
-						<h2> ${reservation_shop} </h2>
-					</div>
-					<div style="border: none;">
-						<h3>${reservation_date} / ${reservation_people}</h3>
-					</div>
-				</div>
-
-
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none;">
-						<h2>라멘 삿포로 이치류안</h2>
-					</div>
-					<div style="border: none;">
-						<h3>2025.01.11 19:00 / 1명</h3>
-					</div>
-				</div>
-
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
-						alt="place-name">
-					<div style="border: none;">
-						<h2>해산물 로바타야키</h2>
-					</div>
-					<div style="border: none;">
-						<h3>2025.02.11 15:00 / 1명</h3>
-					</div>
-				</div>
-
-
-			</div>
-
-			<br> <br>
-
-
-
-			<div class="like-list" style="border: none;">
-
-				<h2 style="margin-inline-end: auto;">좋아요한 가게</h2>
-				<div style="border: none;">
-					<h3><a href="UserScrapC"> 더보기 ></a></h3>
-				</div>
-			</div>
-			<hr>
-			<br>
-
-
-			<div class="like-place-list-field">
-				<div class="like-place-list">
-					<img
-						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						alt="place-name">
-					<div style="border: none;">
-						<h2><span>🍴</span> 유저가 좋아한 가게명</h2>
-					</div>
-				</div>
-
-
-				<div class="like-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
-						alt="place-name">
-					<div style="border: none;">
-						<h2><span>🍴</span> ${scrap_shop}</h2>
-					</div>
-				</div>
-
-
-				<div class="like-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none;">
-						<h2><span>🍴</span> 라멘 삿포로 이치류안</h2>
-					</div>
-				</div>
-
-				<div class="like-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
-						alt="place-name">
-					<div style="border: none;">
-						<h2><span>🍴</span> 해산물 로바타야키</h2>
-					</div>
-				</div>
-
-
-			</div>
+		</div>
+	</div>
 </form>
+			<br> <br>
+
+	<div class="review-list" style="border: none;">
+		<h2 style="margin-inline-end: auto;">작성한 맛리뷰</h2>
+		<div style="border: none;">
+			<h3> <a href="UserReviewC" > 더보기 > </a></h3>
+		</div>
+	</div>
+	<hr>
+	<c:forEach items="${reviews}" var="review">
+
+		<div class="review-comment" style="border: none;">
+			<span>🦀🍴</span> [${review.shop_name}]  ${review.review_content} | ${review.review_date} |${review.review_nickname}
+		</div>
+	</c:forEach>
+
+	<br> <br>
+
+	<div class="reservation-list" style="border: none;">
+		<h2 style="margin-inline-end: auto;">예약한 가게</h2>
+		<div style="border: none;">
+			<h3> <a href="UserReservationC"> 더보기 > </a></h3>
+		</div>
+	</div>
+	<hr>
+	<br>
+
+
+	<div class="reserv-place-list-field">
+		<c:forEach items="${myreservations}" var="myreservation">
+			<div class="reserv-place-list">
+				<img
+						src="${myreservation.shop_picture}"
+						alt="">
+				<!-- SHOP_IMAGE > SHOP_IMAGE 필드 -->
+				<div style="border: none;">
+					<h2>${myreservation.shop_name}</h2>
+				</div>
+				<div style="border: none;">
+					<h3> [완료] ${myreservation.reservation_date} / ${myreservation.reservation_people} 명</h3>
+				</div>
+			</div>
+		</c:forEach>
+
+
+	</div>
+	<br> <br>
+
+
+
+	<div class="like-list" style="border: none;">
+
+		<h2 style="margin-inline-end: auto;">좋아요한 가게</h2>
+		<div style="border: none;">
+			<h3><a href="UserScrapC"> 더보기 ></a></h3>
+		</div>
+	</div>
+	<hr>
+	<br>
+
+
+	<div class="like-place-list-field">
+		<c:forEach items="${scraps}" var="scrap">
+			<div class="like-place-list">
+				<img
+						src="${scrap.shop_image}"
+						alt="place-name">
+				<div style="border: none;">
+					<h2><span>🍴</span> ${scrap.shop_name}</h2>
+				</div>
+			</div>
+		</c:forEach>
+
+
+	</div>
+
 	<script>
 		// 요소 참조
 		const profileContainer = document.getElementById('profileImg');

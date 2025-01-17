@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 public class ProfileUpdateController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserDataDAO.viewUserData(request);
         UserDataDAO.viewUserReviews(request);
+        UserDataDAO.viewUserResevation(request);
+        UserDataDAO.viewUserScrap(request);
+
         request.setAttribute("content", "updatedUserMyPage.jsp");
         request.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(request,response);
 
@@ -22,8 +26,7 @@ public class ProfileUpdateController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         UserDataDAO.userProfileUpdate(request);
-        System.out.println(request.getParameter("user_email"));
 
-        response.sendRedirect("HomeController?no="+request.getAttribute("user_email"));
-    }
-    }
+        // 리다이렉트로 홈 페이지 이동
+        response.sendRedirect("UserC");
+    }}

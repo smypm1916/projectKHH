@@ -1,5 +1,6 @@
 package com.KHH.usermypage;
 
+import com.KHH.userreservationpage.MyPageReservationDTO;
 import com.KHH.userreservationpage.ReservationDTO;
 import com.KHH.userreviewspage.ReviewsDTO;
 import com.KHH.userscrappage.ScrapDTO;
@@ -53,25 +54,29 @@ public class UserDataDAO {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-//        String user_nickname = request.getParameter("user_nickname");
-        String sql = "select * from review_info_sjsj where review_nickname=?";
+  //     String review_nickname = request.getParameter("user_nickname");
+        String sql =
+                //"SELECT r.review_shop, r.review_content, r.review_date, r.review_nickname, s.shop_name FROM  review_info_sjsj r JOIN shop_info_sj s ON r.review_shop = s.shop_no WHERE r.review_nickname = ?";
+                "SELECT review_shop, review_content, review_date, review_nickname, shop_name FROM review_info_sjsj, shop_info sj WHERE review_nickname = ?";
+
 
         try {
             con = DBManager.connection();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, "John123");
+            pstmt.setString(1, "조조");
             rs = pstmt.executeQuery();
 
             ArrayList<ReviewsDTO> reviews = new ArrayList<>();
             ReviewsDTO review = null;
             while (rs.next()) {
                 review = new ReviewsDTO();
-                review.setReview_shop(rs.getString(2));
-                review.setReview_content(rs.getString(3));
-                review.setReview_date(rs.getString(4));
-                review.setReview_nickname(rs.getString(5));
-                System.out.println("연결성공");
+                review.setReview_shop(rs.getInt(1));
+                review.setReview_content(rs.getString(2));
+                review.setReview_date(rs.getDate(3));
+      //          review.setReview_nickname(rs.getString(4));
+                review.setShop_name(rs.getString(5));
                 reviews.add(review);
+                System.out.println(review); // reviews 확인
             }
                 request.setAttribute("reviews", reviews);
         }catch (Exception e){
@@ -87,7 +92,7 @@ public class UserDataDAO {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String user_email = request.getParameter("user_email");
-        String sql = "select * from reservation_info_sj where reservation_email=?";
+        String sql = "select ri.reservation_date, ri.reservation_people, si.shop_name, si_img.shop_image FROM reservation_info_sj ri, shop_info si, shop_image si_img WHERE ri.reservation_email = ? AND ri.reservation_shop = si.shop_no AND si.shop_no = si_img.shop_no";
 
         try {
             con = DBManager.connection();
@@ -97,18 +102,20 @@ public class UserDataDAO {
             rs = pstmt.executeQuery();
 
 
-            ArrayList<ReservationDTO> reservations = new ArrayList<>();
-            ReservationDTO reservation = null;
+            ArrayList<MyPageReservationDTO> myreservations = new ArrayList<>();
+            MyPageReservationDTO myreservation = null;
 
             while(rs.next())  {
-                reservation = new ReservationDTO();
-                reservation.setReservation_email(rs.getString(3));
-                reservation.setReservation_shop(rs.getInt(2));
-                reservation.setReservation_date(rs.getString(6));
-                reservation.setReservation_people(rs.getInt(7));
-                reservations.add(reservation);
+                myreservation = new MyPageReservationDTO();
+                myreservation.setReservation_date(rs.getString(1));
+                myreservation.setReservation_people(rs.getInt(2));
+                myreservation.setShop_name(rs.getString(3));
+                myreservation.setShop_picture(rs.getString(4));
+                myreservations.add(myreservation);
+
+                System.out.println(myreservation); //예약 확인
             }
-            request.setAttribute("reservations", reservations);
+            request.setAttribute("myreservations", myreservations);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -122,8 +129,7 @@ public class UserDataDAO {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String user_email = request.getParameter("user_email");
-        String sql = "select * from scrap_shop_sj where scrap_email=?";
-
+        String sql =   "SELECT shop_name, scrap_date, shop_image, scrap_email FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = ?";
 
         try {
             con = DBManager.connection();
@@ -135,9 +141,12 @@ public class UserDataDAO {
             ScrapDTO scrap = null;
             while(rs.next())  {
                 scrap = new ScrapDTO();
-                scrap.setScrap_email(rs.getString(2));
-                scrap.setScrap_shop(rs.getInt(3));
+                scrap.setScrap_email(rs.getString("scrap_email"));
+                scrap.setShop_image(rs.getString("shop_image"));
+                scrap.setScrap_date(rs.getString("scrap_date"));
+                scrap.setShop_name(rs.getString("shop_name"));
                 scraps.add(scrap);
+                System.out.println(scrap);
 
             }
             request.setAttribute("scraps", scraps);
@@ -156,7 +165,7 @@ public class UserDataDAO {
     public static void userProfileUpdate(HttpServletRequest request) {
         //해당 유저의 프로필 사진, 프로필 이름 db에서 불러오기 view, update
 
-        String path = request.getServletContext().getRealPath("jsp/UserMyPage/UserProfile");
+        String path = request.getServletContext().getRealPath("/jsp/UserProfile");
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -166,12 +175,14 @@ public class UserDataDAO {
             MultipartRequest mr = new MultipartRequest(request, path, 1024*1024*20, "utf-8", new DefaultFileRenamePolicy());
             con = DBManager.connection();
             String user_nickname = mr.getParameter("user_nickname");
-            String user_email  = mr.getParameter("user_email");
+            //String user_email  = mr.getParameter("user_email");
             String newImg = mr.getFilesystemName("newImg");
             String user_picture = mr.getParameter("user_picture");
 
+            System.out.println("파라미터 닉네임 : "+user_nickname);
+            //System.out.println("파라미터 이메일 : "+user_email);
 
-        String sql = "update user_account set user_nickname=?, user_picture=? where user_email =?";
+        String sql = "update user_account_sj set user_nickname = ?, user_picture = ? where user_email = 'user1@example.com'";
 
             String img = user_picture;
             if(newImg != null) {// new이미지가 아니면
@@ -179,9 +190,10 @@ public class UserDataDAO {
             }
 
             pstmt = con.prepareStatement(sql);
+
             pstmt.setString(1, user_nickname);
             pstmt.setString(2, user_picture);
-            pstmt.setString(3, img);
+            //pstmt.setString(3, user_email);
 
             if (pstmt.executeUpdate() == 1) {
                 System.out.println("등록성공");
@@ -191,6 +203,7 @@ public class UserDataDAO {
                     f.delete();
                 }
             }
+            System.out.println("user_nickname");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

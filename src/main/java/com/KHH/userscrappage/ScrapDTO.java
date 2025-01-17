@@ -5,7 +5,10 @@ public class ScrapDTO {
     private String scrap_email;
     private int scrap_shop;
     private String scrap_name;
+    private String shop_name;
+    private int shop_no;
     private String scrap_date;
+    private String shop_image;
 
     public ScrapDTO() {
 
@@ -40,5 +43,37 @@ public class ScrapDTO {
     public void setScrap_date(String scrap_date) {
         this.scrap_date = scrap_date;
     }
-
+public String getShop_name() {
+        return shop_name;
 }
+public void setShop_name(String shop_name) {
+        this.shop_name = shop_name;
+}
+public int getShop_no(){
+        return shop_no;
+}
+public void setShop_no(int shop_no){
+        this.shop_no = shop_no;
+}
+public String getShop_image() {
+        return shop_image;
+}
+public void setShop_image(String shop_image) {
+        this.shop_image = shop_image;
+}
+
+    @Override
+    public String toString() {
+        return "ScrapDTO{" +
+                "scrap_no=" + scrap_no +
+                ", scrap_email='" + scrap_email + '\'' +
+                ", scrap_shop=" + scrap_shop +
+                ", scrap_name='" + scrap_name + '\'' +
+                ", shop_name='" + shop_name + '\'' +
+                ", shop_no=" + shop_no +
+                ", scrap_date='" + scrap_date + '\'' +
+                ", shop_image='" + shop_image + '\'' +
+                '}';
+    }
+}
+

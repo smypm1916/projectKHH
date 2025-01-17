@@ -24,7 +24,7 @@
 					<div class="profile-circle" style="border: none;">
 						<img
 							src="/jsp/UserProfile/img/${user_picture}"
-							alt="profile-img">
+							alt="">
 					</div>
 					<div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
 					<span>
@@ -53,7 +53,7 @@
 				<c:forEach items="${reviews}" var="review">
 
 			<div class="review-comment" style="border: none;">
-				<span>🦀🍴</span> ${review.review_shop}| ${review.review_content} | ${review.review_date}
+				<span>🦀🍴</span> [${review.shop_name}]  ${review.review_content} | ${review.review_date} |${review.review_nickname}
 			</div>
 				</c:forEach>
 
@@ -70,21 +70,21 @@
 
 
 			<div class="reserv-place-list-field">
-			<c:forEach items="${reservations}" var="reservation">
-
+			<c:forEach items="${myreservations}" var="myreservation">
 				<div class="reserv-place-list">
 					<img
-						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						alt="place-name">
+						src="${myreservation.shop_picture}"
+						alt="">
 					<!-- SHOP_IMAGE > SHOP_IMAGE 필드 -->
 					<div style="border: none;">
-						<h2>${reservation.reservation_shop}</h2>
+						<h2>${myreservation.shop_name}</h2>
 					</div>
 					<div style="border: none;">
-						<h3> [완료] ${reservation.reservation_date} / ${reservation.reservation_people} 명</h3>
+						<h3> [완료] ${myreservation.reservation_date} / ${myreservation.reservation_people} 명</h3>
 					</div>
 				</div>
-				</c:forEach>
+			</c:forEach>
+
 
 			</div>
 			<br> <br>
@@ -106,10 +106,10 @@
 			<c:forEach items="${scraps}" var="scrap">
 				<div class="like-place-list">
 					<img
-						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
+						src="${scrap.shop_image}"
 						alt="place-name">
 					<div style="border: none;">
-						<h2><span>🍴</span> ${scrap.scrap_shop}</h2>
+						<h2><span>🍴</span> ${scrap.shop_name}</h2>
 					</div>
 				</div>
 			</c:forEach>
