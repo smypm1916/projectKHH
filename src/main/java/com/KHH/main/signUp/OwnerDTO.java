@@ -1,5 +1,7 @@
 package com.KHH.main.signUp;
 
+import com.google.gson.Gson;
+
 public class OwnerDTO {
     private String owner_email;
     private String owner_pw;
@@ -67,5 +69,12 @@ public class OwnerDTO {
                 ", owner_birth='" + owner_birth + '\'' +
                 ", owner_tel='" + owner_tel + '\'' +
                 '}';
+    }
+
+    public String toJSON() {
+
+        Gson gson = new Gson();
+        return gson.toJson(this);
+
     }
 }

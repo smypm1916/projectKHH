@@ -1,5 +1,7 @@
 package com.KHH.main.signUp;
 
+import com.google.gson.Gson;
+
 public class UserDTO {
     private String user_email;
     private String user_pw;
@@ -123,5 +125,12 @@ public class UserDTO {
                 ", user_grade='" + user_grade + '\'' +
                 ", user_picture='" + user_picture + '\'' +
                 '}';
+    }
+
+    public String toJSON() {
+
+        Gson gson = new Gson();
+        return gson.toJson(this);
+
     }
 }
