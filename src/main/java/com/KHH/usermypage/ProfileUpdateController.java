@@ -1,0 +1,29 @@
+package com.KHH.usermypage;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/ProfileUpdateController")
+public class ProfileUpdateController extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserDataDAO.viewUserReviews(request);
+        request.setAttribute("content", "updatedUserMyPage.jsp");
+        request.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(request,response);
+
+
+    }
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        UserDataDAO.userProfileUpdate(request);
+        System.out.println(request.getParameter("user_email"));
+
+        response.sendRedirect("HomeController?no="+request.getAttribute("user_email"));
+    }
+    }
