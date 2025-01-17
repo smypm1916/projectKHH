@@ -9,8 +9,8 @@
 <div class="community_title_div">
   <div class="community_title"><h2>${com.title }</h2></div>
   <div class="community_PNBtn">
-    <button>이전 글</button>&nbsp;&nbsp;
-    <button>다음 글</button>
+    <button onclick="location.href='CommunityPNDetailController?no=${com.no}&page=prev'">이전 글</button>&nbsp;&nbsp;
+    <button onclick="location.href='CommunityPNDetailController?no=${com.no}&page=next'">다음 글</button>
   </div>
 </div>
 

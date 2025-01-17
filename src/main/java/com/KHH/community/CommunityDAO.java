@@ -82,7 +82,7 @@ public class CommunityDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
-
+            DBManager.close(con, pstmt, null);
         }
     }
 
@@ -115,7 +115,47 @@ public class CommunityDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
+            DBManager.close(con, pstmt, rs);
+        }
+    }
 
+    public static void getCommunityPNDetail(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "";
+
+        String no = req.getParameter("no");
+        String page = req.getParameter("page");
+
+        if(page.equals("prev")){
+            sql = "SELECT * FROM community_info WHERE community_no > ? ORDER BY community_no DESC";
+        }else if(page.equals("next")){
+            sql = "SELECT * FROM community_info WHERE community_no < ? ORDER BY community_no ASC";
+        }
+
+        CommunityDTO com = null;
+
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, no);
+            rs = pstmt.executeQuery();
+            while(rs.next()) {
+                com = new CommunityDTO();
+                com.setNo(rs.getInt(1));
+                com.setTitle(rs.getString(2));
+                com.setContent(rs.getString(3));
+                com.setNickname(rs.getString(4));
+                com.setDate(rs.getDate(5));
+                com.setReadcnt(rs.getInt(6));
+            }
+            req.setAttribute("com", com);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DBManager.close(con, pstmt, rs);
         }
     }
 }
