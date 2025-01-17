@@ -4,6 +4,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../../css/community/community_list.css">
+    <script type="text/javascript" src="../../js/community/community.js"></script>
 </head>
 <body>
 <h1>커뮤니티</h1>
@@ -13,8 +14,8 @@
         전체 ${count }개의 글
     </div>
     <div class="search_item">
-        <div><input type="text"></div>
-        <div><button>검색</button></div>
+        <div><input id="search-item" type="text"></div>
+        <div><button onclick="goToSearchCommunity()">검색</button></div>
     </div>
 </div>
 <div class="board_div">

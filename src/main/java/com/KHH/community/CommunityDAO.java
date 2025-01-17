@@ -158,4 +158,65 @@ public class CommunityDAO {
             DBManager.close(con, pstmt, rs);
         }
     }
+
+    public static void getCommunitySearchItems(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String item = req.getParameter("item");
+
+        String sql = "select * from community_info where community_title like ? order by community_no DESC";
+
+        CommunityDTO com = null;
+        ArrayList<CommunityDTO> coms = new ArrayList<CommunityDTO>();
+
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,"%"+item+"%");
+            rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+                com = new CommunityDTO();
+                com.setNo(rs.getInt(1));
+                com.setTitle(rs.getString(2));
+                com.setContent(rs.getString(3));
+                com.setNickname(rs.getString(4));
+                com.setDate(rs.getDate(5));
+                com.setReadcnt(rs.getInt(6));
+                coms.add(com);
+            }
+            req.setAttribute("coms", coms);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DBManager.close(con, pstmt, rs);
+        }
+    }
+
+    public static void countSearchCommunityData(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String item = req.getParameter("item");
+
+        String sql = "select count(*) from community_info where community_title like ?";
+
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,"%"+item+"%");
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                req.setAttribute("count", rs.getInt(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DBManager.close(con, pstmt, rs);
+        }
+    }
 }
