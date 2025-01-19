@@ -13,6 +13,9 @@
     <div class="count_item">
         전체 ${count }개의 글
     </div>
+    <div class="content_upload">
+        <button onclick="location.href='CommunityUploadController?nickname=chaeeun1002'">글 쓰기</button>
+    </div>
     <div class="search_item">
         <div><input id="search-item" type="text"></div>
         <div><button onclick="goToSearchCommunity()">검색</button></div>
