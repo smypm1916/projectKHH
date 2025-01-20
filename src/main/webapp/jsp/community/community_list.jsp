@@ -10,16 +10,30 @@
 <h1>커뮤니티</h1>
 <div class="title"></div>
 <div class="search_div">
-    <div class="count_item">
+
+    <div class="count_item"> <%--10%--%>
         전체 ${count }개의 글
     </div>
-    <div class="content_upload">
+
+    <div class="content_upload"> <%--50%--%>
         <button onclick="location.href='CommunityUploadController?nickname=chaeeun1002'">글 쓰기</button>
     </div>
-    <div class="search_item">
-        <div><input id="search-item" type="text"></div>
+
+    <div class="search_item"> <%--40%--%>
+        <div class="search_select">
+            <div class="select_title"><label>조건</label></div>
+            <div class="select_select">
+                <select id="search_item">
+                    <option value="all">전체</option>
+                    <option value="title">제목</option>
+                    <option value="writer">작성자</option>
+                </select>
+            </div>
+        </div>
+        <div><input id="search_value" type="text"></div>
         <div><button onclick="goToSearchCommunity()">검색</button></div>
     </div>
+
 </div>
 <div class="board_div">
     <div class="board_title">

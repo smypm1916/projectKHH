@@ -165,8 +165,14 @@ public class CommunityDAO {
         ResultSet rs = null;
 
         String item = req.getParameter("item");
+        String value = req.getParameter("value");
 
-        String sql = "select * from community_info where community_title like ? order by community_no DESC";
+        String sql = "";
+        if(item.equals("title")){
+            sql = "select * from community_info where community_title like ? order by community_no DESC";
+        }else if(item.equals("writer")){
+            sql = "select * from community_info where community_nickname like ? order by community_no DESC";
+        }
 
         CommunityDTO com = null;
         ArrayList<CommunityDTO> coms = new ArrayList<CommunityDTO>();
@@ -174,7 +180,7 @@ public class CommunityDAO {
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,"%"+item+"%");
+            pstmt.setString(1,"%"+value+"%");
             rs = pstmt.executeQuery();
 
             while(rs.next()) {
@@ -201,13 +207,19 @@ public class CommunityDAO {
         ResultSet rs = null;
 
         String item = req.getParameter("item");
+        String value = req.getParameter("value");
 
-        String sql = "select count(*) from community_info where community_title like ?";
+        String sql = "";
+        if(item.equals("title")){
+            sql = "select count(*) from community_info where community_title like ?";
+        }else if(item.equals("writer")){
+            sql = "select count(*) from community_info where community_nickname like ?";
+        }
 
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,"%"+item+"%");
+            pstmt.setString(1,"%"+value+"%");
             rs = pstmt.executeQuery();
 
             if(rs.next()) {

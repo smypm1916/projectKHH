@@ -1,9 +1,10 @@
 function goToSearchCommunity(){
-    let search_item = document.getElementById("search-item").value;
-    if(search_item == "" || search_item == null){
+    let search_value = document.getElementById("search_value").value;
+    let search_item = document.getElementById("search_item").value;
+    if(search_value == "" || search_value == null || search_item == "all"){
         location.href="CommunityListController";
     }else{
-        location.href="CommunitySearchController?item="+search_item;
+        location.href="CommunitySearchController?item="+search_item+"&value="+search_value;
     }
 }
 function goToCommunityList(){
