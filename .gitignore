@@ -39,3 +39,6 @@ build/
 .DS_Store
 
 DBManager.java
+mvnw
+mvnw.cmd
+pom.xml
