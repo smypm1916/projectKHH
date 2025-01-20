@@ -39,6 +39,5 @@ build/
 .DS_Store
 
 .DBManager.java
-/mvnw
-/mvnw.cmd
-.pom.xml
+/out/artifacts/Board_war_exploded/
+pom.xml
