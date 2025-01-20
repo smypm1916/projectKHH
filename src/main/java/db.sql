@@ -126,3 +126,18 @@ select * from REVIEW_INFO_sjsj;
 select * from USER_ACCOUNT_SJ;
 
 select * from review_info_sjsj where review_nickname='John123';
+
+select * from ALL_TABLES where Owner='KHH';
+
+create table login_test_ms (
+  login_id varchar2(20 char) primary key,
+  login_password varchar2(20 char) not null,
+  login_name varchar2(20 char) not null,
+  login_email varchar2(100 char) not null
+);
+
+insert into login_test_ms values ('minseok', 'minseok', '김가놈', 'minse@naver.com');
+insert into login_test_ms values ('test1br', 'testpro11', 'brbr', 'test@test.com');
+insert into login_test_ms values ('mohazi', '1234', '고인물', 'mohzaiman@gmail.com');
+
+select * from LOGIN_TEST_MS;
