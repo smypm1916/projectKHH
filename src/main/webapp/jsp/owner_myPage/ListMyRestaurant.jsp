@@ -139,7 +139,13 @@ div {
 
 			<div class="myShop" style="border: none;">
 				<h1 style="margin-inline-end: auto;">내 가게</h1>
+				<p style="display: flex; align-items: center; text-align: center">
+					<a href="AddRestaurant.jsp" style="text-decoration: none; color: black">
+						<h2>가게를 추가</h2>
+					</a>
+				</p>
 			</div>
+
 			<br>
 			
 			

@@ -113,7 +113,7 @@
             margin-top: 10px;
         }
 
-        #cancel_info {
+        #delete_info {
             height: 50px;
             padding: 10px 20px; /* 버튼 내부 여백 */
             font-size: 16px; /* 텍스트 크기 */
@@ -127,12 +127,12 @@
             transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
         }
 
-        #cancel_info:hover {
+        #delete_info:hover {
             background-color: #0056b3; /* 호버 시 배경색 변경 */
             transform: scale(1.05); /* 약간 확대 */
         }
 
-        #complete_info {
+        #update_info {
             height: 50px;
             padding: 10px 20px; /* 버튼 내부 여백 */
             font-size: 16px; /* 텍스트 크기 */
@@ -146,7 +146,7 @@
             transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
         }
 
-        #complete_info:hover {
+        #update_info:hover {
             background-color: #0056b3; /* 호버 시 배경색 변경 */
             transform: scale(1.05); /* 약간 확대 */
         }
@@ -193,7 +193,7 @@
         <hr>
 
         <div class="myShop-list" style="border: none;">
-            <h1>수정하실 가게의 정보</h1>
+            <h1>가게의 정보</h1>
         </div>
         <br>
 
@@ -214,125 +214,47 @@
                         type="file" id="fileInput2" style="display: none;"
                         onchange="changeImage(event, 'previewImage2')">
                     <br>
-                    <button class="add_image_button"
-                            onclick="document.getElementById('fileInput1').click();">
-                        메인이미지 선택
-                    </button>
-                    <button class="add_image_button"
-                            onclick="document.getElementById('fileInput2').click();">
-                        서브이미지 선택
-                    </button>
+
                 </div>
 
                 <div
                         style="border: none; text-align: left; margin-left: 30px; width: 300px">
                     <div style="border: none;">
-                        <p class="myShop_info_input_field">가게이름</p>
-                        <input name="resName" style="width: 100%; height: 30px;">
-                        <p class="myShop_info_input_field">주소</p>
-                        <select name="resRegion" id="" style="width: 120px; height: 36px">
-                            <option value="도오">도오</option>
-                            <option value="도난">도난</option>
-                            <option value="도토">도토</option>
-                            <option value="도호쿠">도호쿠</option>
-                        </select>
-                        <p class="myShop_info_input_field">상세주소</p>
-                        <input name="resAddr" style="width: 100%; height: 30px;">
-                        <p class="myShop_info_input_field">영업시간</p>
-                        <select name="openHour" id="start-hour-select"></select>
-                        <select name="openMinute" id="start-minute-select"></select>
-                        ~
-                        <select name="closeHour" id="end-hour-select"></select>
-                        <select name="closeMinute" id="end-minute-select"></select>
+                        <p class="myShop_info_input_field">가게이름</p> <br>
 
-                        <script>
-                            const startHourSelect = document.getElementById("start-hour-select");
-                            for (let i = 1; i <= 24; i++) {
-                                const option = document.createElement("option");
-                                option.value = i;
-                                option.textContent = i + "시";
-                                startHourSelect.appendChild(option);
-                            }
+                        <br>
+                        <p class="myShop_info_input_field">주소</p> <br>
 
-                            const startMinuteSelect = document.getElementById("start-minute-select");
-                            for (let i = 5; i < 60; i += 5) {
-                                const option = document.createElement("option");
-                                option.value = i;
-                                option.textContent = i + "분";
-                                startMinuteSelect.appendChild(option);
-                            }
-                            const endHourSelect = document.getElementById("end-hour-select");
-                            for (let i = 1; i <= 24; i++) {
-                                const option = document.createElement("option");
-                                option.value = i;
-                                option.textContent = i + "시";
-                                endHourSelect.appendChild(option);
-                            }
+                        <br>
+                        <p class="myShop_info_input_field">상세주소</p> <br>
 
-                            const endMinuteSelect = document.getElementById("end-minute-select");
-                            for (let i = 5; i < 60; i += 5) {
-                                const option = document.createElement("option");
-                                option.value = i;
-                                option.textContent = i + "분";
-                                endMinuteSelect.appendChild(option);
-                            }
-                        </script>
-                        <p class="myShop_info_input_field">전화번호</p>
-                        <input name="resPhoneNum1" style="width: 17%; height: 30px; text-align: center">
+                        <br>
+                        <p class="myShop_info_input_field">영업시간</p> <br>
+
+                        <br>
+                        <p class="myShop_info_input_field">전화번호</p> <br>
+
                         -
-                        <input name="resPhoneNum2" style="width: 20%; height: 30px; text-align: center">
                         -
-                        <input name="resPhoneNum3" style="width: 20%; height: 30px; text-align: center">
+                        <br>
                         <p class="myShop_info_input_field">가게에 대한 설명</p>
-                        <textarea name="resExplain" style="resize: none; width: 100%; height: 200px;"></textarea>
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="myShop_button_box" style="border: none;">
-            <button id="cancel_info">취소</button>
-            <button id="complete_info">수정완료</button>
+            <form action="Edit_myRestaurantC">
+                <button id="update_info">수정</button>
+            </form>
+            <form action="Delete_myRestaurantC">
+                <button id="delete_info">삭제</button>
+            </form>
         </div>
 
     </div>
 
-    <script>
-        function changeButtonTextAndClickInput() {
-            const fileButton = document.getElementById('fileButton');
 
-            // 버튼 텍스트를 "파일 선택 중..."으로 바꿈
-            fileButton.innerText = '파일 선택 중...';
-
-            // 파일 input을 클릭하여 파일 탐색기 열기
-            document.getElementById('fileInput').click();
-        }
-
-        function changeButtonText() {
-            const fileInput = document.getElementById('fileInput');
-            const fileButton = document.getElementById('fileButton');
-
-            // 파일이 선택되면 버튼 텍스트 변경
-            if (fileInput.files.length > 0) {
-                fileButton.innerText = '파일 선택됨: ' + fileInput.files[0].name; // 파일 이름을 버튼 텍스트에 추가
-            }
-        }
-
-        // 이미지 미리보기 변경 함수
-        function changeImage(event, previewImageId) {
-            const input = event.target;
-            const previewImage = document.getElementById(previewImageId);
-
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    previewImage.src = e.target.result; // 이미지 소스를 선택한 파일로 변경
-                };
-
-                reader.readAsDataURL(input.files[0]); // 파일 읽기
-            }
-        }
-    </script>
     <div class="footer">footer</div>
 </div>
 </body>

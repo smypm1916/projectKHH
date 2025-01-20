@@ -228,22 +228,22 @@
                         style="border: none; text-align: left; margin-left: 30px; width: 300px">
                     <div style="border: none;">
                         <p class="myShop_info_input_field">가게이름</p>
-                        <input name="resName" style="width: 100%; height: 30px;">
+                        <input name="editName" style="width: 100%; height: 30px;">
                         <p class="myShop_info_input_field">주소</p>
-                        <select name="resRegion" id="" style="width: 120px; height: 36px">
+                        <select name="editRegion" id="" style="width: 120px; height: 36px">
                             <option value="도오">도오</option>
                             <option value="도난">도난</option>
                             <option value="도토">도토</option>
                             <option value="도호쿠">도호쿠</option>
                         </select>
                         <p class="myShop_info_input_field">상세주소</p>
-                        <input name="resAddr" style="width: 100%; height: 30px;">
+                        <input name="editAddr" style="width: 100%; height: 30px;">
                         <p class="myShop_info_input_field">영업시간</p>
-                        <select name="openHour" id="start-hour-select"></select>
-                        <select name="openMinute" id="start-minute-select"></select>
+                        <select name="editOpenHour" id="start-hour-select"></select>
+                        <select name="editOpenMinute" id="start-minute-select"></select>
                         ~
-                        <select name="closeHour" id="end-hour-select"></select>
-                        <select name="closeMinute" id="end-minute-select"></select>
+                        <select name="editCloseHour" id="end-hour-select"></select>
+                        <select name="editCloseMinute" id="end-minute-select"></select>
 
                         <script>
                             const startHourSelect = document.getElementById("start-hour-select");
@@ -255,7 +255,7 @@
                             }
 
                             const startMinuteSelect = document.getElementById("start-minute-select");
-                            for (let i = 5; i < 60; i += 5) {
+                            for (let i = 0; i < 60; i += 5) {
                                 const option = document.createElement("option");
                                 option.value = i;
                                 option.textContent = i + "분";
@@ -270,7 +270,7 @@
                             }
 
                             const endMinuteSelect = document.getElementById("end-minute-select");
-                            for (let i = 5; i < 60; i += 5) {
+                            for (let i = 0; i < 60; i += 5) {
                                 const option = document.createElement("option");
                                 option.value = i;
                                 option.textContent = i + "분";
@@ -278,20 +278,20 @@
                             }
                         </script>
                         <p class="myShop_info_input_field">전화번호</p>
-                        <input name="resPhoneNum1" style="width: 17%; height: 30px; text-align: center">
+                        <input name="editPhoneNum1" style="width: 17%; height: 30px; text-align: center">
                         -
-                        <input name="resPhoneNum2" style="width: 20%; height: 30px; text-align: center">
+                        <input name="editPhoneNum2" style="width: 20%; height: 30px; text-align: center">
                         -
-                        <input name="resPhoneNum3" style="width: 20%; height: 30px; text-align: center">
+                        <input name="editPhoneNum3" style="width: 20%; height: 30px; text-align: center">
                         <p class="myShop_info_input_field">가게에 대한 설명</p>
-                        <textarea name="resExplain" style="resize: none; width: 100%; height: 200px;"></textarea>
+                        <textarea name="editExplain" style="resize: none; width: 100%; height: 200px;"></textarea>
                     </div>
                 </div>
             </div>
         </div>
         <div class="myShop_button_box" style="border: none;">
             <button id="cancel_info">취소</button>
-            <button id="complete_info">수정완료</button>
+            <button onclick="location.href='Edit_myRestaurantC'" id="complete_info">수정완료</button>
         </div>
 
     </div>

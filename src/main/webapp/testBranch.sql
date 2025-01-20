@@ -2,3 +2,5 @@ insert into SHOP_INFO values (shop_no_seq.nextval,'다나카상','네무로하�
 
 select *
 from SHOP_INFO;
+
+delete from SHOP_INFO;

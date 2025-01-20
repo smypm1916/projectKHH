@@ -164,10 +164,9 @@
         <br> <br>
 
         <div class="myShop_information" style="border: none;">
-            <a style="text-decoration: none; color: black;"
-               href="http://localhost/18_KHH_Test/ReservationPage.jsp">
+            <form action="ShowAllRestaurantC">
                 <h2 style="margin-inline-end: auto;">내 가게 정보</h2>
-            </a>
+            </form>
         </div>
 
         <br>

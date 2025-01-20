@@ -226,22 +226,22 @@ div {
 						style="border: none; text-align: left; margin-left: 30px; width: 300px">
 						<div style="border: none;">
 							<p class="myShop_info_input_field">가게이름</p>
-							<input style="width: 100%; height: 30px;">
+							<input name="addName" style="width: 100%; height: 30px;">
 							<p class="myShop_info_input_field">주소</p>
-							<select name="addr" id="" style="width: 120px; height: 36px">
+							<select name="addRegion" id="" style="width: 120px; height: 36px">
 								<option value="도오">도오</option>
 								<option value="도난">도난</option>
 								<option value="도토">도토</option>
 								<option value="도호쿠">도호쿠</option>
 							</select>
 							<p class="myShop_info_input_field">상세주소</p>
-							<input style="width: 100%; height: 30px;">
+							<input name="addAddr" style="width: 100%; height: 30px;">
 							<p class="myShop_info_input_field">영업시간</p>
-							<select id="start-hour-select"></select>
-							<select id="start-minute-select"></select>
+							<select name="addOpenHour" id="start-hour-select"></select>
+							<select name="addOpenMinute" id="start-minute-select"></select>
 							~
-							<select id="end-hour-select"></select>
-							<select id="end-minute-select"></select>
+							<select name="addCloseHour" id="end-hour-select"></select>
+							<select name="addCloseMinute" id="end-minute-select"></select>
 
 							<script>
 								const startHourSelect = document.getElementById("start-hour-select");
@@ -253,7 +253,7 @@ div {
 								}
 
 								const startMinuteSelect = document.getElementById("start-minute-select");
-								for (let i = 5; i < 60; i += 5) {
+								for (let i = 0; i < 60; i += 5) {
 									const option = document.createElement("option");
 									option.value = i;
 									option.textContent = i + "분";
@@ -268,29 +268,30 @@ div {
 								}
 
 								const endMinuteSelect = document.getElementById("end-minute-select");
-								for (let i = 5; i < 60; i += 5) {
+								for (let i = 0; i < 60; i += 5) {
 									const option = document.createElement("option");
 									option.value = i;
 									option.textContent = i + "분";
 									endMinuteSelect.appendChild(option);
 								}
 							</script>
-
 							<p class="myShop_info_input_field">전화번호</p>
-							<input name="" style="width: 17%; height: 30px; text-align: center">
+							<input name="addPhoneNum1" style="width: 17%; height: 30px; text-align: center">
 							-
-							<input style="width: 20%; height: 30px; text-align: center">
+							<input name="addPhoneNum2" style="width: 20%; height: 30px; text-align: center">
 							-
-							<input style="width: 20%; height: 30px; text-align: center">
+							<input name="addPhoneNum3" style="width: 20%; height: 30px; text-align: center">
 							<p class="myShop_info_input_field">가게에 대한 설명</p>
-							<textarea style="resize: none; width: 100%; height: 200px;"></textarea>
+							<textarea name="addExplain" style="resize: none; width: 100%; height: 200px;"></textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="myShop_button_box" style="border: none;">
-				<button id="cancel_info">취소</button>
-				<button id="complete_info">추가완료</button>
+				<button onclick="location.href='ListMyRestaurant.jsp'" id="cancel_info">취소</button>
+				<form action="AddRestaurantC">
+					<button id="complete_info">추가완료</button>
+				</form>
 			</div>
 
 		</div>

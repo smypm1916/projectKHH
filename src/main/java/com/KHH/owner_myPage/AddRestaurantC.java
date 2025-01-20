@@ -1,3 +1,5 @@
+package com.KHH.owner_myPage;
+
 import java.io.IOException;
 import java.rmi.ServerException;
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AddRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Owner_DAO.InsertRestaurant(request);
 
     }
 
