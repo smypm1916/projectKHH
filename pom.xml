@@ -71,6 +71,7 @@
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc11</artifactId>
+
             <version>21.5.0.0</version>
         </dependency>
 
@@ -88,13 +89,16 @@
             <artifactId>osdt_cert</artifactId>
             <version>21.5.0.0</version>
         </dependency>
-        <!--        osdt core-->
+        <!-- https://mvnrepository.com/artifact/com.oracle.database.security/oraclepki -->
         <dependency>
             <groupId>com.oracle.database.security</groupId>
             <artifactId>osdt_core</artifactId>
             <version>21.5.0.0</version>
         </dependency>
-<!--        json simple-->
+
+
+
+        <!--        json simple-->
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
