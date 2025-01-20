@@ -69,6 +69,7 @@ public class ShopDAO {
         ResultSet rs = null;
 
         try {
+            con = DBManager.connect();
             pst = con.prepareStatement("select * from SHOP_INFO where SHOP_NO=?");
             pst.setInt(1, no);
             rs = pst.executeQuery();
