@@ -13,7 +13,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../../css/index_ver0.2.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
     <link rel="stylesheet" href="../../css/signup/signUp.css">
 
 

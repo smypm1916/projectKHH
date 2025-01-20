@@ -14,6 +14,6 @@
 </head>
 <body>
 <h1>회원가입 완료</h1>
-<a href="HomeC">메인 화면으로 돌아가기</a>
+<a href="/HomeC">메인 화면으로 돌아가기</a>
 </body>
 </html>

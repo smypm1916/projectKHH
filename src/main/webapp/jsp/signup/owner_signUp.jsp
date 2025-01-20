@@ -5,7 +5,7 @@
 <head>
     <title>회원가입</title>
 
-    <link rel="stylesheet" type="text/css" href="../../css/index_ver0.2.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
     <link rel="stylesheet" href="../../css/signup/signUp.css">
 
 </head>
@@ -129,12 +129,28 @@
                             class="util-btn"
                             name="submit" onclick="location.href='signup_check.jsp'">입력 확인
                         <br>
-                        <a href="HomeC" class="util-btn">돌아가기</a>
+                        <a href="/HomeC" class="util-btn">돌아가기</a>
                     </button>
                 </div>
             </div>
         </form>
     </div>
+
+        <div class="fixed-nav"
+             style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: row-reverse; align-items: center;">
+            <div class="btn-page-top" style="display: block;"></div>
+            <span style="width: 50px; height: 50px;
+                         display: flex;
+                         justify-content: center;
+                         align-items: center;
+                         background-color: #F5DEB3;
+                         border-radius: 50%;
+                         cursor: pointer;
+                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                         font-size: 14px;
+                         font-weight: bold;"
+                  onclick="window.scrollTo(0,0);">맨 위로</span>
+        </div>
 </div>
 <script src="../../js/signup/signup.js"></script>
 </body>

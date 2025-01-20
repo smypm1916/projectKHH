@@ -5,9 +5,9 @@
 <head>
     <title>회원가입</title>
 
-    <link rel="stylesheet" type="text/css" href="../../css/index_ver0.2.css?v=1.0">
-    <link rel="stylesheet" href="../../css/signup/signUp.css">
 
+    <link rel="stylesheet" href="../../css/signup/signUp.css">
+    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
 
 
     <!-- Daum Postalcode API -->
@@ -55,13 +55,13 @@
 
             </div>
 
-            <div>
+            <div class="name-wrapper">
                 <br>
                 <label for="name"><b>이름</b></label>
                 <input type="text" id="name" name="name" placeholder="이름" required>
             </div>
 
-            <div>
+            <div class="email-wrapper">
                 <br>
                 <label for="email-domail"><b>이메일</b></label>
                 <input type="text" id="email-domail" name="email-domain" placeholder="example" required>
@@ -77,7 +77,7 @@
                 <%--                @이후 select--%>
             </div>
 
-            <div>
+            <div class="nickname-wrapper">
                 <br>
                 <label for="nickname"><b>닉네임</b></label>
                 <input type="text" id="nickname" name="nickname" placeholder="닉네임" required>
@@ -88,24 +88,25 @@
                 </span>
             </div>
 
-            <div>
+            <div class="tel-wrapper">
                 <br>
                 <label for="tel"><b>전화번호</b></label>
                 <input type="text" id="tel" name="tel" placeholder="휴대폰 번호" required>
 
             </div>
 
-            <div>
+            <div class="gender-wrapper">
                 <br>
-                <input type="radio" id="gender1" name="gender" value="m" checked="checked" required="required"/>
-                <label for="gender1"><b>남성</b></label>
-                <input type="radio" id="gender2" name=gender value="f" required>
-                <label for="gender2"><b>여성</b></label>
-<%--                <input type="radio" id="gender3" name="gender" value="other" required>--%>
-<%--                <label for="gender3"><b>무응답</b></label>--%>
+                <span><b>성별</b></span>
+                <div>
+                    <input type="radio" id="gender1" name="gender" value="m" checked="checked" required="required"/>
+                    <label for="gender1"><b>남성</b></label>
+                    <input type="radio" id="gender2" name=gender value="f" required>
+                    <label for="gender2"><b>여성</b></label>
+                </div>
             </div>
 
-            <div>
+            <div class="birth-wrapper">
                 <br>
                 <span><b>생년월일</b></span>
                 <div>
@@ -125,7 +126,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="address-wrapper">
                 <br>
                 <label for="address"><b>주소</b></label>
                 <input type="text" id="address" name="address" disabled required>
@@ -138,7 +139,7 @@
                 <input type="text" id="address-detail" name="address-detail">
             </div>
 
-            <div>
+            <div class="password-wrapper">
                 <br>
                 <label for="password"><b>비밀번호</b></label>
                 <input type="text" id="password" name="password" placeholder="영문+숫자 8~16자 이내" required>
@@ -157,10 +158,26 @@
                         class="util-btn"
                         name="submit" onclick="location.href='signup_check.jsp'">입력 확인
                     <br>
-                    <a href="HomeC" class="util-btn">돌아가기</a>
+                    <a href="/HomeC" class="util-btn">돌아가기</a>
                 </button>
             </div>
         </form>
+    </div>
+
+    <div class="fixed-nav"
+         style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: row-reverse; align-items: center;">
+        <div class="btn-page-top" style="display: block;"></div>
+        <span style="width: 50px; height: 50px;
+                         display: flex;
+                         justify-content: center;
+                         align-items: center;
+                         background-color: #F5DEB3;
+                         border-radius: 50%;
+                         cursor: pointer;
+                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                         font-size: 14px;
+                         font-weight: bold;"
+              onclick="window.scrollTo(0,0);">맨 위로</span>
     </div>
 </div>
 <script src="../../js/signup/signup.js"></script>

@@ -9,7 +9,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../../css/index_ver0.2.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
+
     <link rel="stylesheet" href="../../css/signup/signUp.css">
 
 
@@ -34,9 +35,9 @@
 <script>
     function ToSignUp(userType) {
         if (userType === 'customer') {
-            location.href = '/jsp/register/user_signUp.jsp';
+            location.href = '/jsp/signup/user_signUp.jsp';
         } else if (userType === 'owner') {
-            location.href = '/jsp/register/owner_signUp.jsp';
+            location.href = '/jsp/signup/owner_signUp.jsp';
         }
     }
 </script>
