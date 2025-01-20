@@ -10,19 +10,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class SignUpDAO {
-    public static final SignUpDAO SDAO = new SignUpDAO();
-    Connection con = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
+    private static final SignUpDAO SDAO = new SignUpDAO();
 
 //    public static ArrayList<UserDTO> users = null;
 
     private SignUpDAO() {
-        try {
-            con = DBManager.connect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static SignUpDAO getSDAO() {
@@ -50,7 +42,11 @@ public class SignUpDAO {
 
         String sql = "INSERT INTO USER_ACCOUNT values (?,?,?,?,?,?,?,?,'level1',null)";
 
+        Connection con = null;
+        PreparedStatement pst = null;
+
         try {
+            con = DBManager.connect();
             pst = con.prepareStatement(sql);
             pst.setString(1, userEmail);
             pst.setString(2, userPassword);
@@ -69,7 +65,7 @@ public class SignUpDAO {
             e.printStackTrace();
         } finally {
             try {
-                DBManager.close(con, pst, rs);
+                DBManager.close(con, pst, null);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -93,7 +89,11 @@ public class SignUpDAO {
 
         String sql = "INSERT INTO OWNER_ACCOUNT values (?,?,?,?,?)";
 
+        Connection con = null;
+        PreparedStatement pst = null;
+
         try {
+            con = DBManager.connect();
             pst = con.prepareStatement(sql);
             pst.setString(1, ownerEmail);
             pst.setString(2, ownerPassword);
@@ -109,7 +109,7 @@ public class SignUpDAO {
             e.printStackTrace();
         } finally {
             try {
-                DBManager.close(con, pst, rs);
+                DBManager.close(con, pst, null);
             } catch (Exception e) {
                 e.printStackTrace();
             }

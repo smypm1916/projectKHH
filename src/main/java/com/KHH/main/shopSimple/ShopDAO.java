@@ -3,38 +3,35 @@ package com.KHH.main.shopSimple;
 import com.KHH.main.DBManager;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class ShopDAO {
-    public static final ShopDAO SDAO = new ShopDAO();
-    Connection con = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
-
-    public static ArrayList<ShopSimpleDTO> simpleLists;
-    public static ArrayList<ShopDetailDTO> getDetail;
-
-    private ShopDAO() {
-        try {
-            con = DBManager.connect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private static final ShopDAO SDAO = new ShopDAO();
 
     public static ShopDAO getSdao() {
         return SDAO;
     }
 
+    public static ArrayList<ShopSimpleDTO> simpleLists;
+    public static ArrayList<ShopDetailDTO> getDetail;
 
-    public ArrayList<ShopSimpleDTO> ShowSimpleLists() {
+    private ShopDAO() {
+    }
+
+
+    public ArrayList<ShopSimpleDTO> ShowSimpleLists(HttpServletRequest request) {
         simpleLists = new ArrayList<>();
         String sql = "select * from SHOP_INFO";
+
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
         try {
+            con = DBManager.connect();
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
@@ -67,8 +64,13 @@ public class ShopDAO {
         // String sql = "select * from SHOP_INFO where shop_no=?";
         ShopDetailDTO detailDTO = null;
 
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
         try {
             pst = con.prepareStatement("select * from SHOP_INFO where SHOP_NO=?");
+            pst.setInt(1, no);
             rs = pst.executeQuery();
             while (rs.next()) {
                 detailDTO = new ShopDetailDTO();
