@@ -1,55 +1,66 @@
 @charset "UTF-8";
-    /* 기본 스타일 */
+
+
+/* 기본 스타일 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-family: 'Arial', 'Helvetica', 'Verdana', sans-serif; /* 고딕체 설정 */
 }
 
-/* 컨테이너 스타일 */
+/* 컨테이너 설정 */
 .container {
-    width: 100%;
-    height: 100%;
-    background-color: #f7f7f7;
-    color: #333;
+    background-color: #fff;
+    color: #000;
+    width: 100vw; /* 전체 화면 너비 */
+    height: 100vh; /* 전체 화면 높이 */
 }
 
 /* 헤더 스타일 */
 .header {
-    height: 100px;
-    background-color: #333;
+    height: 6vh; /* 화면 비율로 높이 설정 */
+    background-color: #000;
     color: #fff;
     text-align: center;
-    line-height: 100px;
-    font-size: 2rem;
+    line-height: 6vh;
 }
 
 /* 네비게이션 바 스타일 */
 .nav {
-    height: 70px;
-    background-color: #444;
+    height: 5vh; /* 화면 비율로 높이 설정 */
+    background-color: #333;
     color: #fff;
     text-align: center;
-    line-height: 70px;
-    font-size: 1.5rem;
+    line-height: 5vh;
 }
 
 /* 콘텐츠 영역 */
 .content {
-    margin: 20px 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 6vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    height: auto;
+    border: none;
 }
 
-/* 제목 */
-.mypage h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: bold;
+/* 푸터 스타일 */
+.footer {
+    height: 10vh; /* 화면 비율로 높이 설정 */
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    line-height: 10vh;
 }
+
+/* 마이페이지 */
+.mypage h1 {
+    font-size: 2vw; /* 화면 너비에 비례한 글씨 크기 */
+    color: #000;
+
+    margin: 1vh 0;
+}
+
 
 /* 리뷰 목록 스타일 */
 .review-list {
@@ -111,17 +122,21 @@ hr {
     margin: 20px 0;
 }
 
-/* 추가적인 버튼 스타일 */
-input[type="button"] {
-    background-color: #333;
+
+/* 돌아가기 버튼 */
+.bottom-return-btn {
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.bottom-return-btn input[type="button"] {
+    background-color: #000;
     color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
+    padding: 1vh 2vw;
+    font-size: 1vw;
     border-radius: 5px;
 }
 
-input[type="button"]:hover {
-    background-color: #555;
+.bottom-return-btn input[type="button"]:hover {
+    background-color: #444;
 }

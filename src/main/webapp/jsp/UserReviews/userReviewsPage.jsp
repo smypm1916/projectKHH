@@ -26,30 +26,33 @@
 
 
 <%--		<hr>--%>
-			<div class="review-comment" style="border: none;">
+
 				<c:forEach items="${reviews}" var="review">
-				<span>🦀🍴</span>
+			<div class="review-comment" style="border: none;">
+					<hr>
+					<span>🦀🍴</span>
 				<a href="https://kr.savorjapan.com/contents/discover-oishii-japan/if-you-re-looking-for-a-good-drink-in-shinjuku-these-are-the-places-to-be-10-izakaya/"> ${review.shop_name} |
-					${review.review_content} | ${review.review_date} | ${review.review_nickname} </a>
+					${review.review_content} | ${review.review_date} |  ${review.review_nickname} </a>
 				<!-- 글주소 (편집 가능한)  -->
-			<hr>
+</div>
 				</c:forEach>
-			</div>
+<hr>
 			<!--  글리스트 넘길수있게  -->
 
-
-		
 			<br> <br>
-			<div class="bottom-list-num" style="border: none;">  <h2> 1 2 3 4 (나중에 구현) > </h2>
+<div class="bottom-list-num" style="border: none;">
+	<a href="UserReviewPageC?p=1"> <<  </a>
+	<c:forEach begin = "1" end = "${pageCount }" var = "i">
+		<a href="UserReviewPageC?p=${i }">[${i }] </a>
+	</c:forEach>
+	<a href="UserReviewPageC?p=${pageCount }"> >>  </a>
+</div>
 
 
-				<br>
-			<div class="bottom-return-btn"
-				 style="border: none; align-content: center;">
-				<input onclick="location.href='UserC'" type="button" value="마이페이지로 돌아가기">
-			</div>
-			</div>
-
+<div class="bottom-return-btn"
+	 style="border: none; align-content: center;">
+	<input onclick="location.href='UserC'" type="button" value="마이페이지로 돌아가기">
+</div>
 
 
 </body>

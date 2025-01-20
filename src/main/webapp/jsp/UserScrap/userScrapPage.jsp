@@ -52,7 +52,11 @@
 			<br> <br>
 
 			<div class="bottom-list-num" style="border: none;">
-				<h2>1 2 3 4 (나중에 구현) ></h2>
+				<a href="UserScrapPageC?p=1"> << </a>
+				<c:forEach begin = "1" end = "${pageCount }" var = "i">
+					<a href="UserScrapPage?p=${i }">[${i }] </a>
+				</c:forEach>
+				<a href="UserScrapPage?p=${pageCount }"> >> </a>
 			</div>
 
 			<div class="bottom-return-btn"

@@ -21,9 +21,8 @@
 			<div class="profile">
 
 				<div class="profile-field" style="border: none;">
-					<div class="profile-circle" style="border: none;">
-						<img
-							src="/jsp/UserProfile/img/${user_picture}"
+					<div class="profile-circle">
+						<img id="profileImg" src="/jsp/UserProfile/img/${user_picture}"
 							alt="">
 					</div>
 					<div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
@@ -36,7 +35,7 @@
 					</div>
 					<div style="border: none; margin-left: 225px;
     margin-top: -30px; align-content: center;" >
-							<input type="button" value="프로필 수정" onclick="location.href='ProfileUpdateController?no='${user_email}">
+							<input type="button" value="프로필 수정하기" onclick="location.href='ProfileUpdateController?no='${user_email}">
 					</div>
 				</div>
 			</div>
@@ -73,7 +72,7 @@
 			<c:forEach items="${myreservations}" var="myreservation">
 				<div class="reserv-place-list">
 					<img
-						src="${myreservation.shop_picture}"
+						src="${myreservation.shop_image}"
 						alt="">
 					<!-- SHOP_IMAGE > SHOP_IMAGE 필드 -->
 					<div style="border: none;">

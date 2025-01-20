@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/UserScrapC")
-public class UserScrapC extends HttpServlet {
+@WebServlet("/UserScrapPageC")
+public class UserScrapPageC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         UserDataDAO.viewUserScrap(req);
-        UserDataDAO.scrapPaging(1,req);
+        int p = Integer.parseInt(req.getParameter("p"));
+        UserDataDAO.scrapPaging(p, req);
         req.setAttribute("content", "../UserScrap/userScrapPage.jsp");
         req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
 

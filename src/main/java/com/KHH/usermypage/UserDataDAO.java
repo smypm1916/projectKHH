@@ -18,6 +18,11 @@ import java.util.ArrayList;
 public class UserDataDAO {
 
 
+static ArrayList<ReviewsDTO> reviews = new ArrayList<>();
+static ArrayList<MyPageReservationDTO> myreservations = new ArrayList<>();
+static ArrayList<ScrapDTO> scraps = new ArrayList<>();
+
+
     public static void viewUserData (HttpServletRequest request) {
     // 그냥 기본적으로 해당 유저의 계정 정보 보여주기 >> view data
         Connection con = null;
@@ -71,14 +76,16 @@ public class UserDataDAO {
             pstmt.setString(1,user.getUser_nickname());
             rs = pstmt.executeQuery();
 
-            ArrayList<ReviewsDTO> reviews = new ArrayList<>();
+
             ReviewsDTO review = null;
+            reviews = new ArrayList<ReviewsDTO>();
+
             while (rs.next()) {
                 review = new ReviewsDTO();
                 review.setReview_shop(rs.getInt(1));
                 review.setReview_content(rs.getString(2));
                 review.setReview_date(rs.getDate(3));
-      //          review.setReview_nickname(rs.getString(4));
+                review.setReview_nickname(rs.getString(4));
                 review.setShop_name(rs.getString(5));
                 reviews.add(review);
                 System.out.println(review); // reviews 확인
@@ -97,7 +104,7 @@ public class UserDataDAO {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 //        String user_email = request.getParameter("user_email");
-        String sql = "SELECT ri.reservation_date, ri.reservation_people, si.shop_name, sim.shop_image FROM reservation_info_sj ri, SHOP_INFO_sj si, shop_image_sj sim WHERE ri.reservation_email = ? AND ri.reservation_shop = si.shop_no AND si.shop_no = sim.shop_no";
+        String sql = "SELECT ri.reservation_email, ri.reservation_date, ri.reservation_people, ri.reservation_name, ri.reservation_tel, si.shop_name, si.shop_content, si.shop_tel, si.shop_addr, sim.shop_image FROM reservation_info_sj ri, SHOP_INFO_sj si, shop_image_sj sim WHERE ri.reservation_email = ? AND ri.reservation_shop = si.shop_no AND si.shop_no = sim.shop_no";
         UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
         try {
             con = DBManager.connection();
@@ -107,15 +114,20 @@ public class UserDataDAO {
             rs = pstmt.executeQuery();
 
 
-            ArrayList<MyPageReservationDTO> myreservations = new ArrayList<>();
-            MyPageReservationDTO myreservation = null;
+       MyPageReservationDTO myreservation = null;
+       myreservations = new ArrayList<MyPageReservationDTO>();
 
             while(rs.next())  {
                 myreservation = new MyPageReservationDTO();
-                myreservation.setReservation_date(rs.getString(1));
-                myreservation.setReservation_people(rs.getInt(2));
-                myreservation.setShop_name(rs.getString(3));
-                myreservation.setShop_picture(rs.getString(4));
+                myreservation.setReservation_email(rs.getString("reservation_email"));
+                myreservation.setReservation_date(rs.getString("reservation_date"));
+                myreservation.setReservation_people(rs.getInt("reservation_people"));
+                myreservation.setReservation_name(rs.getString("reservation_name"));
+                myreservation.setReservation_tel(rs.getString("reservation_tel"));
+                myreservation.setShop_name(rs.getString("shop_name"));
+                myreservation.setShop_tel(rs.getString("shop_tel"));
+                myreservation.setShop_addr(rs.getString("shop_addr"));
+                myreservation.setShop_image(rs.getString("shop_image"));
                 myreservations.add(myreservation);
 
                 System.out.println(myreservation); //예약 확인
@@ -142,8 +154,9 @@ public class UserDataDAO {
             pstmt.setString(1, user.getUser_email());
             rs = pstmt.executeQuery();
 
-            ArrayList<ScrapDTO> scraps = new ArrayList<>();
             ScrapDTO scrap = null;
+            scraps = new ArrayList<ScrapDTO>();
+
             while(rs.next())  {
                 scrap = new ScrapDTO();
                 scrap.setScrap_email(rs.getString("scrap_email"));
@@ -218,5 +231,84 @@ public class UserDataDAO {
             DBManager.close(con, pstmt, null);
         }
     }
+
+//리뷰 페이징 기능
+public static void  reviewsPaging(int pageNum, HttpServletRequest request) {
+    request.setAttribute("curPageNum", pageNum);
+
+    int total = reviews.size(); //총데이터수
+    int cnt = 3; //한페이지당보여줄개수
+
+    // 페이지 수 == 마지막 페이지 번호
+    int pageCount =(int) Math.ceil((double)total/ cnt); //총페이지수
+    //System.out.println(pageCount); //페이지 개수(총페이지수)
+    request.setAttribute("pageCount", pageCount);
+
+    //int pageNum = 1; //페이지번호
+
+    //시작,끝
+    int start = total - (cnt * (pageNum - 1));
+    int end = (pageNum == pageCount) ? -1 : start - (cnt + 1);
+
+
+    for (int i = start - 1; i > end; i--) {
+        reviews.add(reviews.get(i));
     }
+    // For each 로 뿌리기
+    request.setAttribute("reviews", reviews);
+}
+
+
+    //예약가게 페이징 기능
+    public static void  reservationPaging(int pageNum, HttpServletRequest request) {
+        request.setAttribute("curPageNum", pageNum);
+
+        int total = myreservations.size(); //총데이터수
+        int cnt = 3; //한페이지당보여줄개수
+
+        // 페이지 수 == 마지막 페이지 번호
+        int pageCount =(int) Math.ceil((double)total/ cnt); //총페이지수
+        //System.out.println(pageCount); //페이지 개수(총페이지수)
+        request.setAttribute("pageCount", pageCount);
+
+        //int pageNum = 1; //페이지번호
+
+        //시작,끝
+        int start = total - (cnt * (pageNum - 1));
+        int end = (pageNum == pageCount) ? -1 : start - (cnt + 1);
+
+
+        for (int i = start - 1; i > end; i--) {
+            myreservations.add(myreservations.get(i));
+        }
+        // For each 로 뿌리기
+        request.setAttribute("myreservations", myreservations);
+    }
+
+    //예약가게 페이징 기능
+    public static void  scrapPaging(int pageNum, HttpServletRequest request) {
+        request.setAttribute("curPageNum", pageNum);
+
+        int total = scraps.size(); //총데이터수
+        int cnt = 3; //한페이지당보여줄개수
+
+        // 페이지 수 == 마지막 페이지 번호
+        int pageCount =(int) Math.ceil((double)total/ cnt); //총페이지수
+        //System.out.println(pageCount); //페이지 개수(총페이지수)
+        request.setAttribute("pageCount", pageCount);
+
+        //int pageNum = 1; //페이지번호
+
+        //시작,끝
+        int start = total - (cnt * (pageNum - 1));
+        int end = (pageNum == pageCount) ? -1 : start - (cnt + 1);
+
+
+        for (int i = start - 1; i > end; i--) {
+            scraps.add(scraps.get(i));
+        }
+        // For each 로 뿌리기
+        request.setAttribute("scraps", scraps);
+    }
+}
 

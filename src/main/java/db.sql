@@ -227,6 +227,9 @@ select * from SHOP_INFO_sj;
 
 
 
-
+SELECT review_shop, review_content, review_date, review_nickname, shop_name FROM review_info_sjsj r, shop_info_sj s
+                    WHERE
+                    r.REVIEW_SHOP = s.SHOP_NO and
+                    r.review_nickname = '조조';
 
 SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content, shop_opentime FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = 'user2@example.com';
