@@ -3,6 +3,7 @@ package com.KHH.usermypage;
 import com.KHH.userreservationpage.ReservationDTO;
 import com.KHH.userreviewspage.ReviewsDTO;
 import com.KHH.userscrappage.ScrapDTO;
+import com.KHH.main.DBManager;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
