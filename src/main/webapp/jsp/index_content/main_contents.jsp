@@ -44,14 +44,14 @@
         </div>
 
         <div class="shop-list" id="shop-list">
-            <p>Restaurant Lists</p>
-            <ul class="shop-items" id="shop-items"></ul>
+            <h1>식당 일람</h1>
             <%--            간이 가게 리스트 출력--%>
+<%--            <ul class="shop-items" id="shop-items"></ul>--%>
             <c:forEach var="sl" items="${simpleList}">
                 <div class="simpleList" onclick="location.href='ShopDetailC?no=${sl}';">
                     <ul>
                         <li style="display: none"><span>${sl.shop_no}</span></li>
-                        <li><span>${sl.shop_name}</span><br></li>
+                        <li><span style="font-size: 20pt; font-weight: bold;">${sl.shop_name}</span><br></li>
                         <li><span>${sl.shop_tel}</span></li>
                         <li><span>${sl.shop_opentime}</span></li>
                     </ul>

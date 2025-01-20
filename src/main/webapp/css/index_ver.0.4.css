@@ -52,12 +52,14 @@ h1 {
 .header-container:hover nav {
     max-height: 100px; /* 네비게이션 확장 */
 }
+
 .global-nav {
     display: flex; /* Flexbox를 사용하여 가로 정렬 */
     justify-content: center; /* 콘텐츠를 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
     background-color: rgb(160, 134, 122); /* 네비게이션 배경색 */
     padding: 10px 0; /* 상하 여백 추가 */
+    margin-bottom: 20px; /* 하단 간격을 1/3 수준으로 줄임 */
 }
 
 .global-nav ul {
@@ -88,7 +90,7 @@ h1 {
 /* 콘텐츠 */
 .content {
     padding: 20px;
-    margin: 190px auto 0;
+    margin: 60px auto 0; /* 기존 190px에서 60px로 간격 축소 */
     width: 90%;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -123,4 +125,5 @@ button:hover {
     padding: 20px;
     text-align: center;
 }
+
 

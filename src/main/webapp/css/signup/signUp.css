@@ -108,3 +108,8 @@ button:hover {
 .util-btn:hover {
     background-color: #E08F90; /* 변경: 호버 시 색상 변경 */
 }
+
+.gender-wrapper{
+    display: flex;
+    align-items: center;
+}
