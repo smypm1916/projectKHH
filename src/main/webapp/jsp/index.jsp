@@ -1,13 +1,47 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        div{
+            border : 1px solid;
+        }
+        .header{
+            height: 100px;
+        }
+        .nav{
+            height: 70px;
+        }
+        .content{
+            margin-top: 100px;
+            margin-left: 100px;
+            margin-right: 100px;
+            height: auto;
+            border: none;
+        }
+        .footer{
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<div class="container">
+    <div class="header">
+        header
+    </div>
+    <div class="nav">
+        nav
+    </div>
+    <div class="content">
+        <jsp:include page="${content}"></jsp:include>
+    </div>
+    <div class="footer">
+        footer
+    </div>
+</div>
 </body>
 </html>

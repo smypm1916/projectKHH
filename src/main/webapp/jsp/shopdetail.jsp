@@ -244,13 +244,7 @@
         <button id="tab3" class="tab-button" onclick="openTab(3)">리뷰</button>
     </div>
 
-    <div class="header">
-        header
-    </div>
-    <div class="nav">
-        nav
-    </div>
-    <div class="content">
+
 
         <!-- 가게정보 -->
         <div id="content1" class="tab-content active shop-detail">
@@ -268,21 +262,21 @@
                     <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="150" height="150">
                 </div>
             </div>
-            <div class="shop-name">北海道しべちゃ 星空の黒牛 加工・直売所(가게명)</div>
-            <div class="shop-intro">摩周湖の清らかな水を湛える広大な牧場。ここで誕生したのが、上質な黒毛和牛と体が大きなホルスタイン種を掛け合わせた「星空の黒牛」。ジューシーで歯ごたえのある赤身、豊かなコクを持つ脂身のハーモニーが格別。</div>
+            <div class="shop-name">${shop.shop_name}</div>
+            <div class="shop-intro">${shop.shop_content}</div>
             <div class="info">Information</div>
-            <div>北海道しべちゃ 星空の黒牛 加工・直売所(가게명)</div>
+            <div>${shop.shop_name}</div>
             <div>
                 <div>주소</div>
-                <div>北海道川上郡標茶町多和466-1</div>
+                <div>${shop.shop_addr}</div>
             </div>
             <div>
                 <div>TEL</div>
-                <div>0154-85-0010</div>
+                <div>${shop.shop_tel}</div>
             </div>
             <div>
                 <div>영업시간</div>
-                <div>10:00～15:00（お肉の受け渡しは18:00まで）</div>
+                <div>${shop.shop_opentime}</div>
             </div>
             <div><button>예약하기</button></div>
         </div>
@@ -359,11 +353,9 @@
             </div>
         </div>
 
-    </div>
 
-    <div class="footer">
-        footer
-    </div>
+
+
 
     <script>
         function openTab(tabNumber) {
