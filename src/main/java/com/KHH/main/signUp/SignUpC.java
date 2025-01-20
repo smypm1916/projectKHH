@@ -1,6 +1,7 @@
 package com.KHH.main.signUp;
 
 import java.io.IOException;
+import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,14 @@ public class SignUpC extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SignUpDAO.getSDAO().UserSignUp(request, response);
-//        SignUpDAO.getSDAO().OwnerSignUp(request, response);
+        request.setCharacterEncoding("utf-8");
+
+        if (Objects.equals(request.getParameter("userType"), "user")) {
+            SignUpDAO.getSDAO().UserSignUp(request, response);
+        } else {
+            SignUpDAO.getSDAO().OwnerSignUp(request, response);
+        }
+
+        request.getRequestDispatcher("jsp/signup/user_signUpComplete.jsp").forward(request, response);
     }
 }

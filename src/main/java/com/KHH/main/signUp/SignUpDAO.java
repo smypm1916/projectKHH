@@ -15,7 +15,7 @@ public class SignUpDAO {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    public static ArrayList<UserDTO> users = null;
+//    public static ArrayList<UserDTO> users = null;
 
     private SignUpDAO() {
         try {
@@ -82,7 +82,7 @@ public class SignUpDAO {
         String emailDomain = request.getParameter("email-domain");
         String emailService = request.getParameter("email-service");
         String ownerEmail = emailDomain + "@" + emailService;
-        String userNickname = request.getParameter("nickname");
+        String ownerNickname = request.getParameter("nickname");
         String ownerTel = request.getParameter("tel");
         String ownerBirth;
         String ownerBirthYear = request.getParameter("birth-year");
