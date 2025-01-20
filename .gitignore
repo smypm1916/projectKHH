@@ -38,7 +38,7 @@ build/
 ### Mac OS ###
 .DS_Store
 
-DBManager.java
-mvnw
-mvnw.cmd
-pom.xml
+.DBManager.java
+/mvnw
+/mvnw.cmd
+.pom.xml
