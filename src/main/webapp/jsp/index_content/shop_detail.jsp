@@ -9,6 +9,9 @@
 <html>
 <head>
     <title>상세검색</title>
+    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
+
+
 </head>
 
 <body>
