@@ -164,9 +164,9 @@
         <br> <br>
 
         <div class="myShop_information" style="border: none;">
-            <form action="ShowAllRestaurantC">
+            <a href="ShowAllRestaurantC" style="text-decoration: none; color: black">
                 <h2 style="margin-inline-end: auto;">내 가게 정보</h2>
-            </form>
+            </a>
         </div>
 
         <br>

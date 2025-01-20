@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class Edit_myRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Owner_DAO.UpdateRestaurant(request);
-        request.getRequestDispatcher("jsp/owner_myPage/ListMyRestaurant.jsp").forward(request, response);
+        Restaurant_DAO.UpdateRestaurant(request);
+        request.getRequestDispatcher("jsp/owner_myPage/List_myRestaurant.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

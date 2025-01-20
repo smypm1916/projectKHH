@@ -147,109 +147,33 @@ div {
 			</div>
 
 			<br>
-			
-			
-			<div class="myShop_container" style="border: solid 1px;">
-				<div class="myShop_place_box">
-					<img class="myShop_photo"
-						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>
-							<span>😋</span>후루룩짭짭밥
-						</h2>
-						<div style="border: none;">
-							<p>가게 상세주소</p>
-							<p>영업시간</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
 
+			<c:forEach>
+				<div class="myShop_container" style="border: solid 1px;">
+					<div class="myShop_place_box">
+						<img class="myShop_photo"
+							 src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
+							 alt="place-name">
+						<div style="border: none; text-align: left; margin-left: 30px">
+							<h2>
+								<span>😋</span>${res.name}
+							</h2>
+							<div style="border: none;">
+								<p>22-1 Otemachi, Hakodate, Hokkaido 040-0064</p>
+								<p>${res.opentime}</p>
+								<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
+								<p>e.g. 리뷰수 : 245개</p>
+
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="myShop_button_field" style="border: none; align-content: center;">
-					<input class="myShop-button" type="button" value="가게 정보 보기">
-					<input class="myShop-button" type="button" value="수정">
-					<input class="myShop-button" type="button" value="삭제">
-				</div>
-			</div>
-
-			<div class="myShop_container" style="border: solid 1px;">
-				<div class="myShop_place_box">
-					<img class="myShop_photo" 
-						src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>
-							<span>😋</span>무라카미 하코다테 본점 うに むらかみ 函館本店
-						</h2>
-						<div style="border: none;">
-							<p>22-1 Otemachi, Hakodate, Hokkaido 040-0064</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
-
-						</div>
+					<div class="myShop_button_field" style="border: none; align-content: center;">
+						<input class="myShop-button" type="button" value="가게 정보 보기">
+						<input class="myShop-button" type="button" value="수정">
+						<input class="myShop-button" type="button" value="삭제">
 					</div>
 				</div>
-				<div class="myShop_button_field" style="border: none; align-content: center;">
-					<input class="myShop-button" type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
-			<div class="myShop_container" style="border: solid 1px;">
-				<div class="myShop_place_box">
-					<img class="myShop_photo"
-						src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>
-							<span>😋</span>라멘 삿포로 이치류안 ラーメン札幌一粒庵
-						</h2>
-						<div style="border: none;">
-							<p>〒060-0004 Hokkaido, Sapporo, Chuo Ward, Kita 4 Jonishi, 1
-								Chome−１番 ホクレンビル 地下１階</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
-
-						</div>
-					</div>
-				</div>
-				<div class="myShop_button_field" style="border: none; align-content: center;">
-					<input class="myShop-button" type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
-
-
-			<div class="myShop_container" style="border: solid 1px;">
-				<div class="myShop_place_box">
-					<img class="myShop_photo"
-						src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h2>
-							<span>😋</span>해산물 로바타야끼 海鮮炉ばた焼 大漁旗
-						</h2>
-						<div style="border: none;">
-							<p>〒060-0004 Hokkaido, Sapporo, Chuo Ward, Kita 4 Jonishi, 1
-								Chome−１番 ホクレンビル 地下１階</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
-
-						</div>
-					</div>
-				</div>
-				<div class="myShop_button_field" style="border: none; align-content: center;">
-					<input class="myShop-button" type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
+			</c:forEach>
 
 			<br> <br>
 

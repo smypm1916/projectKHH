@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Edit_profileC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Owner_DAO.EditProfile(request);
+        Restaurant_DAO.EditProfile(request);
         request.getRequestDispatcher("jsp/owner_myPage/MyPage.jsp").forward(request, response);
 
     }

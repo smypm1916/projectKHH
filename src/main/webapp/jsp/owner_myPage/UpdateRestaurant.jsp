@@ -82,7 +82,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
         }
 
-        .add_image_button {
+        .edit_image_button {
             height: 50px;
             padding: 10px 20px; /* 버튼 내부 여백 */
             font-size: 16px; /* 텍스트 크기 */
@@ -96,12 +96,13 @@
             transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
         }
 
-        .add_image_button:hover {
+        .edit_image_button:hover {
             background-color: #0056b3; /* 호버 시 배경색 변경 */
             transform: scale(1.05); /* 약간 확대 */
         }
 
         .myShop_info_input_field {
+            margin-top: 10px;
             margin-bottom: 6px;
         }
 
@@ -178,6 +179,12 @@
             text-align: center;
             item-align: center;
         }
+        #fileInput1 {
+            display: none;
+        }
+        #fileInput2 {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -214,14 +221,14 @@
                         type="file" id="fileInput2" style="display: none;"
                         onchange="changeImage(event, 'previewImage2')">
                     <br>
-                    <button class="add_image_button"
-                            onclick="document.getElementById('fileInput1').click();">
-                        메인이미지 선택
-                    </button>
-                    <button class="add_image_button"
-                            onclick="document.getElementById('fileInput2').click();">
-                        서브이미지 선택
-                    </button>
+                    <button class="edit_image_button"
+                            onclick="triggerFileInput('fileInput1');">
+                        메인이미지 선택</button>
+                    <input type="file" id="fileInput1" onchange="updateButtonText(this)">
+                    <button class="edit_image_button"
+                            onclick="triggerFileInput('fileInput2');">
+                        서브이미지 선택</button>
+                    <input type="file" id="fileInput2" onchange="updateButtonText(this)">
                 </div>
 
                 <div
@@ -229,6 +236,8 @@
                     <div style="border: none;">
                         <p class="myShop_info_input_field">가게이름</p>
                         <input name="editName" style="width: 100%; height: 30px;">
+                        <p class="myShop_info_input_field">주인이름</p>
+                        <input name="editOwner" style="width: 100%; height: 30px;">
                         <p class="myShop_info_input_field">주소</p>
                         <select name="editRegion" id="" style="width: 120px; height: 36px">
                             <option value="도오">도오</option>
@@ -239,6 +248,12 @@
                         <p class="myShop_info_input_field">상세주소</p>
                         <input name="editAddr" style="width: 100%; height: 30px;">
                         <p class="myShop_info_input_field">영업시간</p>
+                        <select name="editWeek">
+                            <option value="연중무휴">연중무휴</option>
+                            <option value="평일">평일</option>
+                            <option value="주말">주말</option>
+                        </select>
+                        <br>
                         <select name="editOpenHour" id="start-hour-select"></select>
                         <select name="editOpenMinute" id="start-minute-select"></select>
                         ~
@@ -284,11 +299,12 @@
                         -
                         <input name="editPhoneNum3" style="width: 20%; height: 30px; text-align: center">
                         <p class="myShop_info_input_field">가게에 대한 설명</p>
-                        <textarea name="editExplain" style="resize: none; width: 100%; height: 200px;"></textarea>
+                        <textarea name="editExplain" style="resize: none; width: 100%; height: 150px;"></textarea>
                     </div>
                 </div>
             </div>
         </div>
+        <input hidden="hidden" name="no" value="">
         <div class="myShop_button_box" style="border: none;">
             <button id="cancel_info">취소</button>
             <button onclick="location.href='Edit_myRestaurantC'" id="complete_info">수정완료</button>
@@ -297,6 +313,16 @@
     </div>
 
     <script>
+        // 파일 입력 클릭을 트리거하는 함수
+        function triggerFileInput(inputId) {
+            document.getElementById(inputId).click();
+        }
+
+        // 파일 선택 후 버튼 텍스트 업데이트
+        function updateButtonText(inputElement) {
+            const fileName = inputElement.files[0]?.name || "메인이미지 선택";
+            document.querySelector(".edit_image_button").textContent = fileName;
+        }
         function changeButtonTextAndClickInput() {
             const fileButton = document.getElementById('fileButton');
 
@@ -313,22 +339,39 @@
 
             // 파일이 선택되면 버튼 텍스트 변경
             if (fileInput.files.length > 0) {
-                fileButton.innerText = '파일 선택됨: ' + fileInput.files[0].name; // 파일 이름을 버튼 텍스트에 추가
+                const maxLength = 20; // 최대 길이
+                let fileName = fileInput.files[0].name;
+                if (fileName.length > maxLength) {
+                    fileName = fileName.substring(0, maxLength) + '...';
+                }
+                fileButton.innerText = '파일 선택됨: ' + fileName;
+            } else {
+                fileButton.innerText = '파일을 선택해주세요';
             }
         }
 
-        // 이미지 미리보기 변경 함수
         function changeImage(event, previewImageId) {
             const input = event.target;
             const previewImage = document.getElementById(previewImageId);
 
             if (input.files && input.files[0]) {
-                const reader = new FileReader();
+                const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                const maxSize = 5 * 1024 * 1024; // 5MB
 
-                reader.onload = function (e) {
+                if (!allowedTypes.includes(input.files[0].type)) {
+                    alert('이미지 파일만 업로드 가능합니다.');
+                    return;
+                }
+
+                if (input.files[0].size > maxSize) {
+                    alert('파일 크기는 5MB를 초과할 수 없습니다.');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
                     previewImage.src = e.target.result; // 이미지 소스를 선택한 파일로 변경
                 };
-
                 reader.readAsDataURL(input.files[0]); // 파일 읽기
             }
         }
