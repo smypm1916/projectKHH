@@ -36,14 +36,20 @@
 					<span>
 						<h2> 대식가 <input style="width: 100px" name="user_nickname" value = "${sessionScope.user.user_nickname}">
 							(${sessionScope.user.user_email}) 님 (🖐🏻'-' )</h2>
-						 맛집러버 <input  style="width: 100px" name="user_nickname" value ="${sessionScope.user.user_nickname}">님, 오늘은 어떤 맛집을 찾아볼까요? 🍫͜
+						 맛집러버 ${sessionScope.user.user_nickname} 님, 오늘은 어떤 맛집을 찾아볼까요? 🍫͜
 						(ᵔ ̮ ᵔ)›
 					</span>
 
 					</div>
 					<div style="border: none; margin-left: 225px; margin-top: -30px; align-content: center;" >
 <%--							<input type="button" value="수정 완료하기">--%>
-						<button>수정 완료하기</button>
+						<button style="background-color: #000000; /* 검정 버튼 */
+    color: #ffffff; /* 하얀 글씨 */
+    border: none;
+    padding: 6px 12px; /* 크기 축소 */
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;">수정 완료하기</button>
 					</div>
 		</div>
 	</div>

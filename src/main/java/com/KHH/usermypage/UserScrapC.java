@@ -12,7 +12,7 @@ public class UserScrapC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
+        UserDataDAO.viewUserScrap(req);
         req.setAttribute("content", "../UserScrap/userScrapPage.jsp");
         req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
 

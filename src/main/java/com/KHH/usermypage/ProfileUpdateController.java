@@ -13,7 +13,7 @@ public class ProfileUpdateController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDataDAO.viewUserData(request);
         UserDataDAO.viewUserReviews(request);
-        UserDataDAO.viewUserResevation(request);
+        UserDataDAO.viewUserReservation(request);
         UserDataDAO.viewUserScrap(request);
 
         request.setAttribute("content", "updatedUserMyPage.jsp");

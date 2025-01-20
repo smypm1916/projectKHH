@@ -30,7 +30,7 @@ public class UserDataDAO {
        try {
            con = DBManager.connection();
            pstmt = con.prepareStatement(sql);
-           pstmt.setString(1, "user1@example.com");
+           pstmt.setString(1, "user2@example.com");
            rs = pstmt.executeQuery();
 
            if (rs.next()) {
@@ -57,13 +57,18 @@ public class UserDataDAO {
   //     String review_nickname = request.getParameter("user_nickname");
         String sql =
                 //"SELECT r.review_shop, r.review_content, r.review_date, r.review_nickname, s.shop_name FROM  review_info_sjsj r JOIN shop_info_sj s ON r.review_shop = s.shop_no WHERE r.review_nickname = ?";
-                "SELECT review_shop, review_content, review_date, review_nickname, shop_name FROM review_info_sjsj, shop_info sj WHERE review_nickname = ?";
+                "SELECT review_shop, review_content, review_date, review_nickname, shop_name" +
+                        " FROM review_info_sjsj r, shop_info_sj s" +
+                        " WHERE" +
+                        " r.REVIEW_SHOP = s.SHOP_NO and" +
+                        " r.review_nickname = ?";
 
+        UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
 
         try {
             con = DBManager.connection();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, "조조");
+            pstmt.setString(1,user.getUser_nickname());
             rs = pstmt.executeQuery();
 
             ArrayList<ReviewsDTO> reviews = new ArrayList<>();
@@ -87,17 +92,17 @@ public class UserDataDAO {
     }
 
     //예약 확인
-    public static void viewUserResevation(HttpServletRequest request) {
+    public static void viewUserReservation(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String user_email = request.getParameter("user_email");
-        String sql = "select ri.reservation_date, ri.reservation_people, si.shop_name, si_img.shop_image FROM reservation_info_sj ri, shop_info si, shop_image si_img WHERE ri.reservation_email = ? AND ri.reservation_shop = si.shop_no AND si.shop_no = si_img.shop_no";
-
+//        String user_email = request.getParameter("user_email");
+        String sql = "SELECT ri.reservation_date, ri.reservation_people, si.shop_name, sim.shop_image FROM reservation_info_sj ri, SHOP_INFO_sj si, shop_image_sj sim WHERE ri.reservation_email = ? AND ri.reservation_shop = si.shop_no AND si.shop_no = sim.shop_no";
+        UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
         try {
             con = DBManager.connection();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, "example@email.com");
+            pstmt.setString(1, user.getUser_email());
             //나중에 이메일부분 real DB 변경시 파라미터값 대체 필요
             rs = pstmt.executeQuery();
 
@@ -129,12 +134,12 @@ public class UserDataDAO {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String user_email = request.getParameter("user_email");
-        String sql =   "SELECT shop_name, scrap_date, shop_image, scrap_email FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = ?";
-
+        String sql =   "SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = ?";
+        UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
         try {
             con = DBManager.connection();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, "user@example.com");
+            pstmt.setString(1, user.getUser_email());
             rs = pstmt.executeQuery();
 
             ArrayList<ScrapDTO> scraps = new ArrayList<>();
@@ -145,6 +150,9 @@ public class UserDataDAO {
                 scrap.setShop_image(rs.getString("shop_image"));
                 scrap.setScrap_date(rs.getString("scrap_date"));
                 scrap.setShop_name(rs.getString("shop_name"));
+                scrap.setShop_addr(rs.getString("shop_addr"));
+                scrap.setShop_tel(rs.getString("shop_tel"));
+                scrap.setShop_content(rs.getString("shop_content"));
                 scraps.add(scrap);
                 System.out.println(scrap);
 

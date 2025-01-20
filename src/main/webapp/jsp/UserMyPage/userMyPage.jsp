@@ -46,7 +46,7 @@
 			<div class="review-list" style="border: none;">
 				<h2 style="margin-inline-end: auto;">작성한 맛리뷰</h2>
 				<div style="border: none;">
-					<h3> <a href="UserReviewC" > 더보기 > </a></h3>
+					<h3> <a onclick="location.href='UserReviewC'"> 더보기 > </a></h3>
 				</div>
 			</div>
 			<hr>
@@ -62,7 +62,7 @@
 			<div class="reservation-list" style="border: none;">
 				<h2 style="margin-inline-end: auto;">예약한 가게</h2>
 				<div style="border: none;">
-					<h3> <a href="UserReservationC"> 더보기 > </a></h3>
+					<h3> <a onclick="location.href='UserReservationC'"> 더보기 > </a></h3>
 				</div>
 			</div>
 			<hr>
@@ -95,7 +95,7 @@
 
 				<h2 style="margin-inline-end: auto;">좋아요한 가게</h2>
 				<div style="border: none;">
-					<h3><a href="UserScrapC"> 더보기 ></a></h3>
+					<h3><a onclick="location.href='UserScrapC'"> 더보기 ></a></h3>
 				</div>
 			</div>
 			<hr>

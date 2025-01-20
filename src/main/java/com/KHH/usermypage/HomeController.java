@@ -14,7 +14,7 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDataDAO.viewUserData(request);
         UserDataDAO.viewUserReviews(request);
-        UserDataDAO.viewUserResevation(request);
+        UserDataDAO.viewUserReservation(request);
         UserDataDAO.viewUserScrap(request);
         // 기본적으로 해당 유저의 계정 데이터 보여주기 (mypage view)
         request.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(request, response);

@@ -11,7 +11,7 @@
 </head>
 <body>
 			<div class="mypage" style="border: none;">
-				<h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
+				<h1 onclick="location.href='UserC'">MyPage </h1>
 			</div>
 			<br>
 			<hr>
@@ -135,7 +135,7 @@
 
 			<div class="bottom-return-btn"
 				style="border: none; align-content: center;">
-				<input type="button" value="마이페이지로 돌아가기">
+				<input onclick="location.href='UserC'" type="button" value="마이페이지로 돌아가기">
 			</div>
 
 
