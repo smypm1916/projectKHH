@@ -1,6 +1,7 @@
 package com.KHH.owner_myPage;
 
 import com.KHH.main.DBManager;
+import com.oreilly.servlet.MultipartRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
@@ -46,19 +47,31 @@ public class Restaurant_DAO {
                 restaurant.setOpentime(rs.getString("opentime"));
                 restaurant.setPhone(rs.getString("phone"));
                 restaurant.setExplain(rs.getString("explain"));
+                restaurants.add(restaurant);
             }
             request.setAttribute("res", restaurants);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(con, null, rs);
+            try {
+                DBManager.close(con, pstmt, rs);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
     public static void InsertRestaurant(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
+
+        MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8",
+                new DefaultFileRenamePolicy());
+
         String sql = "insert into shop_info(shop_no,shop_name,shop_owner,shop_addr,shop_opentime,shop_tel,shop_content) values(SHOP_NO_SEQ.nextval,?,?,?,?,?,?)";
+        String sqlImage = "insert into shop_image values shop_image=? where shop_no=?";
 
         String path = request.getServletContext().getRealPath("jsp/owner_myPage/res_image");
 
@@ -80,9 +93,16 @@ public class Restaurant_DAO {
             pstmt.setString(4, request.getParameter(opentime));
             pstmt.setString(5, request.getParameter(phone));
             String explain = request.getParameter("addExplain");
+
             pstmt.setString(6, explain);
             if (pstmt.executeUpdate() == 0) {
                 System.out.println("추가성공");
+                pstmt = con.prepareStatement(sqlImage);
+                pstmt.setString(1, "image_name");
+                pstmt.setInt(2, "shop_no");
+               if(pstmt.executeUpdate() == 0){
+                   System.out.println("image uploaded successfully!!!");
+               }
             }
 
         } catch (Exception e) {

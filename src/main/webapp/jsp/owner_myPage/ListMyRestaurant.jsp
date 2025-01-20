@@ -148,7 +148,7 @@ div {
 
 			<br>
 
-			<c:forEach>
+			<c:forEach var="res" items="${res}">
 				<div class="myShop_container" style="border: solid 1px;">
 					<div class="myShop_place_box">
 						<img class="myShop_photo"
