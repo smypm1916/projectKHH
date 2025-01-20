@@ -1,4 +1,4 @@
-package com.KHH.loginphase;
+package com.KHH.login;
 
 import javax.servlet.http.HttpServletRequest;
 

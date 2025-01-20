@@ -10,13 +10,20 @@
 <html>
     <head>
         <title> 로그인 정보 입력 | KHH </title>
-        <link rel="stylesheet" type="text/css" href="css/loginStyles.css">
+        <link rel="stylesheet" type="text/css" href="../../css/loginStyles.css">
+        <script type="text/javascript">
+            function newWindow(){
+
+                window.open('http://localhost/ForgotInfoC', '_blank', 'left=100, top=100, width=400, height=500');
+
+            }
+        </script>
     </head>
 
     <body>
         <div class="login-container">
             <h2>로그인</h2>
-            <form action="login" method="post">
+            <form action="" method="post">
                 <div class="loginBox">
                     <label for="iD">아이디</label>
                     <input type="text" id="iD" name="iD" required>
@@ -28,11 +35,11 @@
                 <div class="loginBox">
                     <button type="submit">로그인</button>
                 </div>
-                <div class="loginHelp">
-                    <a href="forgotPassword.jsp">비밀번호 찾기</a> |
-                    <a href="register.jsp">회원가입</a>
-                </div>
             </form>
+                <div class="loginHelp">
+                    <a onclick="newWindow()"> ID / PW 찾기 </a> |
+                    <a href="register.jsp">회원가입</a> <!-- 성민님 레지스터 페이지 링크 -->
+                </div>
         </div>
     </body>
 </html>

@@ -28,7 +28,7 @@ public class UserDataDAO {
         String sql = "select * from user_account_sj where user_email=?";
 
        try {
-           con = DBManager.connection();
+           con = DBManager.connect();
            pstmt = con.prepareStatement(sql);
            pstmt.setString(1, "user1@example.com");
            rs = pstmt.executeQuery();
@@ -58,7 +58,7 @@ public class UserDataDAO {
         String sql = "select * from review_info_sjsj where review_nickname=?";
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "John123");
             rs = pstmt.executeQuery();
@@ -91,7 +91,7 @@ public class UserDataDAO {
         String sql = "select * from reservation_info_sj where reservation_email=?";
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "example@email.com");
             //나중에 이메일부분 real DB 변경시 파라미터값 대체 필요
@@ -127,7 +127,7 @@ public class UserDataDAO {
 
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "user@example.com");
             rs = pstmt.executeQuery();
@@ -165,7 +165,7 @@ public class UserDataDAO {
         try {
             // 업로드 기능
             MultipartRequest mr = new MultipartRequest(request, path, 1024*1024*20, "utf-8", new DefaultFileRenamePolicy());
-            con = DBManager.connection();
+            con = DBManager.connect();
             String user_nickname = mr.getParameter("user_nickname");
             String user_email  = mr.getParameter("user_email");
             String newImg = mr.getFilesystemName("newImg");

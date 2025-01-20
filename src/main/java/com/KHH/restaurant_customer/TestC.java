@@ -11,8 +11,7 @@ import java.io.IOException;
 public class TestC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("그라라라라ㅏㄱ");
-        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/main.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
