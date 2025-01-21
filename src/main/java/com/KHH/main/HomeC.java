@@ -1,4 +1,4 @@
-package com.KHH.homepage;
+package com.KHH.main;
 
 import com.KHH.shopSimple.ShopDAO;
 
