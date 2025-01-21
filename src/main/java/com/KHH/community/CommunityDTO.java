@@ -71,4 +71,5 @@ public class CommunityDTO {
     public void setReadcnt(int readcnt) {
         this.readcnt = readcnt;
     }
+
 }

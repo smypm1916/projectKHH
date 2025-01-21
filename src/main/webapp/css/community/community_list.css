@@ -26,26 +26,97 @@ h1{
 
 .count_item {
     padding-top: 30px;
-    padding-left: 30px;
     font-size: 18px;
     font-style: normal;
     font-family: 'BMJUA',serif;
     color: rgb(70, 44, 32);
     height: 35px;
-    width: 70%;
+    width: 8%;
 }
-
+.content_upload{
+    width: 45%;
+    padding-left: 10px;
+}
+.content_upload button{
+    background-color: rgb(205, 187, 173);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 3px rgb(70, 44, 32) solid;
+    width: 100px;
+    height: 40px;
+    font-size: 13pt;
+    font-family: 'BMJUA',serif;
+    font-weight: 70;
+    font-style: normal;
+    color: rgb(70, 44, 32);
+}
+.content_upload button:hover{
+    background-color: rgb(70, 44, 32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 3px rgb(205, 187, 173) solid;
+    width: 100px;
+    height: 40px;
+    font-size: 13pt;
+    font-family: 'BMJUA',serif;
+    font-weight: 70;
+    font-style: normal;
+    color: rgb(205, 187, 173);
+}
 .search_item {
     display: flex;
     height: 40px;
-    width: 30%;
+    width: 47%;
+    padding-left: 5px;
 }
-
+.search_select{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+.search_select label{
+    font-size: 20px;
+    font-style: normal;
+    font-family: 'BMJUA',serif;
+    color: rgb(70, 44, 32);
+}
+.select_title{
+    width: 20%;
+    padding-top: 10px;
+    padding-left: 23px;
+}
+.select_select{
+    width: 80%;
+    padding-left: 0px;
+}
+.search_select select{
+    margin-top: 3.3px;
+    width: 170px;
+    height: 35px;
+    border-radius: 13px;
+    border: 3px rgb(70, 44, 32) solid;
+    padding-left: 10px;
+    font-size: 18px;
+    font-family: 'BMJUA',serif;
+    font-weight: 70;
+    font-style: normal;
+}
 .search_item input {
+    margin-top: 3.3px;
+    padding-left: 10px;
     margin-right: 10px;
     width: 260px;
     height: 35px;
-    border-radius: 15px;
+    font-size: 18px;
+    font-family: 'BMJUA',serif;
+    font-weight: 70;
+    font-style: normal;
+    border-radius: 13px;
     border: 3px rgb(70, 44, 32) solid;
 }
 
