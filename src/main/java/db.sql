@@ -1,46 +1,5 @@
-create table USER_ACCOUNT_sj
-(
-    USER_EMAIL    VARCHAR2(20 char) primary key,
-    USER_PW       VARCHAR2(20 char) not null,
-    USER_NAME     VARCHAR2(20 char) not null,
-    USER_BIRTH    VARCHAR2(20 char) not null,
-    USER_ADDR     VARCHAR2(50 char) not null,
-    USER_TEL      VARCHAR2(20 char) not null,
-    USER_GEN      VARCHAR2(10 char) not null
-        constraint CHECK_USER_GEN_sj
-            check (user_gen IN ('m', 'f')),
-    USER_NICKNAME VARCHAR2(20 char) not null
-        constraint UNIQUE_USER_NICKNAME_sj
-            unique,
-    USER_GRADE    VARCHAR2(20 char) not null,
-    USER_PICTURE  VARCHAR2(200 char)
-);
 
-INSERT INTO USER_ACCOUNT_sj (
-    USER_EMAIL,
-    USER_PW,
-    USER_NAME,
-    USER_BIRTH,
-    USER_ADDR,
-    USER_TEL,
-    USER_GEN,
-    USER_NICKNAME,
-    USER_GRADE,
-    USER_PICTURE
-) VALUES (
-             'user1@example.com', -- USER_EMAIL
-             'password123',       -- USER_PW
-             'John Doe',          -- USER_NAME
-             '1990-01-01',        -- USER_BIRTH
-             '123 Main St, City', -- USER_ADDR
-             '010-1234-5678',     -- USER_TEL
-             'm',                 -- USER_GEN (male)
-             'John123',           -- USER_NICKNAME
-             'Gold',              -- USER_GRADE
-             'profile1.jpg'       -- USER_PICTURE
-         );
-
-INSERT INTO USER_ACCOUNT_sj (
+INSERT INTO USER_ACCOUNT(
     USER_EMAIL,
     USER_PW,
     USER_NAME,
@@ -53,161 +12,126 @@ INSERT INTO USER_ACCOUNT_sj (
     USER_PICTURE
 ) VALUES (
              'user2@example.com', -- USER_EMAIL
-             'password123',       -- USER_PW
-             '조조',          -- USER_NAME
-             '1990-01-01',        -- USER_BIRTH
-             '123 Main St, City', -- USER_ADDR
+             'user2',       -- USER_PW
+             '조수진',          -- USER_NAME
+             '1997-11-29',        -- USER_BIRTH
+             '서울특별시 마포구 상암동', -- USER_ADDR
              '010-1234-5678',     -- USER_TEL
-             'm',                 -- USER_GEN (male)
-             '조조',           -- USER_NICKNAME
+             'f',                 -- USER_GEN (male)
+             '죠죠',           -- USER_NICKNAME
              'Gold',              -- USER_GRADE
              'profile1.jpg'       -- USER_PICTURE
          );
 
-create table RESERVATION_INFO_sj(
-    RESERVATION_NO NUMBER(3) primary key,
-        RESERVATION_SHOP NUMBER(3) not null,
-    RESERVATION_EMAIL VARCHAR2(20 char) not null,
-    RESERVATION_NAME VARCHAR2(20 char) not null,
-    RESERVATION_TEL VARCHAR2(20 char) not null,
-    RESERVATION_DATE VARCHAR2(20 char) not null,
-    RESERVATION_PEOPLE NUMBER(3)
-);
-insert into RESERVATION_INFO_sj values ('5','100','user2@example.com','조조','310100','2025-01-01','4');
-
-insert into RESERVATION_INFO_sj values ('5','100','user2@example.com','조조','310100','2025-01-01','4');
-select * from RESERVATION_INFO_sj;
-INSERT INTO RESERVATION_INFO_sj (
-    RESERVATION_NO,
-    RESERVATION_SHOP,
-    RESERVATION_EMAIL,
-    RESERVATION_NAME,
-    RESERVATION_TEL,
-    RESERVATION_DATE,
-    RESERVATION_PEOPLE
-) VALUES (
-             1,
-             101,
-             'example@email.com',
-             'John Doe',
-             '010-1234-5678',
-             '2025-01-20',
-             4
-         );
+select * from USER_ACCOUNT;
 
 
-INSERT INTO RESERVATION_INFO_sj (
-    RESERVATION_NO,
-    RESERVATION_SHOP,
-    RESERVATION_EMAIL,
-    RESERVATION_NAME,
-    RESERVATION_TEL,
-    RESERVATION_DATE,
-    RESERVATION_PEOPLE
-) VALUES (
-             6,
-             101,
-             'user2@example.com',
-             '조조',
-             '010-1234-5678',
-             '2025-01-20',
-             4
-         );
-INSERT INTO RESERVATION_INFO_sj (
-    RESERVATION_NO,
-    RESERVATION_SHOP,
-    RESERVATION_EMAIL,
-    RESERVATION_NAME,
-    RESERVATION_TEL,
-    RESERVATION_DATE,
-    RESERVATION_PEOPLE
-) VALUES (
-             3,
-             100,
-             'user2@email.com',
-             '조조',
-             '010-1234-5678',
-             '2025-01-20',
-             2
-         );
+insert into RESERVATION_INFO
+values
+    ('1','1','user2@example.com','조수진',
+     '010-3385-6138','2025-03-02','4');
+
+insert into RESERVATION_INFO
+values
+    ('2','2','user2@example.com','조수진',
+     '010-3385-6138','2025-03-03','2');
+
+insert into RESERVATION_INFO
+values
+    ('4','5','user2@example.com','조수진',
+     '010-3385-6138','2025-03-07','4');
+insert into RESERVATION_INFO
+values
+    ('6','7','user2@example.com','조수진',
+     '010-3385-6138','2025-03-02','4');
 
 
+select * from RESERVATION_INFO;
 
-create table SCRAP_SHOP_sj (
-    SCRAP_NO NUMBER(3) primary key ,
-    SCRAP_EMAIL varchar2(20 char) not null,
-    SCRAP_SHOP NUMBER(3) not null,
-    SCRAP_DATE DATE not null
-);
+select * from SCRAP_SHOP;
 
-INSERT INTO SCRAP_SHOP_sj (SCRAP_NO, SCRAP_EMAIL, SCRAP_SHOP, SCRAP_DATE)
-VALUES (1, 'user@example.com', 101, TO_DATE('2025-01-16', 'YYYY-MM-DD'));
+INSERT INTO SCRAP_SHOP (SCRAP_NO, SCRAP_EMAIL, SCRAP_SHOP, SCRAP_DATE)
+VALUES (1, 'user2@example.com', 1, TO_DATE('2025-03-10', 'YYYY-MM-DD'));
 
-INSERT INTO SCRAP_SHOP_sj (SCRAP_NO, SCRAP_EMAIL, SCRAP_SHOP, SCRAP_DATE)
-VALUES (2, 'user2@example.com', 102, TO_DATE('2025-01-16', 'YYYY-MM-DD'));
+insert into OWNER_ACCOUNT values ('nakamiri@test.com','nakamiri','なかみりあずか','1999-03-03','031-418-6138','nakazzang','nakazzangdesu.','naka.jpg');
+INSERT INTO OWNER_ACCOUNT VALUES('tanakayo@test.com', 'tanakayo', '田中洋子', '1988-07-15', '010-5212-6578', 'tanakayo', 'yokotanaka123.', 'yoko.jpg');
+insert into OWNER_ACCOUNT values ('yamadako@test.com', 'yamadako', '山田康子', '1995-10-20', '011-3333-4444', 'yamako', 'yamako_dreams.', 'yamako.jpg');
+insert into OWNER_ACCOUNT values ('suzukike@test.com', 'suzukike', '鈴木恵', '1992-01-05', '012-4556-7890', 'suzukei', 'kei_lovesushi.', 'kei.jpg');
+insert into OWNER_ACCOUNT values ('uchidayu@test.com', 'uchidayu', '内田優', '1985-11-25', '042-123-9876', 'yuchida', 'uchiworld.', 'uchida.jpg');
 
-INSERT INTO SCRAP_SHOP_sj (SCRAP_NO, SCRAP_EMAIL, SCRAP_SHOP, SCRAP_DATE)
-VALUES (3, 'user2@example.com', 100, TO_DATE('2025-01-16', 'YYYY-MM-DD'));
+insert into SHOP_INFO values ('1','nakamiri@test.com','회전초밥 네무로 하나마루 (回転寿司 根室花まる)',' 〒087-0045 北海道根室市花園町9丁目35','0153-24-1444','네무로에서 시작된 회전초밥 체인점으로 신선한 해산물을 사용한 다양한 초밥을 제공합니다 ','11:00-21:00','일본어');
+-- 동구리 오도리점
+INSERT INTO SHOP_INFO VALUES (
+                                 '2',
+                                 'tanakayo@test.com',
+                                 '동구리 오도리점 (どんぐり大通店)',
+                                 '〒060-0042 北海道札幌市中央区大通西1丁目13 ル・トロワ1階',
+                                 '011-210-5252',
+                                 '삿포로 시내를 거점으로 여러 매장을 운영하는 베이커리로, 홋카이도 특산물인 치쿠와빵의 발상지로 유명합니다.',
+                                 '10:00~21:00',
+                                 '일본어'
+                             );
 
+-- 아시안 바 라마이 삿포로 중앙점
+INSERT INTO SHOP_INFO VALUES (                                 '7',
+                                 'yamadako@test.com',
+                                 '아시안 바 라마이 삿포로 중앙점 (アジアンバー ラマイ札幌中央店)',
+                                 '〒064-0804 北海道札幌市中央区南4条西10丁目1005-4 コンフォモール札幌 1階',
+                                 '011-211-0697',
+                                 '수프카레로 유명한 체인점으로, 인도네시아 발리섬의 분위기를 느낄 수 있는 인테리어가 특징입니다.',
+                                 '11:30~23:00',
+                                 '일본어'
+                             );
 
-create table REVIEW_INFO_sjsj (
-    REVIEW_NO NUMBER(3) PRIMARY KEY ,
-    REVIEW_SHOP NUMBER(3) not null,
-    REVIEW_CONTENT VARCHAR2(1000 CHAR) not null ,
-    REVIEW_DATE DATE not null,
-    REVIEW_NICKNAME VARCHAR2(20 CHAR) not null,
-    REVIEW_STAR NUMBER(3) not null
-);
+-- 카레숍 인디언 마치나카점
+INSERT INTO SHOP_INFO VALUES (
+                                 '4',
+                                 'suzukike@test.com',
+                                 '카레숍 인디언 마치나카점 (カレーショップ インデアン まちなか店)',
+                                 '〒080-0012 北海道帯広市西2条南10丁目7-1',
+                                 '0155-23-5164',
+                                 '오비히로 등 도카치 지방에서 인기 있는 카레 체인점으로, 가정적인 맛의 카레를 제공합니다. 특히 인디언 카레가 대표 메뉴입니다.',
+                                 '11:00~20:00',
+                                 '일본어'
+                             );
 
-create table SHOP_INFO_sj (
-    SHOP_NO number(3) primary key,
-    SHOP_OWNER Varchar2(20 char) not null,
-    SHOP_NAME varchar2(20 char) not null,
-    SHOP_ADDR varchar2(20 char) not null,
-    SHOP_TEL varchar2(20 char) not null,
-    SHOP_CONTENT varchar2(1000 char) not null,
-    SHOP_OPENTIME varchar2(20 char) not null,
-    SHOP_ADDRTYPE varchar2(20 char) not null);
+-- 우미에 미나미3조점
+INSERT INTO SHOP_INFO VALUES (
+                                 '5',
+                                 'uchidayu@test.com',
+                                 '우미에 미나미3조점 (海へ 南3条店)',
+                                 '〒060-0063 北海道札幌市中央区南3条西3丁目3 Gダイニング札幌ビル 1F',
+                                 '011-222-8080',
+                                 '제철 생선을 사용한 다양한 해산물 요리를 맛볼 수 있는 가게로, 사시미, 스시, 해산물 덮밥 등을 제공합니다. 차분한 분위기에서 식사를 즐길 수 있습니다.',
+                                 '17:00~24:00',
+                                 '일본어'
+                             );
 
-insert into SHOP_INFO_sj values ('101','백종원','백종원의 골목식당','서울특별시 종로구','031-418-6138','골목에 숨어있는 찐맛집 ','19:00','한글');
-insert into SHOP_INFO_sj values ('100','백종탁','골목식당','서울특별시 종로구','031-218-6138','회맛집 ','19:00','한글');
-insert into SHOP_INFO_sj values ('102','백승원','골목식당23','서울특별시 종로구','031-118-6138','곱창 찐맛집 ','19:00','한글');
+-- 하세가와 스토어 베이 와이점
+INSERT INTO SHOP_INFO VALUES (
+                                 '6',
+                                 'nakamiri@test.com',
+                                 '하세가와 스토어 베이 와이점 (ハセガワストア ベイエリア店)',
+                                 '〒040-0053 北海道函館市末広町23-5',
+                                 '0138-24-0024',
+                                 '하코다테 지역의 편의점으로, 명물인 야키토리 벤토를 판매합니다. 1978년 출시 이후 변함없는 인기를 자랑하는 도시락 메뉴입니다.',
+                                 '24시간 영업',
+                                 '일본어'
+                             );
+select * from SHOP_INFO;
+INSERT INTO REVIEW_INFO (REVIEW_NO, REVIEW_SHOP, REVIEW_CONTENT, REVIEW_DATE, REVIEW_NICKNAME, REVIEW_STAR)
+VALUES (6, 5, '역 근처라서 접근성도 좋고 맛도 넘 좋아용!', TO_DATE('2025-01-12', 'YYYY-MM-DD'), '조조', 5);
 
+<-- delete from review_info where REVIEW_NO=6;-->
 
-SELECT review_shop, review_content, review_date, review_nickname, shop_name FROM review_info_sjsj, shop_info sj WHERE review_nickname = '조조';
-
-select * from SHOP_INFO_sj;
-INSERT INTO REVIEW_INFO_sjsj (REVIEW_NO, REVIEW_SHOP, REVIEW_CONTENT, REVIEW_DATE, REVIEW_NICKNAME, REVIEW_STAR)
-VALUES (3, 101, 'Great shop!', TO_DATE('2025-01-16', 'YYYY-MM-DD'), '조조', 5);
-
-insert into REVIEW_INFO_sjsj values ('2','2','존맛탱 홍게집','2025-03-03','조조','4');
-insert into REVIEW_INFO_sjsj values ('3','3','존맛탱 고구마집','2025-03-05','조망망','2');
-insert into REVIEW_INFO_sjsj values ('4','3','존맛탱 고구마집','2025-03-05','조조','2');
-insert into REVIEW_INFO_sjsj values ('5','3','존맛탱 회집','2025-03-05','조조','2');
-insert into REVIEW_INFO_sjsj values ('6','3','존맛탱 치킨집','2025-03-05','조조','2');
-
-
-create table shop_image_sj (
-    SHOP_NO number(3) primary key ,
-    SHOP_IMAGE varchar2(20 char) not null,
-    IMAGE_TYPE varchar2(20 char) not null
-);
-INSERT INTO SHOP_IMAGE_sj values (101, 'aa.img','main');
-INSERT INTO SHOP_IMAGE_sj values (100, 'aa.img','main');
-update RESERVATION_INFO_sj set RESERVATION_SHOP = 3 where reservation_no = 1;
-INSERT INTO SHOP_IMAGE_sj values (102, 'aa.img','main');
-
-SELECT shop_name, scrap_date, shop_image, scrap_email FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = 'user@example.com';
+select * from REVIEW_INFO;
+INSERT INTO SHOP_IMAGE values (1, 'mise1.img','main');
+INSERT INTO SHOP_IMAGE values (2, 'mise2.img','main');
+INSERT INTO SHOP_IMAGE values (3, 'mise3.img','main');
 
 
 
-select * from RESERVATION_INFO_SJ;
-select * from SCRAP_SHOP_SJ;
-select * from REVIEW_INFO_sjsj;
-
-select * from USER_ACCOUNT_SJ;
-
-select * from review_info_sjsj where review_nickname='John123';
+select * from RESERVATION_INFO;
 
 SELECT review_shop, review_content, review_date, review_nickname, shop_name
 FROM review_info_sjsj r, shop_info_sj s
@@ -236,6 +160,7 @@ SELECT review_shop, review_content, review_date, review_nickname, shop_name
 select * from USER_ACCOUNT_SJ;
 SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content, shop_opentime FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = 'user2@example.com';
 
-select * from MENU_INFO where MENU_SHOP=21;
+select * from COMMENT_INFO;
+select * from USER_ACCOUNT;
 
 select * from user_account_sj where user_email='user2@example.com';
