@@ -14,7 +14,7 @@ public class CommunityListController extends HttpServlet {
         CommunityDAO.countCommunityData(req);
         CommunityDAO.selectAllList(req);
         req.setAttribute("content", "/jsp/community/community_list.jsp");
-        req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
     }
 
     @Override

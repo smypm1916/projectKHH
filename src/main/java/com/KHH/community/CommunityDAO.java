@@ -7,14 +7,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.*;
 
-import java.io.File;
 import java.util.List;
 
 public class CommunityDAO {
@@ -35,19 +32,19 @@ public class CommunityDAO {
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 request.setAttribute("count", rs.getInt(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             DBManager.close(con, pst, rs);
         }
     }
 
     public static void selectAllList(HttpServletRequest request) {
         Connection con = null;
-        PreparedStatement pstmt = null;
+        PreparedStatement pst = null;
         ResultSet rs = null;
 
         String sql = "select * from community_info order by community_no DESC";
@@ -57,10 +54,10 @@ public class CommunityDAO {
 
         try {
             con = DBManager.connect();
-            pstmt = con.prepareStatement(sql);
-            rs = pstmt.executeQuery();
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 com = new CommunityDTO();
                 com.setNo(rs.getInt(1));
                 com.setTitle(rs.getString(2));
@@ -73,8 +70,8 @@ public class CommunityDAO {
             request.setAttribute("coms", coms);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            DBManager.close(con, pstmt, rs);
+        } finally {
+            DBManager.close(con, pst, rs);
         }
     }
 
@@ -90,12 +87,12 @@ public class CommunityDAO {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, no);
-            if(pstmt.executeUpdate() == 1) {
+            if (pstmt.executeUpdate() == 1) {
                 System.out.println("조회수 업데이트 성공");
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             DBManager.close(con, pstmt, null);
         }
     }
@@ -116,7 +113,7 @@ public class CommunityDAO {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, no);
             rs = pstmt.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 com = new CommunityDTO();
                 com.setNo(rs.getInt(1));
                 com.setTitle(rs.getString(2));
@@ -128,8 +125,12 @@ public class CommunityDAO {
             request.setAttribute("com", com);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            DBManager.close(con, pstmt, rs);
+        } finally {
+            try {
+                DBManager.close(con, pstmt, rs);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -143,9 +144,9 @@ public class CommunityDAO {
         String no = req.getParameter("no");
         String page = req.getParameter("page");
 
-        if(page.equals("prev")){
+        if (page.equals("prev")) {
             sql = "SELECT * FROM community_info WHERE community_no > ? ORDER BY community_no DESC";
-        }else if(page.equals("next")){
+        } else if (page.equals("next")) {
             sql = "SELECT * FROM community_info WHERE community_no < ? ORDER BY community_no ASC";
         }
 
@@ -156,7 +157,7 @@ public class CommunityDAO {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, no);
             rs = pstmt.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 com = new CommunityDTO();
                 com.setNo(rs.getInt(1));
                 com.setTitle(rs.getString(2));
@@ -168,7 +169,7 @@ public class CommunityDAO {
             req.setAttribute("com", com);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             DBManager.close(con, pstmt, rs);
         }
     }
@@ -182,9 +183,9 @@ public class CommunityDAO {
         String value = req.getParameter("value");
 
         String sql = "";
-        if(item.equals("title")){
+        if (item.equals("title")) {
             sql = "select * from community_info where community_title like ? order by community_no DESC";
-        }else if(item.equals("writer")){
+        } else if (item.equals("writer")) {
             sql = "select * from community_info where community_nickname like ? order by community_no DESC";
         }
 
@@ -194,10 +195,10 @@ public class CommunityDAO {
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,"%"+value+"%");
+            pstmt.setString(1, "%" + value + "%");
             rs = pstmt.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 com = new CommunityDTO();
                 com.setNo(rs.getInt(1));
                 com.setTitle(rs.getString(2));
@@ -210,7 +211,7 @@ public class CommunityDAO {
             req.setAttribute("coms", coms);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             DBManager.close(con, pstmt, rs);
         }
     }
@@ -224,29 +225,29 @@ public class CommunityDAO {
         String value = req.getParameter("value");
 
         String sql = "";
-        if(item.equals("title")){
+        if (item.equals("title")) {
             sql = "select count(*) from community_info where community_title like ?";
-        }else if(item.equals("writer")){
+        } else if (item.equals("writer")) {
             sql = "select count(*) from community_info where community_nickname like ?";
         }
 
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,"%"+value+"%");
+            pstmt.setString(1, "%" + value + "%");
             rs = pstmt.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 req.setAttribute("count", rs.getInt(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             DBManager.close(con, pstmt, rs);
         }
     }
 
-    public static int getCommunityPK(){
+    public static int getCommunityPK() {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -258,19 +259,19 @@ public class CommunityDAO {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 no = rs.getInt(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             DBManager.close(con, pstmt, rs);
         }
-        System.out.println("pk최댓값: "+no);
-        return no+1;
+        System.out.println("pk최댓값: " + no);
+        return no + 1;
     }
 
-    public static void insertCommunityAndImages(HttpServletRequest req){
+    public static void insertCommunityAndImages(HttpServletRequest req) {
         String path = req.getServletContext().getRealPath("image/community");
         System.out.println(path);
         File directory = new File(path);
