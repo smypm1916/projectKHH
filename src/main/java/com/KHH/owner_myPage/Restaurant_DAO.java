@@ -220,31 +220,31 @@ public class Restaurant_DAO {
         return no + 1;
     }
 
-    public static String GetOwnerName(HttpServletRequest request) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        String sql = "select owner_name from owner_account where owner_email=?";
-        String ownerName = null;
-        try {
-            con = DBManager.connect();
-            pstmt = con.prepareStatement(sql);
-//            pstmt.setString(1, request.getParameter("email"));
-            pstmt.setString(1, "jj@naver.com");
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                ownerName = rs.getString("owner_name");
+//    public static String GetOwnerName(HttpServletRequest request) {
+//        Connection con = null;
+//        PreparedStatement pstmt = null;
+//        ResultSet rs = null;
+//        String sql = "select owner_name from owner_account where owner_email=?";
+//        String ownerName = null;
+//        try {
+//            con = DBManager.connect();
+//            pstmt = con.prepareStatement(sql);
+////            pstmt.setString(1, request.getParameter("email"));
+//            pstmt.setString(1, "jj@naver.com");
+//            rs = pstmt.executeQuery();
+//            if (rs.next()) {
+//                ownerName = rs.getString("owner_name");
+//
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            DBManager.close(con, pstmt, rs);
+//        }
+//        return ownerName;
+//    }
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DBManager.close(con, pstmt, rs);
-        }
-        return ownerName;
-    }
-
-    public static void InsertRestaurant(HttpServletRequest request, String ownerName) {
+    public static void InsertRestaurant(HttpServletRequest request) {
         String path = request.getServletContext().getRealPath("image/shopImage");
         Connection con = null;
         PreparedStatement pstmt1 = null;
@@ -260,7 +260,9 @@ public class Restaurant_DAO {
             upload.setSizeMax(MAX_REQUEST_SIZE);
             List<FileItem> items = upload.parseRequest(request);
             int no = GetShopPK();
-            String owner = ownerName;
+            String owner = "jj@naver.com";
+            System.out.println("pk:"+no);
+            System.out.println("오너이름:"+owner);
 
 
             request.setCharacterEncoding("utf-8");
@@ -313,10 +315,10 @@ public class Restaurant_DAO {
             pstmt1.setString(2, owner);
             pstmt1.setString(3, name);
             pstmt1.setString(4, address);
-            pstmt1.setString(5, region);
-            pstmt1.setString(6, phone1 + "-" + phone2 + "-" + phone3);
-            pstmt1.setString(7, content);
-            pstmt1.setString(8, week + "/" + oHour + oMinute + "/" + cHour + cMinute);
+            pstmt1.setString(5, phone1 + "-" + phone2 + "-" + phone3);
+            pstmt1.setString(6, content);
+            pstmt1.setString(7, week + "/" + oHour + oMinute + "/" + cHour + cMinute);
+            pstmt1.setString(8, region);
             if (pstmt1.executeUpdate() > 0) {
                 System.out.println("추가성공");
             }
