@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+<<<<<<< HEAD
     <file url="file://$PROJECT_DIR$/src/main/webapp/testBranch.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/target/Board-1.0-SNAPSHOT/testBranch.sql" dialect="Oracle" />
+=======
+    <file url="file://$PROJECT_DIR$/src/main/java/db.sql" dialect="Oracle" />
+>>>>>>> 7611c05694dea7a24c2cbe7789c7d733ced925a2
   </component>
 </project>

@@ -1,0 +1,167 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', 'Helvetica', 'Verdana', sans-serif; /* 고딕체 설정 */
+}
+
+/* 컨테이너 설정 */
+.container {
+    background-color: #fff;
+    color: #000;
+    width: 100vw; /* 전체 화면 너비 */
+    height: 100vh; /* 전체 화면 높이 */
+}
+
+/* 헤더 스타일 */
+.header {
+    height: 6vh; /* 화면 비율로 높이 설정 */
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    line-height: 6vh;
+}
+
+/* 네비게이션 바 스타일 */
+.nav {
+    height: 5vh; /* 화면 비율로 높이 설정 */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    line-height: 5vh;
+}
+
+/* 콘텐츠 영역 */
+.content {
+    margin-top: 6vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    height: auto;
+    border: none;
+}
+
+/* 푸터 스타일 */
+.footer {
+    height: 10vh; /* 화면 비율로 높이 설정 */
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    line-height: 10vh;
+}
+
+/* 마이페이지 */
+.mypage h1 {
+    font-size: 2vw; /* 화면 너비에 비례한 글씨 크기 */
+    color: #000;
+    margin: 1vh 0;
+}
+
+/* 좋아요한 가게 리스트 */
+.like-list {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1vh 0;
+}
+
+.like-list h2 {
+    font-size: 1.5vw; /* 화면 너비에 비례한 글씨 크기 */
+    font-weight: bold;
+    color: #000;
+}
+
+/* 가게 리스트 스타일 */
+.like-place-list-field {
+    display: flex;
+    justify-content: unset;
+    border: 1px solid #ddd;
+    margin-bottom: 1vh;
+    padding: 2vh;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.like-place-list {
+    display: contents;
+    align-items: center;
+}
+
+.like-place-list img {
+    width: 18vw; /* 화면 너비의 18% 크기 */
+    height: 18vw; /* 화면 너비의 18% 크기 */
+    border-radius: 5px;
+    margin-right: 3vw;
+}
+
+/* 가게 정보 텍스트 */
+.like-place-list div {
+    text-align: left;
+}
+
+.like-place-list h1 {
+    font-size: 1.5vw; /* 화면 너비에 비례한 글씨 크기 */
+    color: #000;
+}
+
+.like-place-list p {
+    font-size: 0.9vw; /* 화면 너비에 비례한 글씨 크기 */
+    color: #555;
+}
+
+/* 버튼 스타일 */
+input[type="button"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.8vh 1.2vw; /* 화면 비례한 패딩 */
+    font-size: 1vw; /* 화면 너비에 비례한 글씨 크기 */
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="button"]:hover {
+    background-color: #555;
+}
+
+/* 페이지 번호 */
+.bottom-list-num {
+    text-align: center;
+    margin: 1vh 0;
+}
+
+.bottom-list-num h2 {
+    font-size: 1.5vw; /* 화면 너비에 비례한 글씨 크기 */
+    font-weight: bold;
+    color: #000;
+}
+
+/* 돌아가기 버튼 */
+.bottom-return-btn {
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.bottom-return-btn input[type="button"] {
+    background-color: #000;
+    color: #fff;
+    padding: 1vh 2vw;
+    font-size: 1vw;
+    border-radius: 5px;
+}
+
+.bottom-return-btn input[type="button"]:hover {
+    background-color: #444;
+}
+
+/* 프로필 스타일 */
+.profile-field {
+    display: flex;
+    align-items: center;
+}
+
+.profile-circle img {
+    border-radius: 50%;
+    width: 10vw; /* 화면 너비의 10% 크기 */
+    height: 10vw; /* 화면 너비의 10% 크기 */
+}
