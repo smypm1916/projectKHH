@@ -265,9 +265,9 @@
         </div>
     </c:forEach>
 </div>
-
+<div id="content3" class="tab-content review-section">
 <c:forEach var="review" items="${reviews}">
-    <div id="content3" class="tab-content review-section">
+
         <div class="review">
             <div class="nickname">${review.review_nickname}</div>
             <div class="stars">
@@ -286,9 +286,9 @@
             <button class="like-button" onclick="increaseLikeCount(this)">좋아요</button>
             <span class="like-count">0</span>
         </div>
-    </div>
-</c:forEach>
 
+</c:forEach>
+</div>
 <script>
     function openTab(tabNumber) {
         var contents = document.querySelectorAll('.tab-content');

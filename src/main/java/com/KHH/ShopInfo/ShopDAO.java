@@ -115,7 +115,8 @@ public class ShopDAO {
 
        try {
            con = DBManager.connection();
-           pstmt = con.prepareStatement("select * from review_info");
+           pstmt = con.prepareStatement("select * from review_info where review_shop=?");
+           pstmt.setString(1, req.getParameter("no"));
            rs = pstmt.executeQuery();
            ReviewDTO review = null;
            ArrayList<ReviewDTO>reviews = new ArrayList<>();
