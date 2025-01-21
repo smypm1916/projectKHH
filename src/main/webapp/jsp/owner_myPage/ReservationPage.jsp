@@ -197,6 +197,7 @@
                 <div class="calendar-months">
                     <!-- JavaScript로 동적으로 채워질 부분 -->
                 </div>
+                <input hidden="hidden" name="no" value="">
                 <div class="nav-buttons" style="border: none">
                     <button onclick="prevSlide()">이전 달</button>
                     <button onclick="nextSlide()">다음 달</button>
