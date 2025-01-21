@@ -10,10 +10,12 @@
 <head>
     <title>회원가입 완료</title>
     <link rel="stylesheet" href="../../css/signup/signUp.css">
-    
+
 </head>
 <body>
 <h1>회원가입 완료</h1>
+<br><br><br>
+<h3>환영합니다</h3>
 <a href="/HomeC">메인 화면으로 돌아가기</a>
 </body>
 </html>
