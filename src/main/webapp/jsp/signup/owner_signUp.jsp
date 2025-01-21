@@ -45,7 +45,7 @@
         <h1>점주 회원 가입</h1>
         <p>필요한 정보 입력 후에 다음 버튼을 입력해주세요.</p>
 
-        <form action="SignUpC" method="post">
+        <form action="owner_signUp_check.jsp" method="post">
 
             <!-- 회원 유형 선택 -->
             <div class="form-group">
@@ -122,7 +122,7 @@
                     <button type="submit"
                             style=""
                             class="util-btn"
-                            name="submit" onclick="location.href='signup_check.jsp'">입력 확인
+                            name="submit" onclick="location.href='user_signUp_check.jsp'">입력 확인
                     </button>
                     <br>
                     <button class="util-btn" type="button" onclick="location.href='/HomeC'">

@@ -10,8 +10,8 @@
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 
-<%--    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">--%>
-\
+    <%--    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">--%>
+    \
 
     <!-- Daum Postalcode API -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -51,7 +51,7 @@
 
         <p>필요한 정보 입력 후에 입력 확인 버튼을 입력해주세요.</p>
 
-        <form action="SignUpC" method="post">
+        <form action="user_signUp_check.jsp" method="post">
 
             <div class="input-wrapper">
                 <br>
@@ -152,7 +152,7 @@
                 <button type="submit"
                         style=""
                         class="util-btn"
-                        name="submit" onclick="location.href='signup_check.jsp'">입력 확인
+                        name="submit" onclick="location.href='user_signUp_check.jsp'">입력 확인
                 </button>
                 <br>
                 <button class="util-btn" type="button" onclick="location.href='/HomeC'">

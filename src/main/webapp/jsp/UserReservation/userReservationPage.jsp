@@ -11,7 +11,7 @@
 </head>
 <body>
 			<div class="mypage" style="border: none;">
-				<h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
+				<h1 onclick="location.href='UserC'">MyPage </h1>
 			</div>
 			<br>
 			<hr>
@@ -22,23 +22,23 @@
 			<br>
 
 
-
+<c:forEach items="${myreservations}" var="myreservation">
 			<div class="reserv-place-list-field" style="border: solid 1px;">
 				<div class="reserv-place-list">
 					<img
-						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						alt="place-name">
+						src="${myreservation.shop_image}" alt="place-name">
 					<div style="border: none; text-align: left; margin-left: 30px">
 						<h1>
-							<span>😋</span>예약한 가게명
+							<span>😋</span> ${myreservation.shop_name}
 							<br>
-							예약일시 / 예약인원
+							 <p>예약일정 : ${myreservation.reservation_date} </p>
+							 <p>예약인원 : ${myreservation.reservation_people} 명</p>
 						</h1>
 						<div style="border: none;">
-							<h2>가게 상세주소</h2>
-							<p	>영업시간</p>
-							<p>예약자 이름 : 000</p>
-							<p>예약자 전화번호 : 000</p>
+							<h2> 가게 주소 : ${myreservation.shop_addr}</h2>
+							<p> 가게 연락처 : ${myreservation.shop_tel}</p>
+							<p>예약자 이름 : ${myreservation.reservation_name}</p>
+							<p>예약자 전화번호 : ${myreservation.reservation_tel}</p>
 
 						</div>
 					</div>
@@ -47,95 +47,20 @@
 					<input type="button" value="가게 정보 보기">
 				</div>
 			</div>
-
-			<div class="reserv-place-list-field" style="border: solid 1px;">
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-							<h1>
-							<span>😋</span>예약한 가게명
-							<br>
-							예약일시 / 예약인원
-						</h1>
-						<div style="border: none;">
-							<h2>가게 상세주소</h2>
-							<p	>영업시간</p>
-							<p>예약자 이름 : 000</p>
-							<p>예약자 전화번호 : 000</p>
-
-						</div>
-					</div>
-				</div>
-			<div style="border: none; align-content: center; margin-left: 80px;">
-					<input type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
-
-			<div class="reserv-place-list-field" style="border: solid 1px;">
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h1>
-							<span>😋</span>예약한 가게명
-							<br>
-							예약일시 / 예약인원
-						</h1>
-						<div style="border: none;">
-							<h2>가게 상세주소</h2>
-							<p	>영업시간</p>
-							<p>예약자 이름 : 000</p>
-							<p>예약자 전화번호 : 000</p>
-
-						</div>
-					</div>
-				</div>
-			<div style="border: none; align-content: center; margin-left: 80px;">
-					<input type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
-
-
-			<div class="reserv-place-list-field" style="border: solid 1px;">
-				<div class="reserv-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h1>
-							<span>😋</span>예약한 가게명
-							<br>
-							예약일시 / 예약인원
-						</h1>
-						<div style="border: none;">
-							<h2>가게 상세주소</h2>
-							<p	>영업시간</p>
-							<p>예약자 이름 : 000</p>
-							<p>예약자 전화번호 : 000</p>
-
-						</div>
-					</div>
-				</div>
-			<div style="border: none; align-content: center; margin-left: 80px;">
-					<input type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
-
+</c:forEach>
 			<br> <br>
 
 			<div class="bottom-list-num" style="border: none;">
-				<h2>1 2 3 4 (나중에 구현) ></h2>
+				<a href="UserReservationPageC?p=1"> <<  </a>
+				<c:forEach begin = "1" end = "${pageCount }" var = "i">
+					<a href="UserReservationPageC?p=${i }">[${i }] </a>
+				</c:forEach>
+				<a href="UserReservationPageC?p=${pageCount }"> >> </a>
 			</div>
 
 			<div class="bottom-return-btn"
 				style="border: none; align-content: center;">
-				<input type="button" value="마이페이지로 돌아가기">
+				<input onclick="location.href='UserC'" type="button" value="마이페이지로 돌아가기">
 			</div>
 
 

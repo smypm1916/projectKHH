@@ -40,6 +40,30 @@ INSERT INTO USER_ACCOUNT_sj (
              'profile1.jpg'       -- USER_PICTURE
          );
 
+INSERT INTO USER_ACCOUNT_sj (
+    USER_EMAIL,
+    USER_PW,
+    USER_NAME,
+    USER_BIRTH,
+    USER_ADDR,
+    USER_TEL,
+    USER_GEN,
+    USER_NICKNAME,
+    USER_GRADE,
+    USER_PICTURE
+) VALUES (
+             'user2@example.com', -- USER_EMAIL
+             'password123',       -- USER_PW
+             '조조',          -- USER_NAME
+             '1990-01-01',        -- USER_BIRTH
+             '123 Main St, City', -- USER_ADDR
+             '010-1234-5678',     -- USER_TEL
+             'm',                 -- USER_GEN (male)
+             '조조',           -- USER_NICKNAME
+             'Gold',              -- USER_GRADE
+             'profile1.jpg'       -- USER_PICTURE
+         );
+
 create table RESERVATION_INFO_sj(
     RESERVATION_NO NUMBER(3) primary key,
         RESERVATION_SHOP NUMBER(3) not null,
@@ -49,9 +73,10 @@ create table RESERVATION_INFO_sj(
     RESERVATION_DATE VARCHAR2(20 char) not null,
     RESERVATION_PEOPLE NUMBER(3)
 );
+insert into RESERVATION_INFO_sj values ('5','100','user2@example.com','조조','310100','2025-01-01','4');
 
-
-
+insert into RESERVATION_INFO_sj values ('5','100','user2@example.com','조조','310100','2025-01-01','4');
+select * from RESERVATION_INFO_sj;
 INSERT INTO RESERVATION_INFO_sj (
     RESERVATION_NO,
     RESERVATION_SHOP,
@@ -71,6 +96,41 @@ INSERT INTO RESERVATION_INFO_sj (
          );
 
 
+INSERT INTO RESERVATION_INFO_sj (
+    RESERVATION_NO,
+    RESERVATION_SHOP,
+    RESERVATION_EMAIL,
+    RESERVATION_NAME,
+    RESERVATION_TEL,
+    RESERVATION_DATE,
+    RESERVATION_PEOPLE
+) VALUES (
+             6,
+             101,
+             'user2@example.com',
+             '조조',
+             '010-1234-5678',
+             '2025-01-20',
+             4
+         );
+INSERT INTO RESERVATION_INFO_sj (
+    RESERVATION_NO,
+    RESERVATION_SHOP,
+    RESERVATION_EMAIL,
+    RESERVATION_NAME,
+    RESERVATION_TEL,
+    RESERVATION_DATE,
+    RESERVATION_PEOPLE
+) VALUES (
+             3,
+             100,
+             'user2@email.com',
+             '조조',
+             '010-1234-5678',
+             '2025-01-20',
+             2
+         );
+
 
 
 create table SCRAP_SHOP_sj (
@@ -83,6 +143,11 @@ create table SCRAP_SHOP_sj (
 INSERT INTO SCRAP_SHOP_sj (SCRAP_NO, SCRAP_EMAIL, SCRAP_SHOP, SCRAP_DATE)
 VALUES (1, 'user@example.com', 101, TO_DATE('2025-01-16', 'YYYY-MM-DD'));
 
+INSERT INTO SCRAP_SHOP_sj (SCRAP_NO, SCRAP_EMAIL, SCRAP_SHOP, SCRAP_DATE)
+VALUES (2, 'user2@example.com', 102, TO_DATE('2025-01-16', 'YYYY-MM-DD'));
+
+INSERT INTO SCRAP_SHOP_sj (SCRAP_NO, SCRAP_EMAIL, SCRAP_SHOP, SCRAP_DATE)
+VALUES (3, 'user2@example.com', 100, TO_DATE('2025-01-16', 'YYYY-MM-DD'));
 
 
 create table REVIEW_INFO_sjsj (
@@ -93,31 +158,48 @@ create table REVIEW_INFO_sjsj (
     REVIEW_NICKNAME VARCHAR2(20 CHAR) not null,
     REVIEW_STAR NUMBER(3) not null
 );
+
+create table SHOP_INFO_sj (
+    SHOP_NO number(3) primary key,
+    SHOP_OWNER Varchar2(20 char) not null,
+    SHOP_NAME varchar2(20 char) not null,
+    SHOP_ADDR varchar2(20 char) not null,
+    SHOP_TEL varchar2(20 char) not null,
+    SHOP_CONTENT varchar2(1000 char) not null,
+    SHOP_OPENTIME varchar2(20 char) not null,
+    SHOP_ADDRTYPE varchar2(20 char) not null);
+
+insert into SHOP_INFO_sj values ('101','백종원','백종원의 골목식당','서울특별시 종로구','031-418-6138','골목에 숨어있는 찐맛집 ','19:00','한글');
+insert into SHOP_INFO_sj values ('100','백종탁','골목식당','서울특별시 종로구','031-218-6138','회맛집 ','19:00','한글');
+insert into SHOP_INFO_sj values ('102','백승원','골목식당23','서울특별시 종로구','031-118-6138','곱창 찐맛집 ','19:00','한글');
+
+
+SELECT review_shop, review_content, review_date, review_nickname, shop_name FROM review_info_sjsj, shop_info sj WHERE review_nickname = '조조';
+
+select * from SHOP_INFO_sj;
 INSERT INTO REVIEW_INFO_sjsj (REVIEW_NO, REVIEW_SHOP, REVIEW_CONTENT, REVIEW_DATE, REVIEW_NICKNAME, REVIEW_STAR)
-VALUES (1, 101, 'Great shop!', TO_DATE('2025-01-16', 'YYYY-MM-DD'), 'John123', 5);
+VALUES (3, 101, 'Great shop!', TO_DATE('2025-01-16', 'YYYY-MM-DD'), '조조', 5);
 
 insert into REVIEW_INFO_sjsj values ('2','2','존맛탱 홍게집','2025-03-03','조조','4');
 insert into REVIEW_INFO_sjsj values ('3','3','존맛탱 고구마집','2025-03-05','조망망','2');
+insert into REVIEW_INFO_sjsj values ('4','3','존맛탱 고구마집','2025-03-05','조조','2');
+insert into REVIEW_INFO_sjsj values ('5','3','존맛탱 회집','2025-03-05','조조','2');
+insert into REVIEW_INFO_sjsj values ('6','3','존맛탱 치킨집','2025-03-05','조조','2');
 
-INSERT INTO SHOP_IMAGE values (3, 'aa.img','main');
 
+create table shop_image_sj (
+    SHOP_NO number(3) primary key ,
+    SHOP_IMAGE varchar2(20 char) not null,
+    IMAGE_TYPE varchar2(20 char) not null
+);
+INSERT INTO SHOP_IMAGE_sj values (101, 'aa.img','main');
+INSERT INTO SHOP_IMAGE_sj values (100, 'aa.img','main');
 update RESERVATION_INFO_sj set RESERVATION_SHOP = 3 where reservation_no = 1;
+INSERT INTO SHOP_IMAGE_sj values (102, 'aa.img','main');
+
+SELECT shop_name, scrap_date, shop_image, scrap_email FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = 'user@example.com';
 
 
-
-SELECT
-    ri.reservation_date,
-    ri.reservation_people,
-    si.shop_name,
-    si_img.shop_image
-FROM
-    reservation_info_sj ri,
-    shop_info si,
-    shop_image si_img
-WHERE
-    ri.reservation_email = 'example@email.com'
-  AND ri.reservation_shop = si.shop_no
-  AND si.shop_no = si_img.shop_no;
 
 select * from RESERVATION_INFO_SJ;
 select * from SCRAP_SHOP_SJ;
@@ -127,17 +209,33 @@ select * from USER_ACCOUNT_SJ;
 
 select * from review_info_sjsj where review_nickname='John123';
 
-select * from ALL_TABLES where Owner='KHH';
+SELECT review_shop, review_content, review_date, review_nickname, shop_name
+FROM review_info_sjsj r, shop_info_sj s
+WHERE
+r.REVIEW_SHOP = s.SHOP_NO and
+r.review_nickname = '조조';
 
-create table login_test_ms (
-  login_id varchar2(20 char) primary key,
-  login_password varchar2(20 char) not null,
-  login_name varchar2(20 char) not null,
-  login_email varchar2(100 char) not null
-);
+select ri.reservation_date, ri.reservation_people, si.shop_name, sim.shop_image
+FROM reservation_info_sj ri, SHOP_INFO_sj si, shop_image_sj sim
+WHERE ri.reservation_email = 'user2@example.com'
+  AND ri.reservation_shop = si.shop_no
+  AND si.shop_no = sim.shop_no;
 
-insert into login_test_ms values ('minseok', 'minseok', '김가놈', 'minse@naver.com');
-insert into login_test_ms values ('test1br', 'testpro11', 'brbr', 'test@test.com');
-insert into login_test_ms values ('mohazi', '1234', '고인물', 'mohzaiman@gmail.com');
+select * from RESERVATION_INFO_sj;
+select * from shop_image_sj;
+select * from SHOP_INFO_sj;
 
-select * from LOGIN_TEST_MS;
+
+
+SELECT review_shop, review_content, review_date, review_nickname, shop_name FROM review_info_sjsj r, shop_info_sj s
+                    WHERE
+                    r.REVIEW_SHOP = s.SHOP_NO and
+                    r.review_nickname = '조조';
+SELECT review_shop, review_content, review_date, review_nickname, shop_name
+   FROM review_info_sjsj r, shop_info_sj s WHERE r.REVIEW_SHOP = s.SHOP_NO and r.review_nickname = '조조';
+select * from USER_ACCOUNT_SJ;
+SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content, shop_opentime FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = 'user2@example.com';
+
+select * from MENU_INFO;
+
+select * from user_account_sj where user_email='user2@example.com';
