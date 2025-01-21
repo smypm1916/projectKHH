@@ -11,10 +11,10 @@
     <title> ID / PW 찾기 | KHH </title>
   </head>
   <body>
-  <h2>비밀번호 찾기</h2>
+  <h2>아이디 / 비밀번호 찾기</h2>
     <form action="" method="post">
 
-      <label for="idMail"> 가입한 메일 : </label>
+      <label for="idMail"> 사용자 메일 : </label>
       <input class="idInfo" id="idMail" name="idMail" type="email" required />
       <br>
       <label for="idName"> 사용자 이름 : </label>
