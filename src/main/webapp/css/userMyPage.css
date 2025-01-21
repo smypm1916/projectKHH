@@ -1,0 +1,271 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'Noto Sans KR', sans-serif; /* 고딕 계열 폰트 */
+    background-color: #ffffff; /* 하얀 배경 */
+    color: #000000; /* 검정 글씨 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 컨테이너 */
+.container {
+    max-width: 1100px; /* 가로 최대 넓이를 약간 줄임 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 0 20px; /* 양옆 여백 조정 */
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+/* 공통 설정 */
+div {
+    border: 1px solid #e0e0e0; /* 부드러운 테두리 */
+}
+
+/* 헤더 */
+.header {
+    width: 100%; /* 가로 길이 꽉 채움 */
+    height: 80px; /* 높이 조정 */
+    background-color: #000000; /* 검정 배경 */
+    color: #ffffff; /* 하얀 글씨 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* 네비게이션 */
+.nav {
+    width: 100%; /* 가로 길이 꽉 채움 */
+    height: 60px; /* 높이 조정 */
+    background-color: #f8f8f8; /* 연한 회색 배경 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #000000;
+}
+
+/* 메인 콘텐츠 */
+.content {
+    margin: 20px 0;
+    padding: 20px 0;
+    border: none;
+}
+
+/* 프로필 */
+.profile-field {
+    display: flex;
+    align-items: center;
+    margin: 15px 0; /* 마진 축소 */
+}
+
+
+
+.profile-field span h2 {
+    color: #000000;
+    font-size: 18px; /* 텍스트 크기 축소 */
+    font-weight: bold;
+}
+
+input[type="button"] {
+    background-color: #000000; /* 검정 버튼 */
+    color: #ffffff; /* 하얀 글씨 */
+    border: none;
+    padding: 6px 12px; /* 크기 축소 */
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+input[type="button"]:hover {
+    background-color: #333333; /* 어두운 회색 배경 */
+}
+
+/* 리뷰 */
+.review-list {
+    display: flex;
+    justify-content: space-between; /* "더보기"와 제목 정렬 */
+    align-items: center;
+}
+
+.review-list h2 {
+    font-size: 16px; /* 텍스트 크기 축소 */
+    font-weight: bold;
+    margin: 0;
+}
+
+.review-list h3 a {
+    text-decoration: none;
+    color: #000000; /* 검정 링크 */
+    font-weight: bold;
+}
+
+.review-list h3 a:hover {
+    color: #555555; /* hover 시 회색 */
+}
+
+.review-comment {
+    font-size: 12px; /* 텍스트 크기 축소 */
+    color: #4f4f4f; /* 어두운 회색 글씨 */
+}
+
+/* 예약 리스트 */
+.reservation-list {
+    display: flex;
+    justify-content: space-between; /* 제목과 더보기 정렬 */
+    align-items: center;
+}
+
+.reservation-list h2 {
+    font-size: 16px; /* 텍스트 크기 축소 */
+    font-weight: bold;
+}
+
+.reservation-list h3 a {
+    text-decoration: none;
+    color: #000000; /* 검정 링크 */
+    font-weight: bold;
+}
+
+.reservation-list h3 a:hover {
+    color: #555555; /* hover 시 회색 */
+}
+
+/* 예약한 가게 */
+.reserv-place-list-field {
+    display: flex; /* 수평 정렬 */
+    gap: 15px; /* 카드 사이 간격 축소 */
+    overflow-x: auto; /* 가로 스크롤 가능 */
+    padding-bottom: 10px;
+}
+
+.reserv-place-list {
+    text-align: center;
+    flex: 0 0 35%; /* 카드 크기 축소 */
+    box-sizing: border-box;
+}
+
+.reserv-place-list img {
+    border-radius: 5px; /* 부드러운 모서리 */
+    border: 1px solid #e0e0e0;
+    width: 100%; /* 부모 컨테이너에 맞춤 */
+    height: auto; /* 비율 유지 */
+}
+
+.reserv-place-list h2, .reserv-place-list h3 {
+    color: #000000;
+    font-size: 14px; /* 텍스트 크기 축소 */
+}
+
+/* 좋아요 리스트 */
+.like-list {
+    display: flex;
+    justify-content: space-between; /* 제목과 더보기 정렬 */
+    align-items: center;
+}
+
+.like-list h2 {
+    font-size: 16px; /* 텍스트 크기 축소 */
+    font-weight: bold;
+}
+
+
+.like-list h3 a {
+    text-decoration: none;
+    color: #000000; /* 검정 링크 */
+    font-weight: bold;
+}
+
+.like-list h3 a:hover {
+    color: #555555; /* hover 시 회색 */
+}
+.like-place-list {
+    display: flex; /* 수평 정렬 */
+    gap: 15px; /* 카드 사이 간격 */
+    overflow-x: auto; /* 가로 스크롤 가능 */
+    padding-bottom: 10px;
+}
+
+.like-place-list {
+    text-align: center;
+    flex: 0 0 50%; /* 기존 35%에서 50%로 확장 */
+    box-sizing: border-box;
+}
+
+.like-place-list img {
+    border-radius: 5px; /* 부드러운 모서리 */
+    border: 1px solid #e0e0e0;
+    width: 100%; /* 부모 컨테이너에 맞춤 */
+    height: auto; /* 비율 유지 */
+}
+
+.like-place-list h2 {
+    color: #000000;
+    font-weight: bold;
+    font-size: 14px; /* 텍스트 크기 축소 */
+}
+
+
+.profile-circle {
+    position: relative; /* 위치 조정을 위해 relative 설정 */
+    width: 150px; /* 원의 너비 */
+    height: 150px; /* 원의 높이 */
+    border: 5px solid black; /* 검은색 테두리 */
+    border-radius: 50%; /* 원 모양 만들기 */
+    overflow: hidden; /* 원 밖의 이미지가 잘리지 않도록 설정 */
+    display: flex; /* 정렬을 위한 flex 설정 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    left: 15px;
+}
+
+.profile-circle img {
+    width: 100%; /* 원 크기에 맞게 이미지 조정 */
+    height: 100%; /* 원 크기에 맞게 이미지 조정 */
+    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+
+}
+
+/* 카메라 아이콘 */
+.camera-icon {
+        position: absolute; /* 부모 요소를 기준으로 위치 */
+        top: 50%; /* 부모 컨테이너의 세로 중앙 */
+        left: 50%; /* 부모 컨테이너의 가로 중앙 */
+        transform: translate(-50%, -50%); /* 정확히 중앙으로 이동 */
+        background-color: rgba(0, 0, 0, 0.6); /* 반투명한 검정 배경 */
+        color: white; /* 아이콘 색상 */
+        border-radius: 50%; /* 아이콘을 원형으로 만들기 */
+        width: 40px; /* 아이콘 영역 너비 */
+        height: 40px; /* 아이콘 영역 높이 */
+        display: flex; /* 내부 아이콘 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+        justify-content: center; /* 가로 중앙 정렬 */
+        font-size: 20px; /* 아이콘 크기 */
+        cursor: pointer; /* 마우스를 올리면 클릭 가능 표시 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 약간의 그림자 효과 */
+        z-index: 10; /* 다른 요소 위로 표시 */
+    }
+
+/* 호버 시 효과 */
+.camera-icon:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* 어두운 색으로 변경 */
+}
+
+/* 파일 입력 필드 숨김 */
+input[type="file"] {
+    display: none; /* 사용자에게 보이지 않음 */
+}
+
+
+/* 푸터 */
+.footer {
+    width: 100%; /* 가로 길이 꽉 채움 */
+    height: 120px; /* 높이 축소 */
+    background-color: #000000; /* 검정 배경 */
+    color: #ffffff; /* 하얀 글씨 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
