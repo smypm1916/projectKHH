@@ -26,7 +26,7 @@ public class UserDataDAO {
     public static void viewUserData (HttpServletRequest request) {
     // 그냥 기본적으로 해당 유저의 계정 정보 보여주기 >> view data
         Connection con = null;
-        PreparedStatement pst = null;
+        PreparedStatement pstmt = null;
         ResultSet rs = null;
 //        String userEmail = request.getParameter("user_email");
 //                request.getSession().getAttribute()
@@ -50,7 +50,7 @@ public class UserDataDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(con, pst, rs);
+            DBManager.close(con, pstmt, rs);
         }
     }
 
@@ -67,7 +67,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
     UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
     ArrayList<ReviewsDTO> reviews = new ArrayList<>();
     try {
-        con = DBManager.connection();
+        con = DBManager.connect();
         pstmt = con.prepareStatement(sql);
         pstmt.setString(1, user.getUser_nickname());
         rs = pstmt.executeQuery();
@@ -191,7 +191,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             String updatedPicture = (newImg != null) ? newImg : currentPicture;
 
             // DB 업데이트
-            con = DBManager.connection();
+            con = DBManager.connect();
             String sql = "UPDATE user_account_sj SET user_nickname = ?, user_picture = ? WHERE user_email = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userNickname);
@@ -224,7 +224,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         ResultSet rs = null;
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             String sql = "SELECT user_nickname, user_picture FROM user_account_sj WHERE user_email = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userEmail);

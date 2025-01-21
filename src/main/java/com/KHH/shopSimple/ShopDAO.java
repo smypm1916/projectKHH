@@ -28,13 +28,13 @@ public class ShopDAO {
         String region = request.getParameter("addrtype");
 
         Connection con = null;
-        PreparedStatement pst = null;
+        PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         try {
             con = DBManager.connect();
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
             while (rs.next()) {
                 ShopSimpleDTO simpleDTO = new ShopSimpleDTO(
                         rs.getInt("shop_no"),
@@ -52,7 +52,7 @@ public class ShopDAO {
         } finally {
 
             try {
-                DBManager.close(con, pst, rs);
+                DBManager.close(con, pstmt, rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }

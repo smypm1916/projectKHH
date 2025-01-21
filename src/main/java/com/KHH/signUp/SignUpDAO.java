@@ -44,21 +44,21 @@ public class SignUpDAO {
         String sql = "INSERT INTO USER_ACCOUNT values (?,?,?,?,?,?,?,?,'level1',null)";
 
         Connection con = null;
-        PreparedStatement pst = null;
+        PreparedStatement pstmt = null;
 
         try {
             con = DBManager.connect();
-            pst = con.prepareStatement(sql);
-            pst.setString(1, userEmail);
-            pst.setString(2, userPassword);
-            pst.setString(3, userName);
-            pst.setString(4, userBirth);
-            pst.setString(5, userAddress);
-            pst.setString(6, userTel);
-            pst.setString(7, userGender);
-            pst.setString(8, userNickname);
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userEmail);
+            pstmt.setString(2, userPassword);
+            pstmt.setString(3, userName);
+            pstmt.setString(4, userBirth);
+            pstmt.setString(5, userAddress);
+            pstmt.setString(6, userTel);
+            pstmt.setString(7, userGender);
+            pstmt.setString(8, userNickname);
 
-            if (pst.executeUpdate() == 1) {
+            if (pstmt.executeUpdate() == 1) {
                 System.out.println("User Sign Up Success!!!");
             }
 
@@ -66,7 +66,7 @@ public class SignUpDAO {
             e.printStackTrace();
         } finally {
             try {
-                DBManager.close(con, pst, null);
+                DBManager.close(con, pstmt, null);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -91,18 +91,18 @@ public class SignUpDAO {
         String sql = "INSERT INTO OWNER_ACCOUNT values (?,?,?,?,?)";
 
         Connection con = null;
-        PreparedStatement pst = null;
+        PreparedStatement pstmt = null;
 
         try {
             con = DBManager.connect();
-            pst = con.prepareStatement(sql);
-            pst.setString(1, ownerEmail);
-            pst.setString(2, ownerPassword);
-            pst.setString(3, ownerName);
-            pst.setString(4, ownerBirth);
-            pst.setString(5, ownerTel);
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, ownerEmail);
+            pstmt.setString(2, ownerPassword);
+            pstmt.setString(3, ownerName);
+            pstmt.setString(4, ownerBirth);
+            pstmt.setString(5, ownerTel);
 
-            if (pst.executeUpdate() == 1) {
+            if (pstmt.executeUpdate() == 1) {
                 System.out.println("Owner Sign Up Success!!!");
             }
 
@@ -110,7 +110,7 @@ public class SignUpDAO {
             e.printStackTrace();
         } finally {
             try {
-                DBManager.close(con, pst, null);
+                DBManager.close(con, pstmt, null);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -135,9 +135,9 @@ public class SignUpDAO {
                 return;
             }
 
-            try (PreparedStatement pst = con.prepareStatement(query)) {
-                pst.setString(1, value);
-                rs = pst.executeQuery();
+            try (PreparedStatement pstmt = con.prepareStatement(query)) {
+                pstmt.setString(1, value);
+                rs = pstmt.executeQuery();
                 rs.next();
                 boolean exists = rs.getInt(1) > 0;
                 response.getWriter().write("{\"exists\": " + exists + "}");
