@@ -173,7 +173,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
 
     // profile Update 메소드
     public static void userProfileUpdate(HttpServletRequest request) {
-        String path = request.getServletContext().getRealPath("jsp/UserProfile");
+        String path = "/absolute/path/to/upload/directory"; // 절대 경로 권장
         Connection con = null;
         PreparedStatement pstmt = null;
 
@@ -195,7 +195,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             pstmt.setString(2, updatedPicture);
             pstmt.setString(3, userEmail);
             pstmt.executeUpdate();
-            System.out.println(newImg);
+
             // 기존 이미지 파일 삭제
             if (newImg != null && currentPicture != null && !currentPicture.equals(newImg)) {
                 File oldFile = new File(path + "/" + currentPicture);
@@ -203,6 +203,9 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
                     oldFile.delete();
                 }
             }
+
+            // 세션 갱신
+            updateSessionUser(request);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
