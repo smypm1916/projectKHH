@@ -38,4 +38,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
-DBManager.java
+.DBManager.java
+/out/artifacts/Board_war_exploded/
+pom.xml
