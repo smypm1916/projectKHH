@@ -38,8 +38,6 @@ public class DBManager {
 
     // Method to close database resources
     public static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
-
-  
         try {
             if (rs != null) {
                 rs.close();

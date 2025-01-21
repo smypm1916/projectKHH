@@ -65,17 +65,18 @@
              style="flex: 1; border: 1px solid black; height: 720px; width: 960px;">
             <img src="../../image/hokkaido.png" alt="Hokkaido Map" style="height: 100%; width: 100%;">
             <!-- 포인터 추가 -->
-            <div class="map-pointer" data-region="douhoku" style="top: 32%; left: 48%;"></div>
+            <div class="map-pointer" data-region="douhoku" style="top: 33%; left: 48%;"></div>
             <div class="map-pointer" data-region="doutou" style="top: 50%; left: 62%;"></div>
             <div class="map-pointer" data-region="douou" style="top: 62%; left: 39%;"></div>
-            <div class="map-pointer" data-region="dounan" style="top: 88%; left: 23%;"></div>
+            <div class="map-pointer" data-region="dounan" style="top: 88%; left: 24%;"></div>
         </div>
 
-        <div class="shop-list" id="shop-list">
+        <div class="shop-list" id="shop-list"
+             style="background-color: #F5DEB3; overflow-y: scroll; max-height: 100%; align-items: center;">
             <h1>식당 일람</h1>
-
             <c:forEach var="sl" items="${simpleList}">
-                <div class="simpleList" onclick="location.href='ShopDetailC?no=${sl}';">
+                <div class="simpleList" style="border-top: 1px solid black; border-bottom: 1px solid black; background-color: floralwhite;"
+                     onclick="location.href='ShopSimpleDetailC?no=${sl}';">
                     <ul style="list-style: none">
                         <li style="display: none;"><span>${sl.shop_no}</span></li>
                         <li style="list-style: none;"><span
