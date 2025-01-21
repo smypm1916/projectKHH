@@ -153,7 +153,7 @@
                 <div class="profile-circle" style="border: none;">
                     <img
                             id="previewImage"
-                            src="https://c4.wallpaperflare.com/wallpaper/375/927/608/bleach-zangetsu-bleach-wallpaper-preview.jpg"
+                            src="https://i.namu.wiki/i/d2I9NNVyw8e1AywBghx9PFHo7MGmrOL-GGm5Tke4vMPYTOanPjc3JU2K0lc1w4eIyunljvGHHYD-qh9-XwmyZZpeKpyWANSMOhpVqQgXZqpJeNIvlL0an4ukij80FyQNl_zkMbSTSRZPXcNRrVRDFw.webp"
                             alt="place-name" width="480" height="320"> <input
                         type="file" id="fileInput" style="display: none;"
                         onchange="changeImage(event, 'previewImage')">
@@ -168,18 +168,19 @@
                     <p style="margin-bottom: 8px">
                         이름을 입력 <br>
                     </p>
-                    <input>
+                    <input name="name" placeholder="닉네임">
                     <button class="nameCheck">중복체크</button>
 
                     <br>
                     <p>
                         상태메시지
                     </p>
-                    <textarea style="resize: none; height: 100px" name="" id="" cols="30" rows="10"></textarea> <br> <br>
+                    <textarea placeholder="하고 싶은 말을 써주세요" style="resize: none; height: 100px" name="message" id="" cols="30" rows="10"></textarea> <br> <br>
                 </div>
 
             </div>
         </div>
+        <input hidden="hidden" name="no" value="">
         <div class="myProfile_button_box" style="border: none;">
             <button id="cancel_info">취소</button>
             <button onclick="location.href='Edit_profileC'" id="complete_info">수정완료</button>

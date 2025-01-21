@@ -243,11 +243,12 @@
                 </div>
             </div>
         </div>
+        <input hidden="hidden" name="no" value="">
         <div class="myShop_button_box" style="border: none;">
             <form action="Edit_myRestaurantC">
                 <button id="update_info">수정</button>
             </form>
-            <form action="Delete_myRestaurantC">
+            <form action="Delete_myRestaurantC" method="post">
                 <button id="delete_info">삭제</button>
             </form>
         </div>

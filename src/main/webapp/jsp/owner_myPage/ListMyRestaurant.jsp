@@ -140,7 +140,7 @@ div {
 			<div class="myShop" style="border: none;">
 				<h1 style="margin-inline-end: auto;">내 가게</h1>
 				<p style="display: flex; align-items: center; text-align: center">
-					<a href="AddRestaurant.jsp" style="text-decoration: none; color: black">
+					<a href="AddRestaurantC" style="text-decoration: none; color: black">
 						<h2>가게를 추가</h2>
 					</a>
 				</p>
@@ -173,6 +173,7 @@ div {
 						<input class="myShop-button" type="button" value="삭제">
 					</div>
 				</div>
+				<input hidden="hidden" name="no" value="">
 			</c:forEach>
 
 			<br> <br>

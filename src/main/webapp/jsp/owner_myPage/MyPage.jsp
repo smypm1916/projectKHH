@@ -126,6 +126,23 @@
             background-color: #0056b3; /* 호버 시 배경색 변경 */
             transform: scale(1.05); /* 약간 확대 */
         }
+        .MenuButton {
+            height: 50px;
+            padding: 10px 20px; /* 버튼 내부 여백 */
+            font-size: 16px; /* 텍스트 크기 */
+            font-weight: bold; /* 텍스트 두께 */
+            color: #ffffff; /* 텍스트 색상 */
+            background-color: #007bff; /* 버튼 배경색 */
+            border: none; /* 테두리 제거 */
+            border-radius: 8px; /* 모서리 둥글게 */
+            cursor: pointer; /* 마우스 오버 시 포인터 표시 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+            transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
+        }
+        .MenuButton:hover {
+            background-color: #0056b3; /* 호버 시 배경색 변경 */
+            transform: scale(1.05); /* 약간 확대 */
+        }
     </style>
 </head>
 <body>
@@ -145,18 +162,22 @@
             <div class="profile-field" style="border: none;">
                 <div class="profile-circle" style="border: none;">
                     <img
-                            src="profilePhoto/zangetsu.jpg"
+                            src="https://i.namu.wiki/i/d2I9NNVyw8e1AywBghx9PFHo7MGmrOL-GGm5Tke4vMPYTOanPjc3JU2K0lc1w4eIyunljvGHHYD-qh9-XwmyZZpeKpyWANSMOhpVqQgXZqpJeNIvlL0an4ukij80FyQNl_zkMbSTSRZPXcNRrVRDFw.webp"
                             alt="profile-img">
                 </div>
                 <div
                         style="border: none; align-content: baseline; margin-left: 30px">
 						<span>
-							<h2>참월</h2>
-							물러서면 퇴락이요. 겁먹으면 죽음이다.
+							<h2>고로상</h2>
+							<h2>
+                            急に腹が減ってきた(KHH)
+                            </h2>
 						</span>
                 </div>
                     <div style="border: none; margin-left: auto; align-content: center;">
-                        <button class="change_profile" onclick="location.href='jsp/owner_myPage/UpdateProfile.jsp'" value="프로필 수정">프로필 수정</button>
+                        <form action="/Edit_profileC" method="post">
+                            <button class="change_profile" value="프로필 수정">프로필 수정</button>
+                        </form>
                     </div>
             </div>
         </div>
@@ -174,15 +195,27 @@
         <div class="myShop_information_list_field">
 
             <div class="myShop_information_list">
-                <img class="myShop_information_list_img"
-                     src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-                     alt="place-name">
+                <a href="DetailRestaurantC">
+                    <img class="myShop_information_list_img"
+                         src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
+                         alt="place-name">
+                </a>
                 <div style="border: none;">
-                    <h2>오이시 스시야</h2>
+                    <a href="DetailRestaurantC" style="text-decoration: none; color: black">
+                        <h2>오이시 스시야</h2>
+                    </a>
                 </div>
                 <div style="border: none;">
                     <h3>도쿄도 시나가와구</h3>
                     <h3>10:00 ~ 22:00</h3>
+                </div>
+                <div style="border: none; margin-bottom: 7px;">
+                    <button class="MenuButton" onclick="location.href=''">
+                        메뉴추가
+                    </button>
+                    <button class="MenuButton" onclick="location.href=''">
+                        메뉴변경
+                    </button>
                 </div>
             </div>
 
@@ -197,6 +230,14 @@
                     <h3>도쿄도 세타가야구</h3>
                     <h3>10:00 ~ 15:00</h3>
                 </div>
+                <div style="border: none; margin-bottom: 7px;">
+                    <button class="MenuButton" onclick="location.href=''">
+                        메뉴추가
+                    </button>
+                    <button class="MenuButton" onclick="location.href=''">
+                        메뉴변경
+                    </button>
+                </div>
             </div>
 
             <div class="myShop_information_list">
@@ -210,6 +251,14 @@
                     <h3>도쿄도 시부야</h3>
                     <h3>10:00 ~ 24:00</h3>
                 </div>
+                <div style="border: none; margin-bottom: 7px;">
+                    <button class="MenuButton" onclick="location.href=''">
+                        메뉴추가
+                    </button>
+                    <button class="MenuButton" onclick="location.href=''">
+                        메뉴변경
+                    </button>
+                </div>
             </div>
 
             <div class="myShop_information_list">
@@ -222,6 +271,14 @@
                 <div style="border: none;">
                     <h3>도쿄도 시나가와구</h3>
                     <h3>10:00 ~ 22:00</h3>
+                </div>
+                <div style="border: none; margin-bottom: 7px;">
+                    <button class="MenuButton" onclick="location.href=''">
+                        메뉴추가
+                    </button>
+                    <button class="MenuButton" onclick="location.href=''">
+                        메뉴변경
+                    </button>
                 </div>
             </div>
 
