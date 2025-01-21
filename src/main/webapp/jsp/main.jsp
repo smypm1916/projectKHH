@@ -12,7 +12,7 @@
     <nav>
         <ul>
             <li><a href="#">맛집 소개</a></li>
-            <li><a href="#">이달의 맛집</a></li>
+            <li><a href="RankingListController">이달의 맛집</a></li>
             <li><a href="CommunityListController">커뮤니티</a></li>
             <li><a href="#">로그인</a></li>
         </ul>
