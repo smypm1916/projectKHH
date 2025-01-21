@@ -1,4 +1,4 @@
-package com.KHH.main.shopSimple;
+package com.KHH.shopSimple;
 
 import com.KHH.main.DBManager;
 

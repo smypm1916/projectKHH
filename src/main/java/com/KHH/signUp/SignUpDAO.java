@@ -1,4 +1,4 @@
-package com.KHH.main.signUp;
+package com.KHH.signUp;
 
 import com.KHH.main.DBManager;
 
@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class SignUpDAO {
     private static final SignUpDAO SDAO = new SignUpDAO();

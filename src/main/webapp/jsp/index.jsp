@@ -23,13 +23,16 @@
     <%--        내비게이션바--%>
     <div class="global-nav">
         <ul class="nav-content">
-            <li><a href=""> icon </a></li>
-            <li class="no-action"><a href=""> | </a></li>
             <li><a href=""> 가게정보 </a></li>
             <li class="no-action"><a href=""> | </a></li>
-            <li><a href=""> 커뮤니티 </a></li>
+            <li><a href=""> 예약하기 </a></li>
+            <li class="no-action"><a href=""> | </a></li>
+            <li><a href=""> 리뷰</a></li>
+            <li class="no-action"><a href=""> | </a></li>
+            <li><a href="${pageContext.request.contextPath}/CommunityListController"> 커뮤니티 </a></li>
             <li class="no-action"><a href=""> | </a></li>
             <li><a href=""> 마이페이지 </a></li>
+            <%--            마이페이지 선택 jsp 추가 필요--%>
             <li class="no-action"><a href=""> | </a></li>
             <li>
                 <button onclick="location.href=''"> 로그인</button>
@@ -44,8 +47,6 @@
 
     <%--    메인 콘텐츠--%>
     <section class="content" style="border: darksalmon 1px solid; border-radius: 10px;">
-
-        <%--        지도 & 가게 페이지--%>
         <div style="position: relative">
             <br>
             <jsp:include page="${content}"/>
@@ -75,6 +76,7 @@
             </div>
         </div>
 
+        <%--            위로가기 버튼--%>
         <div class="fixed-nav"
              style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: row-reverse; align-items: center;">
             <div class="btn-page-top" style="display: block;"></div>
@@ -90,40 +92,6 @@
                          font-weight: bold;"
                   onclick="window.scrollTo(0,0);">맨 위로</span>
         </div>
-
-        <%--        <div class="fixed-nav" style="position: fixed; bottom: 20px; right: 20px;">--%>
-        <%--            <!-- SVG를 사용하여 텍스트를 원 경로에 따라 배치 -->--%>
-        <%--            <svg width="100" height="100" style="transform-origin: center; animation: rotate 5s linear infinite;">--%>
-        <%--                <circle id="circlePath" cx="50" cy="50" r="40" fill="none" stroke="transparent"></circle>--%>
-        <%--                <text>--%>
-        <%--                    <textPath href="#circlePath" startOffset="0%" text-anchor="start" fill="black">--%>
-        <%--                        맨위로--%>
-        <%--                    </textPath>--%>
-        <%--                </text>--%>
-        <%--            </svg>--%>
-
-        <%--            <!-- 클릭 가능한 버튼 -->--%>
-        <%--            <span style="position: absolute; width: 50px; height: 50px; top: 25px; left: 25px;--%>
-        <%--                 background-color: #F5DEB3; border-radius: 50%;--%>
-        <%--                 display: flex; justify-content: center; align-items: center;--%>
-        <%--                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); cursor: pointer;"--%>
-        <%--                  onclick="window.scrollTo(0,0);">--%>
-        <%--        ⬆--%>
-        <%--    </span>--%>
-        <%--            <style>--%>
-        <%--                @keyframes rotate {--%>
-        <%--                    from {--%>
-        <%--                        transform: rotate(0deg);--%>
-        <%--                    }--%>
-        <%--                    to {--%>
-        <%--                        transform: rotate(360deg);--%>
-        <%--                    }--%>
-        <%--                }--%>
-        <%--            </style>--%>
-
-        <%--        </div>--%>
-
-
     </section>
 
     <%--        푸터--%>

@@ -1,5 +1,6 @@
 package com.KHH.usermypage;
 
+
 import com.KHH.userreservationpage.MyPageReservationDTO;
 import com.KHH.userreservationpage.ReservationDTO;
 import com.KHH.userreviewspage.ReviewsDTO;
@@ -25,11 +26,11 @@ public class UserDataDAO {
     public static void viewUserData (HttpServletRequest request) {
     // 그냥 기본적으로 해당 유저의 계정 정보 보여주기 >> view data
         Connection con = null;
-        PreparedStatement pstmt = null;
+        PreparedStatement pst = null;
         ResultSet rs = null;
 //        String userEmail = request.getParameter("user_email");
 //                request.getSession().getAttribute()
-        String sql = "select * from user_account_sj where user_email=?";
+        String sql = "select * from user_account where user_email=?";
 
        try {
            con = DBManager.connect();
@@ -37,21 +38,22 @@ public class UserDataDAO {
            pstmt.setString(1, "user2@example.com"); // 이메일 수정필요
            rs = pstmt.executeQuery();
 
-           if (rs.next()) {
-                UserDataDTO user =new UserDataDTO();
+            if (rs.next()) {
+                UserDataDTO user = new UserDataDTO();
                 user.setUser_email(rs.getString("user_email"));
-               user.setUser_nickname(rs.getString("user_nickname"));
-               user.setUser_grade(rs.getString("user_grade"));
+                user.setUser_nickname(rs.getString("user_nickname"));
+                user.setUser_grade(rs.getString("user_grade"));
                 user.setUser_picture(rs.getString("user_picture"));
                 request.getSession().setAttribute("user", user);
                 System.out.println("연결성공");
-           }
-       }catch (Exception e){
-           e.printStackTrace();
-       }finally {
-           DBManager.close(con, pstmt, rs);
-       }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(con, pst, rs);
+        }
     }
+
 
 //유저 리뷰들 보여주기
 public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) {
@@ -79,7 +81,6 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             review.setShop_name(rs.getString(5));
             reviews.add(review);
             System.out.println(review); // 리뷰 확인
-
         }
 
         request.setAttribute("reviews", reviews);
@@ -147,6 +148,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             pstmt.setString(1, user.getUser_email());
             rs = pstmt.executeQuery();
 
+
             while(rs.next())  {
                 ScrapDTO scrap = new ScrapDTO();
                 scrap.setScrap_email(rs.getString("scrap_email"));
@@ -169,8 +171,6 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         }
         return scraps;
     }
-
-
 
 
     // profile Update 메소드
@@ -212,6 +212,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             DBManager.close(con, pstmt, null);
         }
     }
+
 
 
     public static void updateSessionUser(HttpServletRequest request) {

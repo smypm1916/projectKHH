@@ -1,4 +1,4 @@
-package com.KHH.main.signUp;
+package com.KHH.signUp;
 
 import com.google.gson.Gson;
 
