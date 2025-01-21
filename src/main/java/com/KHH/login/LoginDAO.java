@@ -12,13 +12,13 @@ import java.sql.SQLException;
 public class LoginDAO {
 
 	public static void loginChk(HttpServletRequest request) {
-		
+
 		String userId = request.getParameter("iD");
-	    String userPassword = request.getParameter("password");
-	    // 여기서 데이터베이스에서 사용자 인증 로직 구현
-	    
-	    System.out.println(userId);
-	    System.out.println(userPassword);
+		String userPassword = request.getParameter("password");
+		// 여기서 데이터베이스에서 사용자 인증 로직 구현
+
+		System.out.println(userId);
+		System.out.println(userPassword);
 		String result = "존재하지 않는 회원";
 		String dbPw = "";
 
@@ -35,9 +35,9 @@ public class LoginDAO {
 
 			rs = pstmt.executeQuery();
 
-			if(rs.next()) {
+			if (rs.next()) {
 				dbPw = rs.getString(2);
-				if(userPassword.equals(dbPw)) {
+				if (userPassword.equals(dbPw)) {
 					result = "로그인 성공!";
 					// bean
 					InfoDTO user = new InfoDTO();
@@ -65,7 +65,7 @@ public class LoginDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
-		
+
 	}
 
 }

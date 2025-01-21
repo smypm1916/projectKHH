@@ -14,9 +14,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/loginStyles.css">
         <script type="text/javascript">
             function newWindow(){
-
                 window.open('http://localhost/ForgotInfoC', '_blank', 'left=100, top=100, width=400, height=500');
-
             }
         </script>
     </head>

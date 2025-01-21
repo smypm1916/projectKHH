@@ -1,25 +1,23 @@
 package com.KHH.login;
 
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @WebServlet("/ForgotInfoC")
 public class ForgotInfoC extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("jsp/login/forgotInfo.jsp").forward(request, response);
 
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("jsp/login/forgotInfo.jsp").forward(request, response);
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		InfoDAO.infoSearch(request);
-		request.getRequestDispatcher("jsp/login/forgotInfo.jsp").forward(request, response);
-	}
-
+        request.setCharacterEncoding("UTF-8");
+        InfoDAO.infoSearch(request);
+        request.getRequestDispatcher("jsp/login/forgotInfo.jsp").forward(request, response);
+    }
 }
