@@ -142,7 +142,7 @@ input[type="button"]:hover {
 
 .reserv-place-list {
     text-align: center;
-    flex: 0 0 18%; /* 카드 크기 축소 */
+    flex: 0 0 35%; /* 카드 크기 축소 */
     box-sizing: border-box;
 }
 
@@ -180,18 +180,16 @@ input[type="button"]:hover {
 .like-list h3 a:hover {
     color: #555555; /* hover 시 회색 */
 }
-
-/* 좋아요한 가게 */
-.like-place-list-field {
+.like-place-list {
     display: flex; /* 수평 정렬 */
-    gap: 15px; /* 카드 사이 간격 축소 */
+    gap: 15px; /* 카드 사이 간격 */
     overflow-x: auto; /* 가로 스크롤 가능 */
     padding-bottom: 10px;
 }
 
 .like-place-list {
     text-align: center;
-
+    flex: 0 0 50%; /* 기존 35%에서 50%로 확장 */
     box-sizing: border-box;
 }
 

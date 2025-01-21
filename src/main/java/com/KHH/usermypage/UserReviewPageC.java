@@ -13,7 +13,8 @@ public class UserReviewPageC extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int p = Integer.parseInt(req.getParameter("p"));
-        UserDataDAO.reviewsPaging(p, req);
+        UserDataDAO.viewUserReviews(req);
+        UserDataDAO.reviewsPaging(p, req, UserDataDAO.viewUserReviews(req));
         req.setAttribute("content", "../UserReviews/userReviewsPage.jsp");
         req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
 

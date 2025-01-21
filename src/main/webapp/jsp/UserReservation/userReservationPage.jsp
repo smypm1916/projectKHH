@@ -51,7 +51,7 @@
 			<br> <br>
 
 			<div class="bottom-list-num" style="border: none;">
-				<a href="UserReservationPageC?p=1"> << </a>
+				<a href="UserReservationPageC?p=1"> <<  </a>
 				<c:forEach begin = "1" end = "${pageCount }" var = "i">
 					<a href="UserReservationPageC?p=${i }">[${i }] </a>
 				</c:forEach>

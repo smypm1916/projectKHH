@@ -11,7 +11,7 @@
 </head>
 <body>
 <form action="ProfileUpdateController" method="post" enctype="multipart/form-data">
-			<div class="mypage" style="border: none;">
+		<div class="mypage" style="border: none;">
 				<h1>MyPage</h1>
 				<h2>내 프로필 </h2>
 			</div>
@@ -20,19 +20,17 @@
 
 	<div class="profile">
 		<div class="profile-field" style="border: none;">
-			<div class="profile-circle">
-				<img id="profileImg" src="/jsp/UserProfile/img/${user_picture}"
-					 alt="">
+			<form action="ProfileUpdateController" method="post" enctype="multipart/form-data">
+				<div class="profile-circle">
+					<!-- 기존 프로필 사진 표시 -->
+					<img id="profileImg" src="jsp/UserProfile/${sessionScope.user.user_picture}" alt="프로필 사진">
 
-
-				<!-- 카메라 아이콘 -->
-				<label  for="newImg"  class="camera-icon">
-					<i class="fa fa-camera" aria-hidden="true"></i> <!-- Font Awesome 카메라 아이콘 -->
-				</label>
-
-				<!-- 파일 업로드 -->
-				<input id="newImg" name="newImg" type="file" hidden>
-			</div>
+					<!-- 파일 업로드 버튼 -->
+					<label for="newImg" class="camera-icon">
+						<i class="fa fa-camera"></i>
+					</label>
+					<input id="newImg" name="newImg" type="file" hidden>
+				</div>
 
 	<div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
 					<span>
@@ -131,19 +129,19 @@
 
 </div>
 
-	<script>
-		// 요소 참조
-		const profileContainer = document.getElementById('profileImg');
-		const fileInput = document.querySelector("input[name='newImg']");
-		console.log(profileContainer)
-		console.log(fileInput)
-		const profileImg = document.getElementById('profile-img');
+<%--&lt;%&ndash;	<script>&ndash;%&gt;--%>
+<%--&lt;%&ndash;		// 요소 참조&ndash;%&gt;--%>
+<%--&lt;%&ndash;		const profileContainer = document.getElementById('profileImg');&ndash;%&gt;--%>
+<%--&lt;%&ndash;		const fileInput = document.querySelector("input[name='newImg']");&ndash;%&gt;--%>
+<%--&lt;%&ndash;		console.log(profileContainer)&ndash;%&gt;--%>
+<%--&lt;%&ndash;		console.log(fileInput)&ndash;%&gt;--%>
+<%--&lt;%&ndash;		const profileImg = document.getElementById('profile-img');&ndash;%&gt;--%>
 
-		// 프로필 클릭 이벤트
-		profileContainer.addEventListener('click', () => {
-		fileInput.click(); // 파일 선택 창 열기
-	});
-</script>
+<%--&lt;%&ndash;		// 프로필 클릭 이벤트&ndash;%&gt;--%>
+<%--&lt;%&ndash;		profileContainer.addEventListener('click', () => {&ndash;%&gt;--%>
+<%--&lt;%&ndash;		fileInput.click(); // 파일 선택 창 열기&ndash;%&gt;--%>
+<%--&lt;%&ndash;	});&ndash;%&gt;--%>
+<%--</script>--%>
 
 </body>
 </html>

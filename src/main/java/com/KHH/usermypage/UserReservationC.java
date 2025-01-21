@@ -12,8 +12,8 @@ public class UserReservationC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        UserDataDAO.viewUserReservation(req);
-        UserDataDAO.reservationPaging(1,req);
+
+        UserDataDAO.reservationPaging(1,req,UserDataDAO.viewUserReservation(req));
         req.setAttribute("content", "../UserReservation/userReservationPage.jsp");
         req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
 

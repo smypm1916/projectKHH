@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="ProfileUpdateController" method="post" enctype="multipart/form-data">
+<form action="UserMypageUpdatedC" method="post" enctype="multipart/form-data">
 	<div class="mypage" style="border: none;">
 
 				<h1>MyPage</h1>
@@ -22,7 +22,7 @@
 
 				<div class="profile-field" style="border: none;">
 					<div class="profile-circle">
-						<img src="jsp/UserProfile/${sessionScope.user.user_picture}" alt="프로필 사진">
+						<img src="jsp/UserProfile/${newImg}" alt="프로필 사진">
 					</div>
 					<div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
 					<span>

@@ -7,30 +7,30 @@
 }
 
 /* 컨테이너 설정 */
-.container {
-    background-color: #fff;
-    color: #000;
-    width: 100vw; /* 전체 화면 너비 */
-    height: 100vh; /* 전체 화면 높이 */
-}
+/*.container {*/
+/*    background-color: #fff;*/
+/*    color: #000;*/
+/*    width: 100vw; !* 전체 화면 너비 *!*/
+/*    height: 100vh; !* 전체 화면 높이 *!*/
+/*}*/
 
 /* 헤더 스타일 */
-.header {
-    height: 6vh; /* 화면 비율로 높이 설정 */
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    line-height: 6vh;
-}
+/*.header {*/
+/*    height: 6vh; !* 화면 비율로 높이 설정 *!*/
+/*    background-color: #000;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    line-height: 6vh;*/
+/*}*/
 
 /* 네비게이션 바 스타일 */
-.nav {
-    height: 5vh; /* 화면 비율로 높이 설정 */
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    line-height: 5vh;
-}
+/*.nav {*/
+/*    height: 5vh; !* 화면 비율로 높이 설정 *!*/
+/*    background-color: #333;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    line-height: 5vh;*/
+/*}*/
 
 /* 콘텐츠 영역 */
 .content {
