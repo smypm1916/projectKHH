@@ -25,6 +25,7 @@ public class ShopDAO {
     public ArrayList<ShopSimpleDTO> ShowSimpleLists(HttpServletRequest request) {
         simpleLists = new ArrayList<>();
         String sql = "select * from SHOP_INFO";
+        String region = request.getParameter("addrtype");
 
         Connection con = null;
         PreparedStatement pst = null;

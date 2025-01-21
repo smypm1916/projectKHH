@@ -5,10 +5,13 @@
 <head>
     <title>회원가입</title>
 
+    <link rel="stylesheet" href="../../css/signup/signup_ver.0.2.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../../css/signup/signUp.css">
-    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
 
+<%--    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">--%>
+\
 
     <!-- Daum Postalcode API -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -19,7 +22,7 @@
 
 <header class="header">
     <h1 style="display: flex; justify-content: center">
-        <a href="/HomeC">急に腹が減ってきた〜KHH~</a>
+        <a href="/HomeC">KHH</a>
     </h1>
 </header>
 
@@ -43,28 +46,23 @@
         </ul>
     </div>
 
-    <div class="signup-form" style="background-color:white; width: 70%; margin: auto; height:100%">
+    <div class="signup-form" style="background-color:white; width: 90%; margin: auto; height:100%">
 
 
         <p>필요한 정보 입력 후에 입력 확인 버튼을 입력해주세요.</p>
 
         <form action="SignUpC" method="post">
 
-            <!-- 회원 유형 선택 -->
-            <div class="form-group">
-
-            </div>
-
-            <div class="name-wrapper">
+            <div class="input-wrapper">
                 <br>
                 <label for="name"><b>이름</b></label>
                 <input type="text" id="name" name="name" placeholder="이름" required>
             </div>
 
-            <div class="email-wrapper">
+            <div class="input-wrapper">
                 <br>
-                <label for="email-domail"><b>이메일</b></label>
-                <input type="text" id="email-domail" name="email-domain" placeholder="example" required>
+                <label for="email-domain"><b>이메일</b></label>
+                <input type="text" id="email-domain" name="email-domain" placeholder="example" required>
                 &nbsp;<span>@</span>&nbsp;
                 <label for="email-service"></label>
                 <select name="email-service" id="email-service" required>
@@ -74,28 +72,27 @@
                     <option value="hotmail.com">hotmail.com</option>
                     <option value="hanmail.net">hanmail.net</option>
                 </select>
+                <button type="button">중복체크</button>
+                <span class="validCheck-message" style="display: none"></span>
                 <%--                @이후 select--%>
             </div>
 
-            <div class="nickname-wrapper">
+            <div class="input-wrapper">
                 <br>
                 <label for="nickname"><b>닉네임</b></label>
                 <input type="text" id="nickname" name="nickname" placeholder="닉네임" required>
-                <button onclick="">
-                    중복체크
-                </button>
-                <span class="validCheck-message" style="display: none">s
-                </span>
+                <button type="button">중복체크</button>
+                <span class="validCheck-message" style="display: none"></span>
             </div>
 
-            <div class="tel-wrapper">
+            <div class="input-wrapper">
                 <br>
                 <label for="tel"><b>전화번호</b></label>
                 <input type="text" id="tel" name="tel" placeholder="휴대폰 번호" required>
 
             </div>
 
-            <div class="gender-wrapper">
+            <div class="input-wrapper">
                 <br>
                 <span><b>성별</b></span>
                 <div>
@@ -106,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="birth-wrapper">
+            <div class="input-wrapper">
                 <br>
                 <span><b>생년월일</b></span>
                 <div>
@@ -126,7 +123,7 @@
                 </div>
             </div>
 
-            <div class="address-wrapper">
+            <div class="input-wrapper">
                 <br>
                 <label for="address"><b>주소</b></label>
                 <input type="text" id="address" name="address" disabled required>
@@ -150,15 +147,16 @@
 
             <br>
 
-            <div style="display: flex; justify-content: center;" class="btn-wrapper"
-                 style="text-align: center; display: flex; flex-direction: row; justify-content: space-between; width: 100%; max-width: 520px; margin: 50px auto 0;">
+            <div class="btn-wrapper">
                 <br>
                 <button type="submit"
-                        style="border-radius: 20%; width:50px; height: 20px; display: flex; flex-wrap: wrap; flex-direction: row"
+                        style=""
                         class="util-btn"
                         name="submit" onclick="location.href='signup_check.jsp'">입력 확인
-                    <br>
-                    <a href="/HomeC" class="util-btn">돌아가기</a>
+                </button>
+                <br>
+                <button class="util-btn" type="button" onclick="location.href='/HomeC'">
+                    돌아가기
                 </button>
             </div>
         </form>

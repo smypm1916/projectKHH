@@ -5,8 +5,10 @@
 <head>
     <title>회원가입</title>
 
-    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
-    <link rel="stylesheet" href="../../css/signup/signUp.css">
+    <%--    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">--%>
+    <link rel="stylesheet" href="../../css/signup/signup_ver.0.2.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -14,7 +16,7 @@
 
 <header class="header">
     <h1 style="display: flex; justify-content: center">
-        <a href="/HomeC">急に腹が減ってきた〜KHH~</a>
+        <a href="/HomeC">KHH</a>
     </h1>
 </header>
 
@@ -47,16 +49,16 @@
 
             <!-- 회원 유형 선택 -->
             <div class="form-group">
-                <div>
+                <div class="input-wrapper">
                     <br>
                     <label for="name"><b>이름</b></label>
                     <input type="text" id="name" name="name" placeholder="이름" required>
                 </div>
 
-                <div>
+                <div class="input-wrapper">
                     <br>
-                    <label for="email-domail"><b>이메일</b></label>
-                    <input type="text" id="email-domail" name="email-domain" placeholder="example" required>
+                    <label for="email-domain"><b>이메일</b></label>
+                    <input type="text" id="email-domain" name="email-domain" placeholder="example" required>
                     &nbsp;<span>@</span>&nbsp;
                     <label for="email-service"></label>
                     <select name="email-service" id="email-service" required>
@@ -67,32 +69,26 @@
                         <option value="hanmail.net">hanmail.net</option>
                     </select>
                     <br>
-                    <button onclick="">
-                        중복체크
-                    </button>
-                    <span class="validCheck-message" style="display: none">s
-                </span>
+                    <button type="button">중복체크</button>
+                    <span class="validCheck-message" style="display: none"></span>
                 </div>
 
-                <div>
+                <div class="input-wrapper">
                     <br>
                     <label for="nickname"><b>닉네임</b></label>
                     <input type="text" id="nickname" name="nickname" placeholder="닉네임" required>
-                    <button onclick="">
-                        중복체크
-                    </button>
-                    <span class="validCheck-message" style="display: none">s
-                </span>
+                    <button type="button">중복체크</button>
+                    <span class="validCheck-message" style="display: none"></span>
                 </div>
 
-                <div>
+                <div class="input-wrapper">
                     <br>
                     <label for="tel"><b>전화번호</b></label>
                     <input type="text" id="tel" name="tel" placeholder="휴대폰 번호" required>
 
                 </div>
 
-                <div>
+                <div class="input-wrapper">
                     <br>
                     <span><b>생년월일</b></span>
                     <div>
@@ -112,7 +108,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="input-wrapper">
                     <br>
                     <label for="password"><b>비밀번호</b></label>
                     <input type="text" id="password" name="password" placeholder="영문+숫자 8~16자 이내" required>
@@ -121,25 +117,26 @@
                     <input type="text" id="passwordCheck" name="passwordCheck" placeholder="한번 더 입력해주세요" required>
                 </div>
 
-                <div style="display: flex; justify-content: center;" class="btn-wrapper"
-                     style="text-align: center; display: flex; flex-direction: row; justify-content: space-between; width: 100%; max-width: 520px; margin: 50px auto 0;">
+                <div class="btn-wrapper">
                     <br>
                     <button type="submit"
-                            style="border-radius: 20%; width:50px; height: 20px; display: flex; flex-wrap: wrap; flex-direction: row"
+                            style=""
                             class="util-btn"
                             name="submit" onclick="location.href='signup_check.jsp'">입력 확인
-                        <br>
-                        <a href="/HomeC" class="util-btn">돌아가기</a>
+                    </button>
+                    <br>
+                    <button class="util-btn" type="button" onclick="location.href='/HomeC'">
+                        돌아가기
                     </button>
                 </div>
             </div>
         </form>
     </div>
 
-        <div class="fixed-nav"
-             style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: row-reverse; align-items: center;">
-            <div class="btn-page-top" style="display: block;"></div>
-            <span style="width: 50px; height: 50px;
+    <div class="fixed-nav"
+         style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: row-reverse; align-items: center;">
+        <div class="btn-page-top" style="display: block;"></div>
+        <span style="width: 50px; height: 50px;
                          display: flex;
                          justify-content: center;
                          align-items: center;
@@ -149,8 +146,8 @@
                          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                          font-size: 14px;
                          font-weight: bold;"
-                  onclick="window.scrollTo(0,0);">맨 위로</span>
-        </div>
+              onclick="window.scrollTo(0,0);">맨 위로</span>
+    </div>
 </div>
 <script src="../../js/signup/signup.js"></script>
 </body>

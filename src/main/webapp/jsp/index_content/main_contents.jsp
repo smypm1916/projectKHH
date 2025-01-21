@@ -29,6 +29,27 @@
             width: 0;
             transition: width 0.5s ease;
         }
+
+        .hokkaido-map {
+            position: relative;
+        }
+
+        .map-pointer {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border: 2px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .map-pointer:hover {
+            background-color: blue;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -41,19 +62,24 @@
         <%--        지도 --%>
         <div class="hokkaido-map" id="hokkaido-map" style="flex: 1; border: 1px solid black;">
             <img src="../../image/hokkaido.png" alt="Hokkaido Map">
+            <!-- 포인터 추가 -->
+            <div class="map-pointer" data-region="douou" style="top: 20%; left: 10%;"></div>
+            <div class="map-pointer" data-region="doutou" style="top: 50%; left: 60%;"></div>
+            <div class="map-pointer" data-region="dounan" style="top: 70%; left: 20%;"></div>
+            <div class="map-pointer" data-region="douhoku" style="top: 90%; left: 20%;"></div>
         </div>
 
         <div class="shop-list" id="shop-list">
             <h1>식당 일람</h1>
-            <%--            간이 가게 리스트 출력--%>
-<%--            <ul class="shop-items" id="shop-items"></ul>--%>
+
             <c:forEach var="sl" items="${simpleList}">
                 <div class="simpleList" onclick="location.href='ShopDetailC?no=${sl}';">
-                    <ul>
-                        <li style="display: none"><span>${sl.shop_no}</span></li>
-                        <li><span style="font-size: 20pt; font-weight: bold;">${sl.shop_name}</span><br></li>
-                        <li><span>${sl.shop_tel}</span></li>
-                        <li><span>${sl.shop_opentime}</span></li>
+                    <ul style="list-style: none">
+                        <li style="display: none;"><span>${sl.shop_no}</span></li>
+                        <li style="list-style: none;"><span
+                                style="font-size: 20pt; font-weight: bold;">${sl.shop_name}</span><br></li>
+                        <li style="list-style: none;"><span>${sl.shop_tel}</span></li>
+                        <li style="list-style: none;"><span>${sl.shop_opentime}</span></li>
                     </ul>
                 </div>
                 <%--                <li>${simpleList.shop_addrtype}</li> --%>

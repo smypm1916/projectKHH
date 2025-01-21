@@ -14,8 +14,9 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
-    <link rel="stylesheet" href="../../css/signup/signUp.css">
-
+    <link rel="stylesheet" href="../../css/signup/signup_ver.0.2.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -23,8 +24,13 @@
 
 <h1>입력 확인 페이지</h1>
 
-<button onclick="">회원 등록</button>
-
+<form action="/SignUpC">
+    <button onclick="">회원 등록</button>
+</form>
+<button id="goBack">수정하기</button>
+<script> document.getElementById('goBack').addEventListener('click', function () {
+    window.history.back();
+});</script>
 
 </body>
 </html>

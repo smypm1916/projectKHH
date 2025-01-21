@@ -19,14 +19,14 @@
 
 <header class="header">
     <div class="title">
-        <h1><a href="/HomeC">急に腹が減ってきた~~KHH~~</a></h1>
+        <h1><a href="/HomeC">KHH</a></h1>
     </div>
 </header>
 
 <h1 style="display: flex; justify-content: center"><b>회원 유형</b></h1>
 
 <form action="SignUpC">
-    <div class="form-wrapper-userType" style="display: flex; align-items: center; justify-content: center;">
+    <div class="form-wrapper-userType" style="display: flex; align-items: center; justify-content: space-between;">
         <button type="button" onclick="ToSignUp('customer')">일반 회원</button>
         <button type="button" onclick="ToSignUp('owner')">점주 회원</button>
     </div>

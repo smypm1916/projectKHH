@@ -4,9 +4,11 @@ import com.KHH.main.DBManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SignUpDAO {
@@ -116,9 +118,36 @@ public class SignUpDAO {
         }
     }
 
-    public void ReadTest(HttpServletRequest request, HttpServletResponse response) {
-        ArrayList<UserDTO> testUsers = new ArrayList<>();
+    public void CheckDuplicate(HttpServletRequest request, HttpServletResponse response) {
+        String type = request.getParameter("type");
+        String value = request.getParameter("value");
 
+        ResultSet rs = null;
+
+        // Database 연결
+        try (Connection con = DBManager.connect()) {
+            String query;
+            if ("email".equals(type)) {
+                query = "SELECT COUNT(*) FROM USER_ACCOUNT WHERE USER_EMAIL=?";
+            } else if ("nickname".equals(type)) {
+                query = "SELECT COUNT(*) FROM USER_ACCOUNT WHERE user_nickname=?";
+            } else {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                return;
+            }
+
+            try (PreparedStatement pst = con.prepareStatement(query)) {
+                pst.setString(1, value);
+                rs = pst.executeQuery();
+                rs.next();
+                boolean exists = rs.getInt(1) > 0;
+                response.getWriter().write("{\"exists\": " + exists + "}");
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-
 }

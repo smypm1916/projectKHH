@@ -39,5 +39,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // }
 });
 
+document.querySelectorAll('.map-pointer').forEach(pointer => {
+    pointer.addEventListener('click', function () {
+        const region = this.dataset.region;
 
+        // 서버에서 데이터 가져오기
+        fetch(`/ShopSimpleC?addrtype=${region}`)
+            .then(response => response.json())
+            .then(data => {
+                // 가게 리스트 업데이트
+                const shopListContainer = document.getElementById('shop-list');
+                shopListContainer.innerHTML = ''; // 기존 내용 초기화
+
+                data.forEach(shop => {
+                    const shopElement = document.createElement('div');
+                    shopElement.className = 'simpleList';
+                    shopElement.onclick = () => location.href = `ShopSimpleC?addrtype='${shop.shop_addrtype}'`;
+                    shopElement.innerHTML = `
+                        <ul style="list-style: none;">
+                            <li style="display: none;"><span>${shop.shop_no}</span></li>
+                            <li style="list-style: none;">
+                                <span style="font-size: 20pt; font-weight: bold;">${shop.shop_name}</span><br>
+                            </li>
+                            <li style="list-style: none;"><span>${shop.shop_tel}</span></li>
+                            <li style="list-style: none;"><span>${shop.shop_opentime}</span></li>
+                        </ul>
+                    `;
+                    shopListContainer.appendChild(shopElement);
+                });
+            })
+            .catch(error => console.error('Error fetching shop data:', error));
+    });
+});
 
