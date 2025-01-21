@@ -51,7 +51,7 @@
     <p>비밀번호: ****</p>
     <input type="hidden" name="password" value="<%= request.getParameter("password") %>">
 
-    <button type="submit" name="usertype" value="owner">회원 등록</button>
+    <button type="submit" name="userType" value="owner">회원 등록</button>
     <button type="button" onclick="history.back();">수정하기</button>
 </form>
 </body>
