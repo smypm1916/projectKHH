@@ -13,6 +13,7 @@ public class UserScrapC extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
+        UserDataDAO.scrapPaging(1,req,UserDataDAO.viewUserScrap(req));
         req.setAttribute("content", "../UserScrap/userScrapPage.jsp");
         req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
 

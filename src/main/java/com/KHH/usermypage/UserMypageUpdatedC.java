@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/UserC")
-public class UserC extends HttpServlet {
+@WebServlet("/UserMypageUpdatedC")
+public class UserMypageUpdatedC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 임시 로그인 데이터 생성할 곳.
@@ -17,7 +17,7 @@ public class UserC extends HttpServlet {
         UserDataDAO.viewUserReservation(req);
        UserDataDAO.viewUserScrap(req);
 
-        req.setAttribute("content", "userMyPage.jsp");
+        req.setAttribute("content", "updatedSuccessUserMyPage.jsp");
         req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
 
 

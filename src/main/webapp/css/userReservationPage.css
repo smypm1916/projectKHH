@@ -157,15 +157,3 @@ input[type="button"]:hover {
 .bottom-return-btn input[type="button"]:hover {
     background-color: #444;
 }
-
-/* 프로필 스타일 */
-.profile-field {
-    display: flex;
-    align-items: center;
-}
-
-.profile-circle img {
-    border-radius: 50%;
-    width: 10vw; /* 화면 너비의 10% 크기 */
-    height: 10vw; /* 화면 너비의 10% 크기 */
-}

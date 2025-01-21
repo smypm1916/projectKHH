@@ -12,11 +12,11 @@
 </head>
 <body>
 
-			<div class="mypage" style="border: none;">
-				<h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
-			</div>
-			<br>
-			<hr>
+<div class="mypage" style="border: none;">
+	<h1 onclick="location.href='UserC'">MyPage </h1>
+</div>
+<br>
+<hr>
 
 			<div class="like-list" style="border: none;">
 				<h2 style="margin-inline-end: auto;">좋아요한 가게</h2>
@@ -24,21 +24,21 @@
 			<br>
 
 
-
+	<c:forEach items="${scraps}" var="scrap">
 			<div class="like-place-list-field" style="border: solid 1px;">
 				<div class="like-place-list">
 					<img
 						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						alt="place-name">
+						alt="place-name"> ${scrap.shop_image}
 					<div style="border: none; text-align: left; margin-left: 30px">
 						<h1>
-							<span>😋</span>좋아요한 가게명
+							<span>😋</span>${scrap.shop_name}
 						</h1>
 						<div style="border: none;">
-							<p>가게 상세주소</p>
-							<p>영업시간</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
+
+							<p>${scrap.shop_tel}</p>
+							<p>${scrap.shop_addr}</p>
+							<p>${scrap.shop_content}</p>
 
 						</div>
 					</div>
@@ -47,92 +47,21 @@
 					<input type="button" value="가게 정보 보기">
 				</div>
 			</div>
-
-			<div class="like-place-list-field" style="border: solid 1px;">
-				<div class="like-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h1>
-							<span>😋</span>라멘 삿포로 이치류안 ラーメン札幌一粒庵
-						</h1>
-						<div style="border: none;">
-							<p>〒060-0004 Hokkaido, Sapporo, Chuo Ward, Kita 4 Jonishi, 1
-								Chome−１番 ホクレンビル 地下１階</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
-
-						</div>
-					</div>
-				</div>
-			<div style="border: none; align-content: center; margin-left: 80px;">
-					<input type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
-
-			<div class="like-place-list-field" style="border: solid 1px;">
-				<div class="like-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h1>
-							<span>😋</span>라멘 삿포로 이치류안 ラーメン札幌一粒庵
-						</h1>
-						<div style="border: none;">
-							<p>〒060-0004 Hokkaido, Sapporo, Chuo Ward, Kita 4 Jonishi, 1
-								Chome−１番 ホクレンビル 地下１階</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
-
-						</div>
-					</div>
-				</div>
-			<div style="border: none; align-content: center; margin-left: 80px;">
-					<input type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
-
-
-			<div class="like-place-list-field" style="border: solid 1px;">
-				<div class="like-place-list">
-					<img src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
-						alt="place-name">
-					<div style="border: none; text-align: left; margin-left: 30px">
-						<h1>
-							<span>😋</span>해산물 로바타야끼 海鮮炉ばた焼 大漁旗
-						</h1>
-						<div style="border: none;">
-							<p>〒060-0004 Hokkaido, Sapporo, Chuo Ward, Kita 4 Jonishi, 1
-								Chome−１番 ホクレンビル 地下１階</p>
-							<p>평일 09:00 ~ 18:00</p>
-							<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-							<p>e.g. 리뷰수 : 245개</p>
-
-						</div>
-					</div>
-				</div>
-			<div style="border: none; align-content: center; margin-left: 80px;">
-					<input type="button" value="가게 정보 보기">
-				</div>
-			</div>
-
-
+				</c:forEach>
 
 			<br> <br>
 
 			<div class="bottom-list-num" style="border: none;">
-				<h2>1 2 3 4 (나중에 구현) ></h2>
+				<a href="UserScrapPageC?p=1"> << </a>
+				<c:forEach begin = "1" end = "${pageCount }" var = "i">
+					<a href="UserScrapPageC?p=${i }">[${i }] </a>
+				</c:forEach>
+				<a href="UserScrapPageC?p=${pageCount }"> >> </a>
 			</div>
 
 			<div class="bottom-return-btn"
 				style="border: none; align-content: center;">
-				<input type="button" value="마이페이지로 돌아가기">
+				<input onclick="location.href='UserC'" type="button" value="마이페이지로 돌아가기">
 			</div>
 
 

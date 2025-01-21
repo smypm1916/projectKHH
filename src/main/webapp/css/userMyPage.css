@@ -60,13 +60,7 @@ div {
     margin: 15px 0; /* 마진 축소 */
 }
 
-.profile-circle img {
-    border-radius: 50%;
-    width: 100px; /* 이미지 크기 축소 */
-    height: 100px;
-    border: 2px solid #000000; /* 검정 테두리 */
-    margin-left: 20px;
-}
+
 
 .profile-field span h2 {
     color: #000000;
@@ -148,7 +142,7 @@ input[type="button"]:hover {
 
 .reserv-place-list {
     text-align: center;
-    flex: 0 0 18%; /* 카드 크기 축소 */
+    flex: 0 0 35%; /* 카드 크기 축소 */
     box-sizing: border-box;
 }
 
@@ -176,6 +170,7 @@ input[type="button"]:hover {
     font-weight: bold;
 }
 
+
 .like-list h3 a {
     text-decoration: none;
     color: #000000; /* 검정 링크 */
@@ -185,18 +180,16 @@ input[type="button"]:hover {
 .like-list h3 a:hover {
     color: #555555; /* hover 시 회색 */
 }
-
-/* 좋아요한 가게 */
-.like-place-list-field {
+.like-place-list {
     display: flex; /* 수평 정렬 */
-    gap: 15px; /* 카드 사이 간격 축소 */
+    gap: 15px; /* 카드 사이 간격 */
     overflow-x: auto; /* 가로 스크롤 가능 */
     padding-bottom: 10px;
 }
 
 .like-place-list {
     text-align: center;
-
+    flex: 0 0 50%; /* 기존 35%에서 50%로 확장 */
     box-sizing: border-box;
 }
 
@@ -212,6 +205,58 @@ input[type="button"]:hover {
     font-weight: bold;
     font-size: 14px; /* 텍스트 크기 축소 */
 }
+
+
+.profile-circle {
+    position: relative; /* 위치 조정을 위해 relative 설정 */
+    width: 150px; /* 원의 너비 */
+    height: 150px; /* 원의 높이 */
+    border: 5px solid black; /* 검은색 테두리 */
+    border-radius: 50%; /* 원 모양 만들기 */
+    overflow: hidden; /* 원 밖의 이미지가 잘리지 않도록 설정 */
+    display: flex; /* 정렬을 위한 flex 설정 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    left: 15px;
+}
+
+.profile-circle img {
+    width: 100%; /* 원 크기에 맞게 이미지 조정 */
+    height: 100%; /* 원 크기에 맞게 이미지 조정 */
+    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+
+}
+
+/* 카메라 아이콘 */
+.camera-icon {
+        position: absolute; /* 부모 요소를 기준으로 위치 */
+        top: 50%; /* 부모 컨테이너의 세로 중앙 */
+        left: 50%; /* 부모 컨테이너의 가로 중앙 */
+        transform: translate(-50%, -50%); /* 정확히 중앙으로 이동 */
+        background-color: rgba(0, 0, 0, 0.6); /* 반투명한 검정 배경 */
+        color: white; /* 아이콘 색상 */
+        border-radius: 50%; /* 아이콘을 원형으로 만들기 */
+        width: 40px; /* 아이콘 영역 너비 */
+        height: 40px; /* 아이콘 영역 높이 */
+        display: flex; /* 내부 아이콘 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+        justify-content: center; /* 가로 중앙 정렬 */
+        font-size: 20px; /* 아이콘 크기 */
+        cursor: pointer; /* 마우스를 올리면 클릭 가능 표시 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 약간의 그림자 효과 */
+        z-index: 10; /* 다른 요소 위로 표시 */
+    }
+
+/* 호버 시 효과 */
+.camera-icon:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* 어두운 색으로 변경 */
+}
+
+/* 파일 입력 필드 숨김 */
+input[type="file"] {
+    display: none; /* 사용자에게 보이지 않음 */
+}
+
 
 /* 푸터 */
 .footer {

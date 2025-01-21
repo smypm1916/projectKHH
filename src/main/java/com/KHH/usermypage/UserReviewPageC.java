@@ -7,17 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/UserC")
-public class UserC extends HttpServlet {
+@WebServlet("/UserReviewPageC")
+public class UserReviewPageC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 임시 로그인 데이터 생성할 곳.
-        UserDataDAO.viewUserData(req);
-        UserDataDAO.viewUserReviews(req);
-        UserDataDAO.viewUserReservation(req);
-       UserDataDAO.viewUserScrap(req);
 
-        req.setAttribute("content", "userMyPage.jsp");
+        int p = Integer.parseInt(req.getParameter("p"));
+        UserDataDAO.viewUserReviews(req);
+        UserDataDAO.reviewsPaging(p, req, UserDataDAO.viewUserReviews(req));
+        req.setAttribute("content", "../UserReviews/userReviewsPage.jsp");
         req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
 
 
