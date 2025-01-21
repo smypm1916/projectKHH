@@ -96,8 +96,8 @@ public class ShopDAO {
                menu.setMenu_name(rs.getString(4));
                menu.setMenu_price(rs.getString(5));
 
+               menus.add(menu);
            }
-           menus.add(menu);
            System.out.println(menus);
            req.setAttribute("menus", menus);
        }catch (Exception e) {

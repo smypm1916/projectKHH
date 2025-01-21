@@ -254,18 +254,17 @@
     </div>
     <div><button>예약하기</button></div>
 </div>
-
-<c:forEach var="menu" items="${menus}">
-    <div id="content2" class="tab-content menu">
+<div id="content2" class="tab-content menu">
+    <c:forEach var="menu" items="${menus}">
         <div class="menu-one">
             <div class="menu-nameprice">
                 <div class="menu-name">${menu.menu_name}</div>
                 <div>${menu.menu_price}</div>
             </div>
-            <div class="menu-type">(${menu.menu_type})</div>
+            <div class="menu-type">${menu.menu_type}</div>
         </div>
-    </div>
-</c:forEach>
+    </c:forEach>
+</div>
 
 <c:forEach var="review" items="${reviews}">
     <div id="content3" class="tab-content review-section">
