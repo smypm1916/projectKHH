@@ -1,9 +1,11 @@
 package com.KHH.usermypage;
 
+
 import com.KHH.userreservationpage.MyPageReservationDTO;
 import com.KHH.userreservationpage.ReservationDTO;
 import com.KHH.userreviewspage.ReviewsDTO;
 import com.KHH.userscrappage.ScrapDTO;
+import com.KHH.main.DBManager;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -28,29 +30,30 @@ public class UserDataDAO {
         ResultSet rs = null;
 //        String userEmail = request.getParameter("user_email");
 //                request.getSession().getAttribute()
-        String sql = "select * from user_account_sj where user_email=?";
+        String sql = "select * from user_account where user_email=?";
 
        try {
-           con = DBManager.connection();
+           con = DBManager.connect();
            pstmt = con.prepareStatement(sql);
            pstmt.setString(1, "user2@example.com"); // 이메일 수정필요
            rs = pstmt.executeQuery();
 
-           if (rs.next()) {
-                UserDataDTO user =new UserDataDTO();
+            if (rs.next()) {
+                UserDataDTO user = new UserDataDTO();
                 user.setUser_email(rs.getString("user_email"));
-               user.setUser_nickname(rs.getString("user_nickname"));
-               user.setUser_grade(rs.getString("user_grade"));
+                user.setUser_nickname(rs.getString("user_nickname"));
+                user.setUser_grade(rs.getString("user_grade"));
                 user.setUser_picture(rs.getString("user_picture"));
                 request.getSession().setAttribute("user", user);
                 System.out.println("연결성공");
-           }
-       }catch (Exception e){
-           e.printStackTrace();
-       }finally {
-           DBManager.close(con, pstmt, rs);
-       }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(con, pstmt, rs);
+        }
     }
+
 
 //유저 리뷰들 보여주기
 public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) {
@@ -64,7 +67,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
     UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
     ArrayList<ReviewsDTO> reviews = new ArrayList<>();
     try {
-        con = DBManager.connection();
+        con = DBManager.connect();
         pstmt = con.prepareStatement(sql);
         pstmt.setString(1, user.getUser_nickname());
         rs = pstmt.executeQuery();
@@ -100,7 +103,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             ArrayList<MyPageReservationDTO> myreservations = new ArrayList<>();
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, user.getUser_email());
             //나중에 이메일부분 real DB 변경시 파라미터값 대체 필요
@@ -140,10 +143,11 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
         ArrayList<ScrapDTO> scraps = new ArrayList<>();
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, user.getUser_email());
             rs = pstmt.executeQuery();
+
 
             while(rs.next())  {
                 ScrapDTO scrap = new ScrapDTO();
@@ -169,8 +173,6 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
     }
 
 
-
-
     // profile Update 메소드
     public static void userProfileUpdate(HttpServletRequest request) {
         String path = "/absolute/path/to/upload/directory"; // 절대 경로 권장
@@ -180,6 +182,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         try {
             MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
             String userNickname = mr.getParameter("user_nickname");
+
             String newImg = mr.getFilesystemName("newImg");
             String userEmail = (String) request.getSession().getAttribute("user_email");
             String currentPicture = (String) request.getSession().getAttribute("user_picture");
@@ -188,7 +191,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             String updatedPicture = (newImg != null) ? newImg : currentPicture;
 
             // DB 업데이트
-            con = DBManager.connection();
+            con = DBManager.connect();
             String sql = "UPDATE user_account_sj SET user_nickname = ?, user_picture = ? WHERE user_email = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userNickname);
@@ -214,6 +217,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
     }
 
 
+
     public static void updateSessionUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String userEmail = (String) session.getAttribute("user_email");
@@ -223,7 +227,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         ResultSet rs = null;
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             String sql = "SELECT user_nickname, user_picture FROM user_account_sj WHERE user_email = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userEmail);
