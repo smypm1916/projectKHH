@@ -15,3 +15,27 @@ function goToCommunityList(){
         document.preventDefault();
     }
 }
+/*
+function showFileList() {
+    //event.preventDefault(); // 기본 폼 제출 동작 방지
+    const input = document.getElementById("file");
+    const fileList = input.files;
+    
+    const formData = new FormData(document.getElementById("communityUploadForm"));
+
+    fetch("CommunityUploadController", {
+        method: "POST",
+        body: formData,
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log("서버 응답:", data);
+            alert("파일 및 데이터 전송 성공!");
+            if (data.includes("<title>Redirecting")) {
+                window.location.href = "CommunityListController";
+            }
+        })
+        .catch(error => {
+            console.error("파일 전송 실패:", error);
+        });
+}*/

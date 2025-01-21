@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/CommunityUploadController")
 public class CommunityUploadController extends HttpServlet {
@@ -17,6 +18,12 @@ public class CommunityUploadController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        CommunityDAO.getCommunityPK();
+        try {
+            CommunityDAO.insertCommunityAndImages(req);
+            resp.sendRedirect("/CommunityListController");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
