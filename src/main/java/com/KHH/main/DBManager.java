@@ -38,6 +38,8 @@ public class DBManager {
 
     // Method to close database resources
     public static void close(Connection con, PreparedStatement pst, ResultSet rs) {
+
+  
         try {
             if (rs != null) {
                 rs.close();
@@ -45,6 +47,7 @@ public class DBManager {
             if (pst != null) {
                 pst.close();
             }
+
             if (con != null) {
                 con.close();
             }
@@ -62,3 +65,4 @@ public class DBManager {
         close(con, null, null);
     }
 }
+

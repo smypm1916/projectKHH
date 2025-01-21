@@ -12,7 +12,7 @@ public class WHC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.printf("asddsad");
-        req.getRequestDispatcher("jsp/UpdateProfile.jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/owner_myPage/MyPage.jsp").forward(req, resp);
     }
 
     @Override

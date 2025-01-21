@@ -1,15 +1,19 @@
 package com.KHH.usermypage;
 
-import com.KHH.main.DBManager;
+
+import com.KHH.userreservationpage.MyPageReservationDTO;
 import com.KHH.userreservationpage.ReservationDTO;
 import com.KHH.userreviewspage.ReviewsDTO;
 import com.KHH.userscrappage.ScrapDTO;
+import com.KHH.main.DBManager;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,8 +22,9 @@ import java.util.ArrayList;
 public class UserDataDAO {
 
 
-    public static void viewUserData(HttpServletRequest request) {
-        // 그냥 기본적으로 해당 유저의 계정 정보 보여주기 >> view data
+
+    public static void viewUserData (HttpServletRequest request) {
+    // 그냥 기본적으로 해당 유저의 계정 정보 보여주기 >> view data
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -27,11 +32,11 @@ public class UserDataDAO {
 //                request.getSession().getAttribute()
         String sql = "select * from user_account where user_email=?";
 
-        try {
-            con = DBManager.connect();
-            pst = con.prepareStatement(sql);
-            pst.setString(1, "user1@example.com");
-            rs = pst.executeQuery();
+       try {
+           con = DBManager.connect();
+           pstmt = con.prepareStatement(sql);
+           pstmt.setString(1, "user2@example.com"); // 이메일 수정필요
+           rs = pstmt.executeQuery();
 
             if (rs.next()) {
                 UserDataDTO user = new UserDataDTO();
@@ -49,96 +54,112 @@ public class UserDataDAO {
         }
     }
 
-    //유저 리뷰들 보여주기
-    public static void viewUserReviews(HttpServletRequest request) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-//        String user_nickname = request.getParameter("user_nickname");
-        String sql = "select * from review_info_sjsj where review_nickname=?";
 
-        try {
-            con = DBManager.connect();
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, "John123");
-            rs = pstmt.executeQuery();
+//유저 리뷰들 보여주기
+public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) {
+    Connection con = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    String sql = "SELECT review_shop, review_content, review_date, review_nickname, shop_name" +
+            " FROM review_info_sjsj r, shop_info_sj s" +
+            " WHERE r.REVIEW_SHOP = s.SHOP_NO and r.review_nickname = ?";
 
-            ArrayList<ReviewsDTO> reviews = new ArrayList<>();
-            ReviewsDTO review = null;
-            while (rs.next()) {
-                review = new ReviewsDTO();
-                review.setReview_shop(rs.getString(2));
-                review.setReview_content(rs.getString(3));
-                review.setReview_date(rs.getString(4));
-                review.setReview_nickname(rs.getString(5));
-                System.out.println("연결성공");
-                reviews.add(review);
-            }
-            request.setAttribute("reviews", reviews);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DBManager.close(con, pstmt, rs);
+    UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
+    ArrayList<ReviewsDTO> reviews = new ArrayList<>();
+    try {
+        con = DBManager.connection();
+        pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, user.getUser_nickname());
+        rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            ReviewsDTO review = new ReviewsDTO();
+            review.setReview_shop(rs.getInt(1));
+            review.setReview_content(rs.getString(2));
+            review.setReview_date(rs.getDate(3));
+            review.setReview_nickname(rs.getString(4));
+            review.setShop_name(rs.getString(5));
+            reviews.add(review);
+            System.out.println(review); // 리뷰 확인
         }
+
+        request.setAttribute("reviews", reviews);
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        DBManager.close(con, pstmt, rs);
     }
+        return reviews;
+}
 
     //예약 확인
-    public static void viewUserResevation(HttpServletRequest request) {
+    public static ArrayList<MyPageReservationDTO> viewUserReservation(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String user_email = request.getParameter("user_email");
-        String sql = "select * from reservation_info_sj where reservation_email=?";
+//        String user_email = request.getParameter("user_email");
+        String sql = "SELECT ri.reservation_email, ri.reservation_date, ri.reservation_people, ri.reservation_name, ri.reservation_tel, si.shop_name, si.shop_content, si.shop_tel, si.shop_addr, sim.shop_image FROM reservation_info_sj ri, SHOP_INFO_sj si, shop_image_sj sim WHERE ri.reservation_email = ? AND ri.reservation_shop = si.shop_no AND si.shop_no = sim.shop_no";
+        UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
+            ArrayList<MyPageReservationDTO> myreservations = new ArrayList<>();
 
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, "example@email.com");
+            pstmt.setString(1, user.getUser_email());
             //나중에 이메일부분 real DB 변경시 파라미터값 대체 필요
             rs = pstmt.executeQuery();
 
+            while(rs.next())  {
+                MyPageReservationDTO myreservation = new MyPageReservationDTO();
+                myreservation.setReservation_email(rs.getString("reservation_email"));
+                myreservation.setReservation_date(rs.getString("reservation_date"));
+                myreservation.setReservation_people(rs.getInt("reservation_people"));
+                myreservation.setReservation_name(rs.getString("reservation_name"));
+                myreservation.setReservation_tel(rs.getString("reservation_tel"));
+                myreservation.setShop_name(rs.getString("shop_name"));
+                myreservation.setShop_tel(rs.getString("shop_tel"));
+                myreservation.setShop_addr(rs.getString("shop_addr"));
+                myreservation.setShop_image(rs.getString("shop_image"));
+                myreservations.add(myreservation);
 
-            ArrayList<ReservationDTO> reservations = new ArrayList<>();
-            ReservationDTO reservation = null;
-
-            while (rs.next()) {
-                reservation = new ReservationDTO();
-                reservation.setReservation_email(rs.getString(3));
-                reservation.setReservation_shop(rs.getInt(2));
-                reservation.setReservation_date(rs.getString(6));
-                reservation.setReservation_people(rs.getInt(7));
-                reservations.add(reservation);
+                System.out.println(myreservation); //예약 확인
             }
-            request.setAttribute("reservations", reservations);
+            request.setAttribute("myreservations", myreservations);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             DBManager.close(con, pstmt, rs);
         }
+        return myreservations;
     }
 
     // 스크랩 확인
-    public static void viewUserScrap(HttpServletRequest request) {
+    public static ArrayList<ScrapDTO> viewUserScrap(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String user_email = request.getParameter("user_email");
-        String sql = "select * from scrap_shop_sj where scrap_email=?";
-
-
+        String sql =   "SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = ? ";
+        UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
+        ArrayList<ScrapDTO> scraps = new ArrayList<>();
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, "user@example.com");
+            pstmt.setString(1, user.getUser_email());
             rs = pstmt.executeQuery();
 
-            ArrayList<ScrapDTO> scraps = new ArrayList<>();
-            ScrapDTO scrap = null;
-            while (rs.next()) {
-                scrap = new ScrapDTO();
-                scrap.setScrap_email(rs.getString(2));
-                scrap.setScrap_shop(rs.getInt(3));
+
+            while(rs.next())  {
+                ScrapDTO scrap = new ScrapDTO();
+                scrap.setScrap_email(rs.getString("scrap_email"));
+                scrap.setShop_image(rs.getString("shop_image"));
+                scrap.setScrap_date(rs.getString("scrap_date"));
+                scrap.setShop_name(rs.getString("shop_name"));
+                scrap.setShop_addr(rs.getString("shop_addr"));
+                scrap.setShop_tel(rs.getString("shop_tel"));
+                scrap.setShop_content(rs.getString("shop_content"));
                 scraps.add(scrap);
+                System.out.println(scrap);
 
             }
             request.setAttribute("scraps", scraps);
@@ -148,46 +169,41 @@ public class UserDataDAO {
         } finally {
             DBManager.close(con, pstmt, rs);
         }
+        return scraps;
     }
 
 
     // profile Update 메소드
     public static void userProfileUpdate(HttpServletRequest request) {
-        //해당 유저의 프로필 사진, 프로필 이름 db에서 불러오기 view, update
-
-        String path = request.getServletContext().getRealPath("jsp/UserMyPage/UserProfile");
+        String path = request.getServletContext().getRealPath("jsp/UserProfile");
         Connection con = null;
         PreparedStatement pstmt = null;
-        ResultSet rs = null;
 
         try {
-            // 업로드 기능
             MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
-            con = DBManager.connect();
-            String user_nickname = mr.getParameter("user_nickname");
-            String user_email = mr.getParameter("user_email");
+            String userNickname = mr.getParameter("user_nickname");
+
             String newImg = mr.getFilesystemName("newImg");
-            String user_picture = mr.getParameter("user_picture");
+            String userEmail = (String) request.getSession().getAttribute("user_email");
+            String currentPicture = (String) request.getSession().getAttribute("user_picture");
 
+            // 새 이미지가 없으면 기존 이미지 사용
+            String updatedPicture = (newImg != null) ? newImg : currentPicture;
 
-            String sql = "update user_account set user_nickname=?, user_picture=? where user_email =?";
-
-            String img = user_picture;
-            if (newImg != null) {// new이미지가 아니면
-                img = newImg;
-            }
-
+            // DB 업데이트
+            con = DBManager.connection();
+            String sql = "UPDATE user_account_sj SET user_nickname = ?, user_picture = ? WHERE user_email = ?";
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, user_nickname);
-            pstmt.setString(2, user_picture);
-            pstmt.setString(3, img);
-
-            if (pstmt.executeUpdate() == 1) {
-                System.out.println("등록성공");
-                // 데이터 수정이 완료되었을 경우 기존에 저장되어 있던 사진데이터는 삭제
-                if (newImg != null) {
-                    File f = new File(path + "/" + user_picture);
-                    f.delete();
+            pstmt.setString(1, userNickname);
+            pstmt.setString(2, updatedPicture);
+            pstmt.setString(3, userEmail);
+            pstmt.executeUpdate();
+            System.out.println(newImg);
+            // 기존 이미지 파일 삭제
+            if (newImg != null && currentPicture != null && !currentPicture.equals(newImg)) {
+                File oldFile = new File(path + "/" + currentPicture);
+                if (oldFile.exists()) {
+                    oldFile.delete();
                 }
             }
         } catch (Exception e) {
@@ -196,5 +212,112 @@ public class UserDataDAO {
             DBManager.close(con, pstmt, null);
         }
     }
-}
+
+
+
+    public static void updateSessionUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String userEmail = (String) session.getAttribute("user_email");
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = DBManager.connection();
+            String sql = "SELECT user_nickname, user_picture FROM user_account_sj WHERE user_email = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userEmail);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                session.setAttribute("user_nickname", rs.getString("user_nickname"));
+                session.setAttribute("user_picture", rs.getString("user_picture"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(con, pstmt, rs);
+        }
+    }
+
+    // 리뷰 페이징 기능
+    public static void reviewsPaging(int pageNum, HttpServletRequest request, ArrayList<ReviewsDTO> reviews) {
+        request.setAttribute("curPageNum", pageNum);
+
+        int total = reviews.size(); // 총 데이터 수
+        int cnt = 3; // 한 페이지당 보여줄 개수
+
+        // 페이지 수 == 마지막 페이지 번호
+        int pageCount = (int) Math.ceil((double) total / cnt); // 총 페이지 수
+        request.setAttribute("pageCount", pageCount);
+
+        // 시작, 끝
+        int start = total - (cnt * (pageNum - 1));
+        int end = (pageNum == pageCount) ? -1 : start - cnt;
+        ArrayList<ReviewsDTO> items = new ArrayList<>();
+        for (int i = start - 1; i > end; i--) {
+            items.add(reviews.get(i));
+        }
+
+        request.setAttribute("reviews", items); // 현재 페이지 데이터로 설정
+    }
+
+
+
+    //예약가게 페이징 기능
+    public static void  reservationPaging(int pageNum, HttpServletRequest request, ArrayList<MyPageReservationDTO> myreservations) {
+        request.setAttribute("curPageNum", pageNum);
+
+        int total = myreservations.size(); //총데이터수
+        int cnt = 3; //한페이지당보여줄개수
+
+        // 페이지 수 == 마지막 페이지 번호
+        int pageCount =(int) Math.ceil((double)total/ cnt); //총페이지수
+        //System.out.println(pageCount); //페이지 개수(총페이지수)
+        request.setAttribute("pageCount", pageCount);
+
+        //int pageNum = 1; //페이지번호
+
+        //시작,끝
+        int start = total - (cnt * (pageNum - 1));
+        int end = (pageNum == pageCount) ? -1 : start - (cnt + 1);
+
+        ArrayList<MyPageReservationDTO> items= new ArrayList<>();
+        for (int i = start - 1; i > end; i--) {
+            items.add(myreservations.get(i));
+        }
+        request.setAttribute("myreservations", items);
+    }
+
+
+    //예약가게 페이징 기능
+    public static void  scrapPaging(int pageNum, HttpServletRequest request, ArrayList<ScrapDTO> scraps) {
+        request.setAttribute("curPageNum", pageNum);
+
+        int total = scraps.size(); //총데이터수
+        int cnt = 3; //한페이지당보여줄개수
+
+        // 페이지 수 == 마지막 페이지 번호
+        int pageCount =(int) Math.ceil((double)total/ cnt); //총페이지수
+        //System.out.println(pageCount); //페이지 개수(총페이지수)
+        request.setAttribute("pageCount", pageCount);
+
+        //int pageNum = 1; //페이지번호
+
+        //시작,끝
+        int start = total - (cnt * (pageNum - 1));
+        int end = (pageNum == pageCount) ? -1 : start - (cnt + 1);
+
+
+        ArrayList<ScrapDTO> items= new ArrayList<>();
+
+        for (int i = start - 1; i > end; i--) {
+            items.add(scraps.get(i));
+        }
+        // For each 로 뿌리기
+        // 페이징된 리스트를 request에 저장
+        request.setAttribute("scraps", items);
+    }}
+
 
