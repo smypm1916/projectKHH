@@ -11,15 +11,15 @@ import java.util.ArrayList;
 public class CommunityDAO {
     public static void countCommunityData(HttpServletRequest request) {
         Connection con = null;
-        PreparedStatement pstmt = null;
+        PreparedStatement pst = null;
         ResultSet rs = null;
 
         String sql = "select count(*) from community_info";
 
         try {
             con = DBManager.connect();
-            pstmt = con.prepareStatement(sql);
-            rs = pstmt.executeQuery();
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
 
             if(rs.next()) {
                 request.setAttribute("count", rs.getInt(1));
@@ -27,7 +27,7 @@ public class CommunityDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
-            DBManager.close(con, pstmt, rs);
+            DBManager.close(con, pst, rs);
         }
     }
 
