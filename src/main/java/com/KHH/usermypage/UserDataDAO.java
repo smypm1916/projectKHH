@@ -4,6 +4,7 @@ import com.KHH.userreservationpage.MyPageReservationDTO;
 import com.KHH.userreservationpage.ReservationDTO;
 import com.KHH.userreviewspage.ReviewsDTO;
 import com.KHH.userscrappage.ScrapDTO;
+import com.KHH.main.DBManager;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -31,7 +32,7 @@ public class UserDataDAO {
         String sql = "select * from user_account_sj where user_email=?";
 
        try {
-           con = DBManager.connection();
+           con = DBManager.connect();
            pstmt = con.prepareStatement(sql);
            pstmt.setString(1, "user2@example.com"); // 이메일 수정필요
            rs = pstmt.executeQuery();
@@ -78,6 +79,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             review.setShop_name(rs.getString(5));
             reviews.add(review);
             System.out.println(review); // 리뷰 확인
+
         }
 
         request.setAttribute("reviews", reviews);
@@ -100,7 +102,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             ArrayList<MyPageReservationDTO> myreservations = new ArrayList<>();
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, user.getUser_email());
             //나중에 이메일부분 real DB 변경시 파라미터값 대체 필요
@@ -140,7 +142,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
         ArrayList<ScrapDTO> scraps = new ArrayList<>();
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, user.getUser_email());
             rs = pstmt.executeQuery();
@@ -180,6 +182,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         try {
             MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
             String userNickname = mr.getParameter("user_nickname");
+
             String newImg = mr.getFilesystemName("newImg");
             String userEmail = (String) request.getSession().getAttribute("user_email");
             String currentPicture = (String) request.getSession().getAttribute("user_picture");
