@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <style>
-        div{
+       /* div{
             border : 1px solid;
-        }
+        }*/
         .header{
             height: 100px;
         }
