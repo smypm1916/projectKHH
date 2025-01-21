@@ -59,7 +59,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
     ResultSet rs = null;
     String sql = "SELECT review_shop, review_content, review_date, review_nickname, shop_name" +
             " FROM review_info_sjsj r, shop_info_sj s" +
-            " WHERE r.REVIEW_SHOP = s.SHOP_NO and r.review_nickname = ? ORDER BY review_date DESC LIMIT 4";
+            " WHERE r.REVIEW_SHOP = s.SHOP_NO and r.review_nickname = ?";
 
     UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
     ArrayList<ReviewsDTO> reviews = new ArrayList<>();
@@ -95,7 +95,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 //        String user_email = request.getParameter("user_email");
-        String sql = "SELECT ri.reservation_email, ri.reservation_date, ri.reservation_people, ri.reservation_name, ri.reservation_tel, si.shop_name, si.shop_content, si.shop_tel, si.shop_addr, sim.shop_image FROM reservation_info_sj ri, SHOP_INFO_sj si, shop_image_sj sim WHERE ri.reservation_email = ? AND ri.reservation_shop = si.shop_no AND si.shop_no = sim.shop_no ORDER BY reservation_date DESC LIMIT 4";
+        String sql = "SELECT ri.reservation_email, ri.reservation_date, ri.reservation_people, ri.reservation_name, ri.reservation_tel, si.shop_name, si.shop_content, si.shop_tel, si.shop_addr, sim.shop_image FROM reservation_info_sj ri, SHOP_INFO_sj si, shop_image_sj sim WHERE ri.reservation_email = ? AND ri.reservation_shop = si.shop_no AND si.shop_no = sim.shop_no";
         UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
             ArrayList<MyPageReservationDTO> myreservations = new ArrayList<>();
 
@@ -136,7 +136,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String user_email = request.getParameter("user_email");
-        String sql =   "SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = ? ORDER BY scrap_date DESC LIMIT 4";
+        String sql =   "SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = ? ";
         UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
         ArrayList<ScrapDTO> scraps = new ArrayList<>();
         try {

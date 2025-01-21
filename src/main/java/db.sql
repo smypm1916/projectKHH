@@ -236,6 +236,6 @@ SELECT review_shop, review_content, review_date, review_nickname, shop_name
 select * from USER_ACCOUNT_SJ;
 SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content, shop_opentime FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = 'user2@example.com';
 
-
+select * from MENU_INFO;
 
 select * from user_account_sj where user_email='user2@example.com';
