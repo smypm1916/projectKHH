@@ -1,5 +1,7 @@
 package com.KHH.ShopInfo;
 
+import com.KHH.main.DBManager;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
@@ -15,7 +17,7 @@ public class ShopDAO {
        String num = req.getParameter("no");
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement("select * from shop_info where shop_no=?");
             pstmt.setString(1, num);
             rs = pstmt.executeQuery();
@@ -46,7 +48,7 @@ public class ShopDAO {
         ResultSet rs = null;
 
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement("select * from shop_info");
             rs = pstmt.executeQuery();
             ShopDTO shop = null;
@@ -80,7 +82,7 @@ public class ShopDAO {
        ResultSet rs = null;
 
        try {
-           con = DBManager.connection();
+           con = DBManager.connect();
            pstmt = con.prepareStatement("select * from menu_info where menu_shop=?");
            System.out.println("shop_no: " + req.getParameter("no"));
            pstmt.setString(1, req.getParameter("no"));
@@ -114,7 +116,7 @@ public class ShopDAO {
        ResultSet rs = null;
 
        try {
-           con = DBManager.connection();
+           con = DBManager.connect();
            pstmt = con.prepareStatement("select * from review_info");
            rs = pstmt.executeQuery();
            ReviewDTO review = null;
