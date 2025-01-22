@@ -4,14 +4,16 @@
     font-weight: normal;
     font-style: normal;
 }
-h1{
+
+h1 {
     text-align: center;
     margin-bottom: 100px;
     font-weight: 450;
     font-style: normal;
-    font-family: 'BMJUA',serif;
+    font-family: 'BMJUA', serif;
     color: rgb(70, 44, 32);
 }
+
 body {
     margin: 0;
 }
@@ -44,7 +46,8 @@ header img {
 
 nav {
     background-color: rgb(160, 134, 122);
-    font-weight: bold; color : white;
+    font-weight: bold;
+    color: white;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -69,12 +72,13 @@ nav ul li a {
     font-size: 20px;
     font-weight: 450;
     font-style: normal;
-    font-family: 'BMJUA',serif;
+    font-family: 'BMJUA', serif;
 }
 
 nav ul li a:hover {
     color: rgb(70, 44, 32);
 }
+
 .content {
     padding-top: 190px;
     padding-bottom: 190px;
@@ -82,7 +86,8 @@ nav ul li a:hover {
     margin-right: 100px;
     height: auto;
 }
-.fixed-nav{
+
+.fixed-nav {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -90,11 +95,14 @@ nav ul li a:hover {
     flex-direction: row-reverse;
     align-items: center;
 }
-.btn-page-top{
+
+.btn-page-top {
     display: block;
 }
-.btn-page-top-span{
-    width: 50px; height: 50px;
+
+.btn-page-top-span {
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,10 +112,12 @@ nav ul li a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-weight: 450;
     font-style: normal;
-    font-family: 'BMJUA',serif;
+    font-family: 'BMJUA', serif;
 }
-.btn-page-top-span:hover{
-    width: 50px; height: 50px;
+
+.btn-page-top-span:hover {
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,9 +127,10 @@ nav ul li a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-weight: 450;
     font-style: normal;
-    font-family: 'BMJUA',serif;
+    font-family: 'BMJUA', serif;
     color: white;
 }
+
 .footer {
     background-color: rgb(160, 134, 122);
     height: 170px;

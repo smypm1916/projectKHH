@@ -117,7 +117,7 @@ public class ShopDAO {
        ResultSet rs = null;
 
        try {
-           con = DBManager.connection();
+           con = DBManager.connect();
            pstmt = con.prepareStatement("select * from review_info where review_shop=?");
            pstmt.setString(1, req.getParameter("no"));
 
