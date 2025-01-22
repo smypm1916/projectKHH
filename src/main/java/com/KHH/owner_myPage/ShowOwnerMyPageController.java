@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ShowOwnerMyPageController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Restaurant_DAO.ShowProfile(request);
         request.setAttribute("content","/jsp/owner_myPage/MyPage.jsp");
         request.getRequestDispatcher("/jsp/main.jsp").forward(request,response);
     }

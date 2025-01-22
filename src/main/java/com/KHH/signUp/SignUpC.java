@@ -20,10 +20,12 @@ public class SignUpC extends HttpServlet {
 
         if (Objects.equals(request.getParameter("userType"), "user")) {
             SignUpDAO.getSDAO().UserSignUp(request, response);
-        } else {
+        } else if (Objects.equals(request.getParameter("userType"), "owner")) {
             SignUpDAO.getSDAO().OwnerSignUp(request, response);
         }
 
-        request.getRequestDispatcher("jsp/signup/signUpComplete.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
+
+//        request.getRequestDispatcher("jsp/signup/signUpComplete.jsp").forward(request, response);
     }
 }

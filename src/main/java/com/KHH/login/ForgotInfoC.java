@@ -15,7 +15,6 @@ public class ForgotInfoC extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.setCharacterEncoding("UTF-8");
         InfoDAO.infoSearch(request);
         request.getRequestDispatcher("jsp/login/forgotInfo.jsp").forward(request, response);

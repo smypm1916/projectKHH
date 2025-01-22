@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -34,9 +35,10 @@
                         <form action="/Edit_profileC" method="post">
                             <button class="change_profile" value="프로필 수정">프로필 수정</button>
                         </form>
+
                     </div>
+                </div>
             </div>
-        </div>
 
         <div class="myshop-title">
             <h2>내 가게 정보</h2>
@@ -48,7 +50,8 @@
             </a>
         </div>--%>
 
-        <div class="myShop_information_list_field">
+
+            <div class="myShop_information_list_field">
 
             <div class="myShop_information_list">
                 <a href="DetailRestaurantC">
@@ -59,7 +62,25 @@
                 <div style="border: none;">
                     <a href="DetailRestaurantC">
                         <h2>오이시 스시야</h2>
+
                     </a>
+                    <div style="border: none;">
+                        <a href="DetailRestaurantC?no=${res.id}" style="text-decoration: none; color: black">
+                            <h2>오이시 스시야</h2>
+                        </a>
+                    </div>
+                    <div style="border: none;">
+                        <h3>도쿄도 시나가와구</h3>
+                        <h3>10:00 ~ 22:00</h3>
+                    </div>
+                    <div style="border: none; margin-bottom: 7px;">
+                        <button class="MenuButton" onclick="location.href=''">
+                            메뉴추가
+                        </button>
+                        <button class="MenuButton" onclick="location.href=''">
+                            메뉴변경
+                        </button>
+                    </div>
                 </div>
                 <div style="border: none;">
                     <h3>도쿄도 시나가와구</h3>
@@ -94,7 +115,6 @@
                         메뉴변경
                     </button>
                 </div>
-            </div>
 
             <div class="myShop_information_list">
                 <img class="myShop_information_list_img"
@@ -115,7 +135,6 @@
                         메뉴변경
                     </button>
                 </div>
-            </div>
 
             <div class="myShop_information_list">
                 <img class="myShop_information_list_img"
@@ -137,8 +156,6 @@
                     </button>
                 </div>
             </div>
-
-        </div>
 
         <div class="shopReview-title">
             <h2>내 가게 예약</h2>

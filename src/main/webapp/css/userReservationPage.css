@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 
+
 /* 기본 스타일 */
 * {
     margin: 0;
@@ -10,30 +11,30 @@
 }
 
 /* 컨테이너 설정 */
-.container {
-    background-color: #fff;
-    color: #000;
-    width: 100vw; /* 전체 화면 너비 */
-    height: 100vh; /* 전체 화면 높이 */
-}
+/*.container {*/
+/*    background-color: #fff;*/
+/*    color: #000;*/
+/*    width: 100vw; !* 전체 화면 너비 *!*/
+/*    height: 100vh; !* 전체 화면 높이 *!*/
+/*}*/
 
 /* 헤더 스타일 */
-.header {
-    height: 6vh; /* 화면 비율로 높이 설정 */
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    line-height: 6vh;
-}
+/*.header {*/
+/*    height: 6vh; !* 화면 비율로 높이 설정 *!*/
+/*    background-color: #000;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    line-height: 6vh;*/
+/*}*/
 
-/* 네비게이션 바 스타일 */
-.nav {
-    height: 5vh; /* 화면 비율로 높이 설정 */
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    line-height: 5vh;
-}
+/*!* 네비게이션 바 스타일 *!*/
+/*.nav {*/
+/*    height: 5vh; !* 화면 비율로 높이 설정 *!*/
+/*    background-color: #333;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    line-height: 5vh;*/
+/*}*/
 
 /* 콘텐츠 영역 */
 .content {
@@ -61,6 +62,7 @@
     margin: 1vh 0;
 }
 
+
 /* 좋아요한 가게 리스트 */
 .reservation-list {
     display: flex;
@@ -79,8 +81,8 @@
     display: flex;
     justify-content: unset;
     border: 1px solid #ddd;
-    margin-bottom: 1vh;
-    padding: 2vh;
+    margin-bottom: 10px; /* vh 대신 px 사용 */
+    padding: 20px; /* vh 대신 px 사용 */
     background-color: #f7f7f7;
     border-radius: 5px;
     width: 100%;
@@ -92,10 +94,10 @@
 }
 
 .reserv-place-list img {
-    width: 18vw; /* 화면 너비의 18% 크기 */
-    height: 18vw; /* 화면 너비의 18% 크기 */
+    width: 200px; /* 고정 크기 */
+    height: 200px; /* 고정 크기 */
     border-radius: 5px;
-    margin-right: 3vw;
+    margin-right: 30px; /* vw 대신 px 사용 */
 }
 
 /* 가게 정보 텍스트 */
@@ -104,12 +106,12 @@
 }
 
 .reserv-place-list h1 {
-    font-size: 1.5vw; /* 화면 너비에 비례한 글씨 크기 */
+    font-size: 20px; /* vw 대신 px 사용 */
     color: #000;
 }
 
 .reserv-place-list p {
-    font-size: 0.9vw; /* 화면 너비에 비례한 글씨 크기 */
+    font-size: 14px; /* vw 대신 px 사용 */
     color: #555;
 }
 
@@ -118,8 +120,8 @@ input[type="button"] {
     background-color: #333;
     color: #fff;
     border: none;
-    padding: 0.8vh 1.2vw; /* 화면 비례한 패딩 */
-    font-size: 1vw; /* 화면 너비에 비례한 글씨 크기 */
+    padding: 10px 20px; /* vh와 vw 대신 px 사용 */
+    font-size: 14px; /* vw 대신 px 사용 */
     cursor: pointer;
     border-radius: 5px;
 }
@@ -127,6 +129,7 @@ input[type="button"] {
 input[type="button"]:hover {
     background-color: #555;
 }
+
 
 /* 페이지 번호 */
 .bottom-list-num {
