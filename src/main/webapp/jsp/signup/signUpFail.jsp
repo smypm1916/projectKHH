@@ -17,6 +17,6 @@
 <br><br>
 <div>
     <button onclick="location.href='HomeC'">메인 화면으로 돌아가기</button>
-
+</div>
 </body>
 </html>
