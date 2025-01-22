@@ -24,6 +24,8 @@ public class SignUpC extends HttpServlet {
             SignUpDAO.getSDAO().OwnerSignUp(request, response);
         }
 
-        request.getRequestDispatcher("jsp/signup/signUpComplete.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
+
+//        request.getRequestDispatcher("jsp/signup/signUpComplete.jsp").forward(request, response);
     }
 }

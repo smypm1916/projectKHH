@@ -22,9 +22,11 @@
 
 <body>
 
+<% request.setCharacterEncoding("UTF-8");%>
+
 <h1>입력 확인 페이지</h1>
 
-<form action="SignUpC">
+<form action="/SignUpC" method="POST">
     <% String email = request.getParameter("email-domain") + "@" + request.getParameter("email-service"); %>
 
     <p>이름: <%= request.getParameter("name")%>
@@ -49,21 +51,15 @@
     <input type="hidden" name="gender" value="<%= request.getParameter("gender") %>">
 
     <p>생년월일:
-        <%= request.getParameter("birth-year") %>
-        <%= request.getParameter("birth-month") %>
-        <%= request.getParameter("birth-day") %>
+        <%= request.getParameter("birth-year") %>년&nbsp;
+        <%= request.getParameter("birth-month") %>월&nbsp;
+        <%= request.getParameter("birth-day") %>일
     </p>
-    <input type="hidden" name="birth-year" value="<%= request.getParameter("birth-year") %>">
-    <input type="hidden" name="birth-month" value="<%= request.getParameter("birth-month") %>">
-    <input type="hidden" name="birth-day" value="<%= request.getParameter("birth-day") %>">
+    <input type="hidden" name="birth"
+           value="<%= request.getParameter("birth-year") + "-" + request.getParameter("birth-month") + "-" + request.getParameter("birth-day") %>">
 
-    <p>성별:
-        <%= request.getParameter("gender")%>
+    <p>비밀번호: <%= request.getParameter("password")%>
     </p>
-    <input type="hidden" name="gender" value="<%= request.getParameter("gender") %>">
-
-
-    <p>비밀번호: ****</p>
     <input type="hidden" name="password" value="<%= request.getParameter("password") %>">
 
     <button type="submit" name="userType" value="user">회원 등록</button>
