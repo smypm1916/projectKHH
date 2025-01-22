@@ -120,7 +120,11 @@ h1{
     /*text-align: center;*/
     margin-top: 30px;
     width: 100%;
-    height: 590px;
+    height: auto;
+}
+.community_content_image img{
+    width: 400px;
+    height: 200px;
 }
 .community_comment_div{
     border: none;
