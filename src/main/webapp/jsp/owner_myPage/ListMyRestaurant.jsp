@@ -6,149 +6,141 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../../css/ownerMyPage/ownerRestaurantList.css">
 <style>
-div {
-	border: 1px solid;
-}
 
-.header {
-	height: 100px;
-}
-
-.nav {
-	height: 70px;
-}
-
-.content {
-	margin-top: 100px;
-	margin-left: 100px;
-	margin-right: 100px;
-	height: 3500px;
-	border: none;
-}
-
-.footer {
-	height: 200px;
-}
-
-.profile-field {
-	display: flex;
-}
-
-.profile-circle img {
-	border-radius: 50%;
-	width: 170px;
-	height: 170px;
-}
-
-.myShop {
-	display: flex;
-	justify-content: flex-end;
-}
-
-.myShop_place_box {
-	display: flex;
-	text-align: center;
-	border: none;
-	margin: 20px;
-}
-.myShop_photo {
-  border-radius: 12px; /* 모서리 둥글게 */
-  border: 2px solid #ddd; /* 얇은 테두리 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-  transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
-}
-
-.myShop_photo:hover {
-  transform: scale(1.05); /* 호버 시 확대 효과 */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
-}
-
-.myShop_place_box img {
-	width: 300px;
-	height: 300px;
-}
-
-.myShop_container {
-	display: flex;
-	overflow: hidden;
-	background-color: rgb(198, 232, 242);
-}
-
-.myShop_button_field {
-	margin-left: auto;
-}
-
-.myShop-button {
-  height: 50px;
-  padding: 10px 20px; /* 버튼 내부 여백 */
-  font-size: 16px; /* 텍스트 크기 */
-  font-weight: bold; /* 텍스트 두께 */
-  color: #ffffff; /* 텍스트 색상 */
-  background-color: #007bff; /* 버튼 배경색 */
-  border: none; /* 테두리 제거 */
-  border-radius: 8px; /* 모서리 둥글게 */
-  cursor: pointer; /* 마우스 오버 시 포인터 표시 */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
-  transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
-}
-
-.myShop-button:hover {
-  background-color: #0056b3; /* 호버 시 배경색 변경 */
-  transform: scale(1.05); /* 약간 확대 */
-}
-
-.myShop-button:active {
-  background-color: #003d80; /* 클릭 시 배경색 변경 */
-  transform: scale(0.95); /* 약간 축소 */
-}
-
-.bottom-list-num {
-	text-align: center;
-	item-align: center;
-}
-
-.text-box {
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-bottom: 40px;
-}
-
-.bottom-list-num {
-	text-align: center;
-	item-align: center;
-}
-
-.bottom-return-btn {
-	text-align: center;
-	item-align: center;
-}
 </style>
 </head>
 <body>
 	<div class="container">
-		<div class="header">header</div>
-		<div class="nav">nav</div>
-		<div class="content">
-
-			<div class="mypage" style="border: none;">
-				<h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
+			<div class="mypage">
+				<h1>내 가게 리스트</h1>
 			</div>
-			<br>
-			<hr>
 
-			<div class="myShop" style="border: none;">
-				<h1 style="margin-inline-end: auto;">내 가게</h1>
-				<p style="display: flex; align-items: center; text-align: center">
+			<div class="myShop">
+				<%--<h1 style="margin-inline-end: auto;">내 가게</h1>--%>
+				<p>
 					<a href="AddRestaurantC" style="text-decoration: none; color: black">
-						<h2>가게를 추가</h2>
+						<button>가게를 추가</button>
 					</a>
 				</p>
 			</div>
 
-			<br>
+		<div class="myShop_information_list_field">
 
-			<c:forEach var="res" items="${res}">
+			<div class="myShop_information_list">
+				<a href="DetailRestaurantC">
+					<img class="myShop_information_list_img"
+						 src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
+						 alt="place-name">
+				</a>
+				<div style="border: none;">
+					<a href="DetailRestaurantC">
+						<h2>오이시 스시야</h2>
+					</a>
+					<%--<div style="border: none;">
+                        <a href="DetailRestaurantC?no=${res.id}" style="text-decoration: none; color: black">
+                            <h2>오이시 스시야</h2>
+                        </a>
+                    </div>--%>
+					<%--<div style="border: none;">
+                        <h3>도쿄도 시나가와구</h3>
+                        <h3>10:00 ~ 22:00</h3>
+                    </div>
+                    <div style="border: none; margin-bottom: 7px;">
+                        <button class="MenuButton" onclick="location.href=''">
+                            메뉴추가
+                        </button>
+                        <button class="MenuButton" onclick="location.href=''">
+                            메뉴변경
+                        </button>
+                    </div>--%>
+				</div>
+				<div style="border: none;">
+					<h3>도쿄도 시나가와구</h3>
+					<h3>10:00 ~ 22:00</h3>
+				</div>
+				<div class="myShop_menuBtn">
+					<button class="MenuButton" onclick="location.href=''">
+						메뉴추가
+					</button>
+					<button class="MenuButton" onclick="location.href=''">
+						메뉴변경
+					</button>
+				</div>
+			</div>
+
+			<div class="myShop_information_list">
+				<img class="myShop_information_list_img"
+					 src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
+					 alt="place-name">
+				<div style="border: none;">
+					<h2>무라카미 하코다테 본점</h2>
+				</div>
+				<div style="border: none;">
+					<h3>도쿄도 세타가야구</h3>
+					<h3>10:00 ~ 15:00</h3>
+				</div>
+				<div class="myShop_menuBtn">
+					<button class="MenuButton" onclick="location.href=''">
+						메뉴추가
+					</button>
+					<button class="MenuButton" onclick="location.href=''">
+						메뉴변경
+					</button>
+				</div>
+			</div>
+			<div class="myShop_information_list">
+				<img class="myShop_information_list_img"
+					 src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
+					 alt="place-name">
+				<div style="border: none;">
+					<h2>라멘 삿포로 이치류안</h2>
+				</div>
+				<div style="border: none;">
+					<h3>도쿄도 시부야</h3>
+					<h3>10:00 ~ 24:00</h3>
+				</div>
+				<div class="myShop_menuBtn">
+					<button class="MenuButton" onclick="location.href=''">
+						메뉴추가
+					</button>
+					<button class="MenuButton" onclick="location.href=''">
+						메뉴변경
+					</button>
+				</div>
+			</div>
+			<div class="myShop_information_list">
+				<img class="myShop_information_list_img"
+					 src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
+					 alt="place-name">
+				<div style="border: none;">
+					<h2>해산물 로바타야키</h2>
+				</div>
+				<div style="border: none;">
+					<h3>도쿄도 시나가와구</h3>
+					<h3>10:00 ~ 22:00</h3>
+				</div>
+				<div class="myShop_menuBtn">
+					<button class="MenuButton" onclick="location.href=''">
+						메뉴추가
+					</button>
+					<button class="MenuButton" onclick="location.href=''">
+						메뉴변경
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="service_comment">
+			<h2>서비스 준비중입니다(◍•ᴗ•◍)</h2>
+		</div>
+		<br>
+		<div class="service_comment2">
+			<h2>얼른 완성시킬게요 (ง •̀_•́)ง</h2>
+		</div>
+
+<%--			<c:forEach var="res" items="${res}">
 				<div class="myShop_container" style="border: solid 1px;">
 					<div class="myShop_place_box">
 						<img class="myShop_photo"
@@ -173,25 +165,16 @@ div {
 						<input onclick="location.href='Delete_myRestaurantC?no=${res.id}'" class="myShop-button" type="button" value="삭제">
 					</div>
 				</div>
-			</c:forEach>
+			</c:forEach>--%>
 
-			<br> <br>
-
-			<div class="bottom-list-num" style="border: none;">
+			<%--<div class="bottom-list-num" style="border: none;">
 				<h2>1 2 3 4 (나중에 구현) ></h2>
-			</div>
+			</div>--%>
 
 			<div class="bottom-return-btn"
 				style="border: none; align-content: center;">
-				<input type="button" value="마이페이지로 돌아가기">
+				<button onclick="location.href='ShowOwnerMyPageController'">마이페이지</button>
 			</div>
-
-
-
-
-		</div>
-
-		<div class="footer">footer</div>
 	</div>
 </body>
 </html>

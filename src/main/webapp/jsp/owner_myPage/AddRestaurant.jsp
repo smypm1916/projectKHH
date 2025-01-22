@@ -6,217 +6,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
-    <style>
-        div {
-            border: 1px solid;
-        }
-
-        .header {
-            height: 100px;
-        }
-
-        .nav {
-            height: 70px;
-        }
-
-        .content {
-            margin-top: 100px;
-            margin-left: 100px;
-            margin-right: 100px;
-            height: 3500px;
-            border: none;
-        }
-
-        .footer {
-            height: 200px;
-        }
-
-        .profile-field {
-            display: flex;
-        }
-
-        .profile-circle img {
-            border-radius: 50%;
-            width: 170px;
-            height: 170px;
-        }
-
-        .myShop-list {
-            display: flex;
-            justify-content: center;
-        }
-
-        .myShop_information {
-            display: flex;
-            text-align: center;
-            border: none;
-            margin: 20px;
-            width: 850px;
-        }
-
-        #previewImage1 img {
-            width: 100%;
-            height: 320px;
-            border-radius: 12px; /* 모서리 둥글게 */
-            border: 2px solid #ddd; /* 얇은 테두리 */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-            transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
-        }
-
-        #previewImage1:hover img {
-            transform: scale(1.05); /* 호버 시 확대 효과 */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
-        }
-
-        #previewImage2 img {
-            width: 100%;
-            height: 320px;
-            border-radius: 12px; /* 모서리 둥글게 */
-            border: 2px solid #ddd; /* 얇은 테두리 */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-            transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
-        }
-
-        #previewImage2:hover img {
-            transform: scale(1.05); /* 호버 시 확대 효과 */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
-        }
-
-        .add_image_button {
-            height: 50px;
-            padding: 10px 20px; /* 버튼 내부 여백 */
-            font-size: 16px; /* 텍스트 크기 */
-            font-weight: bold; /* 텍스트 두께 */
-            color: #ffffff; /* 텍스트 색상 */
-            background-color: #007bff; /* 버튼 배경색 */
-            border: none; /* 테두리 제거 */
-            border-radius: 8px; /* 모서리 둥글게 */
-            cursor: pointer; /* 마우스 오버 시 포인터 표시 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
-            transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
-        }
-
-        .add_image_button:hover {
-            background-color: #0056b3; /* 호버 시 배경색 변경 */
-            transform: scale(1.05); /* 약간 확대 */
-        }
-
-        .myShop_info_input_field {
-            margin-top: 10px;
-            margin-bottom: 6px;
-        }
-
-        .myShop_button_box {
-            display: flex;
-            justify-content: center;
-            gap: 10px; /* 버튼 간격 설정 (선택사항) */
-            border: none; /* 필요 시 테두리 제거 */
-            margin-top: 10px;
-        }
-
-        #cancel_info {
-            height: 50px;
-            padding: 10px 20px; /* 버튼 내부 여백 */
-            font-size: 16px; /* 텍스트 크기 */
-            font-weight: bold; /* 텍스트 두께 */
-            color: #ffffff; /* 텍스트 색상 */
-            background-color: #007bff; /* 버튼 배경색 */
-            border: none; /* 테두리 제거 */
-            border-radius: 8px; /* 모서리 둥글게 */
-            cursor: pointer; /* 마우스 오버 시 포인터 표시 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
-            transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
-        }
-
-        #cancel_info:hover {
-            background-color: #0056b3; /* 호버 시 배경색 변경 */
-            transform: scale(1.05); /* 약간 확대 */
-        }
-
-        #complete_info {
-            height: 50px;
-            padding: 10px 20px; /* 버튼 내부 여백 */
-            font-size: 16px; /* 텍스트 크기 */
-            font-weight: bold; /* 텍스트 두께 */
-            color: #ffffff; /* 텍스트 색상 */
-            background-color: #007bff; /* 버튼 배경색 */
-            border: none; /* 테두리 제거 */
-            border-radius: 8px; /* 모서리 둥글게 */
-            cursor: pointer; /* 마우스 오버 시 포인터 표시 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
-            transition: background-color 0.3s, transform 0.2s; /* 애니메이션 효과 */
-        }
-
-        #complete_info:hover {
-            background-color: #0056b3; /* 호버 시 배경색 변경 */
-            transform: scale(1.05); /* 약간 확대 */
-        }
-
-        .myShop_information_list_field {
-            display: flex;
-            overflow: hidden;
-            height: 730px;
-            background-color: rgb(198, 232, 242);
-        }
-
-        .bottom-list-num {
-            text-align: center;
-            item-align: center;
-        }
-
-        .text-box {
-            margin-top: 20px;
-            margin-left: 20px;
-            margin-bottom: 40px;
-        }
-
-        .bottom-list-num {
-            text-align: center;
-            item-align: center;
-        }
-
-        .bottom-return-btn {
-            text-align: center;
-            item-align: center;
-        }
-
-        /* 기본 파일 입력 숨기기 */
-        #fileInput1 {
-            display: none;
-        }
-
-        #fileInput2 {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/ownerMyPage/ownerAddRestaurant.css">
 </head>
 <body>
-for
 <div class="container">
-    <div class="header">header</div>
-    <div class="nav">nav</div>
 
-    <div class="content">
         <form action="AddRestaurantC" method="post" enctype="multipart/form-data">
             <div class="mypage" style="border: none;">
-                <a href="MyPage.jsp" style="text-decoration: none; color: black">
-                    <h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
-                </a>
+               <%-- <a href="MyPage.jsp" style="text-decoration: none; color: black">--%>
+                    <h1>가게 등록하기</h1>
+                <%--</a>--%>
             </div>
-            <br>
-            <hr>
 
-            <div class="myShop-list" style="border: none;">
+           <%-- <div class="myShop-list" style="border: none;">
                 <h1>추가하실 가게의 정보</h1>
-            </div>
-            <br>
+            </div>--%>
 
-
-            <div class="myShop_information_list_field" style="border: solid 1px;">
+            <div class="myShop_information_list_field">
                 <div class="myShop_information">
-                    <div style="width: 480px; border: none;">
+                    <%--<div class="shopImageBtnDiv">
 
-                        <%--<img id="previewImage1"
+                        &lt;%&ndash;<img id="previewImage1"
                             src="https://d12zq4w4guyljn.cloudfront.net/750_750_20230827024509017_photo_408d3d3f6fc0.jpg"
                             alt="place-name" width="480" height="320"> <input
                             type="file" id="fileInput1" style="display: none;"
@@ -226,11 +36,13 @@ for
                             src="https://d12zq4w4guyljn.cloudfront.net/750_750_20230827024509661_photo_408d3d3f6fc0.jpg"
                             alt="place-name" width="480" height="320"> <input
                             type="file" id="fileInput2" style="display: none;"
-                            onchange="changeImage(event, 'previewImage2')">--%>
-                        <br>
+                            onchange="changeImage(event, 'previewImage2')">&ndash;%&gt;
+                                <label for="mainimage">
+                                    <div class="btn-upload">메인 이미지 업로드하기</div>
+                                </label>
                         <input accept=".jpg,.jpeg,.png" type="file" id="mainimage" name="main" required>
-                        <input accept=".jpg,.jpeg,.png" type="file" id="subimage" name="sub" multiple required>
-                        <input type="file" id="fileInput1" onchange="updateButtonText(this)">
+
+                        &lt;%&ndash;<input type="file" id="fileInput1" onchange="updateButtonText(this)">
                         <button class="add_image_button"
                                 onclick="triggerFileInput('fileInput1');">
                             메인이미지 선택
@@ -242,37 +54,42 @@ for
                             서브이미지 선택
                         </button>
                         <input multiple accept=".jpg,.jpeg,.png" type="file" id="fileInput2" hidden="hidden"
-                               onchange="updateButtonText(this)">
-                    </div>
+                               onchange="updateButtonText(this)">&ndash;%&gt;
+                    </div>--%>
 
-                    <div
-                            style="border: none; text-align: left; margin-left: 30px; width: 300px">
-                        <div style="border: none;">
-                            <p class="myShop_info_input_field">가게이름</p>
-                            <input name="addName" style="width: 100%; height: 30px;">
-                            <p class="myShop_info_input_field">주인이름</p>
-                            <input name="addOwner" style="width: 100%; height: 30px;">
-                            <p class="myShop_info_input_field">주소</p>
-                            <select name="addRegion" id="" style="width: 120px; height: 36px">
-                                <option value="도오">도오</option>
-                                <option value="도난">도난</option>
-                                <option value="도토">도토</option>
-                                <option value="도호쿠">도호쿠</option>
-                            </select>
+                    <div style="border: none; width: 300px;">
+                        <div>
+                            <div style="margin-bottom: 10px;">
+                                <p class="myShop_info_input_field">가게이름</p>
+                                <input name="addName" style="width: 300px">
+                            </div>
+                            <div style="padding-top: 10px;">
+                                <p class="myShop_info_input_field">주인이름</p>
+                                <input name="addOwner" style="width: 300px">
+                            </div>
+                            <div style="padding-top:20px;">
+                                <p class="myShop_info_input_field">주소</p>
+                                <select name="addRegion" style="width: 150px;">
+                                    <option value="도오">도오</option>
+                                    <option value="도난">도난</option>
+                                    <option value="도토">도토</option>
+                                    <option value="도호쿠">도호쿠</option>
+                                </select>
+                            </div>
                             <p class="myShop_info_input_field">상세주소</p>
-                            <input name="addAddr" style="width: 100%; height: 30px;">
+                            <input name="addAddr" style="width: 300px">
                             <p class="myShop_info_input_field">영업시간</p>
-                            <select name="addWeek">
+                            <select name="addWeek" style="width: 150px;">
                                 <option value="연중무휴">연중무휴</option>
                                 <option value="평일">평일</option>
                                 <option value="주말">주말</option>
                             </select>
                             <br>
-                            <select name="addOpenHour" id="start-hour-select"></select>
-                            <select name="addOpenMinute" id="start-minute-select"></select>
+                            <select name="addOpenHour" id="start-hour-select" style="width: 66px;"></select>
+                            <select name="addOpenMinute" id="start-minute-select" style="width: 66px;"></select>
                             ~
-                            <select name="addCloseHour" id="end-hour-select"></select>
-                            <select name="addCloseMinute" id="end-minute-select"></select>
+                            <select name="addCloseHour" id="end-hour-select" style="width: 66px;"></select>
+                            <select name="addCloseMinute" id="end-minute-select" style="width: 66px;"></select>
 
                             <script>
                                 const startHourSelect = document.getElementById("start-hour-select");
@@ -307,28 +124,42 @@ for
                                 }
                             </script>
                             <p class="myShop_info_input_field">전화번호</p>
-                            <input name="addPhoneNum1" style="width: 17%; height: 30px; text-align: center">
+                            <input name="addPhoneNum1" style="width: 80px; text-align: center">
                             -
-                            <input name="addPhoneNum2" style="width: 20%; height: 30px; text-align: center">
+                            <input name="addPhoneNum2" style="width: 90px; text-align: center">
                             -
-                            <input name="addPhoneNum3" style="width: 20%; height: 30px; text-align: center">
+                            <input name="addPhoneNum3" style="width: 90px; text-align: center">
                             <p class="myShop_info_input_field">가게에 대한 설명</p>
                             <textarea name="addExplain" style="resize: none; width: 100%; height: 150px;"></textarea>
+                        </div>
+                        <div class="shopImageBtnDiv">
+                            <div class="mainBtnDiv">
+                                <label for="mainimage">
+                                    <div class="btn-upload">메인 이미지 업로드하기</div>
+                                </label>
+                                <input accept=".jpg,.jpeg,.png" type="file" id="mainimage" name="sub" required>
+                            </div>
+                            <div class="subBtnDiv">
+                                <label for="subimage">
+                                    <div class="btn-upload">서브 이미지 업로드하기</div>
+                                </label>
+                                <input accept=".jpg,.jpeg,.png" type="file" id="subimage" name="sub" multiple required>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <input hidden="hidden" name="no" value="">
-            <div class="myShop_button_box" style="border: none;">
-                <button onclick="location.href='ListMyRestaurant.jsp'" id="cancel_info">취소</button>
-                <button type="submit" id="complete_info">추가완료</button>
+            <div class="myShop_button_box">
+                <button onclick="location.href='ShowAllRestaurantC'" id="cancel_info">목록으로</button>
+                <button type="submit" id="complete_info">등록하기</button>
             </div>
         </form>
-    </div>
-    <div class="footer">footer</div>
+
 </div>
 
-<script>
+<%--<script>
     // 파일 입력 클릭을 트리거하는 함수
     function triggerFileInput(inputId) {
         document.getElementById(inputId).click();
@@ -392,6 +223,6 @@ for
             reader.readAsDataURL(input.files[0]); // 파일 읽기
         }
     }
-</script>
+</script>--%>
 </body>
 </html>
