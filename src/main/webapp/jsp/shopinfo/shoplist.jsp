@@ -152,8 +152,8 @@
 				<div class="shop-name" onclick="location.href='ShopDetailC?no=${shop.shop_no}'">${shop.shop_name}</div>
 				<div class="shop-description">${shop.shop_content}</div>
 				<div class="shop-details">
-					<div class="shop-time">${shop.shop_opentime}</div>
-					<div class="shop-access">${shop.shop_addr}</div>
+					<div class="shop-time">영업시간: ${shop.shop_opentime}</div>
+					<div class="shop-access">위치: ${shop.shop_addr}</div>
 				</div>
 			</div>
 		</div>

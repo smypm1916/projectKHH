@@ -24,7 +24,7 @@
     <%--        내비게이션바--%>
     <div class="global-nav">
         <ul class="nav-content">
-            <li><a href=""> 가게정보 </a></li>
+            <li><a href="ShopC"> 가게정보 </a></li>
             <li class="no-action"><a href=""> | </a></li>
             <li><a href=""> 예약하기 </a></li>
             <li class="no-action"><a href=""> | </a></li>

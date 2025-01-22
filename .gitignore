@@ -39,3 +39,4 @@ build/
 .DS_Store
 
 DBManager.java
+out/

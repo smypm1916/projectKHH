@@ -99,8 +99,8 @@ public class ShopDAO {
                menu.setMenu_name(rs.getString(4));
                menu.setMenu_price(rs.getString(5));
 
+               menus.add(menu);
            }
-           menus.add(menu);
            System.out.println(menus);
            req.setAttribute("menus", menus);
        }catch (Exception e) {
@@ -117,8 +117,11 @@ public class ShopDAO {
        ResultSet rs = null;
 
        try {
-           con = DBManager.connect();
-           pstmt = con.prepareStatement("select * from review_info");
+           con = DBManager.connection();
+           pstmt = con.prepareStatement("select * from review_info where review_shop=?");
+           pstmt.setString(1, req.getParameter("no"));
+
+
            rs = pstmt.executeQuery();
            ReviewDTO review = null;
            ArrayList<ReviewDTO>reviews = new ArrayList<>();
@@ -133,9 +136,10 @@ public class ShopDAO {
                review.setReview_star(rs.getInt(6));
 
                reviews.add(review);
+               System.out.println(review);
            }
-           System.out.println(reviews);
-           req.setAttribute("reviews", reviews);
+
+           req.setAttribute("review", reviews);
        }catch (Exception e) {
            e.printStackTrace();
        }finally {
