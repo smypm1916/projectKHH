@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', 'Helvetica', 'Verdana', sans-serif; /* 고딕체 설정 */
+}
+
+/* 컨테이너 설정 */
+/*.container {*/
+/*    background-color: #fff;*/
+/*    color: #000;*/
+/*    width: 100vw; !* 전체 화면 너비 *!*/
+/*    height: 100vh; !* 전체 화면 높이 *!*/
+/*}*/
+
+/* 헤더 스타일 */
+/*.header {*/
+/*    height: 6vh; !* 화면 비율로 높이 설정 *!*/
+/*    background-color: #000;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    line-height: 6vh;*/
+/*}*/
+
+/*!* 네비게이션 바 스타일 *!*/
+/*.nav {*/
+/*    height: 5vh; !* 화면 비율로 높이 설정 *!*/
+/*    background-color: #333;*/
+/*    color: #fff;*/
+/*    text-align: center;*/
+/*    line-height: 5vh;*/
+/*}*/
+
+/* 콘텐츠 영역 */
+.content {
+    margin-top: 6vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    height: auto;
+    border: none;
+}
+
+/* 푸터 스타일 */
+.footer {
+    height: 10vh; /* 화면 비율로 높이 설정 */
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    line-height: 10vh;
+}
+
+/* 마이페이지 */
+.mypage h1 {
+    font-size: 2vw; /* 화면 너비에 비례한 글씨 크기 */
+    color: #000;
+
+    margin: 1vh 0;
+}
+
+
+/* 리뷰 목록 스타일 */
+.review-list {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px 0;
+}
+
+.review-list h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 각 리뷰의 스타일 */
+.review-comment {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #444;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+/* 리뷰에 있는 링크 스타일 */
+.review-comment a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.review-comment a:hover {
+    text-decoration: underline;
+}
+
+/* 페이지 번호 */
+.bottom-list-num {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.bottom-list-num h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 푸터 스타일 */
+.footer {
+    height: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    line-height: 200px;
+    font-size: 1.5rem;
+}
+
+/* 구분선 */
+hr {
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+
+/* 돌아가기 버튼 */
+.bottom-return-btn {
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.bottom-return-btn input[type="button"] {
+    background-color: #000;
+    color: #fff;
+    padding: 1vh 2vw;
+    font-size: 1vw;
+    border-radius: 5px;
+}
+
+.bottom-return-btn input[type="button"]:hover {
+    background-color: #444;
+}
