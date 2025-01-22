@@ -60,7 +60,6 @@ public class SignUpDAO {
             if (pstmt.executeUpdate() == 1) {
                 System.out.println("User Sign Up Success!!!");
                 request.setAttribute("content", "/jsp/signup/signUpComplete.jsp");
-//                r_addrNumber = r_addrNumber + 1;
             } else {
                 request.setAttribute("content", "/jsp/signup/signUpFail.jsp");
             }
@@ -106,7 +105,6 @@ public class SignUpDAO {
             if (pstmt.executeUpdate() == 1) {
                 System.out.println("Owner Sign Up Success!!!");
                 request.setAttribute("content", "/jsp/signup/signUpComplete.jsp");
-//                r_addrNumber = r_addrNumber + 1;
             } else {
                 request.setAttribute("content", "/jsp/signup/signUpFail.jsp");
             }
