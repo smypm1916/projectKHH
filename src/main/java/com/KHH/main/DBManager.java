@@ -15,7 +15,7 @@ public class DBManager {
             dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 
 //             Configure the BasicDataSource
-            dataSource.setUrl("jdbc:oracle:thin:@g01o7s1507wx5iy9_medium?TNS_ADMIN=C:/LWH/Wallet_G01O7S1507WX5IY9");
+            dataSource.setUrl("jdbc:oracle:thin:@G01O7S1507WX5IY9_medium?TNS_ADMIN=C:/Users/jien9/Downloads/Wallet_G01O7S1507WX5IY9");
             dataSource.setUsername("KHH");
             dataSource.setPassword("Soldesk802!!");
             dataSource.setMinIdle(5);
@@ -38,8 +38,6 @@ public class DBManager {
 
     // Method to close database resources
     public static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
-
-  
         try {
             if (rs != null) {
                 rs.close();

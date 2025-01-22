@@ -8,16 +8,18 @@ public class OwnerDTO {
     private String owner_name;
     private String owner_birth;
     private String owner_tel;
+    private String owner_nickname;
 
     public OwnerDTO() {
     }
 
-    public OwnerDTO(String owner_email, String owner_pw, String owner_name, String owner_birth, String owner_tel) {
+    public OwnerDTO(String owner_email, String owner_pw, String owner_name, String owner_birth, String owner_tel, String owner_nickname) {
         this.owner_email = owner_email;
         this.owner_pw = owner_pw;
         this.owner_name = owner_name;
         this.owner_birth = owner_birth;
         this.owner_tel = owner_tel;
+        this.owner_nickname = owner_nickname;
     }
 
     public String getOwner_email() {
@@ -52,6 +54,14 @@ public class OwnerDTO {
         this.owner_birth = owner_birth;
     }
 
+    public String getOwner_nickname() {
+        return owner_nickname;
+    }
+
+    public void setOwner_nickname(String owner_nickname) {
+        this.owner_nickname = owner_nickname;
+    }
+
     public String getOwner_tel() {
         return owner_tel;
     }
@@ -67,6 +77,7 @@ public class OwnerDTO {
                 ", owner_pw='" + owner_pw + '\'' +
                 ", owner_name='" + owner_name + '\'' +
                 ", owner_birth='" + owner_birth + '\'' +
+                ", owner_nickname='" + owner_nickname + '\'' +
                 ", owner_tel='" + owner_tel + '\'' +
                 '}';
     }
