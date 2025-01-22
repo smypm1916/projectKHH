@@ -107,7 +107,18 @@
 
         .info div {
             margin: 8px 0;
-            font-size: 18px;
+            font-size: 20pt;
+        }
+        .info-content{
+            font-size: 20pt;
+            margin: 40px;
+        }
+        .info-content div{
+            border-bottom: 1px #cccccc dotted;
+            margin-left: 150px;
+            margin-right: 150px;
+            margin-top: 20px;
+            
         }
 
         .menu-one {
@@ -238,7 +249,8 @@
     </div>
     <div class="shop-name">${shop.shop_name}</div>
     <div class="shop-intro">${shop.shop_content}</div>
-    <div class="info">Information</div>
+    <div class="info" style="font-size: 25pt; margin-bottom: 50px">Information</div>
+    <div class="info-content">
     <div>${shop.shop_name}</div>
     <div>
         <div>주소</div>
@@ -251,6 +263,7 @@
     <div>
         <div>영업시간</div>
         <div>${shop.shop_opentime}</div>
+    </div>
     </div>
     <div><button>예약하기</button></div>
 </div>
