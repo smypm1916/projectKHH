@@ -159,21 +159,20 @@ div {
 								<span>😋</span>${res.name}
 							</h2>
 							<div style="border: none;">
-								<p>22-1 Otemachi, Hakodate, Hokkaido 040-0064</p>
+								<p>${res.address}</p>
 								<p>${res.opentime}</p>
-								<p>추가할 정보들(DB에서 끌어올수 있는것들 중에)</p>
-								<p>e.g. 리뷰수 : 245개</p>
+								<p>${res.phone}</p>
+								<p>${res.explain}</p>
 
 							</div>
 						</div>
 					</div>
 					<div class="myShop_button_field" style="border: none; align-content: center;">
-						<input class="myShop-button" type="button" value="가게 정보 보기">
-						<input class="myShop-button" type="button" value="수정">
-						<input class="myShop-button" type="button" value="삭제">
+						<input onclick="location.href='DetailRestaurantC?no=${res.id}'" class="myShop-button" type="button" value="가게 정보 보기">
+						<input onclick="location.href='Edit_myRestaurantC?no=${res.id}'" class="myShop-button" type="button" value="수정">
+						<input onclick="location.href='Delete_myRestaurantC?no=${res.id}'" class="myShop-button" type="button" value="삭제">
 					</div>
 				</div>
-				<input hidden="hidden" name="no" value="">
 			</c:forEach>
 
 			<br> <br>

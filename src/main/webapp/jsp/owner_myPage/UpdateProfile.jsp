@@ -140,7 +140,7 @@
     <div class="header">header</div>
     <div class="nav">nav</div>
     <div class="content">
-
+        <form action="/Edit_profileC" method="post">
         <div class="mypage" style="border: none;">
             <h1>MyPage</h1>
             <hr>
@@ -153,12 +153,13 @@
                 <div class="profile-circle" style="border: none;">
                     <img
                             id="previewImage"
-                            src="https://i.namu.wiki/i/d2I9NNVyw8e1AywBghx9PFHo7MGmrOL-GGm5Tke4vMPYTOanPjc3JU2K0lc1w4eIyunljvGHHYD-qh9-XwmyZZpeKpyWANSMOhpVqQgXZqpJeNIvlL0an4ukij80FyQNl_zkMbSTSRZPXcNRrVRDFw.webp"
-                            alt="place-name" width="480" height="320"> <input
+                            src="/jsp/owner_myPage/profilePhoto/${res.picture}"
+                            alt="place-name" width="480" height="320">
+                        <input name="picture"
                         type="file" id="fileInput" style="display: none;"
                         onchange="changeImage(event, 'previewImage')">
                     <br>
-                    <button class="add_image_button"
+                    <button class="add_image_button" type="button"
                             onclick="document.getElementById('fileInput').click();">
                         프로필사진을 선택
                     </button>
@@ -168,22 +169,21 @@
                     <p style="margin-bottom: 8px">
                         이름을 입력 <br>
                     </p>
-                    <input name="name" placeholder="닉네임">
-                    <button class="nameCheck">중복체크</button>
+                    <input name="nickname" value="${res.nickname}">
+                    <button type="button" class="nameCheck">중복체크</button>
 
                     <br>
                     <p>
                         상태메시지
                     </p>
-                    <textarea placeholder="하고 싶은 말을 써주세요" style="resize: none; height: 100px" name="message" id="" cols="30" rows="10"></textarea> <br> <br>
+                    <textarea style="resize: none; height: 100px" name="message" id="" cols="30" rows="10">${res.message}</textarea> <br> <br>
                 </div>
 
             </div>
         </div>
-        <input hidden="hidden" name="no" value="">
         <div class="myProfile_button_box" style="border: none;">
-            <button id="cancel_info">취소</button>
-            <button onclick="location.href='Edit_profileC'" id="complete_info">수정완료</button>
+            <button type="button" onclick="location.href='ShowOwnerMyPageController'" id="cancel_info">취소</button>
+            <button type="submit" id="complete_info" name="email" value="${res.email}">수정완료</button>
         </div>
 
 
@@ -203,8 +203,9 @@
                 }
             }
         </script>
-
+        </form>
     </div>
+
     <div class="footer">footer</div>
 </div>
 </body>
