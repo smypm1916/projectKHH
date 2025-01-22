@@ -118,12 +118,12 @@ button:hover {
     cursor: default; /* 기본 커서 표시 */
 }
 
-.footer {
+/*.footer {
     border: 1px solid darksalmon;
     border-radius: 10px;
     background-color: #F6F5F0;
     padding: 20px;
     text-align: center;
-}
+}*/
 
 

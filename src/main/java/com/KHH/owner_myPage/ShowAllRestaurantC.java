@@ -12,7 +12,8 @@ public class ShowAllRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Restaurant_DAO.ShowAllList(request);
-        request.getRequestDispatcher("jsp/owner_myPage/ListMyRestaurant.jsp").forward(request, response);
+        request.setAttribute("content","/jsp/owner_myPage/ListMyRestaurant.jsp");
+        request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

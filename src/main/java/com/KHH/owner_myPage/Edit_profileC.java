@@ -11,12 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 public class Edit_profileC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Restaurant_DAO.EditProfile(request);
-        request.getRequestDispatcher("jsp/owner_myPage/MyPage.jsp").forward(request, response);
+        Restaurant_DAO.ShowProfile(request);
+        request.setAttribute("content","/jsp/owner_myPage/UpdateProfile.jsp");
+        request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("jsp/owner_myPage/UpdateProfile.jsp").forward(request, response);
+        request.setCharacterEncoding("utf-8");
+        Restaurant_DAO.EditProfile(request);
+        response.sendRedirect("/ShowOwnerMyPageController");
     }
 }

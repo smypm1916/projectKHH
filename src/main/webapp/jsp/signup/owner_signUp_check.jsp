@@ -50,7 +50,8 @@
         <%= request.getParameter("birth-day") %>일
     </p>
     <input type="hidden" name="birth"
-           value="<%= request.getParameter("birth-year") + "-" + request.getParameter("birth-month") + "-" + request.getParameter("birth-day") %>">
+    <%--           value="<%= request.getParameter("birth-year") + "-" + request.getParameter("birth-month") + "-" + request.getParameter("birth-day") %>">--%>
+    <input type="hidden" id="formatted-birthdate" name="birth" value="<%= request.getParameter("birthdate")%>">
 
     <p>비밀번호:
         <%= request.getParameter("password")%>
