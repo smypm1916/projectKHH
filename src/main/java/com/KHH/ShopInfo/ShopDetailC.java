@@ -13,7 +13,7 @@ public class ShopDetailC extends HttpServlet {
         ShopDAO.getShop(req);
         ShopDAO.showAllMenu(req);
         ShopDAO.showAllReview(req);
-        req.setAttribute("content", "/jsp/shopdetail.jsp");
+        req.setAttribute("content", "/jsp/shopinfo/shopdetail.jsp");
         req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
     }
 

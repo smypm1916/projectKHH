@@ -11,7 +11,7 @@ public class ShopC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ShopDAO.showAllShop(req);
-        req.setAttribute("content", "/jsp/shoplist.jsp");
+        req.setAttribute("content", "/jsp/shopinfo/shoplist.jsp");
         req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
     }
 

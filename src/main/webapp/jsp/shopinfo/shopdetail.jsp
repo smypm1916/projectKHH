@@ -17,13 +17,14 @@
         .tab-menu {
             display: flex;
             justify-content: center;
-            background-color: #333;
+            background-color: #d4c6b5; /* 연갈색 배경 */
             padding: 15px 0;
+            border-bottom: 2px solid #b6a58d; /* 뮤트한 연갈색 테두리 */
         }
 
         .tab-menu button {
-            background-color: #333;
-            color: white;
+            background-color: #d4c6b5; /* 연갈색 */
+            color: #5e4b3c; /* 부드러운 갈색 텍스트 */
             padding: 12px 30px;
             border: none;
             font-size: 18px;
@@ -34,11 +35,12 @@
         }
 
         .tab-menu button:hover {
-            background-color: #575757;
+            background-color: #bba78f; /* 마우스 오버 시 색상 */
         }
 
         .tab-menu button.active {
-            background-color: #4CAF50; /* 클릭된 탭 색상 */
+            background-color: #9f8c75; /* 클릭된 탭 색상 */
+            color: white; /* 클릭된 탭 텍스트 색상 */
         }
 
         /* 탭 내용 */
@@ -62,6 +64,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .main-img img {
@@ -88,7 +91,7 @@
         .shop-name {
             font-size: 32px;
             font-weight: bold;
-            color: #333;
+            color: #5e4b3c; /* 부드러운 갈색 텍스트 */
             margin-top: 20px;
         }
 
@@ -109,16 +112,17 @@
             margin: 8px 0;
             font-size: 20pt;
         }
-        .info-content{
+
+        .info-content {
             font-size: 20pt;
             margin: 40px;
         }
-        .info-content div{
+
+        .info-content div {
             border-bottom: 1px #cccccc dotted;
             margin-left: 150px;
             margin-right: 150px;
             margin-top: 20px;
-            
         }
 
         .menu-one {
@@ -179,6 +183,11 @@
             font-size: 22px;
         }
 
+        .star2{
+            color: #BDBDBD;
+            font-size: 22px;
+        }
+
         .content {
             font-size: 16px;
             color: #666;
@@ -201,7 +210,7 @@
         }
 
         .like-button {
-            background-color: #4CAF50;
+            background-color: #9f8c75; /* 뮤트한 연갈색 */
             color: white;
             border: none;
             padding: 12px 25px;
@@ -213,7 +222,7 @@
         }
 
         .like-button:hover {
-            background-color: #45a049;
+            background-color: #8b7a5a; /* 버튼 호버 시 색상 */
         }
 
         .like-count {
@@ -225,14 +234,8 @@
 </head>
 <body>
 
-<div class="tab-menu">
-    <button id="tab1" class="tab-button active" onclick="openTab(1)">가게정보</button>
-    <button id="tab2" class="tab-button" onclick="openTab(2)">메뉴</button>
-    <button id="tab3" class="tab-button" onclick="openTab(3)">리뷰</button>
-</div>
-
-<!-- 가게정보 -->
-<div id="content1" class="tab-content active shop-detail">
+<!-- 가게 이름과 이미지 항상 위에 위치 -->
+<div class="shop-detail">
     <div class="main-img">
         <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="300" height="300">
     </div>
@@ -249,25 +252,39 @@
     </div>
     <div class="shop-name">${shop.shop_name}</div>
     <div class="shop-intro">${shop.shop_content}</div>
-    <div class="info" style="font-size: 25pt; margin-bottom: 50px">Information</div>
+</div>
+
+<!-- 탭 메뉴 -->
+<div class="tab-menu">
+    <button id="tab1" class="tab-button active" onclick="openTab(1)">가게정보</button>
+    <button id="tab2" class="tab-button" onclick="openTab(2)">메뉴</button>
+    <button id="tab3" class="tab-button" onclick="openTab(3)">리뷰</button>
+</div>
+
+<!-- 탭 내용 -->
+<!-- 가게정보 -->
+<div id="content1" class="tab-content active">
+    <div class="info">Information</div>
     <div class="info-content">
-    <div>${shop.shop_name}</div>
-    <div>
-        <div>주소</div>
-        <div>${shop.shop_addr}</div>
-    </div>
-    <div>
-        <div>TEL</div>
-        <div>${shop.shop_tel}</div>
-    </div>
-    <div>
-        <div>영업시간</div>
-        <div>${shop.shop_opentime}</div>
-    </div>
+        <div>${shop.shop_name}</div>
+        <div>
+            <div>주소</div>
+            <div>${shop.shop_addr}</div>
+        </div>
+        <div>
+            <div>TEL</div>
+            <div>${shop.shop_tel}</div>
+        </div>
+        <div>
+            <div>영업시간</div>
+            <div>${shop.shop_opentime}</div>
+        </div>
     </div>
     <div><button>예약하기</button></div>
 </div>
-<div id="content2" class="tab-content menu">
+
+<!-- 메뉴 -->
+<div id="content2" class="tab-content">
     <c:forEach var="menu" items="${menus}">
         <div class="menu-one">
             <div class="menu-nameprice">
@@ -278,19 +295,26 @@
         </div>
     </c:forEach>
 </div>
-<div id="content3" class="tab-content review-section">
-<c:forEach var="review" items="${reviews}">
 
+<!-- 리뷰 -->
+<div id="content3" class="tab-content review-section">
+    <c:forEach var="reviews" items="${review}">
         <div class="review">
-            <div class="nickname">${review.review_nickname}</div>
-            <div class="stars">
+            <div class="nickname">${reviews.review_nickname}</div>
+            <c:forEach var="i" begin="1" end="${reviews.review_star}">
+                <span class="star">★</span> <!-- 별을 채운 부분 -->
+            </c:forEach>
+            <c:forEach var="i" begin="${reviews.review_star + 1}" end="5">
+                <span class="star2">★</span>  <!-- 빈 별 부분 -->
+            </c:forEach>
+            <%--<div class="stars">
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
-            </div>
-            <div class="content">${review.review_content}</div>
+            </div>--%>
+            <div class="content">${reviews.review_content}</div>
             <div class="photo-container">
                 <img src="https://via.placeholder.com/150x150" alt="review photo 1">
                 <img src="https://via.placeholder.com/150x150" alt="review photo 2">
@@ -299,9 +323,9 @@
             <button class="like-button" onclick="increaseLikeCount(this)">좋아요</button>
             <span class="like-count">0</span>
         </div>
-
-</c:forEach>
+    </c:forEach>
 </div>
+
 <script>
     function openTab(tabNumber) {
         var contents = document.querySelectorAll('.tab-content');

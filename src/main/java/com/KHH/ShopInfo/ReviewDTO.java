@@ -12,7 +12,7 @@ public class ReviewDTO {
     public ReviewDTO() {
         super();
     }
-    public ReviewDTO(int review_no, int review_shop, String review_content, String review_date, int star) {
+    public ReviewDTO(int review_no, int review_shop, String review_content, String review_date, int review_star) {
         super();
         this.review_no = review_no;
         this.review_shop = review_shop;
@@ -50,12 +50,23 @@ public class ReviewDTO {
     public void setReview_nickname(String review_nickname) {
         this.review_nickname = review_nickname;
     }
-    public int getStar() {
+
+    public int getReview_star() {
         return review_star;
     }
-    public void setReview_star(int star) {
+    public void setReview_star(int review_star) {
         this.review_star = review_star;
     }
 
-
+    @Override
+    public String toString() {
+        return "ReviewDTO{" +
+                "review_no=" + review_no +
+                ", review_shop=" + review_shop +
+                ", review_content='" + review_content + '\'' +
+                ", review_date='" + review_date + '\'' +
+                ", review_nickname='" + review_nickname + '\'' +
+                ", review_star=" + review_star +
+                '}';
+    }
 }

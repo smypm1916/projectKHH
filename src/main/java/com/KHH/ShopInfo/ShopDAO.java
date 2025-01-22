@@ -131,9 +131,10 @@ public class ShopDAO {
                review.setReview_star(rs.getInt(6));
 
                reviews.add(review);
+               System.out.println(review);
            }
-           System.out.println(reviews);
-           req.setAttribute("reviews", reviews);
+
+           req.setAttribute("review", reviews);
        }catch (Exception e) {
            e.printStackTrace();
        }finally {
