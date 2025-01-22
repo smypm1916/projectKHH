@@ -179,9 +179,11 @@
             text-align: center;
             item-align: center;
         }
+
         #fileInput1 {
             display: none;
         }
+
         #fileInput2 {
             display: none;
         }
@@ -194,7 +196,9 @@
     <div class="content">
 
         <div class="mypage" style="border: none;">
-            <h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
+            <a href="ShowOwnerMyPageController">
+                <h1>MyPage</h1>
+            </a>
         </div>
         <br>
         <hr>
@@ -212,22 +216,24 @@
                     <img id="previewImage1"
                          src="https://d12zq4w4guyljn.cloudfront.net/750_750_20230827024509017_photo_408d3d3f6fc0.jpg"
                          alt="place-name" width="480" height="320"> <input
-                        type="file" id="fileInput1" style="display: none;"
+                        type="file" style="display: none;"
                         onchange="changeImage(event, 'previewImage1')">
                     <img
                             id="previewImage2"
                             src="https://d12zq4w4guyljn.cloudfront.net/750_750_20230827024509661_photo_408d3d3f6fc0.jpg"
                             alt="place-name" width="480" height="320"> <input
-                        type="file" id="fileInput2" style="display: none;"
+                        type="file" style="display: none;"
                         onchange="changeImage(event, 'previewImage2')">
                     <br>
                     <button class="edit_image_button"
                             onclick="triggerFileInput('fileInput1');">
-                        메인이미지 선택</button>
+                        메인이미지 선택
+                    </button>
                     <input type="file" id="fileInput1" onchange="updateButtonText(this)">
                     <button class="edit_image_button"
                             onclick="triggerFileInput('fileInput2');">
-                        서브이미지 선택</button>
+                        서브이미지 선택
+                    </button>
                     <input type="file" id="fileInput2" onchange="updateButtonText(this)">
                 </div>
 
@@ -235,9 +241,9 @@
                         style="border: none; text-align: left; margin-left: 30px; width: 300px">
                     <div style="border: none;">
                         <p class="myShop_info_input_field">가게이름</p>
-                        <input name="editName" style="width: 100%; height: 30px;">
+                        <input name="editName" style="width: 100%; height: 30px;" value="${res.name}">
                         <p class="myShop_info_input_field">주인이름</p>
-                        <input name="editOwner" style="width: 100%; height: 30px;">
+                        <input name="editOwner" style="width: 100%; height: 30px;" value="${res.owner}">
                         <p class="myShop_info_input_field">주소</p>
                         <select name="editRegion" id="" style="width: 120px; height: 36px">
                             <option value="도오">도오</option>
@@ -246,7 +252,7 @@
                             <option value="도호쿠">도호쿠</option>
                         </select>
                         <p class="myShop_info_input_field">상세주소</p>
-                        <input name="editAddr" style="width: 100%; height: 30px;">
+                        <input name="editAddr" style="width: 100%; height: 30px;" value="${res.address}">
                         <p class="myShop_info_input_field">영업시간</p>
                         <select name="editWeek">
                             <option value="연중무휴">연중무휴</option>
@@ -299,7 +305,8 @@
                         -
                         <input name="editPhoneNum3" style="width: 20%; height: 30px; text-align: center">
                         <p class="myShop_info_input_field">가게에 대한 설명</p>
-                        <textarea name="editExplain" style="resize: none; width: 100%; height: 150px;"></textarea>
+                        <textarea name="editExplain"
+                                  style="resize: none; width: 100%; height: 150px;">${res.explain}</textarea>
                     </div>
                 </div>
             </div>
@@ -323,6 +330,7 @@
             const fileName = inputElement.files[0]?.name || "메인이미지 선택";
             document.querySelector(".edit_image_button").textContent = fileName;
         }
+
         function changeButtonTextAndClickInput() {
             const fileButton = document.getElementById('fileButton');
 
@@ -369,7 +377,7 @@
                 }
 
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     previewImage.src = e.target.result; // 이미지 소스를 선택한 파일로 변경
                 };
                 reader.readAsDataURL(input.files[0]); // 파일 읽기
