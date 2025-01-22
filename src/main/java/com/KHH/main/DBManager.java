@@ -15,7 +15,7 @@ public class DBManager {
             dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 
 //             Configure the BasicDataSource
-            dataSource.setUrl("jdbc:oracle:thin:@g01o7s1507wx5iy9_medium?TNS_ADMIN=/Users/svyet/eclipse-workspace/Wallet_G01O7S1507WX5IY9");
+            dataSource.setUrl("jdbc:oracle:thin:@g01o7s1507wx5iy9_medium?TNS_ADMIN=D:/sbt/project_data/OCI_wallet/Wallet_G01O7S1507WX5IY9");
             dataSource.setUsername("KHH");
             dataSource.setPassword("Soldesk802!!");
             dataSource.setMinIdle(5);
