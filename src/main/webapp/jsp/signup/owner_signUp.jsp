@@ -106,6 +106,7 @@
                         <label for="birth-day">일</label>&nbsp;
                         <p>*** 한번 입력하면 수정할 수 없습니다. ***</p>
                     </div>
+                    <input type="hidden" id="formatted-birthdate" name="birthdate">
                 </div>
 
                 <div class="input-wrapper">
@@ -114,7 +115,7 @@
                     <input type="text" id="password" name="password" placeholder="영문+숫자 8~16자 이내" required>
                     <br><br>
                     <label for="passwordCheck"><b>비밀번호 확인</b></label>
-                    <input type="text" id="passwordCheck" name="passwordCheck" placeholder="한번 더 입력해주세요" required>
+                    <input type="text" id="passwordCheck" name="passwordCheck" placeholder="한　번 더 입력해주세요" required>
                 </div>
 
                 <div class="btn-wrapper">

@@ -228,8 +228,19 @@ document.addEventListener("DOMContentLoaded", () => {
         passwordCheckInput.addEventListener("input", validatePasswordMatch);
     }
 
-    // 입력 확인 버튼 클릭 시 모든 검증 조건 확인
+    // 입력 확인 버튼 클릭 시 모든 검증 조건 확인 및 생년월일 포맷팅 추가
     form.addEventListener("submit", (event) => {
+        // 생년월일 포맷팅
+        const year = document.getElementById("birth-year").value;
+        const month = document.getElementById("birth-month").value;
+        const day = document.getElementById("birth-day").value;
+
+        const formattedMonth = month.padStart(2, "0");
+        const formattedDay = day.padStart(2, "0");
+        const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+        document.getElementById("formatted-birthdate").value = formattedDate;
+
+        // 모든 검증 조건 확인
         if (!isEmailValid || !isNicknameValid || !isNameValid || !isPasswordValid) {
             event.preventDefault(); // 폼 제출 중단
             alert("모든 입력값을 올바르게 작성해주세요.");
