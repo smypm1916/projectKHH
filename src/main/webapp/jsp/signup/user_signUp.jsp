@@ -56,6 +56,12 @@
             <div class="form-group">
                 <div class="input-wrapper">
                     <br>
+                    <label for="name"><b>이름</b></label>
+                    <input type="text" id="name" name="name" placeholder="이름" required>
+                </div>
+
+                <div class="input-wrapper">
+                    <br>
                     <label for="email-domain"><b>이메일</b></label>
                     <input type="text" id="email-domain" name="email-domain" placeholder="example" required>
                     &nbsp;@&nbsp;

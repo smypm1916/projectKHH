@@ -1,13 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     // 새로고침시 인풋 초기화
     const form = document.querySelector("form");
     form.reset();
+
+    /** 검증 상태 변수 */
+    let isEmailValid = false;
+    let isNicknameValid = false;
+    let isNameValid = false;
+    let isPasswordValid = false;
 
     /** 공통 함수: DOM 요소 선택 */
     function selectElement(id) {
         return document.getElementById(id);
     }
+
+    /** 이름 검증 로직 */
+    $(document).ready(function () {
+        const $nameInput = $("#name");
+        const $nameMessage = $("<span style='color: red; display: none;'>한글만 입력 가능합니다.</span>");
+
+        // 이름 입력 필드 바로 아래에 메시지 추가
+        $nameInput.after($nameMessage);
+
+        // 입력 이벤트로 실시간 검증
+        $nameInput.on("input", function () {
+            const nameValue = $nameInput.val();
+            const koreanRegex = /^[가-힣ㄱ-ㅎㅏ-ㅣ]*$/; // 한글 음절 + 자음 + 모음
+
+            if (!koreanRegex.test(nameValue) || nameValue === "") {
+                $nameMessage.show();
+                isNameValid = false;
+            } else {
+                $nameMessage.hide();
+                isNameValid = true;
+            }
+        });
+    });
 
     /** Year, Month, Day Select Initialization */
     function initializeYearMonthDay() {
@@ -71,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // 중복 체크 공통 함수
-        function CheckDuplicate(type, value, messageElement) {
+        function CheckDuplicate(type, value, messageElement, validityFlag) {
             fetch("/CheckDuplicateC", {
                 method: "POST",
                 headers: {
@@ -87,19 +115,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (data.exists) {
                         messageElement.textContent = `이미 존재하는 ${type === "email" ? "이메일" : "닉네임"}입니다.`;
                         messageElement.style.color = "red";
+                        validityFlag(false);
                     } else {
                         messageElement.textContent = `사용 가능한 ${type === "email" ? "이메일" : "닉네임"}입니다.`;
                         messageElement.style.color = "green";
+                        validityFlag(true);
                     }
                     messageElement.style.display = "inline";
                 })
                 .catch((error) => {
                     console.error("중복 체크 요청 오류:", error);
                     alert("오류가 발생했습니다. 다시 시도해주세요.");
+                    validityFlag(false);
                 });
         }
 
-        // 이메일 유효성 검사
+        // 이메일 중복 체크
         emailCheckButton.addEventListener("click", () => {
             const emailDomain = emailDomainInput.value;
             const emailService = emailServiceSelect.value;
@@ -108,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 emailMessage.textContent = "이메일의 @ 앞 부분을 입력해주세요.";
                 emailMessage.style.color = "red";
                 emailMessage.style.display = "inline";
+                isEmailValid = false;
                 return;
             }
 
@@ -115,11 +147,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 emailMessage.textContent = "이메일의 @ 앞 부분에 '@' 문자를 포함할 수 없습니다.";
                 emailMessage.style.color = "red";
                 emailMessage.style.display = "inline";
+                isEmailValid = false;
                 return;
             }
 
             const email = `${emailDomain}@${emailService}`;
-            CheckDuplicate("email", email, emailMessage);
+            CheckDuplicate("email", email, emailMessage, (isValid) => {
+                isEmailValid = isValid;
+            });
         });
 
         // 닉네임 중복 체크
@@ -130,10 +165,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 nicknameMessage.textContent = "닉네임을 입력해주세요.";
                 nicknameMessage.style.color = "red";
                 nicknameMessage.style.display = "inline";
+                isNicknameValid = false;
                 return;
             }
 
-            CheckDuplicate("nickname", nickname, nicknameMessage);
+            CheckDuplicate("nickname", nickname, nicknameMessage, (isValid) => {
+                isNicknameValid = isValid;
+            });
         });
     }
 
@@ -156,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!regex.test(password)) {
                 passwordMessage.textContent = "비밀번호는 영문과 숫자를 포함한 8~16자리여야 합니다.";
+                isPasswordValid = false;
                 return false;
             }
             passwordMessage.textContent = "";
@@ -169,12 +208,15 @@ document.addEventListener("DOMContentLoaded", () => {
             if (passwordCheck === "") {
                 passwordCheckMessage.textContent = "";
                 passwordCheckInput.setCustomValidity("");
+                isPasswordValid = false;
             } else if (password !== passwordCheck) {
                 passwordCheckMessage.textContent = "비밀번호가 일치하지 않습니다.";
                 passwordCheckInput.setCustomValidity("비밀번호가 일치하지 않습니다.");
+                isPasswordValid = false;
             } else {
                 passwordCheckMessage.textContent = "";
                 passwordCheckInput.setCustomValidity("");
+                isPasswordValid = true;
             }
         }
 
@@ -185,6 +227,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         passwordCheckInput.addEventListener("input", validatePasswordMatch);
     }
+
+    // 입력 확인 버튼 클릭 시 모든 검증 조건 확인
+    form.addEventListener("submit", (event) => {
+        if (!isEmailValid || !isNicknameValid || !isNameValid || !isPasswordValid) {
+            event.preventDefault(); // 폼 제출 중단
+            alert("모든 입력값을 올바르게 작성해주세요.");
+        }
+    });
 
     // Initialize All Features
     initializeYearMonthDay();

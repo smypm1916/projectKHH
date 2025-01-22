@@ -24,14 +24,17 @@
 
 <h1>입력 확인 페이지</h1>
 
-<form action="/SignUpC">
-    <p>이름: <%= request.getParameter("name") %>
-    </p>
-    <input type="hidden" name="name" value="<%= request.getParameter("name") %>">
+<form action="SignUpC">
+    <% String email = request.getParameter("email-domain") + "@" + request.getParameter("email-service"); %>
 
-    <p>이메일: <%= request.getParameter("email") %>
+    <p>이름: <%= request.getParameter("name")%>
     </p>
-    <input type="hidden" name="email" value="<%= request.getParameter("email") %>">
+    <input type="hidden" name="userName" value="<%= request.getParameter("name") %>">
+
+
+    <p>이메일: <%= email %>
+    </p>
+    <input type="hidden" name="userEmail" value="<%= email%>">
 
     <p>닉네임: <%= request.getParameter("nickname") %>
     </p>
@@ -50,11 +53,14 @@
         <%= request.getParameter("birth-month") %>
         <%= request.getParameter("birth-day") %>
     </p>
-    <input type="hidden" name="gender" value="<%= request.getParameter("gender") %>">
+    <input type="hidden" name="birth-year" value="<%= request.getParameter("birth-year") %>">
+    <input type="hidden" name="birth-month" value="<%= request.getParameter("birth-month") %>">
+    <input type="hidden" name="birth-day" value="<%= request.getParameter("birth-day") %>">
 
-    <p>주소: <%= request.getParameter("address") %>
+    <p>성별:
+        <%= request.getParameter("gender")%>
     </p>
-    <input type="hidden" name="gender" value="<%= request.getParameter("address") %>">
+    <input type="hidden" name="gender" value="<%= request.getParameter("gender") %>">
 
 
     <p>비밀번호: ****</p>
