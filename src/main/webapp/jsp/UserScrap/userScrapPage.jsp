@@ -28,17 +28,18 @@
 			<div class="like-place-list-field" style="border: solid 1px;">
 				<div class="like-place-list">
 					<img
-						src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						alt="place-name"> ${scrap.shop_image}
+						src="image/${scrap.shop_image}"
+						alt="place-name">
 					<div style="border: none; text-align: left; margin-left: 30px">
-						<h1>
-							<span>😋</span>${scrap.shop_name}
-						</h1>
+						<h1>😋${scrap.shop_name}  </h1>
 						<div style="border: none;">
 
-							<p>${scrap.shop_tel}</p>
-							<p>${scrap.shop_addr}</p>
-							<p>${scrap.shop_content}</p>
+							<p>[가게 주소] </p>
+							${scrap.shop_addr}
+							<p>[가게 연락처]</p>
+								${scrap.shop_tel}
+							<p>[가게 소개] </p>
+								${scrap.shop_content}
 
 						</div>
 					</div>

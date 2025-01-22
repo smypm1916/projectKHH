@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+/* 기본 스타일 */
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +25,7 @@
 /*    line-height: 6vh;*/
 /*}*/
 
-/* 네비게이션 바 스타일 */
+/*!* 네비게이션 바 스타일 *!*/
 /*.nav {*/
 /*    height: 5vh; !* 화면 비율로 높이 설정 *!*/
 /*    background-color: #333;*/
@@ -54,6 +56,7 @@
 .mypage h1 {
     font-size: 2vw; /* 화면 너비에 비례한 글씨 크기 */
     color: #000;
+
     margin: 1vh 0;
 }
 
@@ -61,11 +64,11 @@
 .like-list {
     display: flex;
     justify-content: flex-start;
-    margin: 1vh 0;
+    margin: 10px 0;
 }
 
 .like-list h2 {
-    font-size: 1.5vw; /* 화면 너비에 비례한 글씨 크기 */
+    font-size: 24px; /* 고정된 글씨 크기 */
     font-weight: bold;
     color: #000;
 }
@@ -75,8 +78,8 @@
     display: flex;
     justify-content: unset;
     border: 1px solid #ddd;
-    margin-bottom: 1vh;
-    padding: 2vh;
+    margin-bottom: 10px;
+    padding: 20px;
     background-color: #f7f7f7;
     border-radius: 5px;
     width: 100%;
@@ -87,11 +90,12 @@
     align-items: center;
 }
 
+/* 이미지 크기 */
 .like-place-list img {
-    width: 18vw; /* 화면 너비의 18% 크기 */
-    height: 18vw; /* 화면 너비의 18% 크기 */
+    width: 150px; /* 고정된 이미지 크기 */
+    height: 150px; /* 고정된 이미지 크기 */
     border-radius: 5px;
-    margin-right: 3vw;
+    margin-right: 20px;
 }
 
 /* 가게 정보 텍스트 */
@@ -100,12 +104,12 @@
 }
 
 .like-place-list h1 {
-    font-size: 1.5vw; /* 화면 너비에 비례한 글씨 크기 */
+    font-size: 24px; /* 고정된 글씨 크기 */
     color: #000;
 }
 
 .like-place-list p {
-    font-size: 0.9vw; /* 화면 너비에 비례한 글씨 크기 */
+    font-size: 16px; /* 고정된 글씨 크기 */
     color: #555;
 }
 
@@ -114,8 +118,8 @@ input[type="button"] {
     background-color: #333;
     color: #fff;
     border: none;
-    padding: 0.8vh 1.2vw; /* 화면 비례한 패딩 */
-    font-size: 1vw; /* 화면 너비에 비례한 글씨 크기 */
+    padding: 10px 20px; /* vh와 vw 대신 px 사용 */
+    font-size: 14px; /* vw 대신 px 사용 */
     cursor: pointer;
     border-radius: 5px;
 }
