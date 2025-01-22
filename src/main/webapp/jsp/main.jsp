@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.0">
 </head>
 <body>
 <div class="header-container">
@@ -20,15 +20,19 @@
         </ul>
     </nav>
 </div>
+
 <div class="content">
-    <jsp:include page="${content }"></jsp:include>
+    <jsp:include page="${content }"/>
 </div>
+
 <div class="fixed-nav">
     <div class="btn-page-top"></div>
     <span class="btn-page-top-span" onclick="window.scrollTo(0,0);">TOP</span>
 </div>
+
 <div class="footer">
     footer
 </div>
+
 </body>
 </html>
