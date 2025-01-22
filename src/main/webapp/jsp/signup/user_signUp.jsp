@@ -55,15 +55,9 @@
 
             <div class="input-wrapper">
                 <br>
-                <label for="name"><b>이름</b></label>
-                <input type="text" id="name" name="name" placeholder="이름" required>
-            </div>
-
-            <div class="input-wrapper">
-                <br>
                 <label for="email-domain"><b>이메일</b></label>
                 <input type="text" id="email-domain" name="email-domain" placeholder="example" required>
-                &nbsp;<span>@</span>&nbsp;
+                &nbsp;@&nbsp;
                 <label for="email-service"></label>
                 <select name="email-service" id="email-service" required>
                     <option value="naver.com">naver.com</option>
@@ -72,17 +66,17 @@
                     <option value="hotmail.com">hotmail.com</option>
                     <option value="hanmail.net">hanmail.net</option>
                 </select>
-                <button type="button">중복체크</button>
-                <span class="validCheck-message" style="display: none"></span>
-                <%--                @이후 select--%>
+                <button type="button" id="email-check-button">중복체크</button>
+                <span id="email-message" class="email-message" style="display: none;"></span>
             </div>
 
             <div class="input-wrapper">
                 <br>
                 <label for="nickname"><b>닉네임</b></label>
                 <input type="text" id="nickname" name="nickname" placeholder="닉네임" required>
-                <button type="button">중복체크</button>
-                <span class="validCheck-message" style="display: none"></span>
+                <button type="button" id="nickname-check-button">중복체크</button>
+                <span id="nickname-message" class="nickname-message" style="display: none"></span>
+
             </div>
 
             <div class="input-wrapper">
@@ -128,14 +122,8 @@
                 <br>
                 <label for="address" style="display:none"><b>주소</b></label>
                 <input type="text" id="address" name="address" style="display: none" value="1">
-                <%--                <button onclick="openPostalCode()">--%>
-                <%--                    주소 찾기--%>
-                <%--                </button>--%>
+
             </div>
-            <%--            <div>--%>
-            <%--                <label for="address-detail"><b>상세 주소</b></label>--%>
-            <%--                <input type="text" id="address-detail" name="address-detail">--%>
-            <%--            </div>--%>
 
             <div class="password-wrapper">
                 <br>
