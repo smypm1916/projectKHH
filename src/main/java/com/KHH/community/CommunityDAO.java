@@ -134,6 +134,41 @@ public class CommunityDAO {
         }
     }
 
+    public static void getCommunityDetailImage(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String no = req.getParameter("no");
+
+        String sql = "select * from community_image where community_no = ?";
+
+        CommunityImageDTO image = null;
+        ArrayList<CommunityImageDTO> images = new ArrayList<>();
+
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, no);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                image = new CommunityImageDTO();
+                image.setNo(rs.getInt(1));
+                image.setImage(rs.getString(2));
+                images.add(image);
+            }
+            req.setAttribute("images", images);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                DBManager.close(con, pstmt, rs);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static void getCommunityPNDetail(HttpServletRequest req) {
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -171,6 +206,48 @@ public class CommunityDAO {
             e.printStackTrace();
         } finally {
             DBManager.close(con, pstmt, rs);
+        }
+    }
+
+    public static void getCommunityPNDDetailImage(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String no = req.getParameter("no");
+        String page = req.getParameter("page");
+
+        String sql = "";
+
+        if (page.equals("prev")) {
+            sql = "SELECT * FROM community_image WHERE community_no > ? ORDER BY community_no DESC";
+        } else if (page.equals("next")) {
+            sql = "SELECT * FROM community_image WHERE community_no < ? ORDER BY community_no ASC";
+        }
+
+        CommunityImageDTO image = null;
+        ArrayList<CommunityImageDTO> images = new ArrayList<>();
+
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, no);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                image = new CommunityImageDTO();
+                image.setNo(rs.getInt(1));
+                image.setImage(rs.getString(2));
+                images.add(image);
+            }
+            req.setAttribute("images", images);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                DBManager.close(con, pstmt, rs);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -324,7 +401,7 @@ public class CommunityDAO {
             pstmt1 = con.prepareStatement(sql1);
             pstmt1.setInt(1, no);
             pstmt1.setString(2, title);
-            pstmt1.setString(3, content);
+            pstmt1.setString(3, content.replace("\r\n", "<br>"));
             pstmt1.setString(4, writer);
             if (pstmt1.executeUpdate() == 1) {
                 System.out.println("community_info insert success");
@@ -357,6 +434,7 @@ public class CommunityDAO {
                     String uniqueFileName = UUID.randomUUID().toString().split("-")[0] + fileExtension;
                     File uploadedFile = new File(directory, uniqueFileName);
                     item.write(uploadedFile); // 파일 저장
+
                     // DB에 파일 이름 저장
                     pstmt2 = con.prepareStatement(sql2);
                     pstmt2.setInt(1, no);
@@ -375,4 +453,6 @@ public class CommunityDAO {
             DBManager.close(null, pstmt2, null);
         }
     }
+
+
 }
