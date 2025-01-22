@@ -26,7 +26,10 @@ function updateDays() {
     const month = parseInt(monthSelect.value, 10);
 
     // 월과 연도가 모두 선택된 경우에만 실행
-    if (isNaN(year) || isNaN(month)) return;
+    if (isNaN(year) || isNaN(month)) {
+        daySelect.innerHTML = '<option value="">-- --</option>'; // 초기화
+        return;
+    }
 
     // 선택된 연도와 월에 따라 마지막 날짜 계산
     const lastDay = new Date(year, month, 0).getDate();
@@ -47,13 +50,10 @@ function updateDays() {
 yearSelect.addEventListener('change', updateDays);
 monthSelect.addEventListener('change', updateDays);
 
-// 우편번호 api
-// function openPostalCode() {
-//     new daum.Postcode({
-//         oncomplete: function (data) {
-//         }
-//     }).open();
-// }
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', () => {
+    updateDays(); // 초기 로드 시 일 목록 초기화
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const customerRadio = document.getElementById('user-type-customer');
