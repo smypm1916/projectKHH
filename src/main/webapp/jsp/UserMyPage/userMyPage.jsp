@@ -22,7 +22,7 @@
 
 				<div class="profile-field" style="border: none;">
 					<div class="profile-circle">
-						<img src="jsp/UserProfile/${sessionScope.user.user_picture}" alt="프로필 사진">
+						<img src="/image/${sessionScope.user.user_picture}" alt="프로필 사진">
 					</div>
 					<div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
 					<span>
@@ -34,7 +34,7 @@
 					</div>
 					<div style="border: none; margin-left: 225px;
     margin-top: -30px; align-content: center;" >
-							<input type="button" value="프로필 수정하기" onclick="location.href='ProfileUpdateController?no='${user_email}">
+							<input type="button" value="프로필 수정하기" onclick="location.href='ProfileUpdateController'">
 					</div>
 				</div>
 			</div>
@@ -71,10 +71,11 @@
 			<c:forEach items="${myreservations}" var="myreservation">
 				<div class="reserv-place-list">
 					<img
-						src="${myreservation.shop_image}"
+						src="image/${myreservation.shop_image}"
 						alt="">
 					<!-- SHOP_IMAGE > SHOP_IMAGE 필드 -->
 					<div style="border: none;">
+						<h2>🍴</h2>
 						<h2>${myreservation.shop_name}</h2>
 					</div>
 					<div style="border: none;">
@@ -104,10 +105,11 @@
 			<c:forEach items="${scraps}" var="scrap">
 				<div class="like-place-list">
 					<img
-						src="${scrap.shop_image}"
+						src="image/${scrap.shop_image}"
 						alt="place-name">
 					<div style="border: none;">
-						<h2><span>🍴</span> ${scrap.shop_name}</h2>
+						<h2>💘</h2>
+						<h2> ${scrap.shop_name}</h2>
 					</div>
 				</div>
 			</c:forEach>

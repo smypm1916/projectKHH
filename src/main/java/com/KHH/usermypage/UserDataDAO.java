@@ -60,9 +60,9 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
     Connection con = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
-    String sql = "SELECT review_shop, review_content, review_date, review_nickname, shop_name" +
-            " FROM review_info, shop_info" +
-            " WHERE REVIEW_SHOP = SHOP_NO and review_nickname = ?";
+    String sql = "SELECT r.review_shop, r.review_content, r.review_date, r.review_nickname, s.shop_name" +
+            " FROM review_info r, shop_info s" +
+            " WHERE r.REVIEW_SHOP = s.SHOP_NO and r.review_nickname = ?";
 
     UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
     ArrayList<ReviewsDTO> reviews = new ArrayList<>();
@@ -98,7 +98,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 //        String user_email = request.getParameter("user_email");
-        String sql = "SELECT reservation_email, reservation_date, reservation_people, reservation_name, reservation_tel, shop_name, shop_content, shop_tel, shop_addr, shop_image FROM reservation_info, SHOP_INFO, shop_image WHERE reservation_email = ? AND reservation_shop = shop_no AND shop_no = shop_no";
+        String sql = "SELECT r.reservation_email, r.reservation_date, r.reservation_people, r.reservation_name, r.reservation_tel, s.shop_name, s.shop_content, s.shop_tel, s.shop_addr, i.shop_image FROM reservation_info r JOIN SHOP_INFO s ON r.reservation_shop = s.shop_no JOIN shop_image i ON s.shop_no = i.shop_no WHERE r.reservation_email = ?";
         UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
             ArrayList<MyPageReservationDTO> myreservations = new ArrayList<>();
 
@@ -139,7 +139,12 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String user_email = request.getParameter("user_email");
-        String sql =   "SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content FROM scrap_shop, shop_info, shop_image WHERE scrap_email = ? ";
+        String sql =   "SELECT distinct si.shop_no, si.shop_name, ss.scrap_date, sim.shop_image, ss.scrap_email, si.shop_addr, si.shop_tel, si.shop_content" +
+                " FROM scrap_shop ss, shop_info si, shop_image sim" +
+                " WHERE" +
+                "    ss.SCRAP_SHOP = si.SHOP_NO and" +
+                "    sim.SHOP_NO = si.SHOP_NO and" +
+                "    ss.scrap_email = ?";
         UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
         ArrayList<ScrapDTO> scraps = new ArrayList<>();
         try {
@@ -151,6 +156,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
 
             while(rs.next())  {
                 ScrapDTO scrap = new ScrapDTO();
+                scrap.setScrap_no(rs.getInt("shop_no"));
                 scrap.setScrap_email(rs.getString("scrap_email"));
                 scrap.setShop_image(rs.getString("shop_image"));
                 scrap.setScrap_date(rs.getString("scrap_date"));
@@ -175,8 +181,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
 
     // profile Update 메소드
     public static void userProfileUpdate(HttpServletRequest request) {
-        String path = "/absolute/path/to/upload/directory"; // 절대 경로 권장
-        Connection con = null;
+        String path = request.getServletContext().getRealPath("image");  Connection con = null;
         PreparedStatement pstmt = null;
 
         try {
@@ -184,13 +189,16 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             MultipartRequest mr = new MultipartRequest(request, path, 1024 * 1024 * 20, "utf-8", new DefaultFileRenamePolicy());
             String userNickname = mr.getParameter("user_nickname");
 
+
             // 파일 처리
             String newImg = mr.getFilesystemName("newImg");
-            String userEmail = (String) request.getSession().getAttribute("user_email");
-            String currentPicture = (String) request.getSession().getAttribute("user_picture");
+            UserDataDTO user = (UserDataDTO) request.getSession().getAttribute("user");
 
+            System.out.println(userNickname);
+            System.out.println(newImg);
+            System.out.println(user.getUser_email());
             // 새 이미지가 없으면 기존 이미지 사용
-            String updatedPicture = (newImg != null) ? newImg : currentPicture;
+            String updatedPicture = (newImg != null) ? newImg : user.getUser_picture();
 
             // DB 업데이트
             con = DBManager.connect();
@@ -198,12 +206,14 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, userNickname);
             pstmt.setString(2, updatedPicture);
-            pstmt.setString(3, userEmail);
-            pstmt.executeUpdate();
+            pstmt.setString(3, user.getUser_email());
+            if (pstmt.executeUpdate() == 1){
+                System.out.println("----------수정------------");
+            }
 
             // 기존 이미지 파일 삭제
-            if (newImg != null && currentPicture != null && !currentPicture.equals(newImg)) {
-                File oldFile = new File(path + "/" + currentPicture);
+            if (newImg != null && user.getUser_picture() != null && !user.getUser_picture().equals(newImg)) {
+                File oldFile = new File(path + "/" + user.getUser_picture());
                 if (oldFile.exists()) {
                     oldFile.delete();
                 }
@@ -213,6 +223,7 @@ public static ArrayList<ReviewsDTO> viewUserReviews(HttpServletRequest request) 
             request.getSession().setAttribute("user_nickname", userNickname);
             request.getSession().setAttribute("user_picture", updatedPicture);
 
+            System.out.println(path);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

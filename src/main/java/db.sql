@@ -24,27 +24,13 @@ INSERT INTO USER_ACCOUNT(
          );
 
 select * from USER_ACCOUNT;
+select * from RESERVATION_INFO where RESERVATION_EMAIL='user2@example.com';
 
 
 insert into RESERVATION_INFO
 values
-    ('1','1','user2@example.com','조수진',
-     '010-3385-6138','2025-03-02','4');
-
-insert into RESERVATION_INFO
-values
-    ('2','2','user2@example.com','조수진',
-     '010-3385-6138','2025-03-03','2');
-
-insert into RESERVATION_INFO
-values
-    ('4','5','user2@example.com','조수진',
-     '010-3385-6138','2025-03-07','4');
-insert into RESERVATION_INFO
-values
-    ('6','7','user2@example.com','조수진',
-     '010-3385-6138','2025-03-02','4');
-
+    ('5','2','user2@example.com','조수진',
+     '010-3385-6138','2025-03-04','2');
 
 select * from RESERVATION_INFO;
 
@@ -130,7 +116,7 @@ INSERT INTO SHOP_IMAGE values (2, 'mise2.img','main');
 INSERT INTO SHOP_IMAGE values (3, 'mise3.img','main');
 
 
-
+select * from SHOP_IMAGE;
 select * from RESERVATION_INFO;
 
 SELECT review_shop, review_content, review_date, review_nickname, shop_name
@@ -139,28 +125,130 @@ WHERE
 r.REVIEW_SHOP = s.SHOP_NO and
 r.review_nickname = '조조';
 
-select ri.reservation_date, ri.reservation_people, si.shop_name, sim.shop_image
-FROM reservation_info_sj ri, SHOP_INFO_sj si, shop_image_sj sim
-WHERE ri.reservation_email = 'user2@example.com'
+SELECT si.shop_name, MAX(ri.reservation_date) AS reservation_date,
+       MAX(ri.reservation_people) AS reservation_people,
+       MAX(sim.shop_image) AS shop_image
+FROM reservation_info ri, SHOP_INFO si, shop_image sim
+WHERE ri.reservation_email = ?
   AND ri.reservation_shop = si.shop_no
-  AND si.shop_no = sim.shop_no;
-
-select * from RESERVATION_INFO_sj;
-select * from shop_image_sj;
-select * from SHOP_INFO_sj;
+  AND si.shop_no = sim.shop_no
+GROUP BY si.shop_name;
 
 
+select * from RESERVATION_INFO;
+select * from shop_image;
+select * from SHOP_INFo;
+insert into SHOP_IMAGE values (
+'4','mise4.jpg','main'
+                              );
 
-SELECT review_shop, review_content, review_date, review_nickname, shop_name FROM review_info_sjsj r, shop_info_sj s
-                    WHERE
-                    r.REVIEW_SHOP = s.SHOP_NO and
-                    r.review_nickname = '조조';
-SELECT review_shop, review_content, review_date, review_nickname, shop_name
-   FROM review_info_sjsj r, shop_info_sj s WHERE r.REVIEW_SHOP = s.SHOP_NO and r.review_nickname = '조조';
-select * from USER_ACCOUNT_SJ;
-SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop_content, shop_opentime FROM scrap_shop_sj, shop_info sj, shop_image_sj WHERE scrap_email = 'user2@example.com';
+select * from SCRAP_SHOP;
 
-select * from COMMENT_INFO;
+insert into SHOP_IMAGE values ('5','mise5.jpg','main'
+                              );
+delete from reservation_info where reservation_no=2;
+select * from RESERVATION_INFO;
+delete from shop_image where shop_no=3 and shop_image='aa.img';
+select * from SHOP_IMAGE;
+
+insert into SHOP_IMAGE values (
+                                  '6','mise6.jpg','main'
+                              );
+
+
+insert into SHOP_IMAGE values (
+                                  '2','mise2.jpg','main'
+                              );
+
+insert into SHOP_IMAGE values (
+                                  '1','mise1.jpg','main'
+                              );
+
+
+
+
+SELECT
+    r.reservation_email,
+    r.reservation_date,
+    r.reservation_people,
+    r.reservation_name,
+    r.reservation_tel,
+    s.shop_name,
+    s.shop_content,
+    s.shop_tel,
+    s.shop_addr,
+    i.shop_image
+FROM
+    reservation_info r
+        JOIN
+    SHOP_INFO s ON r.reservation_shop = s.shop_no
+        JOIN
+    shop_image i ON s.shop_no = i.shop_no
+WHERE
+    r.reservation_email = 'user2@example.com';
+
+SELECT si.shop_name, ss.scrap_date, sim.shop_image, ss.scrap_email, si.shop_addr, si.shop_tel, si.shop_content FROM scrap_shop ss, shop_info si, shop_image sim WHERE ss.scrap_email = 'user2@example.com';
+
+insert into SCRAP_SHOP values ('2','user2@example.com','2','2025-01-01');
+insert into SCRAP_SHOP values ('3','user2@example.com','3','2025-01-01');
+
+insert into SCRAP_SHOP values ('4','user2@example.com','4','2025-01-01');
+insert into SCRAP_SHOP values ('5','user2@example.com','5','2025-01-01');
+insert into SCRAP_SHOP values ('6','user2@example.com','6','2025-01-01');
+
+
+
+
+SELECT r.review_shop, r.review_content, r.review_date, r.review_nickname, s.shop_name FROM review_info r, shop_info s
+WHERE r.REVIEW_SHOP = s.SHOP_NO and r.review_nickname = '조조';
+INSERT INTO REVIEW_INFO (REVIEW_NO, REVIEW_SHOP, REVIEW_CONTENT, REVIEW_DATE, REVIEW_NICKNAME, REVIEW_STAR)
+VALUES (8, 5, '역 근처라서 접근성도 좋고 맛도 넘 좋아용!', TO_DATE('2025-01-12', 'YYYY-MM-DD'), '죠죠', 5);
+INSERT INTO REVIEW_INFO (REVIEW_NO, REVIEW_SHOP, REVIEW_CONTENT, REVIEW_DATE, REVIEW_NICKNAME, REVIEW_STAR)
+VALUES (9, 1, '역 근처라서 접근성도 좋고 맛도 넘 좋아용!', TO_DATE('2025-01-12', 'YYYY-MM-DD'), '죠죠', 5);
+INSERT INTO REVIEW_INFO (REVIEW_NO, REVIEW_SHOP, REVIEW_CONTENT, REVIEW_DATE, REVIEW_NICKNAME, REVIEW_STAR)
+VALUES (10, 2, '역 근처라서 접근성도 좋고 맛도 넘 좋아용!', TO_DATE('2025-01-12', 'YYYY-MM-DD'), '죠죠', 5);
+
 select * from USER_ACCOUNT;
 
-select * from user_account_sj where user_email='user2@example.com';
+update USER_ACCOUNT
+set USER_PICTURE = 'profile1.jpg'
+where USER_EMAIL = 'user2@example.com';
+
+select * from REVIEW_INFO;
+
+ALTER TABLE REVIEW_INFO
+    ADD CONSTRAINT FK_REVIEW_NICKNAME
+        FOREIGN KEY (REVIEW_NICKNAME)
+            REFERENCES USER_ACCOUNT (USER_NICKNAME);
+
+
+ALTER TABLE REVIEW_INFO
+    DROP CONSTRAINT FK_REVIEW_NICKNAME;
+
+CREATE OR REPLACE TRIGGER update_review_nickname
+    BEFORE UPDATE ON USER_ACCOUNT
+    FOR EACH ROW
+BEGIN
+    UPDATE REVIEW_INFO
+    SET REVIEW_NICKNAME = :NEW.USER_NICKNAME
+    WHERE REVIEW_NICKNAME = :OLD.USER_NICKNAME;
+END;
+
+SELECT distinct  si.SHOP_NO, si.shop_name, ss.scrap_date, sim.shop_image, ss.scrap_email, si.shop_addr, si.shop_tel, si.shop_content
+FROM scrap_shop ss, shop_info si, shop_image sim
+WHERE
+    ss.SCRAP_SHOP = si.SHOP_NO and
+    sim.SHOP_NO = si.SHOP_NO and
+    ss.scrap_email = 'user2@example.com';
+
+select * from USER_ACCOUNT;
+
+select * from REVIEW_INFO;
+
+select  * from shop_info;
+
+select * from RESERVATION_INFO;
+select * from SCRAP_SHOP;
+select * from shop_image;
+
+delete from SCRAP_SHOP where scrap_no=3;
