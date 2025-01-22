@@ -24,10 +24,10 @@ public class SignUpDAO {
 
     public void UserSignUp(HttpServletRequest request, HttpServletResponse response) {
 
-        String userName = request.getParameter("name");
-        String emailDomain = request.getParameter("email-domain");
-        String emailService = request.getParameter("email-service");
-        String userEmail = emailDomain + "@" + emailService;
+//        String emailDomain = request.getParameter("email-domain");
+//        String emailService = request.getParameter("email-service");
+        String userName = request.getParameter("userName");
+        String userEmail = request.getParameter("userEmail");
         String userNickname = request.getParameter("nickname");
         String userTel = request.getParameter("tel");
         String userGender = request.getParameter("gender");
@@ -36,9 +36,8 @@ public class SignUpDAO {
         String userBirthMonth = request.getParameter("birth-month");
         String userBirthDay = request.getParameter("birth-day");
         userBirth = userBirthYear + "-" + userBirthMonth + "-" + userBirthDay;
-        String userAddress = request.getParameter("address");
-        String addressDetail = request.getParameter("address-detail");
-        userAddress += "\n" + addressDetail;
+        int r_addrNumber = Integer.parseInt((request.getParameter("address")));
+        String userAddress = String.valueOf(r_addrNumber);
         String userPassword = request.getParameter("password");
 
         String sql = "INSERT INTO USER_ACCOUNT values (?,?,?,?,?,?,?,?,'level1',null)";
@@ -53,13 +52,13 @@ public class SignUpDAO {
             pstmt.setString(2, userPassword);
             pstmt.setString(3, userName);
             pstmt.setString(4, userBirth);
-            pstmt.setString(5, userAddress);
             pstmt.setString(6, userTel);
             pstmt.setString(7, userGender);
             pstmt.setString(8, userNickname);
 
             if (pstmt.executeUpdate() == 1) {
                 System.out.println("User Sign Up Success!!!");
+                r_addrNumber = r_addrNumber + 1;
             }
 
         } catch (Exception e) {
