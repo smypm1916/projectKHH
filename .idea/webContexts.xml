@@ -3,13 +3,15 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
-        <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/shopdetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp" />
-        <entry key="file://$PROJECT_DIR$/src/main/webapp/shopdetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/UserMyPage/updateddUserMyPage.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp/UserMyPage" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/UserReviews/userReviewsPage.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp/UserReviews" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/owner_myPage/AddRestaurant.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp/owner_myPage" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/owner_myPage/UpdateRestaurant.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp/owner_myPage" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/shopdetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/signup/signUpFail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp/signup" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/signup/user_signUp.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp/signup" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/jsp/user_registration.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jsp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/shopdetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>
   </component>

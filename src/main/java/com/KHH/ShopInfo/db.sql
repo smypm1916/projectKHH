@@ -7,7 +7,8 @@ insert into MENU_INFO values (MENU_NO_SEQ.nextval, '21', '일식', '규동', '10
 select * from MENU_INFO;
 
 select * from menu_info;
-select * from menu_info where menu_shop=21;
+select * from MENU_INFO where MENU_SHOP='21';
+
 
 insert into REVIEW_INFO values (REVIEW_NO_SEQ.nextval, '3', '맛있어요', '2025-01-01', '조조', '5');
-select * from REVIEW_INFO;
+select * from menu_info where menu_shop='21';

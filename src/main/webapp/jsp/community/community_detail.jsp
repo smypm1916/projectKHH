@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <title>Title</title>
@@ -15,7 +16,7 @@
 </div>
 
 <div class="community_profile_div">
-  <div class="community_profile_image"><img alt="" src="../../image/user.png"></div>
+  <div class="community_profile_image"><img alt="" src="image/user.png"></div>
   <div class="community_writer_div">
     <div class="community_writer">${com.nickname }</div>
     <div style="border:none;" class="community_dateNcnt">
@@ -28,7 +29,9 @@
 <hr>
 
 <div class="community_content_div">
-  <img src="../image/hokkaido.jpg">
+  <c:forEach var="images" items="${images }">
+    <div class="community_content_image"><img alt="" src="../../image/community/${images.image}"></div>
+  </c:forEach>
   <div class="community_content">${com.content }</div>
 </div>
 

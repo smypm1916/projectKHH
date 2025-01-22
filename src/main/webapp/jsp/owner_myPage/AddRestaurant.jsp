@@ -195,6 +195,7 @@ for
 <div class="container">
     <div class="header">header</div>
     <div class="nav">nav</div>
+
     <div class="content">
         <form action="AddRestaurantC" method="post" enctype="multipart/form-data">
             <div class="mypage" style="border: none;">
@@ -227,16 +228,20 @@ for
                             type="file" id="fileInput2" style="display: none;"
                             onchange="changeImage(event, 'previewImage2')">--%>
                         <br>
+                        <input accept=".jpg,.jpeg,.png" type="file" id="mainimage" name="main" required>
+                        <input accept=".jpg,.jpeg,.png" type="file" id="subimage" name="sub" multiple required>
+                        <input type="file" id="fileInput1" onchange="updateButtonText(this)">
                         <button class="add_image_button"
                                 onclick="triggerFileInput('fileInput1');">
                             메인이미지 선택
                         </button>
-                        <input accept=".jpg,.jpeg,.png" type="file" id="fileInput1" onchange="updateButtonText(this)">
+                        <input hidden="hidden" accept=".jpg,.jpeg,.png" type="file" id="fileInput1"
+                               onchange="updateButtonText(this)">
                         <button class="add_image_button"
                                 onclick="triggerFileInput('fileInput2');">
                             서브이미지 선택
                         </button>
-                        <input multiple accept=".jpg,.jpeg,.png" type="file" id="fileInput2"
+                        <input multiple accept=".jpg,.jpeg,.png" type="file" id="fileInput2" hidden="hidden"
                                onchange="updateButtonText(this)">
                     </div>
 
@@ -316,80 +321,77 @@ for
             <input hidden="hidden" name="no" value="">
             <div class="myShop_button_box" style="border: none;">
                 <button onclick="location.href='ListMyRestaurant.jsp'" id="cancel_info">취소</button>
-
                 <button type="submit" id="complete_info">추가완료</button>
             </div>
-
+        </form>
     </div>
-
-    <script>
-        // 파일 입력 클릭을 트리거하는 함수
-        function triggerFileInput(inputId) {
-            document.getElementById(inputId).click();
-        }
-
-        // 파일 선택 후 버튼 텍스트 업데이트
-        function updateButtonText(inputElement) {
-            const fileName = inputElement.files[0]?.name || "메인이미지 선택";
-            document.querySelector(".add_image_button").textContent = fileName;
-        }
-
-        function changeButtonTextAndClickInput() {
-            const fileButton = document.getElementById('fileButton');
-
-            // 버튼 텍스트를 "파일 선택 중..."으로 바꿈
-            fileButton.innerText = '파일 선택 중...';
-
-            // 파일 input을 클릭하여 파일 탐색기 열기
-            document.getElementById('fileInput').click();
-        }
-
-        function changeButtonText() {
-            const fileInput = document.getElementById('fileInput');
-            const fileButton = document.getElementById('fileButton');
-
-            // 파일이 선택되면 버튼 텍스트 변경
-            if (fileInput.files.length > 0) {
-                const maxLength = 20; // 최대 길이
-                let fileName = fileInput.files[0].name;
-                if (fileName.length > maxLength) {
-                    fileName = fileName.substring(0, maxLength) + '...';
-                }
-                fileButton.innerText = '파일 선택됨: ' + fileName;
-            } else {
-                fileButton.innerText = '파일을 선택해주세요';
-            }
-        }
-
-        function changeImage(event, previewImageId) {
-            const input = event.target;
-            const previewImage = document.getElementById(previewImageId);
-
-            if (input.files && input.files[0]) {
-                const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-                const maxSize = 5 * 1024 * 1024; // 5MB
-
-                if (!allowedTypes.includes(input.files[0].type)) {
-                    alert('이미지 파일만 업로드 가능합니다.');
-                    return;
-                }
-
-                if (input.files[0].size > maxSize) {
-                    alert('파일 크기는 5MB를 초과할 수 없습니다.');
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    previewImage.src = e.target.result; // 이미지 소스를 선택한 파일로 변경
-                };
-                reader.readAsDataURL(input.files[0]); // 파일 읽기
-            }
-        }
-    </script>
-    </form>
     <div class="footer">footer</div>
 </div>
 
+<script>
+    // 파일 입력 클릭을 트리거하는 함수
+    function triggerFileInput(inputId) {
+        document.getElementById(inputId).click();
+    }
+
+    // 파일 선택 후 버튼 텍스트 업데이트
+    function updateButtonText(inputElement) {
+        const fileName = inputElement.files[0]?.name || "메인이미지 선택";
+        document.querySelector(".add_image_button").textContent = fileName;
+    }
+
+    function changeButtonTextAndClickInput() {
+        const fileButton = document.getElementById('fileButton');
+
+        // 버튼 텍스트를 "파일 선택 중..."으로 바꿈
+        fileButton.innerText = '파일 선택 중...';
+
+        // 파일 input을 클릭하여 파일 탐색기 열기
+        document.getElementById('fileInput').click();
+    }
+
+    function changeButtonText() {
+        const fileInput = document.getElementById('fileInput');
+        const fileButton = document.getElementById('fileButton');
+
+        // 파일이 선택되면 버튼 텍스트 변경
+        if (fileInput.files.length > 0) {
+            const maxLength = 20; // 최대 길이
+            let fileName = fileInput.files[0].name;
+            if (fileName.length > maxLength) {
+                fileName = fileName.substring(0, maxLength) + '...';
+            }
+            fileButton.innerText = '파일 선택됨: ' + fileName;
+        } else {
+            fileButton.innerText = '파일을 선택해주세요';
+        }
+    }
+
+    function changeImage(event, previewImageId) {
+        const input = event.target;
+        const previewImage = document.getElementById(previewImageId);
+
+        if (input.files && input.files[0]) {
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+
+            if (!allowedTypes.includes(input.files[0].type)) {
+                alert('이미지 파일만 업로드 가능합니다.');
+                return;
+            }
+
+            if (input.files[0].size > maxSize) {
+                alert('파일 크기는 5MB를 초과할 수 없습니다.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage.src = e.target.result; // 이미지 소스를 선택한 파일로 변경
+            };
+            reader.readAsDataURL(input.files[0]); // 파일 읽기
+        }
+    }
+</script>
 </body>
 </html>

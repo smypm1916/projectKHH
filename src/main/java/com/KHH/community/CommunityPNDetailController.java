@@ -12,6 +12,7 @@ public class CommunityPNDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CommunityDAO.getCommunityPNDetail(req);
+        CommunityDAO.getCommunityPNDDetailImage(req);
         req.setAttribute("content","/jsp/community/community_detail.jsp");
         req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
     }

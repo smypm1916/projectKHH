@@ -23,14 +23,13 @@ public class ProfileUpdateController extends HttpServlet {
     }
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 프로필 업데이트
         UserDataDAO.userProfileUpdate(request);
-
-        // 세션에 변경된 사용자 데이터 반영
-        UserDataDAO.updateSessionUser(request);
 
         // 마이페이지로 리다이렉트
         response.sendRedirect("UserC");
 
-    }}
+
+    }
+    }
