@@ -48,12 +48,12 @@ yearSelect.addEventListener('change', updateDays);
 monthSelect.addEventListener('change', updateDays);
 
 // 우편번호 api
-function openPostalCode() {
-    new daum.Postcode({
-        oncomplete: function (data) {
-        }
-    }).open();
-}
+// function openPostalCode() {
+//     new daum.Postcode({
+//         oncomplete: function (data) {
+//         }
+//     }).open();
+// }
 
 document.addEventListener('DOMContentLoaded', () => {
     const customerRadio = document.getElementById('user-type-customer');
@@ -128,5 +128,88 @@ document.querySelectorAll(".signup-form button").forEach(button => {
                 console.error("API 요청 오류:", error);
                 alert("오류가 발생했습니다. 나중에 다시 시도해주세요.");
             });
+    });
+});
+
+document.querySelector("form").addEventListener("submit", function (event) {
+    const name = document.querySelector("input[name='name']").value;
+    const email = document.querySelector("input[name='email']").value;
+
+    if (!name || !email) {
+        event.preventDefault(); // 폼 제출 막기
+        alert("모든 필드를 입력해주세요.");
+    }
+});
+$(document).ready(function () {
+    const $passwordInput = $("#password");
+    const $passwordCheckInput = $("#passwordCheck");
+    const $passwordMessage = $("<span style='color: red;'></span>");
+    const $passwordCheckMessage = $("<span style='color: red;'></span>");
+    let isPasswordCheckActive = false; // 비밀번호 확인 입력이 시작되었는지 여부
+
+    // 비밀번호 메시지를 비밀번호 입력 필드 아래에 추가
+    $passwordInput.parent().append($passwordMessage);
+    $passwordCheckInput.parent().append($passwordCheckMessage);
+
+    // 비밀번호 유효성 검사 함수
+    function validatePassword() {
+        const password = $passwordInput.val();
+        const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/; // 영문+숫자 8~16자리
+
+        if (!regex.test(password)) {
+            $passwordMessage.text("비밀번호는 영문과 숫자를 포함한 8~16자리여야 합니다.");
+            return false;
+        } else {
+            $passwordMessage.text("");
+            $passwordInput[0].setCustomValidity("");
+            return true;
+        }
+    }
+
+    // 비밀번호 확인 유효성 검사 함수
+    function validatePasswordMatch() {
+        const password = $passwordInput.val();
+        const passwordCheck = $passwordCheckInput.val();
+
+        if (passwordCheck === "") {
+            // 비밀번호 확인 입력란이 비어있으면 메시지 숨김
+            $passwordCheckMessage.text("");
+            $passwordCheckInput[0].setCustomValidity("");
+        } else if (password !== passwordCheck) {
+            // 비밀번호가 일치하지 않으면 메시지 표시
+            $passwordCheckMessage.text("비밀번호가 일치하지 않습니다.");
+            $passwordCheckInput[0].setCustomValidity("비밀번호가 일치하지 않습니다.");
+        } else {
+            // 비밀번호가 일치하면 메시지 숨김
+            $passwordCheckMessage.text("");
+            $passwordCheckInput[0].setCustomValidity("");
+        }
+    }
+
+    // 비밀번호 확인 필드에 입력이 시작되었을 때 플래그 활성화
+    $passwordCheckInput.on("focus", function () {
+        isPasswordCheckActive = true; // 입력이 시작되었음을 표시
+        validatePasswordMatch(); // 바로 검증
+    });
+
+    // 비밀번호 입력 및 확인 필드에 이벤트 리스너 추가
+    $passwordInput.on("input", function () {
+        validatePassword(); // 비밀번호 유효성 검사
+        if (isPasswordCheckActive) {
+            validatePasswordMatch(); // 비밀번호 확인도 함께 검사
+        }
+    });
+
+    $passwordCheckInput.on("input", validatePasswordMatch);
+
+    // 폼 제출 시 최종 확인
+    $("form").on("submit", function (event) {
+        if (!validatePassword()) {
+            event.preventDefault(); // 폼 제출 막기
+            alert("비밀번호 조건을 충족하지 못했습니다.");
+        } else if ($passwordInput.val() !== $passwordCheckInput.val()) {
+            event.preventDefault();
+            alert("비밀번호가 일치하지 않습니다.");
+        }
     });
 });

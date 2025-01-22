@@ -123,18 +123,19 @@
                 </div>
             </div>
 
+            <%--            주소 받지 않음--%>
             <div class="input-wrapper">
                 <br>
-                <label for="address"><b>주소</b></label>
-                <input type="text" id="address" name="address" disabled required>
-                <button onclick="openPostalCode()">
-                    주소 찾기
-                </button>
+                <label for="address" style="display:none"><b>주소</b></label>
+                <input type="text" id="address" name="address" style="display: none" value="1">
+                <%--                <button onclick="openPostalCode()">--%>
+                <%--                    주소 찾기--%>
+                <%--                </button>--%>
             </div>
-            <div>
-                <label for="address-detail"><b>상세 주소</b></label>
-                <input type="text" id="address-detail" name="address-detail">
-            </div>
+            <%--            <div>--%>
+            <%--                <label for="address-detail"><b>상세 주소</b></label>--%>
+            <%--                <input type="text" id="address-detail" name="address-detail">--%>
+            <%--            </div>--%>
 
             <div class="password-wrapper">
                 <br>
@@ -152,7 +153,7 @@
                 <button type="submit"
                         style=""
                         class="util-btn"
-                        name="submit" onclick="location.href='user_signUp_check.jsp'">입력 확인
+                        name="submit">입력 확인
                 </button>
                 <br>
                 <button class="util-btn" type="button" onclick="location.href='/HomeC'">
