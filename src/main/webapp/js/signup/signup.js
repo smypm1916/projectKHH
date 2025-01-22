@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    // 새로고침시 인풋 초기화
+    const form = document.querySelector("form");
+    form.reset();
+
     /** 공통 함수: DOM 요소 선택 */
     function selectElement(id) {
         return document.getElementById(id);

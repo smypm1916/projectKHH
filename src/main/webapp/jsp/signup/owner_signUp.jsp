@@ -20,7 +20,7 @@
     </h1>
 </header>
 
-<h1>회원가입</h1>
+<h1>점주 회원가입</h1>
 
 <div class="main-body">
     <%--    이메일, 닉네임 중복체크--%>
@@ -122,11 +122,11 @@
                     <button type="submit"
                             style=""
                             class="util-btn"
-                            name="submit" onclick="location.href='user_signUp_check.jsp'">입력 확인
+                            name="submit">입력 확인
                     </button>
                     <br>
-                    <button class="util-btn" type="button" onclick="location.href='/HomeC'">
-                        돌아가기
+                    <button class="util-btn" type="button" onclick="history.back();">
+                        유저 유형 다시 선택
                     </button>
                 </div>
             </div>
