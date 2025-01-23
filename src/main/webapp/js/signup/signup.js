@@ -241,7 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
         document.getElementById("formatted-birthdate").value = formattedDate;
 
-        // 모든 검증 조건 확인
         if (!isEmailValid || !isNicknameValid || !isNameValid || !isPasswordValid) {
             event.preventDefault(); // 폼 제출 중단
             alert("모든 입력값을 올바르게 작성해주세요.");

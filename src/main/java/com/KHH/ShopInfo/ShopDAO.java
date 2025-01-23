@@ -1,5 +1,7 @@
 package com.KHH.ShopInfo;
 
+import com.KHH.main.DBManager;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
@@ -9,16 +11,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ShopDAO {
-   public static void getShop(HttpServletRequest req) {
-       Connection con = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
-       ResultSet rs2 = null;
-       String num = req.getParameter("no");
+    public static void getShop(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ResultSet rs2 = null;
+        String num = req.getParameter("no");
         String shopSQL = "select * from shop_info where shop_no=?";
-       String imgSQL = "select * from SHOP_IMAGE where shop_no=? order by image_type";
+        String imgSQL = "select * from SHOP_IMAGE where shop_no=? order by image_type";
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(shopSQL);
             pstmt.setString(1, num);
             rs = pstmt.executeQuery();
@@ -51,13 +53,13 @@ public class ShopDAO {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
 
         }
 
-   }
+    }
 
-   public static void showAllShop(HttpServletRequest req) {
+    public static void showAllShop(HttpServletRequest req) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -65,11 +67,11 @@ public class ShopDAO {
         String shopSQL = "select * from SHOP_INFO";
         String imgSQL = "select * from SHOP_IMAGE where shop_no=? order by image_type";
         try {
-            con = DBManager.connection();
+            con = DBManager.connect();
             pstmt = con.prepareStatement(shopSQL);
             rs = pstmt.executeQuery();
             ShopDTO shop = null;
-            ArrayList<ShopDTO>shops = new ArrayList<>();
+            ArrayList<ShopDTO> shops = new ArrayList<>();
             while (rs.next()) {
                 System.out.println("DB쿼리 수행됨");
                 shop = new ShopDTO();
@@ -90,7 +92,7 @@ public class ShopDAO {
                 }
                 ArrayList<String> subfiles = new ArrayList<>();
                 while (rs2.next()) {
-                      subfiles.add(rs2.getString(2));
+                    subfiles.add(rs2.getString(2));
                 }
                 shop.setSub_image(subfiles);    // img1-2.jpg,img1-3.jpg,img1-1.jpg
 
@@ -99,9 +101,9 @@ public class ShopDAO {
             System.out.println(shops);
             req.setAttribute("shops", shops);
             req.setAttribute("shop", shop);
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             DBManager.close(con, pstmt, rs);
             try {
                 rs2.close();
@@ -109,80 +111,79 @@ public class ShopDAO {
                 throw new RuntimeException(e);
             }
         }
-   }
+    }
 
-   public static void showAllMenu(HttpServletRequest req) {
-       Connection con = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
+    public static void showAllMenu(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
-       try {
-           con = DBManager.connection();
-           pstmt = con.prepareStatement("select * from menu_info where menu_shop=?");
-           System.out.println("shop_no: " + req.getParameter("no"));
-           pstmt.setString(1, req.getParameter("no"));
-           rs = pstmt.executeQuery();
-           MenuDTO menu = null;
-           ArrayList<MenuDTO>menus = new ArrayList<>();
-           while (rs.next()) {
-               System.out.println("DB쿼리 수행됨");
-               menu = new MenuDTO();
-               menu.setMenu_no(rs.getInt(1));
-               menu.setMenu_shop(rs.getString(2));
-               menu.setMenu_type(rs.getString(3));
-               menu.setMenu_name(rs.getString(4));
-               menu.setMenu_price(rs.getString(5));
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement("select * from menu_info where menu_shop=?");
+            System.out.println("shop_no: " + req.getParameter("no"));
+            pstmt.setString(1, req.getParameter("no"));
+            rs = pstmt.executeQuery();
+            MenuDTO menu = null;
+            ArrayList<MenuDTO> menus = new ArrayList<>();
+            while (rs.next()) {
+                System.out.println("DB쿼리 수행됨");
+                menu = new MenuDTO();
+                menu.setMenu_no(rs.getInt(1));
+                menu.setMenu_shop(rs.getString(2));
+                menu.setMenu_type(rs.getString(3));
+                menu.setMenu_name(rs.getString(4));
+                menu.setMenu_price(rs.getString(5));
 
-               menus.add(menu);
-           }
-           System.out.println(menus);
-           req.setAttribute("menus", menus);
-       }catch (Exception e) {
-           e.printStackTrace();
-       }finally {
-           DBManager.close(con, pstmt, rs);
-       }
+                menus.add(menu);
+            }
+            System.out.println(menus);
+            req.setAttribute("menus", menus);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(con, pstmt, rs);
+        }
 
-   }
+    }
 
-   public static void showAllReview(HttpServletRequest req) {
-       Connection con = null;
-       PreparedStatement pstmt = null;
-       ResultSet rs = null;
-       String reviewSQL = "select * from REVIEW_INFO ri, REVIEW_IMAGE rimg where ri.review_no = rimg.REVIEW_NO and ri.review_shop = ?";
+    public static void showAllReview(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String reviewSQL = "select * from REVIEW_INFO ri, REVIEW_IMAGE rimg where ri.review_no = rimg.REVIEW_NO and ri.review_shop = ?";
 
-       try {
-           con = DBManager.connection();
-           pstmt = con.prepareStatement(reviewSQL);
-           pstmt.setString(1, req.getParameter("no"));
-           rs = pstmt.executeQuery();
-           ReviewDTO review = null;
-           ArrayList<ReviewDTO>reviews = new ArrayList<>();
-           while (rs.next()) {
-               System.out.println("DB쿼리 수행됨");
-               review = new ReviewDTO();
-               review.setReview_no(rs.getInt(1));
-               review.setReview_shop(rs.getInt(2));
-               review.setReview_content(rs.getString(3));
-               review.setReview_date(rs.getString(4));
-               review.setReview_nickname(rs.getString(5));
-               review.setReview_star(rs.getInt(6));
-               review.setReview_image(rs.getString(8));
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(reviewSQL);
+            pstmt.setString(1, req.getParameter("no"));
+            rs = pstmt.executeQuery();
+            ReviewDTO review = null;
+            ArrayList<ReviewDTO> reviews = new ArrayList<>();
+            while (rs.next()) {
+                System.out.println("DB쿼리 수행됨");
+                review = new ReviewDTO();
+                review.setReview_no(rs.getInt(1));
+                review.setReview_shop(rs.getInt(2));
+                review.setReview_content(rs.getString(3));
+                review.setReview_date(rs.getString(4));
+                review.setReview_nickname(rs.getString(5));
+                review.setReview_star(rs.getInt(6));
+                review.setReview_image(rs.getString(8));
 
-               reviews.add(review);
-           }
-           System.out.println(reviews);
+                reviews.add(review);
+            }
+            System.out.println(reviews);
 
-           req.setAttribute("review", reviews);
-       }catch (Exception e) {
-           e.printStackTrace();
-       }finally {
-           DBManager.close(con, pstmt, rs);
-       }
+            req.setAttribute("review", reviews);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(con, pstmt, rs);
+        }
 
 
-   }
-
+    }
 
 
 }

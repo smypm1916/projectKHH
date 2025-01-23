@@ -93,7 +93,7 @@
         </div>
 
         <div class="shop-list" id="shop-list"
-             style="background-color: #F5DEB3; overflow-y: scroll; max-height: 100%; align-items: center;">
+             style="background-color: #F5DEB3; overflow-y: scroll; max-height: 720px; align-items: center;">
             <h1>식당 일람</h1>
             <c:forEach var="sl" items="${simpleList}">
                 <div class="simpleList"
