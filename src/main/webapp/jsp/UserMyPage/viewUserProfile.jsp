@@ -12,13 +12,12 @@
     <link rel="stylesheet" href="/css/userMyPage/userMyPage.css">
 </head>
 <body>
-<div class="profile-title"><h2>내 프로필</h2></div>
 <div class="profile">
   <div class="profile-field" style="border: none;">
     <div class="profile-circle">
-      <c:if test="${sessionScope.user.user_picture} != null">
+      <%--<c:if test="${sessionScope.user.user_picture} != null">
         <img src="/image/${sessionScope.user.user_picture}" alt="프로필 사진">
-      </c:if>
+      </c:if>--%>
       <img src="../image/korosan.jpg">
     </div>
     <div class="profile-message">
