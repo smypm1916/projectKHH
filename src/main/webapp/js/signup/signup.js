@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+
     /** Year, Month, Day Select Initialization */
     function initializeYearMonthDay() {
         const yearSelect = selectElement("birth-year");
