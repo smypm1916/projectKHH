@@ -137,7 +137,7 @@
                                 <label for="mainimage">
                                     <div class="btn-upload">메인 이미지 업로드하기</div>
                                 </label>
-                                <input accept=".jpg,.jpeg,.png" type="file" id="mainimage" name="sub" required>
+                                <input accept=".jpg,.jpeg,.png" type="file" id="mainimage" name="main" required>
                             </div>
                             <div class="subBtnDiv">
                                 <label for="subimage">
