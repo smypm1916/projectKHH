@@ -101,8 +101,9 @@
                      onclick="location.href='ShopAddrTypeC?no=${sl}';">
                     <ul style="list-style: none">
                         <li style="display: none;"><span>${sl.shop_no}</span></li>
-                        <li style="list-style: none;"><span
-                                style="font-size: 20pt; font-weight: bold;">${sl.shop_name}</span><br></li>
+                        <li style="list-style: none;"><a
+                                style="font-size: 20pt; font-weight: bold;"
+                                href='ShopDetailC?no=${sl.shop_no}'>${sl.shop_name}</a><br></li>
                         <li style="list-style: none;"><span>${sl.shop_tel}</span></li>
                         <li style="list-style: none;"><span>${sl.shop_opentime}</span></li>
                     </ul>
