@@ -239,3 +239,38 @@ SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop
 select * from MENU_INFO;
 
 select * from user_account_sj where user_email='user2@example.com';
+
+select * from SHOP_INFO;
+insert into shop_info values ('8','jj@naver.com','지원이네', '홋카이도삿포로', '02-1111-1111', '홋카이도', '연중무휴/10/10', '도오');
+insert into SHOP_IMAGE values('8', 'mise8.jpg', 'main');
+
+insert into SHOP_IMAGE values('3', 'img1.jpg','main');
+insert into SHOP_IMAGE values('3', 'img1-1.jpg','sub');
+insert into SHOP_IMAGE values('3', 'img1-2.jpg','sub');
+insert into SHOP_IMAGE values('3', 'img1-3.jpg','sub');
+select *from SHOP_IMAGE where shop_no = 3 order by image_type;
+select *from SHOP_INFO;
+select *from SHOP_IMAGE;
+insert into ('21')
+insert into ('22')
+insert into ('23')
+insert into ('24')
+insert into ('25')
+insert into ('28')
+insert into ('7')
+insert into ('26')
+insert into ('27')
+
+
+
+
+
+
+
+SELECT si.shop_no, si.shop_owner, si.shop_name, si.shop_addr, si.shop_tel, si.shop_content, si.shop_opentime, si.shop_addrtype,
+                          si2.shop_image AS main_image, si3.shop_image AS sub_image
+                    FROM shop_info si
+                    LEFT JOIN shop_image si2 ON si.shop_no = si2.shop_no AND si2.image_type = 'main'
+                LEFT JOIN shop_image si3 ON si.shop_no = si3.shop_no AND si3.image_type = 'sub';
+
+
