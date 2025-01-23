@@ -227,36 +227,41 @@
     color: rgb(70, 44, 32);
     margin-bottom: 170px;
 }
-.bottom-return-btn{
+/* 돌아가기 버튼 */
+.bottom-return-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    margin-top: 1vh;
 }
-.bottom-return-btn button{
+
+.bottom-return-btn input{
     background-color: rgb(205, 187, 173);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
     border: 3px rgb(70, 44, 32) solid;
-    width: 200px;
-    height: 35px;
-    font-size: 20px;
+    width: 250px;
+    height: 55px;
+    font-size: 25px;
     font-family: 'BMJUA',serif;
     font-weight: 100;
     font-style: normal;
     color: rgb(70, 44, 32);
 }
-.bottom-return-btn button:hover{
+
+.bottom-return-btn input:hover {
     background-color: rgb(70, 44, 32);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
     border: 3px rgb(205, 187, 173) solid;
-    width: 200px;
-    height: 35px;
-    font-size: 20px;
+    width: 250px;
+    height: 55px;
+    font-size: 25px;
     font-family: 'BMJUA',serif;
     font-weight: 100;
     font-style: normal;

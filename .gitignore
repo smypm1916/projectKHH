@@ -38,5 +38,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
-DBManager.java
+**/DBManager.java
+
 out/

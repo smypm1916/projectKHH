@@ -29,14 +29,14 @@
 		<div class="myShop_information_list_field">
 			<c:forEach var="res" items="${res}" varStatus="status">
 			<div class="myShop_information_list">
-				<a href="DetailRestaurantC">
+				<a href="ShopDetailC">
 					<img class="myShop_information_list_img"
-						 src="image/${res.image}"
+						 src="image/shopImage/${res.image}"
 						 alt="place-name">
 				</a>
 
 				<div style="border: none;">
-					<a href="DetailRestaurantC?no=${res.id}">
+					<a href="ShopDetailC?no=${res.id}">
 						<h2>${res.name}</h2>
 					</a>
 				</div>
@@ -48,7 +48,7 @@
 				</div>
 
 				<div class="myShop_menuBtn">
-					<button class="MenuButton" onclick="location.href='Delete_myRestaurantC?no${res.id}'">
+					<button class="MenuButton" onclick="location.href='Delete_myRestaurantC?id=${res.id}'">
 						가게삭제
 					</button>
 				</div>
@@ -95,10 +95,9 @@
 				<h2>1 2 3 4 (나중에 구현) ></h2>
 			</div>--%>
 
-			<div class="bottom-return-btn"
-				style="border: none; align-content: center;">
-				<button onclick="location.href='ShowOwnerMyPageController'">마이페이지</button>
-			</div>
+		<div class="bottom-return-btn">
+			<input onclick="location.href='ShowOwnerMyPageController'" type="button" value="마이페이지로 돌아가기">
+		</div>
 	</div>
 </body>
 </html>

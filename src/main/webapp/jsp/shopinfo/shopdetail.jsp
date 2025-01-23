@@ -262,18 +262,18 @@
 <div id="content1" class="tab-content active">
     <div class="info">Information</div>
     <div class="info-content">
-        <div>${shop.shop_name}</div>
-        <div>
-            <div>주소</div>
-            <div>${shop.shop_addr}</div>
+        <div style="display: flex; width: 1150px;">${shop.shop_name}</div>
+        <div style="display: flex; width: 1150px;">
+            <div style="width:250px">주소</div>
+            <div style="font-size:20px">${shop.shop_addr}</div>
         </div>
-        <div>
-            <div>TEL</div>
-            <div>${shop.shop_tel}</div>
+        <div style="display: flex; width: 1150px;">
+            <div style="width:250px">TEL</div>
+            <div style="font-size:20px">${shop.shop_tel}</div>
         </div>
-        <div>
-            <div>영업시간</div>
-            <div>${shop.shop_opentime}</div>
+        <div style="display: flex; width: 1150px;">
+            <div style="width:250px">영업시간</div>
+            <div style="font-size:20px">${shop.shop_opentime}</div>
         </div>
     </div>
     <div>

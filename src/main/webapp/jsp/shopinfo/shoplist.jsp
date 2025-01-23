@@ -127,7 +127,7 @@
     </style>
 </head>
 <body>
-
+<h1>맛집 정보</h1>
 <div class="container">
     <c:forEach var="shop" items="${shops}">
         <!-- 주소 타입 표시 -->
@@ -155,6 +155,7 @@
             </div>
         </div>
     </c:forEach>
+	
 </div>
 
 </body>
