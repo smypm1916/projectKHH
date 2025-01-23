@@ -33,7 +33,7 @@
                 </form>
                     <div class="loginHelp">
                         <a href="javascript:void(0)" onclick="openModal()"> ID / PW 찾기 </a>&nbsp;&nbsp;&nbsp;
-                        <a href="register.jsp"> 회원가입</a> <!-- 성민님 레지스터 페이지 링크 -->
+                        <a href="/SignUpC"> 회원가입</a>
                     </div>
             </div>
         </div>
