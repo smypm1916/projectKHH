@@ -97,7 +97,7 @@ public class ShopDAO {
         return detailDTO;
     }
 
-//    포인터 종속 가게 리스트 helped by GPT
+    //    포인터 종속 가게 리스트 helped by GPT
     public ArrayList<ShopDetailDTO> getShopsByRegion(String region) {
         ArrayList<ShopDetailDTO> shopList = new ArrayList<>();
         String sql = "SELECT * FROM SHOP_INFO WHERE shop_addrtype = ?";
@@ -136,5 +136,6 @@ public class ShopDAO {
         }
         return shopList;
     }
+
 
 }
