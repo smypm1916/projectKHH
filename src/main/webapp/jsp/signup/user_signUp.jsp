@@ -5,7 +5,9 @@
 <head>
     <title>회원가입</title>
 
-    <link rel="stylesheet" href="../../css/signup/signup_ver.0.2.css">
+<%--    <link rel="stylesheet" href="../../css/signup/signUp.css">--%>
+        <link rel="stylesheet" href="../../css/signup/signup_ver.0.2.css">
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
@@ -157,21 +159,21 @@
         </form>
     </div>
 
-   <%-- <div class="fixed-nav"
-         style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: row-reverse; align-items: center;">
-        <div class="btn-page-top" style="display: block;"></div>
-        <span style="width: 50px; height: 50px;
-                         display: flex;
-                         justify-content: center;
-                         align-items: center;
-                         background-color: #F5DEB3;
-                         border-radius: 50%;
-                         cursor: pointer;
-                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                         font-size: 14px;
-                         font-weight: bold;"
-              onclick="window.scrollTo(0,0);">맨 위로</span>
-    </div>--%>
+    <%-- <div class="fixed-nav"
+          style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: row-reverse; align-items: center;">
+         <div class="btn-page-top" style="display: block;"></div>
+         <span style="width: 50px; height: 50px;
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          background-color: #F5DEB3;
+                          border-radius: 50%;
+                          cursor: pointer;
+                          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                          font-size: 14px;
+                          font-weight: bold;"
+               onclick="window.scrollTo(0,0);">맨 위로</span>
+     </div>--%>
 </div>
 <script src="../../js/signup/signup.js"></script>
 </body>

@@ -20,8 +20,6 @@
     <div class="form-wrapper-userType" style="display: flex; align-items: center; justify-content: space-between;">
         <button type="submit" name="userType" value="user">일반 회원</button>
         <button type="submit" name="userType" value="owner">점주 회원</button>
-        <%--        <button type="button" onclick="ToSignUp('customer')">일반 회원</button>--%>
-        <%--        <button type="button" onclick="ToSignUp('owner')">점주 회원</button>--%>
     </div>
 </form>
 </body>
