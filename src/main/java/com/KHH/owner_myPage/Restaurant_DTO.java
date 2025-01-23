@@ -8,12 +8,13 @@ public class Restaurant_DTO {
     private String opentime;
     private String phone;
     private String explain;
+    private String image;
 
     public Restaurant_DTO() {
         super();
     }
 
-    Restaurant_DTO(int id, String owner, String name, String address, String opentime, String phone, String explain) {
+    Restaurant_DTO(int id, String owner, String name, String address, String opentime, String phone, String explain, String image) {
         this.id = id;
         this.owner = owner;
         this.name = name;
@@ -21,6 +22,7 @@ public class Restaurant_DTO {
         this.opentime = opentime;
         this.phone = phone;
         this.explain = explain;
+        this.image = image;
     }
 
     public int getId() {
@@ -79,5 +81,11 @@ public class Restaurant_DTO {
         this.explain = explain;
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

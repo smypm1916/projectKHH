@@ -27,35 +27,32 @@
 			</div>
 
 		<div class="myShop_information_list_field">
+			<c:forEach var="res" items="${res}" varStatus="status">
+			<div class="myShop_information_list">
+				<a href="DetailRestaurantC">
+					<img class="myShop_information_list_img"
+						 src="image/${res.image}"
+						 alt="place-name">
+				</a>
 
-			<c:forEach var="i" items="${res}">
-				<div class="myShop_container" style="border: solid 1px;">
-					<div class="myShop_place_box">
-						<img class="myShop_photo"
-							 src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
-							 alt="place-name">
-						<div style="border: none; text-align: left; margin-left: 30px">
-							<h2>
-								<span>😋</span>${i.name}
-							</h2>
-							<div style="border: none;">
-								<p>${i.address}</p>
-								<p>${i.opentime}</p>
-								<p>${i.phone}</p>
-								<p>${i.explain}</p>
-
-							</div>
-						</div>
-					</div>
-					<div class="myShop_button_field" style="border: none; align-content: center;">
-						<input onclick="location.href='DetailRestaurantC?no=${i.id}'" class="myShop-button"
-							   type="button" value="가게 정보 보기">
-						<input onclick="location.href='Edit_myRestaurantC?no=${i.id}'" class="myShop-button"
-							   type="button" value="수정">
-						<input onclick="location.href='Delete_myRestaurantC?no=${i.id}'" class="myShop-button"
-							   type="button" value="삭제">
-					</div>
+				<div style="border: none;">
+					<a href="DetailRestaurantC?no=${res.id}">
+						<h2>${res.name}</h2>
+					</a>
 				</div>
+
+				<div style="border: none;">
+					<h3>${res.address}</h3>
+					<h3>${res.opentime}</h3>
+					<p>${res.phone}</p>
+				</div>
+
+				<div class="myShop_menuBtn">
+					<button class="MenuButton" onclick="location.href='Delete_myRestaurantC?no${res.id}'">
+						가게삭제
+					</button>
+				</div>
+			</div>
 			</c:forEach>
 		</div>
 

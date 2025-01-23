@@ -103,7 +103,7 @@ public class Restaurant_DAO {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sql = "select * from shop_info";
+        String sql = "SELECT si.shop_no, si.shop_owner, si.shop_name, si.shop_addr, si.shop_opentime, si.shop_tel, si.shop_content, simg.shop_image FROM shop_info si LEFT JOIN shop_image simg ON si.shop_no = simg.shop_no AND simg.image_type = 'main'";
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
@@ -114,12 +114,13 @@ public class Restaurant_DAO {
             while (rs.next()) {
                 Restaurant_DTO restaurant = new Restaurant_DTO();
                 restaurant.setId(rs.getInt("shop_no"));
-                restaurant.setName(rs.getString("shop_name"));
                 restaurant.setOwner(rs.getString("shop_owner"));
+                restaurant.setName(rs.getString("shop_name"));
                 restaurant.setAddress(rs.getString("shop_addr"));
                 restaurant.setOpentime(rs.getString("shop_opentime"));
                 restaurant.setPhone(rs.getString("shop_tel"));
                 restaurant.setExplain(rs.getString("shop_content"));
+                restaurant.setImage(rs.getString("shop_image"));
                 restaurants.add(restaurant);
             }
             request.setAttribute("res", restaurants);
