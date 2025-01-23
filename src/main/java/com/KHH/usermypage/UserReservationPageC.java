@@ -17,8 +17,6 @@ public class UserReservationPageC extends HttpServlet {
         UserDataDAO.reservationPaging(p, req, UserDataDAO.viewUserReservation(req));
         req.setAttribute("content", "/jsp/UserReservation/userReservationPage.jsp");
         req.getRequestDispatcher("/jsp/main.jsp").forward(req,resp);
-
-
     }
 
     @Override

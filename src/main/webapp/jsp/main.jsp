@@ -17,6 +17,7 @@
             <li><a href="LoginC">로그인</a></li>
             <li><a href="UserC">마이 페이지(유저)</a></li>
             <li><a href="ShowOwnerMyPageController">마이 페이지(점주)</a></li>
+            <%--            <li><a href="/LogoutC">로그아웃</a></li>--%>
         </ul>
     </nav>
 </div>
