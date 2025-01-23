@@ -135,3 +135,8 @@ nav ul li a:hover {
     background-color: rgb(160, 134, 122);
     height: 170px;
 }
+
+.footer:hover, .footer:active, .footer:visited, .footer:link:active {
+    text-decoration: none;
+    color: black;
+}
