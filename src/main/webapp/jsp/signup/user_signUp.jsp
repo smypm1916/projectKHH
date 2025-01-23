@@ -16,11 +16,11 @@
 
 <body>
 
-<header class="header">
+<%--<header class="header">
     <h1 style="display: flex; justify-content: center">
         <a href="/HomeC">KHH</a>
     </h1>
-</header>
+</header>--%>
 
 <h1>유저 회원가입</h1>
 
@@ -157,7 +157,7 @@
         </form>
     </div>
 
-    <div class="fixed-nav"
+   <%-- <div class="fixed-nav"
          style="position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: row-reverse; align-items: center;">
         <div class="btn-page-top" style="display: block;"></div>
         <span style="width: 50px; height: 50px;
@@ -171,7 +171,7 @@
                          font-size: 14px;
                          font-weight: bold;"
               onclick="window.scrollTo(0,0);">맨 위로</span>
-    </div>
+    </div>--%>
 </div>
 <script src="../../js/signup/signup.js"></script>
 </body>

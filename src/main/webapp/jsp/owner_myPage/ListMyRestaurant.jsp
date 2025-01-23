@@ -31,7 +31,7 @@
 			<div class="myShop_information_list">
 				<a href="DetailRestaurantC">
 					<img class="myShop_information_list_img"
-						 src="image/${res.image}"
+						 src="image/shopImage/${res.image}"
 						 alt="place-name">
 				</a>
 
@@ -95,10 +95,9 @@
 				<h2>1 2 3 4 (나중에 구현) ></h2>
 			</div>--%>
 
-			<div class="bottom-return-btn"
-				style="border: none; align-content: center;">
-				<button onclick="location.href='ShowOwnerMyPageController'">마이페이지</button>
-			</div>
+		<div class="bottom-return-btn">
+			<input onclick="location.href='ShowOwnerMyPageController'" type="button" value="마이페이지로 돌아가기">
+		</div>
 	</div>
 </body>
 </html>
