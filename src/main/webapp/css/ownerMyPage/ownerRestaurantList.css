@@ -27,8 +27,11 @@
 }
 .myShop_information_list {
     text-align: center;
-    width: 283px;
-    margin: 31px;
+    margin: 0px;
+    width: calc(25% - 16px); /* 4개씩 배치 */
+    height: 650px;
+    justify-content: center;
+    align-items: center;
 }
 
 .myShop_information_list img {
@@ -47,10 +50,12 @@
 
 .myShop_information_list_field {
     display: flex;
+    flex-wrap: wrap; /* 줄바꿈 허용 */
+    gap: 16px; /* 간격 추가 */
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin-top: 80px;
+    margin-top: 100px;
     font-style: normal;
     font-family: 'BMJUA',serif;
     color: rgb(70, 44, 32);
@@ -83,6 +88,10 @@
     font-weight: 100;
     font-style: normal;
     color: rgb(70, 44, 32);
+}
+.clearfix {
+    flex-basis: 100%; /* 줄바꿈을 강제 */
+    height: 0;
 }
 /*.myShop_place_box {
     display: flex;
