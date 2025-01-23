@@ -32,7 +32,7 @@
 <!-- 탭 메뉴 -->
 <div class="tab-menu">
     <button id="tab1" class="tab-button active" onclick="openTab(1)">가게정보</button>
-    <button id="tab2" class="tab-button" onclick="openTab(2)">메뉴</button>
+    <%--<button id="tab2" class="tab-button" onclick="openTab(2)">메뉴</button>--%>
     <button id="tab3" class="tab-button" onclick="openTab(3)">리뷰</button>
 </div>
 
@@ -71,8 +71,30 @@
     </c:forEach>
 </div>
 
-<!-- 리뷰 -->
 <div id="content3" class="tab-content review-section">
+        <div class="review">
+            <div class="nickname">챈챈</div>
+            <div class="stars">
+            <c:forEach var="i" begin="1" end="4">
+                <span class="star">★</span> <!-- 별을 채운 부분 -->
+            </c:forEach>
+            <c:forEach var="i" begin="5" end="5">
+                <span class="star2">★</span>  <!-- 빈 별 부분 -->
+            </c:forEach>
+            </div>
+            <div class="review-content">너무너무 맛나용~</div>
+            <div class="photo-container">
+                <img src="https://via.placeholder.com/150x150" alt="review photo 1">
+                <img src="https://via.placeholder.com/150x150" alt="review photo 2">
+                <img src="https://via.placeholder.com/150x150" alt="review photo 3">
+            </div>
+            <button class="like-button" onclick="increaseLikeCount(this)">좋아요</button>
+            <span class="like-count">0</span>
+        </div>
+</div>
+
+<!-- 리뷰 -->
+<%--<div id="content3" class="tab-content review-section">
     <c:forEach var="reviews" items="${review}">
         <div class="review">
             <div class="nickname">${reviews.review_nickname}</div>
@@ -82,13 +104,13 @@
             <c:forEach var="i" begin="${reviews.review_star + 1}" end="5">
                 <span class="star2">★</span>  <!-- 빈 별 부분 -->
             </c:forEach>
-            <%--<div class="stars">
+            &lt;%&ndash;<div class="stars">
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
                 <span class="star">&#9733;</span>
-            </div>--%>
+            </div>&ndash;%&gt;
             <div class="content">${reviews.review_content}</div>
             <div class="photo-container">
                 <img src="https://via.placeholder.com/150x150" alt="review photo 1">
@@ -99,7 +121,7 @@
             <span class="like-count">0</span>
         </div>
     </c:forEach>
-</div>
+</div>--%>
 
 <script>
     function openTab(tabNumber) {
