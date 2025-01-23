@@ -3,19 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="/css/userMyPage.css">
+<link rel="stylesheet" href="/css/userMyPage/userMyPage.css">
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/userMyPage/userMyPage.css">
     <meta charset="UTF-8">
     <title>Insert title here</title>
 </head>
 <body>
-<div class="mypage" style="border: none;">
+<%--<div class="mypage" style="border: none;">
     <h1>MyPage</h1>
     <h2>내 프로필 </h2>
-</div>
-<hr>
-
+</div>--%>
 
 <form action="ProfileUpdateController" method="post" enctype="multipart/form-data">
     <div class="profile">
@@ -56,36 +55,26 @@
     </div>
 </form>
 
-
-
-<br> <br>
-<div class="review-list" style="border: none;">
+<%--<div class="review-list" style="border: none;">
     <h2 style="margin-inline-end: auto;">작성한 맛리뷰</h2>
     <div style="border: none;">
         <h3><a onclick="location.href='UserReviewC'"> 더보기 > </a></h3>
     </div>
 </div>
-<hr>
 <c:forEach items="${reviews}" var="review">
 
     <div class="review-comment" style="border: none;">
         <span>🦀🍴</span> [${review.shop_name}] ${review.review_content} | ${review.review_date}
         |${review.review_nickname}
     </div>
-</c:forEach>
+</c:forEach>--%>
 
-<br> <br>
-
-<div class="reservation-list" style="border: none;">
+<%--<div class="reservation-list" style="border: none;">
     <h2 style="margin-inline-end: auto;">예약한 가게</h2>
     <div style="border: none;">
         <h3><a onclick="location.href='UserReservationC'"> 더보기 > </a></h3>
     </div>
 </div>
-<hr>
-<br>
-
-
 <div class="reserv-place-list-field">
     <c:forEach items="${myreservations}" var="myreservation">
         <div class="reserv-place-list">
@@ -102,23 +91,14 @@
             </div>
         </div>
     </c:forEach>
+</div>--%>
 
-
-</div>
-<br> <br>
-
-
-<div class="like-list" style="border: none;">
-
+<%--<div class="like-list" style="border: none;">
     <h2 style="margin-inline-end: auto;">좋아요한 가게</h2>
     <div style="border: none;">
         <h3><a onclick="location.href='UserScrapC'"> 더보기 ></a></h3>
     </div>
 </div>
-<hr>
-<br>
-
-
 <div class="like-place-list-field">
     <c:forEach items="${scraps}" var="scrap">
         <div class="like-place-list">
@@ -131,9 +111,7 @@
             </div>
         </div>
     </c:forEach>
-
-
-</div>
+</div>--%>
 
 <%--&lt;%&ndash;	<script>&ndash;%&gt;--%>
 <%--&lt;%&ndash;		// 요소 참조&ndash;%&gt;--%>
@@ -148,6 +126,5 @@
 <%--&lt;%&ndash;		fileInput.click(); // 파일 선택 창 열기&ndash;%&gt;--%>
 <%--&lt;%&ndash;	});&ndash;%&gt;--%>
 <%--</script>--%>
-
 </body>
 </html>

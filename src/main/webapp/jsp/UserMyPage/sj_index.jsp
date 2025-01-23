@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="/css/userMyPage.css">
+<link rel="stylesheet" href="/css/userMyPage/userMyPage.css">
 <head>
     <title>Title</title>
 </head>
