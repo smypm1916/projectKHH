@@ -132,11 +132,17 @@ nav ul li a:hover {
 }
 
 .footer {
+    font-style: normal;
+    font-family: 'BMJUA', serif;
+    text-align: center;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 20px;
     background-color: rgb(160, 134, 122);
     height: 170px;
+    color: white;
 }
-
-.footer:hover, .footer:active, .footer:visited, .footer:link:active {
+.footer a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
