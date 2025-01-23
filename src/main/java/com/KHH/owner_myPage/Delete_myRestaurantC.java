@@ -13,8 +13,7 @@ public class Delete_myRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Restaurant_DAO.DeleteRestaurant(request);
-        request.setAttribute("content","/jsp/owner_myPage/ListMyRestaurants.jsp");
-        request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
+        response.sendRedirect("ShowAllRestaurantC");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

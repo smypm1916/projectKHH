@@ -121,6 +121,7 @@ public class Restaurant_DAO {
                 restaurant.setPhone(rs.getString("shop_tel"));
                 restaurant.setExplain(rs.getString("shop_content"));
                 restaurant.setImage(rs.getString("shop_image"));
+                System.out.println(rs.getString("shop_image"));
                 restaurants.add(restaurant);
             }
             request.setAttribute("res", restaurants);
@@ -355,7 +356,7 @@ public class Restaurant_DAO {
             upload.setSizeMax(MAX_REQUEST_SIZE);
             List<FileItem> items = upload.parseRequest(request);
             int no = GetShopPK();
-            String owner = "jj@naver.com";
+            String owner = "miyanaga@naver.com";
             System.out.println("pk:" + no);
             System.out.println("오너이름:" + owner);
 
@@ -419,31 +420,41 @@ public class Restaurant_DAO {
             }
 
             for (FileItem item : items) {
-                String fileName = item.getName().toString();
-                System.out.println(fileName);
-                int dotIndex = fileName.lastIndexOf(".");
-                String fileExtension = fileName.substring(dotIndex);
-                String uniqueFileName = UUID.randomUUID().toString().split("-")[0] + fileExtension;
-                File uploadedFile = new File(directory, uniqueFileName);
-                String fieldName = item.getFieldName();
-                item.write(uploadedFile);
-                // switch문으로 name에 따라 처리
-                String main = null;
-                String sub = null;
-                switch (fieldName) {
-                    case "main":
-                        main = uniqueFileName; // 메인이미지 이름 저장
-                        saveImageToDB(no, uniqueFileName, "main"); // DB 저장 호출
-                        System.out.println("pk : "+no);
-                        System.out.println("파일명 : "+uniqueFileName);
-                        break;
-                    case "sub":
-                        sub = uniqueFileName; // 서브이미지 이름 저장
-                        saveImageToDB(no, uniqueFileName, "sub"); // DB 저장 호출
-                        System.out.println("pk : "+no);
-                        System.out.println("파일명 : "+uniqueFileName);
-                        break;
+                if (!item.isFormField()){
+                    String fileName = item.getName();
+                    if (fileName != null) {
+                        fileName = new File(fileName).getName(); // 파일 이름만 추출
+                    }
+                    System.out.println("isFormField: " + item.isFormField());
+                    System.out.println("Field Name: " + item.getFieldName());
+                    System.out.println("File Name: " + item.getName());
+                    System.out.println("Content Type: " + item.getContentType());
+                    System.out.println("Size: " + item.getSize());
 
+                    System.out.println(fileName);
+                    int dotIndex = fileName.lastIndexOf(".");
+                    String fileExtension = fileName.substring(dotIndex);
+                    String uniqueFileName = UUID.randomUUID().toString().split("-")[0] + fileExtension;
+                    File uploadedFile = new File(directory, uniqueFileName);
+                    String fieldName = item.getFieldName();
+                    item.write(uploadedFile);
+                    // switch문으로 name에 따라 처리
+                    String main = null;
+                    String sub = null;
+                    switch (fieldName) {
+                        case "main":
+                            main = uniqueFileName; // 메인이미지 이름 저장
+                            saveImageToDB(no, uniqueFileName, "main"); // DB 저장 호출
+                            System.out.println("pk : "+no);
+                            System.out.println("파일명 : "+uniqueFileName);
+                            break;
+                        case "sub":
+                            sub = uniqueFileName; // 서브이미지 이름 저장
+                            saveImageToDB(no, uniqueFileName, "sub"); // DB 저장 호출
+                            System.out.println("pk : "+no);
+                            System.out.println("파일명 : "+uniqueFileName);
+                            break;
+                    }
                 }
             }
         }catch (Exception e) {
@@ -520,7 +531,7 @@ public class Restaurant_DAO {
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, request.getParameter("no"));
+            pstmt.setString(1, request.getParameter("id"));
             if (pstmt.executeUpdate() > 0) {
                 System.out.println("삭제성공");
             }
