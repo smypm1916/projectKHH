@@ -1,3 +1,4 @@
+
 package com.KHH.ShopInfo;
 
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,7 @@ public class ShopDetailC extends HttpServlet {
         ShopDAO.showAllMenu(req);
         ShopDAO.showAllReview(req);
         req.setAttribute("content", "/jsp/shopinfo/shopdetail.jsp");
-        req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
     }
 
     @Override

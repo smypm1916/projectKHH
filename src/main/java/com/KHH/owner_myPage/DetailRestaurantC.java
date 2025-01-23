@@ -13,7 +13,8 @@ public class DetailRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Restaurant_DAO.DetailShow(request);
-        request.getRequestDispatcher("DetailMyRestaurant.jsp").forward(request, response);
+        request.setAttribute("content","/jsp/owner_myPage/DetailMyRestaurant.jsp");
+        request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

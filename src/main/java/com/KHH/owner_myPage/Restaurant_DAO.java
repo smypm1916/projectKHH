@@ -3,65 +3,127 @@ package com.KHH.owner_myPage;
 import com.KHH.main.DBManager;
 import com.oreilly.servlet.MultipartRequest;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Restaurant_DAO {
 
     private static final int MAX_FILE_SIZE = 1024 * 1024 * 40;
     private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50;
 
-    public static void EditProfile(HttpServletRequest request) {
+    public static void ShowProfile(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sql = "update ";
+        String sql = "select * from owner_account where owner_email=?";
+
         try {
-            request.setCharacterEncoding("utf-8");
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, request.getParameter("no"));
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                Owner_DTO owner = new Owner_DTO();
+                String picturePath = rs.getString("owner_picture");
+                owner.setNickname(rs.getString("owner_nickname"));
+                owner.setMessage(rs.getString("owner_message"));
+                owner.setPicture(rs.getString("owner_picture"));
 
+                request.setAttribute("res", owner);
+
+                if (picturePath != null && !picturePath.isEmpty()) {
+                    request.setAttribute("profilePicture", picturePath);
+                } else {
+                    request.setAttribute("profilePicture", "/images/default-profile.png"); // 기본 이미지
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(con, pstmt, rs);
+            try {
+                DBManager.close(con, pstmt, rs);
+            }
+                catch (Exception e) {
+                e.printStackTrace();
+                }
+        }
+
+    }
+
+    public static void EditProfile(HttpServletRequest request) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        String sql = "update owner_account set owner_nickname=?,owner_message=?,owner_picture=? where owner_email=?";
+
+        String testEmail = "ownertest1@naver.com";
+
+        String nickname = request.getParameter("nickname");
+        String message = request.getParameter("message");
+        String picture = request.getParameter("picture");
+//        String email = request.getParameter("email");
+
+        System.out.println(nickname);
+        System.out.println(message);
+        System.out.println(picture);
+//            System.out.println(email);
+        try {
+
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, request.getParameter("nickname"));
+            pstmt.setString(2, request.getParameter("message"));
+            pstmt.setString(3, request.getParameter("picture"));
+//            pstmt.setString(4, request.getParameter("email"));
+            pstmt.setString(4, testEmail);
+            if (pstmt.executeUpdate() == 1){
+                System.out.println("수정성공");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try{
+            DBManager.close(con, pstmt, null);
+        }
+            catch (Exception e){
+            e.printStackTrace();}
         }
     }
 
     public static void ShowAllList(HttpServletRequest request) {
-
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sql = "select * from shop_info";
-        System.out.println(sql);
+        String sql = "SELECT si.shop_no, si.shop_owner, si.shop_name, si.shop_addr, si.shop_opentime, si.shop_tel, si.shop_content, simg.shop_image FROM shop_info si LEFT JOIN shop_image simg ON si.shop_no = simg.shop_no AND simg.image_type = 'main'";
         try {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
+
             ArrayList<Restaurant_DTO> restaurants = new ArrayList<>();
+
             while (rs.next()) {
                 Restaurant_DTO restaurant = new Restaurant_DTO();
-                restaurant.setName(rs.getString("name"));
-                restaurant.setOwner(rs.getString("owner"));
-                restaurant.setAddress(rs.getString("address"));
-                restaurant.setOpentime(rs.getString("opentime"));
-                restaurant.setPhone(rs.getString("phone"));
-                restaurant.setExplain(rs.getString("explain"));
+                restaurant.setId(rs.getInt("shop_no"));
+                restaurant.setOwner(rs.getString("shop_owner"));
+                restaurant.setName(rs.getString("shop_name"));
+                restaurant.setAddress(rs.getString("shop_addr"));
+                restaurant.setOpentime(rs.getString("shop_opentime"));
+                restaurant.setPhone(rs.getString("shop_tel"));
+                restaurant.setExplain(rs.getString("shop_content"));
+                restaurant.setImage(rs.getString("shop_image"));
                 restaurants.add(restaurant);
+                request.setAttribute("res", restaurants);
             }
-            request.setAttribute("res", restaurants);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -72,6 +134,38 @@ public class Restaurant_DAO {
             }
 
         }
+    }
+    public static void DetailShow(HttpServletRequest request) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "select * from shop_info where shop_no=?";
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, Integer.parseInt(request.getParameter("no")));
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                Restaurant_DTO resDetail = new Restaurant_DTO();
+                resDetail.setId(rs.getInt("shop_no"));
+                resDetail.setOwner(rs.getString("shop_owner"));
+                resDetail.setName(rs.getString("shop_name"));
+                resDetail.setAddress(rs.getString("shop_addr"));
+                resDetail.setOpentime(rs.getString("shop_opentime"));
+                resDetail.setPhone(rs.getString("shop_tel"));
+                resDetail.setExplain(rs.getString("shop_content"));
+                request.setAttribute("res", resDetail);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                DBManager.close(con, pstmt, rs);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     /* public static void InsertResAndImages(HttpServletRequest req){
@@ -220,31 +314,31 @@ public class Restaurant_DAO {
         return no + 1;
     }
 
-    public static String GetOwnerName(HttpServletRequest request) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        String sql = "select owner_name from owner_account where owner_email=?";
-        String ownerName = null;
-        try {
-            con = DBManager.connect();
-            pstmt = con.prepareStatement(sql);
-//            pstmt.setString(1, request.getParameter("email"));
-            pstmt.setString(1, "jj@naver.com");
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                ownerName = rs.getString("owner_name");
+//    public static String GetOwnerName(HttpServletRequest request) {
+//        Connection con = null;
+//        PreparedStatement pstmt = null;
+//        ResultSet rs = null;
+//        String sql = "select owner_name from owner_account where owner_email=?";
+//        String ownerName = null;
+//        try {
+//            con = DBManager.connect();
+//            pstmt = con.prepareStatement(sql);
+////            pstmt.setString(1, request.getParameter("email"));
+//            pstmt.setString(1, "jj@naver.com");
+//            rs = pstmt.executeQuery();
+//            if (rs.next()) {
+//                ownerName = rs.getString("owner_name");
+//
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            DBManager.close(con, pstmt, rs);
+//        }
+//        return ownerName;
+//    }
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DBManager.close(con, pstmt, rs);
-        }
-        return ownerName;
-    }
-
-    public static void InsertRestaurant(HttpServletRequest request, String ownerName) {
+    public static void InsertRestaurant(HttpServletRequest request) {
         String path = request.getServletContext().getRealPath("image/shopImage");
         Connection con = null;
         PreparedStatement pstmt1 = null;
@@ -260,7 +354,9 @@ public class Restaurant_DAO {
             upload.setSizeMax(MAX_REQUEST_SIZE);
             List<FileItem> items = upload.parseRequest(request);
             int no = GetShopPK();
-            String owner = ownerName;
+            String owner = "jj@naver.com";
+            System.out.println("pk:" + no);
+            System.out.println("오너이름:" + owner);
 
 
             request.setCharacterEncoding("utf-8");
@@ -313,28 +409,75 @@ public class Restaurant_DAO {
             pstmt1.setString(2, owner);
             pstmt1.setString(3, name);
             pstmt1.setString(4, address);
-            pstmt1.setString(5, region);
-            pstmt1.setString(6, phone1 + "-" + phone2 + "-" + phone3);
-            pstmt1.setString(7, content);
-            pstmt1.setString(8, week + "/" + oHour + oMinute + "/" + cHour + cMinute);
+            pstmt1.setString(5, phone1 + "-" + phone2 + "-" + phone3);
+            pstmt1.setString(6, content);
+            pstmt1.setString(7, week + "/" + oHour + oMinute + "/" + cHour + cMinute);
+            pstmt1.setString(8, region);
             if (pstmt1.executeUpdate() > 0) {
                 System.out.println("추가성공");
             }
-        } catch (Exception e) {
+
+            for (FileItem item : items) {
+                String fileName = item.getName().toString();
+                System.out.println(fileName);
+                int dotIndex = fileName.lastIndexOf(".");
+                String fileExtension = fileName.substring(dotIndex);
+                String uniqueFileName = UUID.randomUUID().toString().split("-")[0] + fileExtension;
+                File uploadedFile = new File(directory, uniqueFileName);
+                String fieldName = item.getFieldName();
+                item.write(uploadedFile);
+                // switch문으로 name에 따라 처리
+                String main = null;
+                String sub = null;
+                switch (fieldName) {
+                    case "main":
+                        main = uniqueFileName; // 메인이미지 이름 저장
+                        saveImageToDB(no, uniqueFileName, "main"); // DB 저장 호출
+                        System.out.println("pk : "+no);
+                        System.out.println("파일명 : "+uniqueFileName);
+                        break;
+                    case "sub":
+                        sub = uniqueFileName; // 서브이미지 이름 저장
+                        saveImageToDB(no, uniqueFileName, "sub"); // DB 저장 호출
+                        System.out.println("pk : "+no);
+                        System.out.println("파일명 : "+uniqueFileName);
+                        break;
+
+                }
+            }
+        }catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try {
-                DBManager.close(con, pstmt1, null);
-            } catch (Exception e) {
-                e.printStackTrace();
+            DBManager.close(con, pstmt1, null);
+        }
+    }
+    public static void saveImageToDB(int no, String fileName, String type) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        String sql = "INSERT INTO shop_image VALUES (?, ?, ?)";
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, no);
+            pstmt.setString(2, fileName);
+            pstmt.setString(3, type); // main 또는 sub
+            if(pstmt.executeUpdate() == 1){
+                System.out.println("DB 저장 성공: " + fileName + ", 타입: " + type);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(con, pstmt, null);
         }
     }
 
-    public static void UpdateRestaurant(HttpServletRequest request) {
+
+
+
+        public static void UpdateRestaurant(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
-        String sql = "update shop_info set shop_name=?,shop_owner,shop_addr=?,shop_opentime=?,shop_tel=?,shop_content=? where shop_id=?";
+        String sql = "update shop_info set shop_name=?,shop_owner,shop_addr=?,shop_opentime=?,shop_tel=?,shop_content=? where shop_no=?";
         try {
             request.setCharacterEncoding("utf-8");
             con = DBManager.connect();
@@ -353,7 +496,7 @@ public class Restaurant_DAO {
             pstmt.setString(4, request.getParameter(opentime));
             pstmt.setString(5, request.getParameter(phone));
             pstmt.setString(6, request.getParameter(explain));
-            pstmt.setInt(7, Integer.parseInt(request.getParameter("no")));
+            pstmt.setString(7, request.getParameter("no"));
             if (pstmt.executeUpdate() > 0) {
                 System.out.println("수정성공");
             }
@@ -372,12 +515,11 @@ public class Restaurant_DAO {
     public static void DeleteRestaurant(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
-        String sql = "delete from shop_info where shop_id=?";
+        String sql = "delete from shop_info where shop_no=?";
         try {
-            String id = request.getParameter("no");
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, id);
+            pstmt.setString(1, request.getParameter("no"));
             if (pstmt.executeUpdate() > 0) {
                 System.out.println("삭제성공");
             }
@@ -393,37 +535,5 @@ public class Restaurant_DAO {
 
     }
 
-    public static void DetailShow(HttpServletRequest request) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        String sql = "select * from shop_info where shop_id=?";
-        String id = request.getParameter("no");
-        try {
-            con = DBManager.connect();
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, id);
-            rs = pstmt.executeQuery();
-            Restaurant_DTO resDetail = new Restaurant_DTO();
-            if (rs.next()) {
-                resDetail.setId(rs.getInt(1));
-                resDetail.setOwner(rs.getString(2));
-                resDetail.setName(rs.getString(3));
-                resDetail.setAddress(rs.getString(4));
-                resDetail.setOpentime(rs.getString(5));
-                resDetail.setPhone(rs.getString(6));
-                resDetail.setExplain(rs.getString(7));
-                request.setAttribute("rDetail", resDetail);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                DBManager.close(con, pstmt, rs);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
-    }
 }

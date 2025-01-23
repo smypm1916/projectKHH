@@ -32,12 +32,14 @@ public class SignUpDAO {
         String userTel = request.getParameter("tel");
         String userGender = request.getParameter("gender");
         String userBirth = request.getParameter("birth");
+        String temp_path = "default_profile.png";
+
 
 //        int r_addrNumber = Integer.parseInt((request.getParameter("address")));
 //        String userAddress = String.valueOf(r_addrNumber);
         String userPassword = request.getParameter("password");
 
-        String sql = "INSERT INTO USER_ACCOUNT values (?,?,?,?,?,?,?,?,'level1',null)";
+        String sql = "INSERT INTO USER_ACCOUNT values (?,?,?,?,?,?,?,?,'level1',?)";
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -49,17 +51,16 @@ public class SignUpDAO {
             pstmt.setString(2, userPassword);
             pstmt.setString(3, userName);
             pstmt.setString(4, userBirth);
-            pstmt.setString(5, "tokyo");
+            pstmt.setString(5, "도쿄");
             pstmt.setString(6, userTel);
             pstmt.setString(7, userGender);
             pstmt.setString(8, userNickname);
+            pstmt.setString(9, temp_path);
 
             if (pstmt.executeUpdate() == 1) {
                 System.out.println("User Sign Up Success!!!");
                 request.setAttribute("content", "/jsp/signup/signUpComplete.jsp");
-//                r_addrNumber = r_addrNumber + 1;
-            }
-            else{
+            } else {
                 request.setAttribute("content", "/jsp/signup/signUpFail.jsp");
             }
 
@@ -82,8 +83,9 @@ public class SignUpDAO {
         String ownerTel = request.getParameter("tel");
         String ownerBirth = request.getParameter("birth");
         String ownerPassword = request.getParameter("password");
+        String temp_path = "default_profile.png";
 
-        String sql = "INSERT INTO OWNER_ACCOUNT values (?,?,?,?,?,?)";
+        String sql = "INSERT INTO OWNER_ACCOUNT values (?,?,?,?,?,?,?,?)";
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -97,9 +99,14 @@ public class SignUpDAO {
             pstmt.setString(4, ownerBirth);
             pstmt.setString(5, ownerTel);
             pstmt.setString(6, ownerNickname);
+            pstmt.setString(7, null);
+            pstmt.setString(8, temp_path);
 
             if (pstmt.executeUpdate() == 1) {
                 System.out.println("Owner Sign Up Success!!!");
+                request.setAttribute("content", "/jsp/signup/signUpComplete.jsp");
+            } else {
+                request.setAttribute("content", "/jsp/signup/signUpFail.jsp");
             }
 
         } catch (Exception e) {

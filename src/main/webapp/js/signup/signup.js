@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /** 이름 검증 로직 */
     $(document).ready(function () {
         const $nameInput = $("#name");
-        const $nameMessage = $("<span style='color: red; display: none;'>한글만 입력 가능합니다.</span>");
+        const $nameMessage = $("<span style='color: red; display: none;'>한글 또는 일본어만 입력 가능합니다.</span>");
 
         // 이름 입력 필드 바로 아래에 메시지 추가
         $nameInput.after($nameMessage);
@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // 입력 이벤트로 실시간 검증
         $nameInput.on("input", function () {
             const nameValue = $nameInput.val();
-            const koreanRegex = /^[가-힣ㄱ-ㅎㅏ-ㅣ]*$/; // 한글 음절 + 자음 + 모음
+            const koreanJapaneseRegex = /^[가-힣ㄱ-ㅎㅏ-ㅣぁ-ゔァ-ヴー々〆〤一-龥]*$/; // 한글, 일본어 지원 정규식
 
-            if (!koreanRegex.test(nameValue) || nameValue === "") {
+            if (!koreanJapaneseRegex.test(nameValue) || nameValue === "") {
                 $nameMessage.show();
                 isNameValid = false;
             } else {
@@ -228,8 +228,19 @@ document.addEventListener("DOMContentLoaded", () => {
         passwordCheckInput.addEventListener("input", validatePasswordMatch);
     }
 
-    // 입력 확인 버튼 클릭 시 모든 검증 조건 확인
+    // 입력 확인 버튼 클릭 시 모든 검증 조건 확인 및 생년월일 포맷팅 추가
     form.addEventListener("submit", (event) => {
+        // 생년월일 포맷팅
+        const year = document.getElementById("birth-year").value;
+        const month = document.getElementById("birth-month").value;
+        const day = document.getElementById("birth-day").value;
+
+        const formattedMonth = month.padStart(2, "0");
+        const formattedDay = day.padStart(2, "0");
+        const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+        document.getElementById("formatted-birthdate").value = formattedDate;
+
+        // 모든 검증 조건 확인
         if (!isEmailValid || !isNicknameValid || !isNameValid || !isPasswordValid) {
             event.preventDefault(); // 폼 제출 중단
             alert("모든 입력값을 올바르게 작성해주세요.");
