@@ -28,108 +28,35 @@
 
 		<div class="myShop_information_list_field">
 
-			<div class="myShop_information_list">
-				<a href="DetailRestaurantC">
-					<img class="myShop_information_list_img"
-						 src="https://mblogthumb-phinf.pstatic.net/MjAxODA3MDVfNDAg/MDAxNTMwNzU3MjEyNjQ0.RNprD67cJ2AOWI2GmRVprWVv7qtNI-d3WsN-XhRLTLIg.hpd6lxFA6mkoZ-78fN-zmiLtxAv9H3iP_Jxs6bF7XCEg.PNG.witchstudio/image.png?type=w800"
-						 alt="place-name">
-				</a>
-				<div style="border: none;">
-					<a href="DetailRestaurantC">
-						<h2>오이시 스시야</h2>
-					</a>
-					<%--<div style="border: none;">
-                        <a href="DetailRestaurantC?no=${res.id}" style="text-decoration: none; color: black">
-                            <h2>오이시 스시야</h2>
-                        </a>
-                    </div>--%>
-					<%--<div style="border: none;">
-                        <h3>도쿄도 시나가와구</h3>
-                        <h3>10:00 ~ 22:00</h3>
-                    </div>
-                    <div style="border: none; margin-bottom: 7px;">
-                        <button class="MenuButton" onclick="location.href=''">
-                            메뉴추가
-                        </button>
-                        <button class="MenuButton" onclick="location.href=''">
-                            메뉴변경
-                        </button>
-                    </div>--%>
-				</div>
-				<div style="border: none;">
-					<h3>도쿄도 시나가와구</h3>
-					<h3>10:00 ~ 22:00</h3>
-				</div>
-				<div class="myShop_menuBtn">
-					<button class="MenuButton" onclick="location.href=''">
-						메뉴추가
-					</button>
-					<button class="MenuButton" onclick="location.href=''">
-						메뉴변경
-					</button>
-				</div>
-			</div>
+			<c:forEach var="i" items="${res}">
+				<div class="myShop_container" style="border: solid 1px;">
+					<div class="myShop_place_box">
+						<img class="myShop_photo"
+							 src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
+							 alt="place-name">
+						<div style="border: none; text-align: left; margin-left: 30px">
+							<h2>
+								<span>😋</span>${i.name}
+							</h2>
+							<div style="border: none;">
+								<p>${i.address}</p>
+								<p>${i.opentime}</p>
+								<p>${i.phone}</p>
+								<p>${i.explain}</p>
 
-			<div class="myShop_information_list">
-				<img class="myShop_information_list_img"
-					 src="https://kr.savorjapan.com/gg/content_image/t0283_017.jpg"
-					 alt="place-name">
-				<div style="border: none;">
-					<h2>무라카미 하코다테 본점</h2>
+							</div>
+						</div>
+					</div>
+					<div class="myShop_button_field" style="border: none; align-content: center;">
+						<input onclick="location.href='DetailRestaurantC?no=${i.id}'" class="myShop-button"
+							   type="button" value="가게 정보 보기">
+						<input onclick="location.href='Edit_myRestaurantC?no=${i.id}'" class="myShop-button"
+							   type="button" value="수정">
+						<input onclick="location.href='Delete_myRestaurantC?no=${i.id}'" class="myShop-button"
+							   type="button" value="삭제">
+					</div>
 				</div>
-				<div style="border: none;">
-					<h3>도쿄도 세타가야구</h3>
-					<h3>10:00 ~ 15:00</h3>
-				</div>
-				<div class="myShop_menuBtn">
-					<button class="MenuButton" onclick="location.href=''">
-						메뉴추가
-					</button>
-					<button class="MenuButton" onclick="location.href=''">
-						메뉴변경
-					</button>
-				</div>
-			</div>
-			<div class="myShop_information_list">
-				<img class="myShop_information_list_img"
-					 src="https://kr.savorjapan.com/gg/content_image/t0283_005.jpg"
-					 alt="place-name">
-				<div style="border: none;">
-					<h2>라멘 삿포로 이치류안</h2>
-				</div>
-				<div style="border: none;">
-					<h3>도쿄도 시부야</h3>
-					<h3>10:00 ~ 24:00</h3>
-				</div>
-				<div class="myShop_menuBtn">
-					<button class="MenuButton" onclick="location.href=''">
-						메뉴추가
-					</button>
-					<button class="MenuButton" onclick="location.href=''">
-						메뉴변경
-					</button>
-				</div>
-			</div>
-			<div class="myShop_information_list">
-				<img class="myShop_information_list_img"
-					 src="https://kr.savorjapan.com/gg/content_image/t0283_015.jpg"
-					 alt="place-name">
-				<div style="border: none;">
-					<h2>해산물 로바타야키</h2>
-				</div>
-				<div style="border: none;">
-					<h3>도쿄도 시나가와구</h3>
-					<h3>10:00 ~ 22:00</h3>
-				</div>
-				<div class="myShop_menuBtn">
-					<button class="MenuButton" onclick="location.href=''">
-						메뉴추가
-					</button>
-					<button class="MenuButton" onclick="location.href=''">
-						메뉴변경
-					</button>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 
 		<div class="service_comment">

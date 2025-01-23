@@ -121,8 +121,9 @@ public class Restaurant_DAO {
                 restaurant.setPhone(rs.getString("shop_tel"));
                 restaurant.setExplain(rs.getString("shop_content"));
                 restaurants.add(restaurant);
-                request.setAttribute("res", restaurants);
             }
+            request.setAttribute("res", restaurants);
+            System.out.println(restaurants);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -476,7 +477,7 @@ public class Restaurant_DAO {
         public static void UpdateRestaurant(HttpServletRequest request) {
         Connection con = null;
         PreparedStatement pstmt = null;
-        String sql = "update shop_info set shop_name=?,shop_owner,shop_addr=?,shop_opentime=?,shop_tel=?,shop_content=? where shop_no=?";
+        String sql = "update shop_info set shop_name=?,shop_owner=?,shop_addr=?,shop_opentime=?,shop_tel=?,shop_content=? where shop_no=?";
         try {
             request.setCharacterEncoding("utf-8");
             con = DBManager.connect();

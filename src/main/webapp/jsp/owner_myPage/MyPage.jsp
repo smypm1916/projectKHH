@@ -41,6 +41,7 @@
 
 <div class="myshop-title">
     <h2>내 가게 정보</h2>
+
     <button class="myshop_more" onclick="location.href='ShowAllRestaurantC'">더보기</button>
 </div>
 <%-- <div class="myShop_information" style="border: none;">
