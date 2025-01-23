@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="/css/userMyPage/userMyPage.css">
 </head>
 <body>
-<form action="ProfileUpdateController" method="post" enctype="multipart/form-data">
+<%--<form action="ProfileUpdateController" method="post" enctype="multipart/form-data">--%>
 	<div class="mypage" style="border: none;">
         <h1>MyPage</h1>
     </div>
 
     <div class="profile-title"><h2>내 프로필</h2></div>
-    <div class="profile">
+
+        <jsp:include page="${profile }"/>
+
+    <%--<div class="profile">
         <div class="profile-field" style="border: none;">
             <div class="profile-circle">
                 <c:if test="${sessionScope.user.user_picture} != null">
@@ -35,7 +38,7 @@
                 <input type="button" value="프로필 수정하기" onclick="location.href='ProfileUpdateController'">
             </div>
         </div>
-    </div>
+    </div>--%>
 			<%--<div class="profile">
 				<div class="profile-field" style="border: none;">
 					<div class="profile-circle">
@@ -158,7 +161,7 @@
                     </div>
                 </c:forEach>
 			</div>--%>
-</form>
+<%--</form>--%>
 
 
 </body>

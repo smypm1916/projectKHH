@@ -15,9 +15,8 @@ public class UserReviewPageC extends HttpServlet {
         int p = Integer.parseInt(req.getParameter("p"));
         UserDataDAO.viewUserReviews(req);
         UserDataDAO.reviewsPaging(p, req, UserDataDAO.viewUserReviews(req));
-        req.setAttribute("content", "../UserReviews/userReviewsPage.jsp");
-        req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
-
+        req.setAttribute("content", "/jsp/UserReviews/userReviewsPage.jsp");
+        req.getRequestDispatcher("/jsp/main.jsp").forward(req,resp);
 
     }
 

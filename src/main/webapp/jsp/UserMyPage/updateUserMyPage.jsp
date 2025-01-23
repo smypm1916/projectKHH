@@ -3,26 +3,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="/css/userMyPage/userMyPage.css">
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/userMyPage/userMyPage.css">
+    <link rel="stylesheet" href="/css/userMyPage/updateUserMyPage.css">
     <meta charset="UTF-8">
     <title>Insert title here</title>
 </head>
 <body>
-<%--<div class="mypage" style="border: none;">
-    <h1>MyPage</h1>
-    <h2>내 프로필 </h2>
-</div>--%>
-
 <form action="ProfileUpdateController" method="post" enctype="multipart/form-data">
     <div class="profile">
         <div class="profile-field" style="border: none;">
             <div class="profile-circle">
                 <!-- 기존 프로필 사진 표시 -->
-                <img id="profileImg" src="image/${sessionScope.user.user_picture}" alt="프로필 사진">
-
+                    <img src="../image/korosan.jpg">
+                <%--<c:if test="${sessionScope.user.user_picture} != null">
+                    <img id="profileImg" src="image/${sessionScope.user.user_picture}" alt="프로필 사진">
+                </c:if>--%>
                 <!-- 파일 업로드 버튼 -->
                 <label for="newImg" class="camera-icon">
                     <i class="fa fa-camera"></i>
@@ -30,26 +26,18 @@
                 <input id="newImg" name="newImg" type="file" hidden>
             </div>
 
-            <div style="border: none; align-content: baseline;  margin-left: 30px; margin-bottom: 10px;">
+            <div class="profile-message">
 					<span>
 						<h2> 대식가 <input style="width: 100px" name="user_nickname"
                                         value="${sessionScope.user.user_nickname}">
 							(${sessionScope.user.user_email}) 님 (🖐🏻'-' )</h2>
-						 맛집러버 ${sessionScope.user.user_nickname} 님, 오늘은 어떤 맛집을 찾아볼까요? 🍫͜
+						 맛집러버 ${sessionScope.user.user_nickname} 님, <br>오늘은 어떤 맛집을 찾아볼까요? 🍫͜
 						(ᵔ ̮ ᵔ)›
 					</span>
-
             </div>
-            <div style="border: none; margin-left: 225px; margin-top: -30px; align-content: center;">
+            <div class="profile-updateBtn">
                 <%--							<input type="button" value="수정 완료하기">--%>
-                <button style="background-color: #000000; /* 검정 버튼 */
-                        color: #ffffff; /* 하얀 글씨 */
-                            border: none;
-                            padding: 6px 12px; /* 크기 축소 */
-                            cursor: pointer;
-                            font-size: 12px;
-                            border-radius: 4px;">수정하기
-                </button>
+                <button>수정하기</button>
             </div>
         </div>
     </div>
