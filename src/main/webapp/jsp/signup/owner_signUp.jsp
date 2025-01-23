@@ -5,19 +5,16 @@
 <head>
     <title>회원가입</title>
 
-    <%--    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">--%>
-    <link rel="stylesheet" href="../../css/signup/signup_ver.0.2.css">
+    <link rel="stylesheet" href="../../css/signup/sm_signup3.css">
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-
-<header class="header">
-    <h1 style="display: flex; justify-content: center">
-        <a href="/HomeC">KHH</a>
-    </h1>
+<header>
+    <a href="HomeC"><img alt="" src="../../image/logo_header.png"></a>
 </header>
 
 <h1>점주 회원가입</h1>
@@ -25,7 +22,7 @@
 <div class="main-body">
     <%--    이메일, 닉네임 중복체크--%>
 
-    <div class="signup-flow" style="display: flex; justify-content: center;">
+    <div class="signup-flow" style="">
         <ul>
             <div class="signup-flow-no">1</div>
             <p class="signup-flow-title">정보 입력</p>
