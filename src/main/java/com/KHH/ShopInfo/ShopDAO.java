@@ -13,11 +13,13 @@ public class ShopDAO {
        Connection con = null;
        PreparedStatement pstmt = null;
        ResultSet rs = null;
+       ResultSet rs2 = null;
        String num = req.getParameter("no");
-
+        String shopSQL = "select * from shop_info where shop_no=?";
+       String imgSQL = "select * from SHOP_IMAGE where shop_no=? order by image_type";
         try {
             con = DBManager.connection();
-            pstmt = con.prepareStatement("select * from shop_info where shop_no=?");
+            pstmt = con.prepareStatement(shopSQL);
             pstmt.setString(1, num);
             rs = pstmt.executeQuery();
             if (rs.next()) {
@@ -30,6 +32,20 @@ public class ShopDAO {
                 shop.setShop_content(rs.getString(6));
                 shop.setShop_opentime(rs.getString(7));
                 shop.setShop_addrtype(rs.getString(8));
+
+                pstmt = con.prepareStatement(imgSQL);
+                pstmt.setInt(1, rs.getInt(1));
+                rs2 = pstmt.executeQuery();
+                if (rs2.next()) {
+                    shop.setMain_image(rs2.getString(2));
+                }
+                ArrayList<String> subfiles = new ArrayList<>();
+                while (rs2.next()) {
+                    subfiles.add(rs2.getString(2));
+                }
+                shop.setSub_image(subfiles);
+
+
                 req.setAttribute("shop", shop);
 
             }
@@ -133,10 +149,11 @@ public class ShopDAO {
        Connection con = null;
        PreparedStatement pstmt = null;
        ResultSet rs = null;
+       String reviewSQL = "select * from REVIEW_INFO ri, REVIEW_IMAGE rimg where ri.review_no = rimg.REVIEW_NO and ri.review_shop = ?";
 
        try {
            con = DBManager.connection();
-           pstmt = con.prepareStatement("select * from review_info where review_shop=?");
+           pstmt = con.prepareStatement(reviewSQL);
            pstmt.setString(1, req.getParameter("no"));
            rs = pstmt.executeQuery();
            ReviewDTO review = null;
@@ -150,10 +167,11 @@ public class ShopDAO {
                review.setReview_date(rs.getString(4));
                review.setReview_nickname(rs.getString(5));
                review.setReview_star(rs.getInt(6));
+               review.setReview_image(rs.getString(8));
 
                reviews.add(review);
-               System.out.println(review);
            }
+           System.out.println(reviews);
 
            req.setAttribute("review", reviews);
        }catch (Exception e) {

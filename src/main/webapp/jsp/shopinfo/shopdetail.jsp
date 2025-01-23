@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -183,7 +183,7 @@
             font-size: 22px;
         }
 
-        .star2{
+        .star2 {
             color: #BDBDBD;
             font-size: 22px;
         }
@@ -237,21 +237,17 @@
 <!-- 가게 이름과 이미지 항상 위에 위치 -->
 <div class="shop-detail">
     <div class="main-img">
-        <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="300" height="300">
-    </div>
-    <div class="sub-imgs">
-        <div class="sub-img">
-            <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="150" height="150">
-        </div>
-        <div class="sub-img">
-            <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="150" height="150">
-        </div>
-        <div class="sub-img">
-            <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="150" height="150">
-        </div>
+        <img alt="" src="image/${shop.main_image}" width="300" height="300">
     </div>
     <div class="shop-name">${shop.shop_name}</div>
     <div class="shop-intro">${shop.shop_content}</div>
+    <div class="sub-imgs">
+        <c:forEach items="${shop.sub_image}" var="sub">
+            <div class="sub-img">
+                <img alt="" src="image/${sub}" width="150" height="150">
+            </div>
+        </c:forEach>
+    </div>
 </div>
 
 <!-- 탭 메뉴 -->
@@ -280,7 +276,9 @@
             <div>${shop.shop_opentime}</div>
         </div>
     </div>
-    <div><button>예약하기</button></div>
+    <div>
+        <button>예약하기</button>
+    </div>
 </div>
 
 <!-- 메뉴 -->
@@ -305,20 +303,18 @@
                 <span class="star">★</span> <!-- 별을 채운 부분 -->
             </c:forEach>
             <c:forEach var="i" begin="${reviews.review_star + 1}" end="5">
-                <span class="star2">★</span>  <!-- 빈 별 부분 -->
+                <span class="star2">★</span> <!-- 빈 별 부분 -->
             </c:forEach>
-            <%--<div class="stars">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-            </div>--%>
+                <%--<div class="stars">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>--%>
             <div class="content">${reviews.review_content}</div>
             <div class="photo-container">
-                <img src="https://via.placeholder.com/150x150" alt="review photo 1">
-                <img src="https://via.placeholder.com/150x150" alt="review photo 2">
-                <img src="https://via.placeholder.com/150x150" alt="review photo 3">
+                <img src="image/${reviews.review_image}" alt="review photo 3">
             </div>
             <button class="like-button" onclick="increaseLikeCount(this)">좋아요</button>
             <span class="like-count">0</span>
@@ -329,12 +325,12 @@
 <script>
     function openTab(tabNumber) {
         var contents = document.querySelectorAll('.tab-content');
-        contents.forEach(function(content) {
+        contents.forEach(function (content) {
             content.classList.remove('active');
         });
 
         var buttons = document.querySelectorAll('.tab-button');
-        buttons.forEach(function(button) {
+        buttons.forEach(function (button) {
             button.classList.remove('active');
         });
 

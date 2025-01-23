@@ -17,6 +17,7 @@ public class ShopDTO {
 
 
 
+
     public int getShop_no() {
         return shop_no;
     }

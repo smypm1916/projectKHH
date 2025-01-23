@@ -226,6 +226,11 @@ select * from shop_image_sj;
 select * from SHOP_INFO_sj;
 
 
+select *
+from REVIEW_INFO ri, REVIEW_IMAGE rimg where ri.review_no = rimg.REVIEW_NO and ri.review_shop = 5;
+select * from REVIEW_IMAGE;
+select  * from REVIEW_Info;
+
 
 SELECT review_shop, review_content, review_date, review_nickname, shop_name FROM review_info_sjsj r, shop_info_sj s
                     WHERE
@@ -251,19 +256,22 @@ insert into SHOP_IMAGE values('3', 'img1-3.jpg','sub');
 select *from SHOP_IMAGE where shop_no = 3 order by image_type;
 select *from SHOP_INFO;
 select *from SHOP_IMAGE;
-insert into ('21')
-insert into ('22')
-insert into ('23')
-insert into ('24')
-insert into ('25')
-insert into ('28')
-insert into ('7')
-insert into ('26')
-insert into ('27')
+insert into SHOP_IMAGE values ('21','suzuki.jpg','main');
+insert into SHOP_IMAGE values ('22','eye_catch_ramen.jpg','main');
+insert into SHOP_IMAGE values ('23','eye_catch_ramen.jpg','main');
+insert into SHOP_IMAGE values ('24','eye_catch_ramen.jpg','main');
+insert into SHOP_IMAGE values ('25','eye_catch_ramen.jpg','main');
+insert into SHOP_IMAGE values ('28','Shoyu_ramen.jpg','main');
+insert into SHOP_IMAGE values ('7','asianbar.jpg','main');
+insert into SHOP_IMAGE values ('26','testimage.jpg','main');
+insert into SHOP_IMAGE values ('27','testimage.jpg','main');
 
 
+select *from REVIEW_IMAGE;
+select *from REVIEW_INFO;
+insert into REVIEW_IMAGE values ('8', 'Shoyu_ramen.jpg');
 
-
+select si.*, simg.* from shop_info si, SHOP_IMAGE simg where si.shop_no = simg.shop_no and si.shop_no=5;
 
 
 
