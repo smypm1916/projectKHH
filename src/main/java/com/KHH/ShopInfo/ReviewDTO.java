@@ -8,18 +8,21 @@ public class ReviewDTO {
     private String review_date;
     private String review_nickname;
     private int review_star;
+    private String review_image;
+
 
 
     public ReviewDTO() {
         super();
     }
-    public ReviewDTO(int review_no, int review_shop, String review_content, String review_date, int review_star) {
+    public ReviewDTO(int review_no, int review_shop, String review_content, String review_date, int review_star, String review_image) {
         super();
         this.review_no = review_no;
         this.review_shop = review_shop;
         this.review_content = review_content;
         this.review_date = review_date;
         this.review_star = review_star;
+        this.review_image = review_image;
     }
     public int getReview_no() {
         return review_no;
@@ -57,8 +60,15 @@ public class ReviewDTO {
     }
     public void setReview_star(int review_star) {
         this.review_star = review_star;
+
     }
 
+    public String getReview_image() {
+        return review_image;
+    }
+    public void setReview_image(String review_image) {
+        this.review_image = review_image;
+    }
     @Override
     public String toString() {
         return "ReviewDTO{" +
@@ -68,6 +78,7 @@ public class ReviewDTO {
                 ", review_date='" + review_date + '\'' +
                 ", review_nickname='" + review_nickname + '\'' +
                 ", review_star=" + review_star +
+                ", review_image='" + review_image + '\'' +
                 '}';
     }
 }

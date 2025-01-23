@@ -1,13 +1,11 @@
-
 package com.KHH.ShopInfo;
-
-import com.KHH.main.DBManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ShopDAO {
@@ -15,11 +13,13 @@ public class ShopDAO {
        Connection con = null;
        PreparedStatement pstmt = null;
        ResultSet rs = null;
+       ResultSet rs2 = null;
        String num = req.getParameter("no");
-
+        String shopSQL = "select * from shop_info where shop_no=?";
+       String imgSQL = "select * from SHOP_IMAGE where shop_no=? order by image_type";
         try {
-            con = DBManager.connect();
-            pstmt = con.prepareStatement("select * from shop_info where shop_no=?");
+            con = DBManager.connection();
+            pstmt = con.prepareStatement(shopSQL);
             pstmt.setString(1, num);
             rs = pstmt.executeQuery();
             if (rs.next()) {
@@ -32,6 +32,20 @@ public class ShopDAO {
                 shop.setShop_content(rs.getString(6));
                 shop.setShop_opentime(rs.getString(7));
                 shop.setShop_addrtype(rs.getString(8));
+
+                pstmt = con.prepareStatement(imgSQL);
+                pstmt.setInt(1, rs.getInt(1));
+                rs2 = pstmt.executeQuery();
+                if (rs2.next()) {
+                    shop.setMain_image(rs2.getString(2));
+                }
+                ArrayList<String> subfiles = new ArrayList<>();
+                while (rs2.next()) {
+                    subfiles.add(rs2.getString(2));
+                }
+                shop.setSub_image(subfiles);
+
+
                 req.setAttribute("shop", shop);
 
             }
@@ -47,10 +61,12 @@ public class ShopDAO {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-
+        ResultSet rs2 = null;
+        String shopSQL = "select * from SHOP_INFO";
+        String imgSQL = "select * from SHOP_IMAGE where shop_no=? order by image_type";
         try {
-            con = DBManager.connect();
-            pstmt = con.prepareStatement("select * from shop_info");
+            con = DBManager.connection();
+            pstmt = con.prepareStatement(shopSQL);
             rs = pstmt.executeQuery();
             ShopDTO shop = null;
             ArrayList<ShopDTO>shops = new ArrayList<>();
@@ -65,6 +81,19 @@ public class ShopDAO {
                 shop.setShop_content(rs.getString(6));
                 shop.setShop_opentime(rs.getString(7));
                 shop.setShop_addrtype(rs.getString(8));
+
+                pstmt = con.prepareStatement(imgSQL);
+                pstmt.setInt(1, rs.getInt(1));
+                rs2 = pstmt.executeQuery();
+                if (rs2.next()) {
+                    shop.setMain_image(rs2.getString(2));
+                }
+                ArrayList<String> subfiles = new ArrayList<>();
+                while (rs2.next()) {
+                      subfiles.add(rs2.getString(2));
+                }
+                shop.setSub_image(subfiles);    // img1-2.jpg,img1-3.jpg,img1-1.jpg
+
                 shops.add(shop);
             }
             System.out.println(shops);
@@ -74,6 +103,11 @@ public class ShopDAO {
             e.printStackTrace();
         }finally {
             DBManager.close(con, pstmt, rs);
+            try {
+                rs2.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
    }
 
@@ -83,7 +117,7 @@ public class ShopDAO {
        ResultSet rs = null;
 
        try {
-           con = DBManager.connect();
+           con = DBManager.connection();
            pstmt = con.prepareStatement("select * from menu_info where menu_shop=?");
            System.out.println("shop_no: " + req.getParameter("no"));
            pstmt.setString(1, req.getParameter("no"));
@@ -115,13 +149,12 @@ public class ShopDAO {
        Connection con = null;
        PreparedStatement pstmt = null;
        ResultSet rs = null;
+       String reviewSQL = "select * from REVIEW_INFO ri, REVIEW_IMAGE rimg where ri.review_no = rimg.REVIEW_NO and ri.review_shop = ?";
 
        try {
-           con = DBManager.connect();
-           pstmt = con.prepareStatement("select * from review_info where review_shop=?");
+           con = DBManager.connection();
+           pstmt = con.prepareStatement(reviewSQL);
            pstmt.setString(1, req.getParameter("no"));
-
-
            rs = pstmt.executeQuery();
            ReviewDTO review = null;
            ArrayList<ReviewDTO>reviews = new ArrayList<>();
@@ -134,10 +167,11 @@ public class ShopDAO {
                review.setReview_date(rs.getString(4));
                review.setReview_nickname(rs.getString(5));
                review.setReview_star(rs.getInt(6));
+               review.setReview_image(rs.getString(8));
 
                reviews.add(review);
-               System.out.println(review);
            }
+           System.out.println(reviews);
 
            req.setAttribute("review", reviews);
        }catch (Exception e) {
