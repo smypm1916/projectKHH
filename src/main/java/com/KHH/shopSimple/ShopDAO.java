@@ -24,8 +24,8 @@ public class ShopDAO {
 
     public ArrayList<ShopSimpleDTO> ShowSimpleLists(HttpServletRequest request) {
         simpleLists = new ArrayList<>();
-        String sql = "select * from SHOP_INFO";
-        String region = request.getParameter("addrtype");
+        String sql = "select * from SHOP_INFO ";
+        String addrtype = request.getParameter("data-region");
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -96,4 +96,43 @@ public class ShopDAO {
         }
         return detailDTO;
     }
+
+//    포인터 종속 가게 리스트 helped by GPT
+    public ArrayList<ShopSimpleDTO> getShopsByRegion(String region) {
+        ArrayList<ShopSimpleDTO> shopList = new ArrayList<>();
+        String sql = "SELECT * FROM SHOP_INFO WHERE shop_addrtype = ?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, region);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ShopSimpleDTO shop = new ShopSimpleDTO(
+                        rs.getInt("shop_no"),
+                        rs.getString("shop_name"),
+                        rs.getString("shop_addrtype"),
+                        rs.getString("shop_tel"),
+                        rs.getString("shop_opentime")
+                );
+                shopList.add(shop);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                DBManager.close(con, pstmt, rs);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return shopList;
+    }
+
 }

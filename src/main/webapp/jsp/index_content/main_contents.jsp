@@ -77,7 +77,7 @@
             <c:forEach var="sl" items="${simpleList}">
                 <div class="simpleList"
                      style="border-top: 1px solid black; border-bottom: 1px solid black; background-color: floralwhite;"
-                     onclick="location.href='ShopSimpleDetailC?no=${sl}';">
+                     onclick="location.href='ShopAddrTypeC?no=${sl}';">
                     <ul style="list-style: none">
                         <li style="display: none;"><span>${sl.shop_no}</span></li>
                         <li style="list-style: none;"><span
