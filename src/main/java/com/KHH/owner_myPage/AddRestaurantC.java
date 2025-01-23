@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 public class AddRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("컨트롤러넘어옴");
         request.setAttribute("content","/jsp/owner_myPage/AddRestaurant.jsp");
         request.getRequestDispatcher("/jsp/main.jsp").forward(request,response);
         

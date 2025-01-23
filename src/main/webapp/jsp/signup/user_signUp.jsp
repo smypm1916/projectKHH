@@ -64,6 +64,7 @@
                     <label for="email-service"></label>
                     <select name="email-service" id="email-service" required>
                         <option value="naver.com">naver.com</option>
+                        <option value="yahoo.co.jp">yahoo.co.jp</option>
                         <option value="google.com">google.com</option>
                         <option value="daum.net">daum.net</option>
                         <option value="hotmail.com">hotmail.com</option>
