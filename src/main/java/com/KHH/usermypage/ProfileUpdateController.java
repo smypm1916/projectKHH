@@ -16,8 +16,9 @@ public class ProfileUpdateController extends HttpServlet {
         UserDataDAO.viewUserReservation(request);
         UserDataDAO.viewUserScrap(request);
 
-        request.setAttribute("content", "updatedUserMyPage.jsp");
-        request.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(request,response);
+        request.setAttribute("content", "/jsp/UserMyPage/userMyPage.jsp");
+        request.setAttribute("profile","/jsp/UserMyPage/updateUserMyPage.jsp");
+        request.getRequestDispatcher("jsp/main.jsp").forward(request,response);
 
 
     }

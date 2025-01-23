@@ -2,13 +2,13 @@
 
 
 
-/* 기본 스타일 */
+/*!* 기본 스타일 *!
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', 'Helvetica', 'Verdana', sans-serif; /* 고딕체 설정 */
-}
+    font-family: 'Arial', 'Helvetica', 'Verdana', sans-serif; !* 고딕체 설정 *!
+}*/
 
 /* 컨테이너 설정 */
 /*.container {*/
@@ -36,7 +36,8 @@
 /*    line-height: 5vh;*/
 /*}*/
 
-/* 콘텐츠 영역 */
+/*
+!* 콘텐츠 영역 *!
 .content {
     margin-top: 6vh;
     margin-left: 3vw;
@@ -45,14 +46,15 @@
     border: none;
 }
 
-/* 푸터 스타일 */
+!* 푸터 스타일 *!
 .footer {
-    height: 10vh; /* 화면 비율로 높이 설정 */
+    height: 10vh; !* 화면 비율로 높이 설정 *!
     background-color: #000;
     color: #fff;
     text-align: center;
     line-height: 10vh;
 }
+*/
 
 /* 마이페이지 */
 .mypage h1 {
