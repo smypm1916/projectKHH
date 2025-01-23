@@ -58,7 +58,7 @@
             <p>© 2025 MyCompany. All Rights Reserved.</p>
         </div>
     </div>
-</footer
+</footer>
 
 </body>
 </html>

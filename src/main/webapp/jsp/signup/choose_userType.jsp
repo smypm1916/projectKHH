@@ -9,15 +9,14 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../css/signup/signUp.css">
-
+    <link rel="stylesheet" href="../../css/signup/signUp.css?ver1.0">
 
 </head>
 <body>
 <h1 style="display: flex; justify-content: center"><b>회원 유형</b></h1>
 
 <form action="/ChooseTypeC">
-    <div class="form-wrapper-userType" style="display: flex; align-items: center; justify-content: space-between;">
+    <div class="form-wrapper-userType">
         <button type="submit" name="userType" value="user">일반 회원</button>
         <button type="submit" name="userType" value="owner">점주 회원</button>
     </div>
