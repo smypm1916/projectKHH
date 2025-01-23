@@ -14,7 +14,8 @@ public class SignUpC extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        request.getRequestDispatcher("jsp/signup/choose_userType.jsp").forward(request, response);
+        request.setAttribute("content","/jsp/signup/choose_userType.jsp");
+        request.getRequestDispatcher("jsp/main.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,7 +27,7 @@ public class SignUpC extends HttpServlet {
             SignUpDAO.getSDAO().OwnerSignUp(request, response);
         }
 
-        request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
+        request.getRequestDispatcher("jsp/main.jsp").forward(request, response);
 
 //        request.getRequestDispatcher("jsp/signup/signUpComplete.jsp").forward(request, response);
     }
