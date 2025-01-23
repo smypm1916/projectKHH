@@ -98,8 +98,8 @@ public class ShopDAO {
     }
 
 //    포인터 종속 가게 리스트 helped by GPT
-    public ArrayList<ShopSimpleDTO> getShopsByRegion(String region) {
-        ArrayList<ShopSimpleDTO> shopList = new ArrayList<>();
+    public ArrayList<ShopDetailDTO> getShopsByRegion(String region) {
+        ArrayList<ShopDetailDTO> shopList = new ArrayList<>();
         String sql = "SELECT * FROM SHOP_INFO WHERE shop_addrtype = ?";
 
         Connection con = null;
@@ -110,16 +110,18 @@ public class ShopDAO {
             con = DBManager.connect();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, region);
+            System.out.println("실행된 SQL: " + pstmt);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                ShopSimpleDTO shop = new ShopSimpleDTO(
-                        rs.getInt("shop_no"),
-                        rs.getString("shop_name"),
-                        rs.getString("shop_addrtype"),
-                        rs.getString("shop_tel"),
-                        rs.getString("shop_opentime")
-                );
+                ShopDetailDTO shop = new ShopDetailDTO();
+                shop.setShop_owner(rs.getString("shop_owner"));
+                shop.setShop_name(rs.getString("shop_name"));
+                shop.setShop_addr(rs.getString("shop_addr"));
+                shop.setShop_addrtype(rs.getString("shop_addrtype"));
+                shop.setShop_tel(rs.getString("shop_tel"));
+                shop.setShop_content(rs.getString("shop_content"));
+                shop.setShop_opentime(rs.getString("shop_opentime"));
                 shopList.add(shop);
             }
 

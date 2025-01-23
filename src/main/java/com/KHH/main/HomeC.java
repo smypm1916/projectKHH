@@ -15,7 +15,6 @@ public class HomeC extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
-        request.setAttribute("simpleList", ShopDAO.getSdao().ShowSimpleLists(request));
         request.setAttribute("content", "/jsp/index_content/main_contents.jsp");
         request.getRequestDispatcher("jsp/main.jsp").forward(request, response);
 

@@ -14,24 +14,26 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
-        .reduced {
-            flex: 0.4;
-        }
-
-        .visible {
-            flex: 0.6 !important;
-            transition: width 0.8s ease;
-        }
-
-        .shop-list {
-            border: 1px solid black;
-            overflow: hidden;
-            width: 0;
-            transition: width 1s ease;
+        .content-wrapper {
+            display: flex;
+            flex-direction: row;
         }
 
         .hokkaido-map {
             position: relative;
+            flex: 1;
+            border: 1px solid black;
+            height: auto; /* 고정 높이 제거 */
+            width: 100%; /* 부모 컨테이너의 크기에 맞춤 */
+            aspect-ratio: 4 / 3; /* 지도 이미지의 비율 유지 */
+            max-width: 960px; /* 최대 너비 제한 */
+            margin: auto; /* 가운데 정렬 */
+        }
+
+        .hokkaido-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 이미지를 컨테이너에 맞게 조정 */
         }
 
         .map-pointer {
@@ -50,7 +52,26 @@
             background-color: blue;
             transform: translate(-50%, -50%) scale(1.2);
         }
+
+        .shop-list {
+            border: 1px solid black;
+            background-color: #F5DEB3;
+            overflow-y: scroll;
+            max-height: 100%;
+            align-items: center;
+            transition: width 1s ease;
+        }
+
+        .reduced {
+            flex: 0.4 !important;
+        }
+
+        .visible {
+            flex: 0.6 !important;
+            transition: width 0.8s ease;
+        }
     </style>
+
 </head>
 
 <body>

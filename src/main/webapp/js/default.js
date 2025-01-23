@@ -1,17 +1,55 @@
 $(document).ready(() => {
     const $map = $('#hokkaido-map');
+    const $mapImage = $map.find('img');
     const $shopListContainer = $('#shop-list');
     const $mapPointers = $('.map-pointer');
     let isListVisible = false; // 상태 관리 변수
     let currentRegion = null; // 현재 선택된 지역
 
-    // 지도 및 다른 영역 클릭 이벤트
-    $(document).on('click', (event) => {
-        const isClickInsideMap = $map.is(event.target) || $map.has(event.target).length > 0;
-        const isClickInsideList = $shopListContainer.is(event.target) || $shopListContainer.has(event.target).length > 0;
+    // 초기 포인터 위치 저장 및 설정
+    $mapPointers.each(function () {
+        const $pointer = $(this);
+        const style = $pointer.attr('style');
+        const topMatch = style.match(/top:\s*(\d+)%/);
+        const leftMatch = style.match(/left:\s*(\d+)%/);
 
-        if (!isClickInsideMap && !isClickInsideList) {
-            // 지도, 리스트 외 다른 영역 클릭 시 초기 상태로 복원
+        if (topMatch && leftMatch) {
+            $pointer.data('original-top', parseFloat(topMatch[1]));
+            $pointer.data('original-left', parseFloat(leftMatch[1]));
+        }
+    });
+
+    // 지도 크기에 따라 포인터 위치를 동적으로 재조정
+    function adjustPointerPositions() {
+        const mapWidth = $mapImage.width();
+        const mapHeight = $mapImage.height();
+
+        $mapPointers.each(function () {
+            const $pointer = $(this);
+            const originalLeft = $pointer.data('original-left'); // 초기 left 값 (%)
+            const originalTop = $pointer.data('original-top'); // 초기 top 값 (%)
+
+            // 반응형 크기에 따라 포인터 위치 계산
+            const left = (mapWidth * originalLeft) / 100;
+            const top = (mapHeight * originalTop) / 100;
+
+            $pointer.css({
+                left: `${left}px`,
+                top: `${top}px`,
+            });
+        });
+    }
+
+    // 창 크기 변경 시 포인터 위치 재조정
+    $(window).on('resize', adjustPointerPositions);
+
+    // 초기화 시 포인터 위치 조정
+    adjustPointerPositions();
+
+    // 지도 이미지 클릭 이벤트 (포인터 제외)
+    $mapImage.on('click', (event) => {
+        // 지도 이미지를 클릭하면 초기 상태로 복원
+        if (isListVisible) {
             resetToInitialState();
         }
     });
@@ -76,10 +114,8 @@ $(document).ready(() => {
                     </ul>
                 </div>
             `);
-            // shopElement.on('click', () => {
-            //     location.href = `ShopAddrTypeC?no=${shop.shop_no}`;
-            // });
             $container.append(shopElement);
         });
     }
 });
+
