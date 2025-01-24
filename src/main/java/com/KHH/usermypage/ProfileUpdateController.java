@@ -16,21 +16,21 @@ public class ProfileUpdateController extends HttpServlet {
         UserDataDAO.viewUserReservation(request);
         UserDataDAO.viewUserScrap(request);
 
-        request.setAttribute("content", "updatedUserMyPage.jsp");
-        request.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(request,response);
+        request.setAttribute("content", "/jsp/UserMyPage/userMyPage.jsp");
+        request.setAttribute("profile","/jsp/UserMyPage/updateUserMyPage.jsp");
+        request.getRequestDispatcher("jsp/main.jsp").forward(request,response);
 
 
     }
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 프로필 업데이트
         UserDataDAO.userProfileUpdate(request);
-
-        // 세션에 변경된 사용자 데이터 반영
-        UserDataDAO.updateSessionUser(request);
 
         // 마이페이지로 리다이렉트
         response.sendRedirect("UserC");
 
-    }}
+
+    }
+    }

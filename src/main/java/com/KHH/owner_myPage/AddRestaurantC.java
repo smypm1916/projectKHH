@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 public class AddRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("컨트롤러넘어옴");
         request.setAttribute("content","/jsp/owner_myPage/AddRestaurant.jsp");
         request.getRequestDispatcher("/jsp/main.jsp").forward(request,response);
         
@@ -20,7 +19,9 @@ public class AddRestaurantC extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("컨트롤러로 넘어옴");
         Restaurant_DAO.GetShopPK();
-        Restaurant_DAO.InsertRestaurant(request,Restaurant_DAO.GetOwnerName(request));
+//        String ownerName = Restaurant_DAO.GetOwnerName(request);
+        Restaurant_DAO.InsertRestaurant(request);
+        response.sendRedirect("ShowOwnerMyPageController");
 
     }
 }

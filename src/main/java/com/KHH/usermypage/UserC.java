@@ -17,8 +17,9 @@ public class UserC extends HttpServlet {
         UserDataDAO.viewUserReservation(req);
         UserDataDAO.viewUserScrap(req);
 
-        req.setAttribute("content", "userMyPage.jsp");
-        req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
+        req.setAttribute("content", "/jsp/UserMyPage/userMyPage.jsp");
+        req.setAttribute("profile","/jsp/UserMyPage/viewUserProfile.jsp");
+        req.getRequestDispatcher("/jsp/main.jsp").forward(req,resp);
 
 
     }

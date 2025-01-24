@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 public class Delete_myRestaurantC extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        Restaurant_DAO.DeleteRestaurant(request);
+        response.sendRedirect("ShowAllRestaurantC");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Restaurant_DAO.DeleteRestaurant(request);
+
     }
 }

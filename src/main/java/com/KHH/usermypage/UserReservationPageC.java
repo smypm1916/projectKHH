@@ -15,10 +15,8 @@ public class UserReservationPageC extends HttpServlet {
         int p = Integer.parseInt(req.getParameter("p"));
         UserDataDAO.viewUserReservation(req);
         UserDataDAO.reservationPaging(p, req, UserDataDAO.viewUserReservation(req));
-        req.setAttribute("content", "../UserReservation/userReservationPage.jsp");
-        req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
-
-
+        req.setAttribute("content", "/jsp/UserReservation/userReservationPage.jsp");
+        req.getRequestDispatcher("/jsp/main.jsp").forward(req,resp);
     }
 
     @Override

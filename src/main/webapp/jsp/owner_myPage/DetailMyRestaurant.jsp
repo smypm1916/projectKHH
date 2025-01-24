@@ -220,24 +220,22 @@
                 <div
                         style="border: none; text-align: left; margin-left: 30px; width: 300px">
                     <div style="border: none;">
-                        <p class="myShop_info_input_field">가게이름</p> <br>
+                        <p class="myShop_info_input_field">${res.name}</p> <br>
 
                         <br>
-                        <p class="myShop_info_input_field">주소</p> <br>
+                        <p class="myShop_info_input_field">${res.owner}</p> <br>
 
                         <br>
-                        <p class="myShop_info_input_field">상세주소</p> <br>
+                        <p class="myShop_info_input_field">${res.address}</p> <br>
 
                         <br>
-                        <p class="myShop_info_input_field">영업시간</p> <br>
+                        <p class="myShop_info_input_field">${res.opentime}</p> <br>
 
                         <br>
-                        <p class="myShop_info_input_field">전화번호</p> <br>
+                        <p class="myShop_info_input_field">${res.phone}</p> <br>
 
-                        -
-                        -
                         <br>
-                        <p class="myShop_info_input_field">가게에 대한 설명</p>
+                        <p class="myShop_info_input_field">${res.explain}</p>
 
                     </div>
                 </div>

@@ -4,34 +4,36 @@
 
 <%--with gpt--%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map and Shop Lists</title>
-    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css">
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
-        .reduced {
-            flex: 0.4;
-        }
-
-        .visible {
-            flex: 0.6 !important;
-            transition: width 0.8s ease;
-        }
-
-        .shop-list {
-            border: 1px solid black;
-            overflow: hidden;
-            width: 0;
-            transition: width 0.5s ease;
+        .content-wrapper {
+            display: flex;
+            flex-direction: row;
         }
 
         .hokkaido-map {
             position: relative;
+            flex: 1;
+            border: 1px solid black;
+            height: auto; /* 고정 높이 제거 */
+            width: 100%; /* 부모 컨테이너의 크기에 맞춤 */
+            aspect-ratio: 4 / 3; /* 지도 이미지의 비율 유지 */
+            max-width: 960px; /* 최대 너비 제한 */
+            margin: auto; /* 가운데 정렬 */
+        }
+
+        .hokkaido-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 이미지를 컨테이너에 맞게 조정 */
         }
 
         .map-pointer {
@@ -50,8 +52,28 @@
             background-color: blue;
             transform: translate(-50%, -50%) scale(1.2);
         }
+
+        .shop-list {
+            border: 1px solid black;
+            background-color: #F5DEB3;
+            overflow-y: scroll;
+            max-height: 100%;
+            align-items: center;
+            transition: width 1s ease;
+        }
+
+        .reduced {
+            flex: 0.4 !important;
+        }
+
+        .visible {
+            flex: 0.6 !important;
+            transition: width 0.8s ease;
+        }
     </style>
+
 </head>
+
 <body>
 <h1>맛집 찾아보기</h1>
 
@@ -60,32 +82,33 @@
     <div class="content-wrapper" style="display: flex; flex-direction: row;">
 
         <%--        지도 --%>
-        <div class="hokkaido-map" id="hokkaido-map" style="flex: 1; border: 1px solid black;">
-            <img src="../../image/hokkaido.png" alt="Hokkaido Map">
+        <div class="hokkaido-map" id="hokkaido-map"
+             style="flex: 1; border: 1px solid black; height: 720px; width: 960px;">
+            <img src="../../image/hokkaido.png" alt="Hokkaido Map" style="height:auto; width: 100%;">
             <!-- 포인터 추가 -->
-            <div class="map-pointer" data-region="douou" style="top: 20%; left: 10%;"></div>
-            <div class="map-pointer" data-region="doutou" style="top: 50%; left: 60%;"></div>
-            <div class="map-pointer" data-region="dounan" style="top: 70%; left: 20%;"></div>
-            <div class="map-pointer" data-region="douhoku" style="top: 90%; left: 20%;"></div>
+            <div class="map-pointer" data-region="도호쿠" style="top: 33%; left: 48%;"></div>
+            <div class="map-pointer" data-region="도토" style="top: 50%; left: 62%;"></div>
+            <div class="map-pointer" data-region="도오" style="top: 62%; left: 39%;"></div>
+            <div class="map-pointer" data-region="도난" style="top: 88%; left: 24%;"></div>
         </div>
 
-        <div class="shop-list" id="shop-list">
+        <div class="shop-list" id="shop-list"
+             style="background-color: #F5DEB3; overflow-y: scroll; max-height: 720px; align-items: center;">
             <h1>식당 일람</h1>
-
             <c:forEach var="sl" items="${simpleList}">
-                <div class="simpleList" onclick="location.href='ShopDetailC?no=${sl}';">
+                <div class="simpleList"
+                     style="border-top: 1px solid black; border-bottom: 1px solid black; background-color: floralwhite;"
+                     onclick="location.href='ShopAddrTypeC?no=${sl}';">
                     <ul style="list-style: none">
                         <li style="display: none;"><span>${sl.shop_no}</span></li>
-                        <li style="list-style: none;"><span
-                                style="font-size: 20pt; font-weight: bold;">${sl.shop_name}</span><br></li>
+                        <li style="list-style: none;"><a
+                                style="font-size: 20pt; font-weight: bold;"
+                                href='ShopDetailC?no=${sl.shop_no}'>${sl.shop_name}</a><br></li>
                         <li style="list-style: none;"><span>${sl.shop_tel}</span></li>
                         <li style="list-style: none;"><span>${sl.shop_opentime}</span></li>
                     </ul>
                 </div>
-                <%--                <li>${simpleList.shop_addrtype}</li> --%>
-                <%--                연관 지역 가게리스트만 출현하니 필요없을듯--%>
             </c:forEach>
-
         </div>
     </div>
 </div>

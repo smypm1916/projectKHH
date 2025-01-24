@@ -1,4 +1,10 @@
 @charset "UTF-8";
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .main-body {
     padding: 20px;
@@ -9,9 +15,49 @@
     margin: 20px auto;
 }
 
+.form-wrapper-userType {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.form-wrapper-userType button {
+    width: 500px;
+    height: 70px;
+    margin: 20px;
+    background-color: rgb(205, 187, 173);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 3px rgb(70, 44, 32) solid;
+    font-size: 30px;
+    font-family: 'BMJUA', serif;
+    font-weight: 70;
+    font-style: normal;
+    color: rgb(70, 44, 32);
+}
+
+.form-wrapper-userType button:hover {
+    width: 500px;
+    height: 70px;
+    margin: 20px;
+    background-color: rgb(70, 44, 32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 3px rgb(205, 187, 173) solid;
+    font-size: 30px;
+    font-family: 'BMJUA', serif;
+    font-weight: 70;
+    font-style: normal;
+    color: rgb(205, 187, 173);
+}
+
 .signup-flow {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     padding: 10px 0;
@@ -23,6 +69,7 @@
     padding: 0;
     margin: 0;
     text-align: center;
+    align-items: center;
 }
 
 .signup-flow-no {
@@ -61,7 +108,7 @@ label {
     margin-bottom: 5px;
 }
 
-input, select, button {
+input, select {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -76,17 +123,17 @@ input:focus, select:focus {
     box-shadow: 0 0 5px rgba(224, 143, 144, 0.5);
 }
 
-button {
+/*button {
     background-color: #333;
     color: #fff;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
+}*/
 
-button:hover {
-    background-color: #E08F90; /* 변경: 호버 시 색상 변경 */
-}
+/*button:hover {
+    background-color: #E08F90; !* 변경: 호버 시 색상 변경 *!
+}*/
 
 .btn-wrapper {
     display: flex;

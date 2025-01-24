@@ -16,7 +16,7 @@
     </div>
 
     <div class="content_upload"> <%--50%--%>
-        <button onclick="location.href='CommunityUploadController?nickname=chaeeun1002'">글 쓰기</button>
+        <button onclick="location.href='CommunityUploadController?nickname=챈챈'">글 쓰기</button>
     </div>
 
     <div class="search_item"> <%--40%--%>
