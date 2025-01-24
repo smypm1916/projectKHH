@@ -1,4 +1,4 @@
-package com.KHH.restaurant_customer;
+package com.KHH.restaurant_information;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

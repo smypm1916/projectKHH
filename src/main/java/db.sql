@@ -239,3 +239,29 @@ SELECT shop_name, scrap_date, shop_image, scrap_email, shop_addr, shop_tel, shop
 select * from MENU_INFO;
 
 select * from user_account_sj where user_email='user2@example.com';
+
+select * from ALL_TABLES where owner = 'KHH';
+
+create table review_info_test_ms (
+    review_no number(3) primary key,
+    review_content varchar(1000 char) not null,
+    review_date date not null,
+    review_nickname varchar(20 char) not null,
+    review_star number(3) not null,
+    review_image varchar(200 char) not null
+);
+
+create sequence review_info_test_ms_seq;
+
+insert into review_info_test_ms values (
+    review_info_test_ms_seq.nextval,
+    '평가는 있지만 우선은 공백으로 둔다.',
+    to_date('2025-01-13', 'YYYY-MM-DD'),
+    'NebuchadnezzarV',
+    3,
+    'Jacket：˝Do You know what time it is？˝.gif'
+);
+
+select * from review_info_test_ms;
+
+select * from LOGIN_TEST_MS;
