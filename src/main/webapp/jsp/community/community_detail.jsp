@@ -38,17 +38,24 @@
 <hr>
 
 <div class="community_comment_div">
-  <div class="comment_upload_div">
-    <div class="comment_upload_title">댓글쓰기</div>
-    <div class="comment_txtBox"><input type="text"></div>
-    <div class="comment_uploadBtn"><button onclick="location.href='CommentUploadController'">등 록</button></div>
-  </div>
+
+  <form action="CommentUploadController" method="get">
+    <input type="hidden" name="no" value="${com.no}">
+    <input type="hidden" name="nickname" value="${com.nickname}">
+    <div class="comment_upload_div">
+      <div class="comment_upload_title">댓글쓰기</div>
+      <div class="comment_txtBox"><input type="text" name="comment-content"></div>
+      <div class="comment_uploadBtn"><button type="submit">등 록</button></div>
+    </div>
+  </form>
+
   <div class="comment_list_div">
+    <c:forEach var="comment" items="${comments}">
     <div class="comment_parent_div">
       <div class="comment_content_div">
-        <div class="comment_nickname">작성자 닉네임</div>
-        <div class="comment_date">작성일</div>
-        <div class="comment_content">댓글내용</div>
+        <div class="comment_nickname">${comment.content}</div>
+        <div class="comment_date">${comment.date}</div>
+        <div class="comment_content">${comment.nickname}</div>
       </div>
       <div class="comment_btn_div_other">
         <button>답글달기</button>
@@ -58,15 +65,31 @@
         <button>삭제하기</button>
       </div>
     </div>
-    <div class="recomment_upload_div">
+      </c:forEach>
+
+    <%--<div class="comment_parent_div">
+      <div class="comment_content_div">
+        <div class="comment_nickname">지워니</div>
+        <div class="comment_date">2025-01-23</div>
+        <div class="comment_content">넘넘 맛나보여용~~</div>
+      </div>
+      <div class="comment_btn_div_other">
+        <button>답글달기</button>
+      </div>
+      <div class="comment_btn_div_writer">
+        <button>수정하기</button>
+        <button>삭제하기</button>
+      </div>
+    </div>--%>
+    <%--<div class="recomment_upload_div">
       <div class="comment_txtBox"><textarea></textarea></div>
       <div class="comment_uploadBtn"><button>등록</button></div>
     </div>
     <div class="comment_child_div">
       <div class="comment_content_div">
-        <div class="comment_nickname">작성자 닉네임</div>
-        <div class="comment_date">작성일</div>
-        <div class="comment_content">댓글내용</div>
+        <div class="comment_nickname">수지니</div>
+        <div class="comment_date">2025-01-24</div>
+        <div class="comment_content">저도 다음에 꼭 가봐야겟네요~~^^</div>
       </div>
       <div class="comment_btn_div_other">
         <button>답글달기</button>
@@ -75,7 +98,7 @@
         <button>수정하기</button>
         <button>삭제하기</button>
       </div>
-    </div>
+    </div>--%>
   </div>
   <div class="community_mainBtn_div">
     <button onclick="location.href='CommunityListController'">목록으로</button>
