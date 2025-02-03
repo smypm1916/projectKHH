@@ -25,7 +25,7 @@
 <div class="main-body">
     <%--    이메일, 닉네임 중복체크--%>
 
-    <div class="signup-flow" style="display: flex; justify-content: center;">
+    <div class="signup-flow" style="">
         <ul>
             <div class="signup-flow-no">1</div>
             <p class="signup-flow-title">정보 입력</p>
