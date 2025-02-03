@@ -73,17 +73,16 @@
     border-radius: 10px;
 }
 
-.sub-imgs {
+.sub-img {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .sub-img img {
     width: 200px;
     height: 150px;
-    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -215,16 +214,16 @@
 }
 
 .nickname {
-    height: 10%;
+    height: 7%;
     font-size: 20px;
-    font-weight: bold;
     color: #333;
-    padding-bottom: 10px;
+    font-family: 'BMJUA',serif;
+    font-weight: 100;
 }
 
 .stars {
-    height: 10%;
-    padding-bottom: 10px;
+    height: 7%;
+    padding-bottom: 20px;
 }
 
 .star {
@@ -241,6 +240,8 @@
     height: 15%;
     font-size: 16px;
     color: #666;
+    font-family: 'BMJUA',serif;
+    font-weight: 100;
     text-align: left;
 }
 
@@ -248,7 +249,6 @@
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
-    margin-top: 10px;
 }
 
 .photo-container img {
@@ -257,8 +257,12 @@
     object-fit: cover;
     border-radius: 8px;
 }
-
+.like-button-div{
+    padding-top: 15px;
+}
 .like-button {
+    font-family: 'BMJUA',serif;
+    font-weight: 100;
     background-color: #9f8c75; /* 뮤트한 연갈색 */
     color: white;
     border: none;
@@ -271,10 +275,14 @@
 }
 
 .like-button:hover {
+    font-family: 'BMJUA',serif;
+    font-weight: 100;
     background-color: #8b7a5a; /* 버튼 호버 시 색상 */
 }
 
 .like-count {
+    font-family: 'BMJUA',serif;
+    font-weight: 100;
     margin-left: 10px;
     font-size: 16px;
     color: #555;

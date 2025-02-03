@@ -20,9 +20,9 @@ public class LoginDAO {
 		System.out.println(userId);
 		System.out.println(userPassword);
 		String result = "존재하지 않는 회원";
-		String dbPw = "";
+		String dbPw;
 
-		String sql = "select * from LOGIN_TEST_MS where login_id = ?";
+		String sql = "select * from user_account where user_email = ?";
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -67,5 +67,4 @@ public class LoginDAO {
 		}
 
 	}
-
 }

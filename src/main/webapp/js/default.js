@@ -106,8 +106,9 @@ $(document).ready(() => {
                     <ul style="list-style: none;">
                         <li style="display: none;"><span>${shop.shop_no}</span></li>
                         <li style="list-style: none;">
-                            <span style="font-size: 20pt; font-weight: bold;">${shop.shop_name}</span><br>
+                            <a class="shopname_a" href="ShopDetailC?no=${shop.shop_no}"><span style="font-size: 20pt; font-weight: bold;">${shop.shop_name}</span></a><br>
                         </li>
+                         <li style="list-style: none;"><span><img src="/image/shopImage/${shop.shop_img}" alt="" style="width: 150px; height: 150px"></span></li>
                         <li style="list-style: none;"><span>${shop.shop_content}</span></li>
                         <li style="list-style: none;"><span>${shop.shop_tel}</span></li>
                         <li style="list-style: none;"><span>${shop.shop_opentime}</span></li>

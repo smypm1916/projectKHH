@@ -136,10 +136,10 @@ nav ul li a:hover {
     font-family: 'BMJUA', serif;
     text-align: center;
     padding-left: 15px;
-    padding-top: 15px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
     background-color: rgb(160, 134, 122);
-    height: 170px;
+    height: 150px;
     color: white;
 }
 .footer a{

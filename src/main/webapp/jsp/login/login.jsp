@@ -21,7 +21,7 @@
         <form action="" method="post">
             <div class="loginBox">
                 <label for="iD">아이디</label>
-                <input type="text" id="iD" name="iD" required>
+                <input type="email" id="iD" name="iD" required>
             </div>
             <div class="loginBox">
                 <label for="password">비밀번호</label>
@@ -47,11 +47,9 @@
 </div>
 <script type="text/javascript">
     function openModal() {
-        // 모달 열기
         const modal = document.getElementById("forgotModal");
         modal.style.display = "block";
 
-        // 닫기 버튼 이벤트
         const closeModal = document.querySelector(".close");
         closeModal.addEventListener("click", () => {
             modal.style.display = "none";

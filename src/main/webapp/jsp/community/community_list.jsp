@@ -16,7 +16,7 @@
     </div>
 
     <div class="content_upload"> <%--50%--%>
-        <button onclick="location.href='CommunityUploadController?nickname=챈챈'">글 쓰기</button>
+        <button onclick="location.href='CommunityUploadController?nickname=고로고로상'">글 쓰기</button>
     </div>
 
     <div class="search_item"> <%--40%--%>
@@ -51,7 +51,7 @@
         </div>
     </c:forEach>
 </div>
-<div class="page">
+<%--<div class="page">
     <div class="page_div">
         <a>Prev</a>
         <c:forEach begin="1" end="${pageCount }" var="i">
@@ -59,6 +59,6 @@
         </c:forEach>
         <a>Next</a>
     </div>
-</div>
+</div>--%>
 </body>
 </html>

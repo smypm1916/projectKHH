@@ -15,10 +15,8 @@
         <div class="profile-field" style="border: none;">
             <div class="profile-circle">
                 <!-- 기존 프로필 사진 표시 -->
-                    <img src="../image/korosan.jpg">
-                <%--<c:if test="${sessionScope.user.user_picture} != null">
+                    <%--<img src="../image/korosan.jpg">--%>
                     <img id="profileImg" src="image/${sessionScope.user.user_picture}" alt="프로필 사진">
-                </c:if>--%>
                 <!-- 파일 업로드 버튼 -->
                 <label for="newImg" class="camera-icon">
                     <i class="fa fa-camera"></i>

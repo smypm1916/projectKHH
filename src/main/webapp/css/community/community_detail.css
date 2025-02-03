@@ -130,6 +130,7 @@ h1{
     border: none;
 }
 .community_list_div{
+    padding-bottom: 10px;
     width: 100%;
     height: 440px;
 }
@@ -165,6 +166,7 @@ h1{
     margin-top: 13px;
     width: 1000px;
     height: 30px;
+    font-family: 'BMJUA',serif;
 }
 .comment_uploadBtn{
     border: none;
@@ -212,7 +214,8 @@ h1{
     border: none;
     display: flex;
     height: 80px;
-    width: 90%
+    width: 90%;
+    margin-bottom: 10px;
 }
 .comment_content_div{
     padding-top: 10px;
@@ -220,6 +223,7 @@ h1{
     width: 90%;
 }
 .comment_nickname{
+    font-family: 'BMJUA',serif;
     margin-left: 10px;
     font-weight: bold;
     font-size: 13px;
@@ -227,12 +231,14 @@ h1{
     height: 25%;
 }
 .comment_date{
+    font-family: 'BMJUA',serif;
     margin-left: 10px;
     font-size: 13px;
     border: none;
     height: 25%;
 }
 .comment_content{
+    font-family: 'BMJUA',serif;
     margin-top: 7px;
     margin-left: 10px;
     border: none;

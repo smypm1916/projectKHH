@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map and Shop Lists</title>
     <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css">
-
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
@@ -18,11 +17,19 @@
             display: flex;
             flex-direction: row;
         }
-
+        .shopname_a{
+            text-decoration: none;
+            color: rgb(70, 44, 32);
+        }
+        .shopname_a:hover{
+            color: rgb(198,177,0);
+        }
         .hokkaido-map {
             position: relative;
             flex: 1;
-            border: 1px solid black;
+            border: 3px solid white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
             height: auto; /* 고정 높이 제거 */
             width: 100%; /* 부모 컨테이너의 크기에 맞춤 */
             aspect-ratio: 4 / 3; /* 지도 이미지의 비율 유지 */
@@ -54,14 +61,16 @@
         }
 
         .shop-list {
-            border: 1px solid black;
-            background-color: #F5DEB3;
+            background-color: #edebeb;
             overflow-y: scroll;
             max-height: 100%;
             align-items: center;
             transition: width 1s ease;
         }
-
+        .simpleList{
+            height: 420px;
+            background-color: #edebeb;
+        }
         .reduced {
             flex: 0.4 !important;
         }
@@ -83,7 +92,7 @@
 
         <%--        지도 --%>
         <div class="hokkaido-map" id="hokkaido-map"
-             style="flex: 1; border: 1px solid black; height: 720px; width: 960px;">
+             style="flex: 1; height: 720px; width: 960px;">
             <img src="../../image/hokkaido.png" alt="Hokkaido Map" style="height:auto; width: 100%;">
             <!-- 포인터 추가 -->
             <div class="map-pointer" data-region="도호쿠" style="top: 33%; left: 48%;"></div>
@@ -93,13 +102,13 @@
         </div>
 
         <div class="shop-list" id="shop-list"
-             style="background-color: #F5DEB3; overflow-y: scroll; max-height: 720px; align-items: center;">
-            <h1>식당 일람</h1>
+             style="overflow-y: scroll; max-height: 720px; align-items: center;">
+            <h3>식당 일람</h3>
             <c:forEach var="sl" items="${simpleList}">
                 <div class="simpleList"
-                     style="border-top: 1px solid black; border-bottom: 1px solid black; background-color: floralwhite;"
+                     style="box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);"
                      onclick="location.href='ShopAddrTypeC?no=${sl}';">
-                    <ul style="list-style: none">
+                    <ul style="list-style: none; height: 500px;">
                         <li style="display: none;"><span>${sl.shop_no}</span></li>
                         <li style="list-style: none;"><a
                                 style="font-size: 20pt; font-weight: bold;"

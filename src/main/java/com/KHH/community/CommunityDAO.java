@@ -353,7 +353,7 @@ public class CommunityDAO {
         System.out.println(path);
         File directory = new File(path);
 
-        // 디렉토리가 없으면 생성
+        //디렉토리가 없으면 생성
         if (!directory.exists() && !directory.mkdirs()) {
 
         }
@@ -455,4 +455,65 @@ public class CommunityDAO {
     }
 
 
+    public static void insertCommunityComment(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        String no = req.getParameter("no");
+        String nickname = req.getParameter("nickname");
+        String comment_content = req.getParameter("comment-content");
+
+        String sql = "insert into comment_info values(comment_parentno_seq.nextval,1,?,?,?,sysdate)";
+
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,no);
+            pstmt.setString(2, nickname);
+            pstmt.setString(3,comment_content);
+            if(pstmt.executeUpdate() == 1){
+                System.out.println("등록성공");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }finally {
+            DBManager.close(con, pstmt, null);
+        }
+    }
+
+
+    public static void getCommunityComment(HttpServletRequest req) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String no = req.getParameter("no");
+
+        String sql = "select * from comment_info where community_no = ? order by comment_parentno desc";
+
+        CommentDTO comment = null;
+        ArrayList<CommentDTO> comments = new ArrayList<>();
+
+        try {
+            con = DBManager.connect();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, no);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                comment = new CommentDTO();
+                comment.setParentNo(rs.getInt(1));
+                comment.setChildNo(rs.getInt(2));
+                comment.setCommunityNo(rs.getInt(3));
+                comment.setContent(rs.getString(4));
+                comment.setNickname(rs.getString(5));
+                comment.setDate(rs.getDate(6));
+                comments.add(comment);
+            }
+            req.setAttribute("comments", comments);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }finally {
+
+        }
+    }
 }
