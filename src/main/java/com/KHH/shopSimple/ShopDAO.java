@@ -101,10 +101,15 @@ public class ShopDAO {
     public ArrayList<ShopDetailDTO> getShopsByRegion(String region) {
         ArrayList<ShopDetailDTO> shopList = new ArrayList<>();
         String sql = "SELECT * FROM SHOP_INFO WHERE shop_addrtype = ?";
+        String imgSQL = "select * from SHOP_IMAGE where shop_no=? and image_type=?";
+
+        String imgType = "main";
 
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+        ResultSet rs2 = null;
+        String shop_no;
 
         try {
             con = DBManager.connect();
@@ -115,6 +120,7 @@ public class ShopDAO {
 
             while (rs.next()) {
                 ShopDetailDTO shop = new ShopDetailDTO();
+                shop.setShop_no(rs.getInt("shop_no"));
                 shop.setShop_owner(rs.getString("shop_owner"));
                 shop.setShop_name(rs.getString("shop_name"));
                 shop.setShop_addr(rs.getString("shop_addr"));
@@ -122,6 +128,14 @@ public class ShopDAO {
                 shop.setShop_tel(rs.getString("shop_tel"));
                 shop.setShop_content(rs.getString("shop_content"));
                 shop.setShop_opentime(rs.getString("shop_opentime"));
+
+                pstmt = con.prepareStatement(imgSQL);
+                pstmt.setInt(1, rs.getInt("shop_no"));
+                pstmt.setString(2, imgType);
+                rs2 = pstmt.executeQuery();
+                if (rs2.next()) {
+                    shop.setShop_img(rs2.getString("shop_image"));
+                }
                 shopList.add(shop);
             }
 

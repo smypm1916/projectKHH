@@ -12,19 +12,14 @@
 <!-- 가게 이름과 이미지 항상 위에 위치 -->
 <div class="shop-detail">
     <div class="main-img">
-        <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="300" height="300">
+        <img alt="" src="/image/shopImage/${shop.main_image}">
     </div>
-    <div class="sub-imgs">
-        <div class="sub-img">
-            <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="150" height="150">
-        </div>
-        <div class="sub-img">
-            <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="150" height="150">
-        </div>
-        <div class="sub-img">
-            <img alt="" src="https://tabiiro.jp/lpimg/gourmet/303483/main/img4.jpg" width="150" height="150">
-        </div>
+    <div class="sub-img">
+        <c:forEach var="sub" items="${shop.sub_image}" varStatus="st">
+            <img src="/image/shopImage/${sub}" alt="서브사진 ${st.count}">
+        </c:forEach>
     </div>
+
     <div class="shop-name">${shop.shop_name}</div>
     <div class="shop-intro">${shop.shop_content}</div>
 </div>
@@ -55,9 +50,16 @@
             <div style="font-size:20px">${shop.shop_opentime}</div>
         </div>
     </div>
-    <div class="reservation-btn"><button>예약하기</button></div>
+    <div class="reservation-btn">
+        <button onclick="servicement()">예약하기</button>
+        <button onclick="location.href='ShopC'">목록으로</button>
+    </div>
 </div>
-
+<script>
+    function servicement(){
+        alert('서비스 준비중입니다. 조금만 기다려주세요~~');
+    }
+</script>
 <!-- 메뉴 -->
 <div id="content2" class="tab-content">
     <c:forEach var="menu" items="${menus}">
@@ -84,12 +86,14 @@
             </div>
             <div class="review-content">너무너무 맛나용~</div>
             <div class="photo-container">
-                <img src="https://via.placeholder.com/150x150" alt="review photo 1">
-                <img src="https://via.placeholder.com/150x150" alt="review photo 2">
-                <img src="https://via.placeholder.com/150x150" alt="review photo 3">
+                <img src="/image/img1-1.jpg" alt="review photo 1">
+                <img src="/image/img1-2.jpg" alt="review photo 2">
+                <img src="/image/img1-3.jpg" alt="review photo 3">
             </div>
+            <div class="like-button-div">
             <button class="like-button" onclick="increaseLikeCount(this)">좋아요</button>
             <span class="like-count">0</span>
+            </div>
         </div>
 </div>
 

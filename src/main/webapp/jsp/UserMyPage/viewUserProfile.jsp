@@ -15,10 +15,10 @@
 <div class="profile">
   <div class="profile-field" style="border: none;">
     <div class="profile-circle">
-      <%--<c:if test="${sessionScope.user.user_picture} != null">
+      <c:if test="${sessionScope.user.user_picture} != null">
         <img src="/image/${sessionScope.user.user_picture}" alt="프로필 사진">
-      </c:if>--%>
-      <img src="../image/korosan.jpg">
+      </c:if>
+      <%--<img src="../image/korosan.jpg">--%>
     </div>
     <div class="profile-message">
 						<span>

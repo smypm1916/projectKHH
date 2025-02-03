@@ -7,7 +7,13 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <style>
-        div {
+        @font-face {
+            font-family: 'BMJUA';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        /*div {
             border: 1px solid;
         }
 
@@ -29,7 +35,7 @@
 
         .footer {
             height: 200px;
-        }
+        }*/
 
         .profile-field {
             display: flex;
@@ -45,6 +51,8 @@
         .reservation-list {
             display: flex;
             justify-content: flex-end;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .reserv-place-list {
@@ -52,6 +60,8 @@
             text-align: center;
             border: none;
             margin: 20px;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .reserv-place-list img {
@@ -63,6 +73,8 @@
         .reserv-place-list-field {
             display: flex;
             overflow: hidden;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .calendar-container {
@@ -75,6 +87,8 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             background-color: #f9f9f9;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .calendar-months > div {
@@ -111,11 +125,19 @@
         .calendar div {
             padding: 10px 0;
             border-radius: 5px;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .calendar .day-header {
             font-weight: bold;
-            background-color: #007bff;
+            background-color: rgb(205, 187, 173);
+            color: rgb(70, 44, 32);
+        }
+
+        .calendar .day-header:hover {
+            font-weight: bold;
+            background-color: rgb(70, 44, 32);
             color: white;
         }
 
@@ -127,7 +149,8 @@
         }
 
         .calendar .day:hover {
-            background-color: #e0e0e0;
+            background-color: rgb(70, 44, 32);
+            color: white;
         }
 
         .nav-buttons {
@@ -136,19 +159,25 @@
             display: flex;
             justify-content: center;
             gap: 10px;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .nav-buttons button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: rgb(205, 187, 173);
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .nav-buttons button:hover {
-            background-color: #0056b3;
+            background-color: rgb(70, 44, 32);
+            font-family: 'BMJUA',serif;
+            color: white;
         }
 
         .month > h3 {
@@ -158,37 +187,38 @@
         .reserv_button_field {
             margin-left: auto;
             margin-right: 30px;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .reserv_button_field > input {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: rgb(205, 187, 173);
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-family: 'BMJUA',serif;
+            color: rgb(70, 44, 32);
         }
 
         .reserv_button_field > input:hover {
-            background-color: #0056b3;
+            background-color: rgb(70, 44, 32);
+            color: white;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="header">header</div>
-    <div class="nav">nav</div>
-    <div class="content">
+   <%-- <div class="header">header</div>
+    <div class="nav">nav</div>--%>
+
 
         <div class="mypage" style="border: none;">
-            <h1>MyPage (누르면 마이페이지 메인으로 이동)</h1>
+            <h1>내 가게 예약확인</h1>
         </div>
-        <br>
-        <hr>
 
-        <div class="reservation-list" style="border: none;">
-            <h2 style="margin-inline-end: auto;">예약고객 리스트</h2>
-        </div>
+
 
 
         <div class="calendar-container">
@@ -298,7 +328,9 @@
 
             generateCalendar();
         </script>
-
+       <div class="reservation-list" style="border: none;">
+           <h2 style="margin-inline-end: auto;">예약고객 리스트</h2>
+       </div>
         <div class="reserv-place-list-field" style="border: solid 1px;">
             <div class="reserv-place-list">
                 <img
@@ -322,7 +354,7 @@
 
     </div>
 
-    <div class="footer">footer</div>
-</div>
+   <%-- <div class="footer">footer</div>--%>
+
 </body>
 </html>

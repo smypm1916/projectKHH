@@ -17,9 +17,11 @@ ChooseTypeC extends HttpServlet {
         String userType = "user";
 
         if (userType.equals(request.getParameter("userType"))) {
-            request.getRequestDispatcher("/jsp/signup/user_signUp.jsp").forward(request, response);
+            request.setAttribute("content","/jsp/signup/user_signUp.jsp");
+            request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("/jsp/signup/owner_signUp.jsp").forward(request, response);
+            request.setAttribute("content","/jsp/signup/owner_signUp.jsp");
+            request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
         }
     }
 

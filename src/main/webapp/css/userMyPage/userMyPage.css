@@ -447,7 +447,7 @@ input[type="button"]:hover {
     display: inline-block;
     text-align: center;
     width: 330px;
-    height: 600px;
+    height: 550px;
     margin: 31px;
 }
 
@@ -460,7 +460,7 @@ input[type="button"]:hover {
     transition: transform 0.3s, box-shadow 0.3s; /* 애니메이션 효과 */
 }
 
-.reserv-place-list_img:hover {
+.reserv-place-list img:hover {
     transform: scale(1.05); /* 호버 시 확대 효과 */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강조 */
 }
@@ -518,7 +518,7 @@ input[type="button"]:hover {
 }*/
 
 .like-list{
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 20px;
     padding-left: 30px;
     display: flex;
@@ -531,7 +531,7 @@ input[type="button"]:hover {
 }
 .like_more{
     margin-top: 12px;
-    margin-left: 1035px;
+    margin-left: 1010px;
     background-color: rgb(205, 187, 173);
     display: flex;
     align-items: center;
@@ -549,7 +549,7 @@ input[type="button"]:hover {
 
 .like_more:hover{
     margin-top: 12px;
-    margin-left: 1035px;
+    margin-left: 1010px;
     background-color: rgb(70, 44, 32);
     display: flex;
     align-items: center;

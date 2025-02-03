@@ -13,11 +13,17 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
-    <link rel="stylesheet" href="../../css/signup/signup_ver.0.2.css">
+    <%--<link rel="stylesheet" type="text/css" href="../../css/index_ver.0.4.css?v=1.0">
+    <link rel="stylesheet" href="../../css/signup/signup_ver.0.2.css">--%>
+    <link rel="stylesheet" href="../../css/signup/signUp.css">
+    <link rel="stylesheet" href="../../css/main.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
+<style>
+    .header{
+        background-color: rgb(205, 187, 173);
+    }
+</style>
 </head>
 
 <body>

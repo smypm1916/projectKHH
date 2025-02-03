@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ReviewListC extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("content","/jsp/owner_myPage/ReviewsPage.jsp");
+        req.setAttribute("content","/jsp/owner_myPage/ReservationPage.jsp");
         req.getRequestDispatcher("/jsp/main.jsp").forward(req, resp);
     }
 

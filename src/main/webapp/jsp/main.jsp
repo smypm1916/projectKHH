@@ -32,9 +32,8 @@
 </div>
 
 <div class="footer">
-    <div class="footer-logo">
+    <div class="footer-logo" style="padding-bottom: 5px">
         <img alt="" src="../image/logo_header.png" style="width: 80px;">
-        <p>갑자기...배가 고파졌다.</p>
     </div>
     <div class="footer-links">
         <a href="">프로젝트 소개</a> |

@@ -15,8 +15,8 @@ public class UserScrapPageC extends HttpServlet {
         int p = Integer.parseInt(req.getParameter("p"));
         UserDataDAO.viewUserScrap(req);
         UserDataDAO.scrapPaging(p, req, UserDataDAO.viewUserScrap(req));
-        req.setAttribute("content", "../UserScrap/userScrapPage.jsp");
-        req.getRequestDispatcher("jsp/UserMyPage/sj_index.jsp").forward(req, resp);
+        req.setAttribute("content", "/jsp/UserScrap/userScrapPage.jsp");
+        req.getRequestDispatcher("jsp/main.jsp").forward(req, resp);
 
 
     }

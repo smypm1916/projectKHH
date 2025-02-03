@@ -105,13 +105,10 @@ public class ShopDAO {
             e.printStackTrace();
         } finally {
             DBManager.close(con, pstmt, rs);
-            try {
-                rs2.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+//                rs2.close();
         }
     }
+
 
     public static void showAllMenu(HttpServletRequest req) {
         Connection con = null;
