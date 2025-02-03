@@ -1,6 +1,6 @@
 package com.KHH.ShopInfo;
 
-import com.KHH.main.DBManager;
+import com.KHH.ShopInfo.DBManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +20,7 @@ public class ShopDAO {
         String shopSQL = "select * from shop_info where shop_no=?";
         String imgSQL = "select * from SHOP_IMAGE where shop_no=? order by image_type";
         try {
-            con = DBManager.connect();
+            con = DBManager.connection();
             pstmt = con.prepareStatement(shopSQL);
             pstmt.setString(1, num);
             rs = pstmt.executeQuery();
@@ -67,7 +67,7 @@ public class ShopDAO {
         String shopSQL = "select * from SHOP_INFO";
         String imgSQL = "select * from SHOP_IMAGE where shop_no=? order by image_type";
         try {
-            con = DBManager.connect();
+            con = DBManager.connection();
             pstmt = con.prepareStatement(shopSQL);
             rs = pstmt.executeQuery();
             ShopDTO shop = null;
@@ -119,7 +119,7 @@ public class ShopDAO {
         ResultSet rs = null;
 
         try {
-            con = DBManager.connect();
+            con = DBManager.connection();
             pstmt = con.prepareStatement("select * from menu_info where menu_shop=?");
             System.out.println("shop_no: " + req.getParameter("no"));
             pstmt.setString(1, req.getParameter("no"));
@@ -154,7 +154,7 @@ public class ShopDAO {
         String reviewSQL = "select * from REVIEW_INFO ri, REVIEW_IMAGE rimg where ri.review_no = rimg.REVIEW_NO and ri.review_shop = ?";
 
         try {
-            con = DBManager.connect();
+            con = DBManager.connection();
             pstmt = con.prepareStatement(reviewSQL);
             pstmt.setString(1, req.getParameter("no"));
             rs = pstmt.executeQuery();
